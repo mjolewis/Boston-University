@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ea90353-21f4-4586-8b0b-7735708330b7" name="Default Changelist" comment="" />
+    <list default="true" id="9ea90353-21f4-4586-8b0b-7735708330b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/Courses.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Book Exercises/.idea/Book Exercises.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Book Exercises/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/META-INF/Book Exercises.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/bostonuniversity.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/collections/DoubleArraySeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/collections/DoubleLinkedSeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/collections/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/nodes/DoubleNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/production/Book Exercises/edu/bostonuniversity/nodes/NodeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book Exercises/out/test/Book Exercises/META-INF/Book Exercises.kotlin_module" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,9 +39,13 @@
   <component name="ProjectId" id="1RCxy5GGqO0VDAW95QMscR60eog" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -41,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1569185129369</updated>
       <workItem from="1569185130623" duration="11000" />
+      <workItem from="1569290042628" duration="175000" />
     </task>
     <servers />
   </component>
@@ -52,7 +82,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

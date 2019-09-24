@@ -13,9 +13,10 @@ public class NodeTest {
         DoubleNode node3 = DoubleNode.getInstance();
 
 
-        head.addNodeAfter(node1);
-        node1.addNodeAfter(node2);
-        node2.addNodeAfter(node3);
+        head.addNodeAfter(1);
+        head.getNext().addNodeAfter(2);
+        head.getNext().getNext().addNodeAfter(3);
+        head.getNext().getNext().getNext().addNodeAfter(4);
 
         System.out.println("Head is: " + head.getData());
         System.out.println("Head is: " + head.getNext().getData());

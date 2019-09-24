@@ -1,5 +1,4 @@
 package edu.bostonuniversity.nodes;
-import org.jetbrains.annotations.Contract;
 
 // FILE: DoubleNode.java from the package edu.bostonuniversity.nodes
 
@@ -22,7 +21,7 @@ public class DoubleNode {
     //   1. The node's double data is in the instance variable data.
     //   2. For the final node of a list, the link part is null. Otherwise, the link part is a reference to the next
     //      node of the list.
-    private DoubleNode data;
+    private double data;
     private DoubleNode next;
 
     /**
@@ -34,25 +33,25 @@ public class DoubleNode {
      *   Indicates insufficient memory for the new DoubleNode
      */
     private DoubleNode() {
-        this.data = null;
+        this.data = 0;
         this.next = null;
     }
 
     /**
      * Initializes a node with the specified initial data and a link to the next node. Note that the initial next may
      * be a null reference, which inidicates that the new node has nothing after it.
-     * @param node
+     * @param data
      *   The initial data of this new node.
      * @param next
      *   A reference to the node after this new node (this reference may be null to indicate that there is no node
      *   after this new node).
-     * @postcondtion
+     * @postcondition
      *   This new node contains the specified data and a link to the next node.
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode.
      */
-    private DoubleNode(DoubleNode node, DoubleNode next) {
-        this.data = node;
+    private DoubleNode(double data, DoubleNode next) {
+        this.data = data;
         this.next = next;
     }
 
@@ -71,7 +70,7 @@ public class DoubleNode {
     /**
      * Activates the overloaded constructor for DoubleNode. Note that the initial next may be a null reference, which
      * indicates that the new node has nothing after it.
-     * @param node
+     * @param data
      *   The initial data of this new node.
      * @param next
      *   A reference to the node after this new node (this reference may be null to indicate that there is no node
@@ -81,7 +80,7 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode.
      */
-    public static DoubleNode getInstance(DoubleNode node, DoubleNode next) { return new DoubleNode(node, next); }
+    public static DoubleNode getInstance(double data, DoubleNode next) { return new DoubleNode(data, next); }
 
     /**
      * Modification method to add a new node after this node.
@@ -93,7 +92,7 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates that there is insufficient memory for a new DoubleNode.
      */
-    public void addNodeAfter(DoubleNode element) {
+    public void addNodeAfter(double element) {
         next = new DoubleNode(element, next);
     }
 
@@ -102,7 +101,7 @@ public class DoubleNode {
      * @return data
      *   The data from this node.
      */
-    public DoubleNode getData() { return data; }
+    public double getData() { return data; }
 
     /**
      * Accessor method to get a reference to the next node after this node.
@@ -121,7 +120,6 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode.
      */
-    @Contract("null -> null")
     public static DoubleNode listCopy(DoubleNode source) {
         DoubleNode copyHead;
         DoubleNode copyTail;
@@ -168,7 +166,7 @@ public class DoubleNode {
         copyHead = getInstance(source.data, null);
         copyTail = copyHead;
 
-        System.out.println("\n copyHead is: " + copyHead);
+        System.out.println("\ncopyHead is: " + copyHead);
         System.out.println("copyTail is: " + copyTail);
 
         // Make the rest of the nodes for the newly created list...
@@ -178,7 +176,7 @@ public class DoubleNode {
             copyTail.addNodeAfter(source.data);
             copyTail = copyTail.next;
 
-            System.out.println("\n copyHead is now: " + copyHead);
+            System.out.println("\ncopyHead is now: " + copyHead);
             System.out.println("copyTail is now: " + copyTail);
         }
 
@@ -289,15 +287,15 @@ public class DoubleNode {
      *   The return is a reference to the first node that contains the specified target. If there is no such node, the
      *   null reference is returned.
      */
-//    public static DoubleNode listSearch(DoubleNode head, int target) {
-//        DoubleNode cursor;
-//
-//        for (cursor = head; cursor != null; cursor = cursor.next) {
-//            if (cursor.data == target) { return cursor; }
-//        }
-//
-//        return null;
-//    }
+    public static DoubleNode listSearch(DoubleNode head, int target) {
+        DoubleNode cursor;
+
+        for (cursor = head; cursor != null; cursor = cursor.next) {
+            if (cursor.data == target) { return cursor; }
+        }
+
+        return null;
+    }
 
     /**
      * Modification method to remove the node after this node.
@@ -319,7 +317,7 @@ public class DoubleNode {
      * @postcondition
      *   The data of this node has been set to data
      */
-//    public void setData(int data) { this.data = data; }
+    public void setData(int data) { this.data = data; }
 
     /**
      * Modification method to set a reference to the next node after this node.

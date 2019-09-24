@@ -1,60 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="a47feb51-2161-43ac-9ce0-748a23a7537b" name="Default Changelist" comment="">
+    <list default="true" id="7573847d-c3b5-4722-aeb6-079632719790" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/META-INF/Book Exercises.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/bostonuniversity.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/DoubleArraySeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/DoubleLinkedSeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/DoubleNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/NodeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Book Exercises/META-INF/Book Exercises.kotlin_module" beforeDir="false" />
     </list>
-=======
-    <list default="true" id="a47feb51-2161-43ac-9ce0-748a23a7537b" name="Default Changelist" comment="" />
->>>>>>> 5e8e9a2540fc2310906fb965a7252d6b9456f3cd
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JUnit5 Test Class" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-<<<<<<< HEAD
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1R0yfbJmf2Ip2RPHiBabZnDguHS" />
+  <component name="ProjectId" id="1RGMouVIxHe6TK7NV8QsXQV9WBt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-=======
-  <component name="ProjectId" id="1R0yfbJmf2Ip2RPHiBabZnDguHS" />
->>>>>>> 5e8e9a2540fc2310906fb965a7252d6b9456f3cd
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-<<<<<<< HEAD
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-=======
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
->>>>>>> 5e8e9a2540fc2310906fb965a7252d6b9456f3cd
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="edu.bostonuniversity.collections" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -70,11 +56,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
-<<<<<<< HEAD
       <option name="MAIN_CLASS_NAME" value="edu.bostonuniversity.nodes.NodeTest" />
-=======
-      <option name="MAIN_CLASS_NAME" value="edu.bostonuniversity.collections.Test" />
->>>>>>> 5e8e9a2540fc2310906fb965a7252d6b9456f3cd
       <module name="Book Exercises" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -86,13 +68,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a47feb51-2161-43ac-9ce0-748a23a7537b" name="Default Changelist" comment="" />
-      <created>1568818411378</created>
+      <changelist id="7573847d-c3b5-4722-aeb6-079632719790" name="Default Changelist" comment="" />
+      <created>1569288931780</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1568818411378</updated>
-<<<<<<< HEAD
-      <workItem from="1569251710747" duration="22731000" />
+      <updated>1569288931780</updated>
+      <workItem from="1569288935173" duration="191000" />
+      <workItem from="1569289159305" duration="88000" />
+      <workItem from="1569289656342" duration="357000" />
     </task>
     <servers />
   </component>
@@ -104,15 +87,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
-=======
-    </task>
-    <servers />
-  </component>
->>>>>>> 5e8e9a2540fc2310906fb965a7252d6b9456f3cd
 </project>
