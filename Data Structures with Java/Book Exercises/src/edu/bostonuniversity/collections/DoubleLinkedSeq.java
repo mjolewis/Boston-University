@@ -107,15 +107,14 @@ public class DoubleLinkedSeq implements Cloneable {
      */
     public void addAfter(double element) {
         if (isCurrent()) {
-            precursor = cursor;
             cursor.addNodeAfter(element);
-            advance(); // Advance cursor to the new node
+            precursor = precursor.getNext(); // The precursor moves up one node in the sequence and...
+            cursor = cursor.getNext(); // ...the new node becomes the new current element.
         } else {
-            precursor = tail;
-            cursor = tail;
             tail.addNodeAfter(element);
-            advance(); // Advance cursor to the new node
-            tail = cursor; // Link the tail to the cursor because cursor is at the end of the sequence
+            precursor = tail; // The current tail will become the precursor to the new node and...
+            cursor = tail.getNext(); // ...the new node becomes the new current element and...
+            tail = tail.getNext(); // ...the tail becomes the last node of the sequence.
         }
 
         manyNodes++;
@@ -132,15 +131,13 @@ public class DoubleLinkedSeq implements Cloneable {
      */
     public void addBefore(double element) {
         if (isCurrent()) {
-            cursor = precursor;
-            precursor.addNodeAfter(element); // Add a new node to this sequence after the precursor node.
-            advance(); // Set cursor equal to the newly created node.
+            precursor.addNodeAfter(element); // The new node is added before the current element (after the precursor).
+            cursor = precursor.getNext(); // The new node becomes the new current element of the sequence.
         } else {
             precursor = null; // Invariant #4
-            cursor = head; // A temporary position for the current element, which will be advanced to the new node.
             head.addNodeAfter(element); // If no current element, addBefore places the new element at the front.
-            advance(); // Advance the cursor to the new node.
-            tail = cursor; // Link the tail to the cursor because cursor is at the end of the sequence.
+            cursor = head.getNext(); // Set the current element at the front of this sequence.
+            if (tail == null) { tail = cursor; } // Ensure that the tail is the final node in the sequence.
         }
 
         manyNodes++;
@@ -188,9 +185,10 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
+    @Override
     public DoubleLinkedSeq clone() {
         DoubleLinkedSeq answer;
-        DoubleNode[] tmp = new DoubleNode[2];
+        DoubleNode[] tmp;
 
         try {
             answer = (DoubleLinkedSeq) super.clone();
@@ -229,7 +227,18 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
     public static DoubleLinkedSeq concatenation(DoubleLinkedSeq s1, DoubleLinkedSeq s2) {
-        // TODO: 9/23/19
+        // TODO: 9/24/19
+        int i;
+        
+        if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
+        if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
+        
+        DoubleNode[] answer = new DoubleNode[2];
+        answer = DoubleNode.listPart(s1.head, s1.tail);
+        s1.head = answer[0];
+        s1.tail = answer[1];
+        
+        for (i = 1; i <= s2.manyNodes; i++) { s1.addAfter(s2.); }
     }
 
     /**
