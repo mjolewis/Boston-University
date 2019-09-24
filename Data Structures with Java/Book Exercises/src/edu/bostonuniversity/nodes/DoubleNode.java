@@ -4,6 +4,10 @@ package edu.bostonuniversity.nodes;
 
 // This is a programming project from chapter 4 of "Data Structures and Other Objects Using Java" by Michael Main.
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 /**********************************************************************************************************************
  * A DoubleNode provides a node for a linked list with double data in each node.
  *
@@ -32,6 +36,7 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode
      */
+    @Contract(pure = true)
     private DoubleNode() {
         this.data = 0;
         this.next = null;
@@ -50,6 +55,7 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode.
      */
+    @Contract(pure = true)
     private DoubleNode(double data, DoubleNode next) {
         this.data = data;
         this.next = next;
@@ -65,6 +71,8 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode.
      */
+    @NotNull
+    @Contract(value = " -> new", pure = true)
     public static DoubleNode getInstance() { return new DoubleNode(); }
 
     /**
@@ -80,6 +88,8 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode.
      */
+    @NotNull
+    @Contract(value = "_, _ -> new", pure = true)
     public static DoubleNode getInstance(double data, DoubleNode next) { return new DoubleNode(data, next); }
 
     /**
@@ -120,6 +130,7 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleNode.
      */
+    @Contract("null -> null")
     public static DoubleNode listCopy(DoubleNode source) {
         DoubleNode copyHead;
         DoubleNode copyTail;
@@ -152,6 +163,7 @@ public class DoubleNode {
      * @exception OutOfMemoryError
      *   Indicates insufficent memory for the new DoubleNode.
      */
+    @NotNull
     public static DoubleNode[] listCopyWithTail(DoubleNode source) {
         DoubleNode copyHead;
         DoubleNode copyTail;
@@ -187,6 +199,7 @@ public class DoubleNode {
      * @note
      *   A wrong answer occurs for lists longer than Integer.MAX_VALUE due to arithmetic overflow.
      */
+    @Contract(pure = true)
     public static double listLength(DoubleNode head) {
         DoubleNode cursor;
         int answer;
@@ -214,6 +227,8 @@ public class DoubleNode {
      * @exception IllegalArgumentException
      *   Indicates that start and end do not statisfy the precondition.
      */
+    @NotNull
+    @Contract("null, _ -> fail; !null, null -> fail")
     public static DoubleNode[] listPart(DoubleNode start, DoubleNode end) {
         DoubleNode copyHead;
         DoubleNode copyTail;
@@ -255,6 +270,7 @@ public class DoubleNode {
      * @exception IllegalArgumentException
      *   Indicates a position is less than or equal to 0
      */
+    @Contract(pure = true)
     public static DoubleNode listPosition(DoubleNode head, int position) {
         DoubleNode cursor;
         int i;
@@ -278,6 +294,8 @@ public class DoubleNode {
      *   The return is a reference to the first node that contains the specified target. If there is no such node, the
      *   null reference is returned.
      */
+    @Nullable
+    @Contract(pure = true)
     public static DoubleNode listSearch(DoubleNode head, int target) {
         DoubleNode cursor;
 
