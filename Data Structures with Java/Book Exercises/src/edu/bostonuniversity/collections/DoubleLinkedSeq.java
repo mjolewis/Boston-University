@@ -158,7 +158,11 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates insufficient memory to increase the size of this sequence.
      */
     public void addAll(DoubleLinkedSeq addend) {
-        // TODO: 9/23/19
+        if (addend == null) { throw new NullPointerException("addend is null."); }
+
+        tail.setNext(addend.head); // The tail of the activating object is linked to the head of addend and...
+        tail = addend.tail; // ... the tail of addend becomes the tail of this new sequence.
+        manyNodes += addend.size();
     }
 
     /**
