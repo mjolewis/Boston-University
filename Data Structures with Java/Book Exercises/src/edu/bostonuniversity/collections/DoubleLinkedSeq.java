@@ -160,9 +160,11 @@ public class DoubleLinkedSeq implements Cloneable {
     public void addAll(DoubleLinkedSeq addend) {
         if (addend == null) { throw new NullPointerException("addend is null."); }
 
-        tail.setNext(addend.head); // The tail of the activating object is linked to the head of addend and...
-        tail = addend.tail; // ... the tail of addend becomes the tail of this new sequence.
-        manyNodes += addend.size();
+        if (addend.size() > 0) {
+            tail.setNext(addend.head); // The tail of the activating object is linked to the head of addend and...
+            tail = addend.tail; // ... the tail of addend becomes the tail of this new sequence.
+            manyNodes += addend.size();
+        }
     }
 
     /**
