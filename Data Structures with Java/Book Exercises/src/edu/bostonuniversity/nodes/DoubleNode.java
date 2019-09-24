@@ -153,8 +153,6 @@ public class DoubleNode {
      *   Indicates insufficent memory for the new DoubleNode.
      */
     public static DoubleNode[] listCopyWithTail(DoubleNode source) {
-        System.out.println("Source is: " + source);
-
         DoubleNode copyHead;
         DoubleNode copyTail;
         DoubleNode[] answer = new DoubleNode[2];
@@ -166,18 +164,11 @@ public class DoubleNode {
         copyHead = getInstance(source.data, null);
         copyTail = copyHead;
 
-        System.out.println("\ncopyHead is: " + copyHead);
-        System.out.println("copyTail is: " + copyTail);
-
         // Make the rest of the nodes for the newly created list...
-        System.out.println("\nEntering while loop");
         while (source.next != null) {
             source = source.next;
             copyTail.addNodeAfter(source.data);
             copyTail = copyTail.next;
-
-            System.out.println("\ncopyHead is now: " + copyHead);
-            System.out.println("copyTail is now: " + copyTail);
         }
 
         // ...Return the head and tail references for the new list. The [0] component is the head and the [1] component
