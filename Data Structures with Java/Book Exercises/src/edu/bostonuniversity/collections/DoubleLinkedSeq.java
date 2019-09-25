@@ -233,18 +233,13 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
     public static DoubleLinkedSeq concatenation(DoubleLinkedSeq s1, DoubleLinkedSeq s2) {
-        // TODO: 9/24/19
-        int i;
-        
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
-        
-        DoubleNode[] answer = new DoubleNode[2];
-        answer = DoubleNode.listPart(s1.head, s1.tail);
-        s1.head = answer[0];
-        s1.tail = answer[1];
-        
-        for (i = 1; i <= s2.manyNodes; i++) { s1.addAfter(s2.); }
+
+        DoubleLinkedSeq answer = s1.clone(); // Create a new sequence and...
+        answer.addAll(s2); // ...join the elements of s1 with s2
+        answer.manyNodes = s1.size() + s2.size();
+        return answer;
     }
 
     /**
