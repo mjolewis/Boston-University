@@ -238,7 +238,6 @@ public class DoubleLinkedSeq implements Cloneable {
 
         DoubleLinkedSeq answer = s1.clone(); // Create a new sequence and...
         answer.addAll(s2); // ...join the elements of s1 with s2
-        answer.manyNodes = s1.size() + s2.size();
         return answer;
     }
 
