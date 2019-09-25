@@ -1,12 +1,11 @@
 package edu.bostonuniversity.nodes;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 // FILE: DoubleNode.java from the package edu.bostonuniversity.nodes
 
 // This is a programming project from chapter 4 of "Data Structures and Other Objects Using Java" by Michael Main.
-
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**********************************************************************************************************************
  * A DoubleNode provides a node for a linked list with double data in each node.
