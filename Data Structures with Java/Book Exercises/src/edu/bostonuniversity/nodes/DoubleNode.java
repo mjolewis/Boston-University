@@ -200,7 +200,7 @@ public class DoubleNode {
      *   A wrong answer occurs for lists longer than Integer.MAX_VALUE due to arithmetic overflow.
      */
     @Contract(pure = true)
-    public static double listLength(DoubleNode head) {
+    public static int listLength(DoubleNode head) {
         DoubleNode cursor;
         int answer;
 
