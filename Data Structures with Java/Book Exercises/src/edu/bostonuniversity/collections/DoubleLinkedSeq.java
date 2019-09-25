@@ -236,8 +236,9 @@ public class DoubleLinkedSeq implements Cloneable {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
 
-        DoubleLinkedSeq answer = s1.clone(); // Create a new sequence and...
-        answer.addAll(s2); // ...join the elements of s1 with s2
+        DoubleLinkedSeq answer = s1.clone(); // Clone the s1 sequence and...
+        DoubleLinkedSeq copyS2 = s2.clone(); // ...clone the s2 sequence and...
+        answer.addAll(copyS2); // ...join the two cloned sequences together.
         return answer;
     }
 
