@@ -62,8 +62,8 @@ public class DoubleLinkedSeq implements Cloneable {
     private DoubleLinkedSeq(double data, DoubleNode next) {
         manyNodes = 0;
         head = DoubleNode.getInstance(data, next);
-        tail = head;
-        cursor = head;
+        tail = head.getNext();
+        cursor = head.getNext();
         precursor = null;
     }
 
@@ -275,8 +275,14 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates that there is no current element, so removeCurrent may not be activated.
      */
     public void removeCurrent() {
-        if (isCurrent()) { cursor.setNext(cursor.getNext().getNext()); }
-        else { throw new IllegalStateException("There is no current element."); }
+        if (!isCurrent()) { throw new IllegalStateException("There is no current element."); }
+
+        if (cursor == head.getNext()) { // The current element is the front of the sequence...
+            head = head.getNext().getNext(); // ...remove the front element and...
+            cursor = head; // ...the following element is now the new current element.
+        } else {
+            precursor = precursor.getNext();
+        }
     }
 
     /**
