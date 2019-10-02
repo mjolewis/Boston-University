@@ -62,8 +62,8 @@ public class DoubleLinkedSeq implements Cloneable {
     private DoubleLinkedSeq(double data, DoubleNode next) {
         manyNodes = 0;
         head = DoubleNode.getInstance(data, next);
-        tail = head.getNext();
-        cursor = head.getNext();
+        tail = head;
+        cursor = head;
         precursor = null;
     }
 
