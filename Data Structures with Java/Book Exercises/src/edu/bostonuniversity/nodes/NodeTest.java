@@ -88,5 +88,31 @@ public class NodeTest {
 
         seq.start();
         System.out.println(seq.getCurrent());
+
+        System.out.println();
+
+        DoubleLinkedSeq linkedSeq = DoubleLinkedSeq.getInstance();
+        linkedSeq.addBefore(100);
+        linkedSeq.addAfter(101);
+
+        seq.addAll(linkedSeq);
+
+        seq.start();
+
+        System.out.println(seq.getCurrent());
+        seq.advance();
+
+        System.out.println(seq.getCurrent());
+        seq.advance();
+
+        System.out.println(seq.getCurrent());
+        seq.advance();
+
+        System.out.println(seq.getCurrent());
+        seq.advance();
+
+        System.out.println(seq.getCurrent());
+        seq.advance();
+
     }
 }
