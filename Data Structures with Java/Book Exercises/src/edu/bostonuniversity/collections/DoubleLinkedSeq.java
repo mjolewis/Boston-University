@@ -45,8 +45,8 @@ public class DoubleLinkedSeq implements Cloneable {
      */
     private DoubleLinkedSeq() {
         manyNodes = 0;
-        head = DoubleNode.getInstance();
-        tail = head;
+        head = null;
+        tail = null;
         cursor = null;
         precursor = null;
     }
@@ -60,10 +60,19 @@ public class DoubleLinkedSeq implements Cloneable {
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
     private DoubleLinkedSeq(double data, DoubleNode next) {
+<<<<<<< HEAD
         manyNodes = 0;
         head = DoubleNode.getInstance(data, next);
         tail = head.getNext();
         cursor = head.getNext();
+=======
+        manyNodes = 1;
+        head = DoubleNode.getInstance();
+        head.setNext(next);
+        head.setData(data);
+        tail = head.getNext();
+        cursor = head;
+>>>>>>> develop
         precursor = null;
     }
 
@@ -108,8 +117,9 @@ public class DoubleLinkedSeq implements Cloneable {
     public void addAfter(double element) {
         if (isCurrent()) {
             cursor.addNodeAfter(element);
-            precursor = precursor.getNext(); // The precursor moves up one node in the sequence and...
-            cursor = cursor.getNext(); // ...the new node becomes the new current element.
+            cursor = cursor.getNext(); // The new node becomes the new current element and...
+            if (manyNodes == 1) { precursor = head; } // ...the precusor is moved up one position
+            else {precursor = precursor.getNext(); }
         } else {
             tail.addNodeAfter(element);
             precursor = tail; // The current tail will become the precursor to the new node and...
@@ -131,13 +141,18 @@ public class DoubleLinkedSeq implements Cloneable {
      */
     public void addBefore(double element) {
         if (isCurrent()) {
-            precursor.addNodeAfter(element); // The new node is added before the current element (after the precursor).
-            cursor = precursor.getNext(); // The new node becomes the new current element of the sequence.
+            if (precursor == null) { head.addNodeAfter(element); }
+            else {
+                precursor.addNodeAfter(element); // The new node is added before the current element (after the precursor).
+                cursor = precursor.getNext(); // The new node becomes the new current element of the sequence.
+            }
         } else {
-            precursor = null; // Invariant #4
-            head.addNodeAfter(element); // If no current element, addBefore places the new element at the front.
-            cursor = head.getNext(); // Set the current element at the front of this sequence.
-            if (tail == null) { tail = cursor; } // Ensure that the tail is the final node in the sequence.
+            DoubleNode node = DoubleNode.getInstance();
+            node.setNext(head);
+            node.setData(element);
+            head = node;
+            cursor = node;
+            tail = node.getNext();
         }
 
         manyNodes++;
@@ -275,6 +290,7 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates that there is no current element, so removeCurrent may not be activated.
      */
     public void removeCurrent() {
+<<<<<<< HEAD
         if (!isCurrent()) { throw new IllegalStateException("There is no current element."); }
 
         if (cursor == head.getNext()) { // The current element is the front of the sequence...
@@ -283,6 +299,18 @@ public class DoubleLinkedSeq implements Cloneable {
         } else {
             precursor = precursor.getNext();
         }
+=======
+        if (isCurrent() && precursor == null) {
+            head = head.getNext();
+            cursor = head;
+        } else if (isCurrent()) {
+            cursor.setNext(cursor.getNext().getNext());
+        } else {
+            throw new IllegalStateException("There is no current element.");
+        }
+
+        manyNodes--;
+>>>>>>> develop
     }
 
     /**
@@ -299,7 +327,10 @@ public class DoubleLinkedSeq implements Cloneable {
      *   then there is no current element).
      */
     public void start() {
-        if (manyNodes > 0) { cursor = head.getNext(); }
-        else { cursor = null; }
+        if (manyNodes > 0) {
+            cursor = head;
+            precursor = null;
+        } else {
+            cursor = null; }
     }
 }
