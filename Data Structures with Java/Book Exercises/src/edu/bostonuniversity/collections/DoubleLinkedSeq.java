@@ -13,7 +13,7 @@ import edu.bostonuniversity.nodes.DoubleNode;
  *   1. Beyond Integer.MAX_VALUE elements, the size method does not work.
  *
  * @author mlewis
- * @version Sep 25, 2019
+ * @version Oct 3, 2019
  *********************************************************************************************************************/
 
 public class DoubleLinkedSeq implements Cloneable {
