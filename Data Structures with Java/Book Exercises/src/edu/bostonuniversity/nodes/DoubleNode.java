@@ -325,7 +325,7 @@ public class DoubleNode {
      * @postcondition
      *   The data of this node has been set to data
      */
-    public void setData(int data) { this.data = data; }
+    public void setData(double data) { this.data = data; }
 
     /**
      * Modification method to set a reference to the next node after this node.

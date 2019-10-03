@@ -12,7 +12,7 @@ public class NodeTest {
         DoubleLinkedSeq seq = DoubleLinkedSeq.getInstance();
 
         DoubleNode node = DoubleNode.getInstance(1, DoubleNode.getInstance());
-        DoubleLinkedSeq seq1 = DoubleLinkedSeq.getInstance(1, node);
+        DoubleLinkedSeq seq1 = DoubleLinkedSeq.getInstance(2, node);
         seq1.addBefore(2);
 
         System.out.println("seq1 is: " + seq1.getCurrent());
@@ -22,20 +22,27 @@ public class NodeTest {
         System.out.println();
 
 
-
-        seq.addAfter(4);
+        seq.addBefore(4);
         System.out.println(seq.getCurrent());
 
-        seq.addAfter(6);
+        seq.addAfter(5);
         System.out.println(seq.getCurrent());
 
-        seq.addBefore(5);
+        seq.addAfter(7);
         System.out.println(seq.getCurrent());
+
+        seq.addBefore(6);
+        System.out.println(seq.getCurrent());
+
+        System.out.println("Current after addBefore is: " + seq.getCurrent());
 
         System.out.println();
         System.out.println("size is: " + seq.size());
 
         seq.start();
+        System.out.println(seq.getCurrent());
+
+        seq.advance();
         System.out.println(seq.getCurrent());
 
         seq.advance();
@@ -48,11 +55,24 @@ public class NodeTest {
         System.out.println(seq.getCurrent());
         System.out.println(seq.size());
         System.out.println(seq.isCurrent());
+
         seq.start();
 
         System.out.println();
-        System.out.println(seq.getCurrent());
+        System.out.println("current is: " + seq.getCurrent());
         seq.removeCurrent();
+        System.out.println("After removal, current is: " + seq.getCurrent());
+        System.out.println(("size is now: " + seq.size()));
+
+        System.out.println();
+        seq.start();
+
+        System.out.println(seq.getCurrent());
+        seq.advance();
+
+        System.out.println(seq.getCurrent());
+        seq.advance();
+
         System.out.println(seq.getCurrent());
     }
 }
