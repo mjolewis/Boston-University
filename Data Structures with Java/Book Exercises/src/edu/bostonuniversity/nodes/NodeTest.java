@@ -95,10 +95,67 @@ public class NodeTest {
         linkedSeq.addBefore(100);
         linkedSeq.addAfter(101);
 
-        seq.addAll(linkedSeq);
+        //seq.addAll(linkedSeq);
+
+
+        System.out.println();
+        System.out.println();
+        DoubleLinkedSeq newSeq = DoubleLinkedSeq.concatenation(seq, linkedSeq);
+
+        newSeq.start();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+
+        System.out.println();
+        System.out.println();
+        newSeq.removeCurrent();
+
+        newSeq.start();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        System.out.println();
+        newSeq.addBefore(1000);
+
+        newSeq.start();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        newSeq.advance();
+        System.out.println(newSeq.getCurrent());
+
+        System.out.println();
+        System.out.println();
 
         seq.start();
-
         System.out.println(seq.getCurrent());
         seq.advance();
 
@@ -107,12 +164,5 @@ public class NodeTest {
 
         System.out.println(seq.getCurrent());
         seq.advance();
-
-        System.out.println(seq.getCurrent());
-        seq.advance();
-
-        System.out.println(seq.getCurrent());
-        seq.advance();
-
     }
 }
