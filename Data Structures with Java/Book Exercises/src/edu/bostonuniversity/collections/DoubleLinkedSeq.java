@@ -216,15 +216,17 @@ public class DoubleLinkedSeq implements Cloneable {
         }
 
         // The clone method needs extra work before it returns. The extra work creates new DoubleNode components for
-        //  the clone's reference variables to refer to. 1) head, 2) tail...
+        // the clone's reference variables to refer to. 1) head, 2) tail...
         tmp = DoubleNode.listCopyWithTail(head);
         answer.head = tmp[0];
         answer.tail = tmp[1];
 
         // ...3) precursor and 4) cursor.
-        tmp = DoubleNode.listPart(precursor, cursor);
-        answer.precursor = tmp[0];
-        answer.cursor = tmp[1];
+        if (precursor != null && cursor != null) {
+            tmp = DoubleNode.listPart(precursor, cursor);
+            answer.precursor = tmp[0];
+            answer.cursor = tmp[1];
+        }
 
         return answer;
     }
