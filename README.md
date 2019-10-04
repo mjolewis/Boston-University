@@ -5,4 +5,9 @@
     <ol>
         <li>Data Structures with Java</li>
     </ol>
+    <h4>Spring 2020</h4>
+    <ol>
+        <li>Discrete Mathematics</li>
+        <li>Operating Systems</li>
+    </ol>
 </div>
