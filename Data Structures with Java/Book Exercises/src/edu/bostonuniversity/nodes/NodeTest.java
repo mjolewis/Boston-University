@@ -109,20 +109,16 @@ public class NodeTest {
         newSeq.advance();
         System.out.println(newSeq.getCurrent());
 
-        newSeq.advance();
-        System.out.println(newSeq.getCurrent());
-
-        newSeq.advance();
-        System.out.println(newSeq.getCurrent());
-
-
-        System.out.println();
         System.out.println("current for newSeq is: " + newSeq.getCurrent());
         System.out.println("About to remove current");
         newSeq.removeCurrent();
 
-        System.out.println("Current should now be null");
+        newSeq.advance();
         System.out.println(newSeq.getCurrent());
+
+
+
+        System.out.println();
 
         newSeq.start();
         System.out.println(newSeq.getCurrent());
