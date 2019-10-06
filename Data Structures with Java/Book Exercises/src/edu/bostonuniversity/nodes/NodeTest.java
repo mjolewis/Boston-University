@@ -89,13 +89,11 @@ public class NodeTest {
         seq.start();
         System.out.println(seq.getCurrent());
 
-        System.out.println();
+        System.out.println("\nAbout to add more nodes");
 
         DoubleLinkedSeq linkedSeq = DoubleLinkedSeq.getInstance();
         linkedSeq.addBefore(100);
         linkedSeq.addAfter(101);
-
-        //seq.addAll(linkedSeq);
 
 
         System.out.println();
@@ -119,8 +117,12 @@ public class NodeTest {
 
 
         System.out.println();
-        System.out.println();
+        System.out.println("current for newSeq is: " + newSeq.getCurrent());
+        System.out.println("About to remove current");
         newSeq.removeCurrent();
+
+        System.out.println("Current should now be null");
+        System.out.println(newSeq.getCurrent());
 
         newSeq.start();
         System.out.println(newSeq.getCurrent());
@@ -135,6 +137,7 @@ public class NodeTest {
         System.out.println(newSeq.getCurrent());
 
         System.out.println();
+        System.out.println("adding 1000");
         newSeq.addBefore(1000);
 
         newSeq.start();
