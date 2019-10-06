@@ -30,11 +30,11 @@ public class DoubleLinkedSeq implements Cloneable {
     //   5. For an empty sequence (with no elements), both the head and tail links are null; for a non-empty sequence,
     //      the elements of the sequence are stored from the head to the tail.
     //   6. If there is a current element, then it lies between the head node and tail node (inclusive).
-    private int manyNodes;
+    private int size;
     private DoubleNode head;
     private DoubleNode tail;
     private DoubleNode cursor;
-    private DoubleNode precursor;
+    private DoubleNode prev;
 
     /**
      * Initialize an empty sequence.
@@ -44,11 +44,11 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
     private DoubleLinkedSeq() {
-        manyNodes = 0;
+        size = 0;
         head = null;
         tail = null;
         cursor = null;
-        precursor = null;
+        prev = null;
     }
 
     /**
@@ -60,13 +60,13 @@ public class DoubleLinkedSeq implements Cloneable {
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
     private DoubleLinkedSeq(double data, DoubleNode next) {
-        manyNodes = 1;
+        size = 1;
         head = DoubleNode.getInstance();
         head.setNext(next);
         head.setData(data);
         tail = head.getNext();
         cursor = head;
-        precursor = null;
+        prev = null;
     }
 
     /**
@@ -111,16 +111,17 @@ public class DoubleLinkedSeq implements Cloneable {
         if (isCurrent()) {
             cursor.addNodeAfter(element);
             cursor = cursor.getNext(); // The new node becomes the new current element and...
-            if (manyNodes == 1) { precursor = head; } // ...the precusor is moved up one position
-            else {precursor = precursor.getNext(); }
+            if (size == 1) { prev = head; } // ...the precursor is moved up one position
+            else {
+                prev = prev.getNext(); }
         } else {
             tail.addNodeAfter(element);
-            precursor = tail; // The current tail will become the precursor to the new node and...
+            prev = tail; // The current tail will become the precursor to the new node and...
             cursor = tail.getNext(); // ...the new node becomes the new current element and...
             tail = tail.getNext(); // ...the tail becomes the last node of the sequence.
         }
 
-        manyNodes++;
+        size++;
     }
 
     /**
@@ -134,10 +135,11 @@ public class DoubleLinkedSeq implements Cloneable {
      */
     public void addBefore(double element) {
         if (isCurrent()) {
-            if (precursor == null) { head.addNodeAfter(element); }
-            else {
-                precursor.addNodeAfter(element); // The new node is added before the current element (after the precursor).
-                cursor = precursor.getNext(); // The new node becomes the new current element of the sequence.
+            if (prev == null) {
+                head.addNodeAfter(element);
+            } else {
+                prev.addNodeAfter(element); // The new node is added before the current element.
+                cursor = prev.getNext(); // The new node becomes the new current element of the sequence.
             }
         } else {
             DoubleNode node = DoubleNode.getInstance();
@@ -148,7 +150,7 @@ public class DoubleLinkedSeq implements Cloneable {
             tail = node.getNext();
         }
 
-        manyNodes++;
+        size++;
     }
 
     /**
@@ -174,7 +176,7 @@ public class DoubleLinkedSeq implements Cloneable {
         while (current.getNext() != null) { current = current.getNext(); }
         current.setNext(addend.head); // The tail of the activating object is linked to the head of addend and...
         tail = addend.tail; // ... the tail of addend becomes the tail of this new sequence.
-        manyNodes += addend.size();
+        size += addend.size();
     }
 
     /**
@@ -222,9 +224,9 @@ public class DoubleLinkedSeq implements Cloneable {
         answer.tail = tmp[1];
 
         // ...3) precursor and 4) cursor.
-        if (precursor != null && cursor != null) {
-            tmp = DoubleNode.listPart(precursor, cursor);
-            answer.precursor = tmp[0];
+        if (prev != null && cursor != null) {
+            tmp = DoubleNode.listPart(prev, cursor);
+            answer.prev = tmp[0];
             answer.cursor = tmp[1];
         }
 
@@ -287,7 +289,7 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates that there is no current element, so removeCurrent may not be activated.
      */
     public void removeCurrent() {
-        if (isCurrent() && precursor == null) {
+        if (isCurrent() && prev == null) {
             head = head.getNext();
             cursor = head;
         } else if (isCurrent()) {
@@ -296,7 +298,7 @@ public class DoubleLinkedSeq implements Cloneable {
             throw new IllegalStateException("There is no current element.");
         }
 
-        manyNodes--;
+        size--;
     }
 
     /**
@@ -304,7 +306,7 @@ public class DoubleLinkedSeq implements Cloneable {
      * @return int
      *   The number of elements in this sequence.
      */
-    public int size() { return manyNodes; }
+    public int size() { return size; }
 
     /**
      * Modification method to set the current element at the front of the sequence.
@@ -313,9 +315,9 @@ public class DoubleLinkedSeq implements Cloneable {
      *   then there is no current element).
      */
     public void start() {
-        if (manyNodes > 0) {
+        if (size > 0) {
             cursor = head;
-            precursor = null;
+            prev = null;
         } else {
             cursor = null; }
     }
