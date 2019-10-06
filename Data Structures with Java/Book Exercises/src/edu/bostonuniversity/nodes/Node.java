@@ -193,7 +193,7 @@ public class Node<E> {
      * Compute the number of nodes in a linked list
      * @param head
      *   The head reference for a linked list (which may be an empty list with a null head)
-     * @return double
+     * @return int
      *   The number of nodes in the list with the given head
      * @note
      *   A wrong answer occurs for lists longer than Integer.MAX_VALUE due to arithmetic overflow.

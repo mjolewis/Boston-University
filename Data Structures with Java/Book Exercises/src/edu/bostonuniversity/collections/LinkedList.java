@@ -1,12 +1,12 @@
 package edu.bostonuniversity.collections;
 import edu.bostonuniversity.nodes.Node;
 
-// FILE: DoubleLinkedSeq.java from the package edu.bostonuniversity.collections
+// FILE: LinkedList.java from the package edu.bostonuniversity.collections
 
 // This is a programming project from chapter 4 of "Data Structures and Other Objects Using Java" by Michael Main.
 
 /**********************************************************************************************************************
- * A DoubleLinkedSeq is a sequence of double numbers. The sequence can have a special "current element", which is
+ * A LinkedList is a sequence of generic types. The sequence can have a special "current element", which is
  * specified and accessed through four methods (start, getCurrent, advance, and isCurrent).
  *
  * @note
@@ -17,8 +17,8 @@ import edu.bostonuniversity.nodes.Node;
  *********************************************************************************************************************/
 
 public class LinkedList<E> implements Cloneable {
-    // Invariant of the DoubleLinkedSeq class:
-    //   1. The number of nodes in the sequence sequence is stored in the instance variable manyNodes.
+    // Invariant of the LinkedList class:
+    //   1. The number of nodes in the sequence is stored in the instance variable size.
     //   2. The head and tail are references to the head node and tail node of the linked list. If the list has no
     //      elements, then these references are both null. The reason for the tail reference is the addAfter method.
     //      Normally, this method adds a new element immediately after the current element. But if there is no current
@@ -41,7 +41,7 @@ public class LinkedList<E> implements Cloneable {
      * @postcondition
      *   This sequence is empty.
      * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new DoubleLinkedSeq.
+     *   Indicates insufficient memory for the new LinkedList.
      */
     private LinkedList() {
         this.size = 0;
@@ -68,12 +68,12 @@ public class LinkedList<E> implements Cloneable {
     }
 
     /**
-     * Activates the no arg constructor for DoubleLinkedSeq. Note that the addBefore and addAfter methods work
+     * Activates the no arg constructor for LinkedList. Note that the addBefore and addAfter methods work
      * efficiently (without ever needing more capacity).
-     * @return DoubleLinkedSeq
-     *   A reference to the DoubleLinkedSeq object.
+     * @return LinkedList
+     *   A reference to the LinkedList object.
      * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new DoubleLinkedSeq.
+     *   Indicates insufficient memory for the new LinkedList.
      */
     public static <E> LinkedList<E> getInstance() { return new LinkedList<>(); }
 
@@ -85,10 +85,10 @@ public class LinkedList<E> implements Cloneable {
      *   The element that is being added.
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
-     * @return DoubleLinkedSeq
-     *   A reference to the DoubleLinkedSeq object.
+     * @return LinkedList
+     *   A reference to the LinkedList object.
      * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new DoubleLinkedSeq.
+     *   Indicates insufficient memory for the new LinkedList.
      */
     public static <E> LinkedList<E> getInstance(E data, Node<E> next) {
         return new LinkedList<>(data, next);
@@ -207,11 +207,11 @@ public class LinkedList<E> implements Cloneable {
 
     /**
      * Generate a copy of this sequence.
-     * @return DoubleLinkedSeq
+     * @return LinkedList
      *   The return value is a copy of this sequence. Subsequent changes to the copy will not affect the original, nor
-     *   vice versa. The return value must be typecast to a DoubleLinkedSeq before it is used.
+     *   vice versa. The return value must be typecast to a LinkedList before it is used.
      * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new DoubleLinkedSeq.
+     *   Indicates insufficient memory for the new LinkedList.
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -228,7 +228,7 @@ public class LinkedList<E> implements Cloneable {
             throw new RuntimeException("This class does not implement Cloneable.");
         }
 
-        // The clone method needs extra work before it returns. The extra work creates new DoubleNode components for
+        // The clone method needs extra work before it returns. The extra work creates new Node<E> components for
         // the clone's reference variables to refer to. 1) head, 2) tail...
         tmp = Node.listCopyWithTail(this.head);
         answer.head = (Node<E>) tmp[0];
@@ -250,12 +250,12 @@ public class LinkedList<E> implements Cloneable {
      *   The first of two sequences.
      * @param s2
      *   The second of two sequences.
-     * @return DoubleLinkedSeq
+     * @return LinkedList
      *   A new sequence that has the elements of s1 followed by s2 (with no current element).
      * @exception IllegalArgumentException
      *   Indicates that one of the arguments is null.
      * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new DoubleLinkedSeq.
+     *   Indicates insufficient memory for the new LinkedList.
      */
     public static <E> LinkedList<E> concatenation(LinkedList<E> s1, LinkedList<E> s2) {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
@@ -271,7 +271,7 @@ public class LinkedList<E> implements Cloneable {
      * Accessor method to determine the current element of the sequence
      * @precondition
      *   isCurrent() returns true.
-     * @return double
+     * @return E
      *   The current element of the sequence.
      * @exception IllegalStateException
      *   Indicates that there is no current element.
