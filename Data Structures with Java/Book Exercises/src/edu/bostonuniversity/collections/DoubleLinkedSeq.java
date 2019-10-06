@@ -107,11 +107,9 @@ public class DoubleLinkedSeq implements Cloneable {
      */
     public void addAfter(double element) {
         if (this.isCurrent()) {
+            this.prev = this.cursor;
             this.cursor.addNodeAfter(element);
             this.cursor = this.cursor.getNext(); // The new node becomes the new current element and...
-            if (this.size == 1) { this.prev = this.head; } // ...the precursor is moved up one position
-            else {
-                this.prev = this.prev.getNext(); }
         } else {
             this.tail.addNodeAfter(element);
             this.prev = this.tail; // The current tail will become the precursor to the new node and...
@@ -142,6 +140,22 @@ public class DoubleLinkedSeq implements Cloneable {
             this.cursor = newNode;
         }
 
+        this.size++;
+    }
+
+    /**
+     * Add a new element to the front of this sequence.
+     * @param element
+     *   The new element that is being added.
+     * @postcondition
+     *   A new copy of the element has been added to the front of this sequence. The new element become the new current
+     *   element of the sequence.
+     */
+    public void addFirst(double element) {
+        DoubleNode newNode = DoubleNode.getInstance(element, this.head);
+
+        this.head = newNode;
+        this.cursor = newNode;
         this.size++;
     }
 

@@ -64,7 +64,6 @@ public class NodeTest {
         System.out.println();
 
         seq.start();
-        System.out.println(seq.getCurrent());
 
         System.out.println();
 
@@ -85,9 +84,6 @@ public class NodeTest {
         System.out.println(seq.getCurrent());
 
         System.out.println();
-
-        seq.start();
-        System.out.println(seq.getCurrent());
 
         System.out.println("\nAbout to add more nodes");
 
@@ -112,6 +108,7 @@ public class NodeTest {
         System.out.println("current for newSeq is: " + newSeq.getCurrent());
         System.out.println("About to remove current");
         newSeq.removeCurrent();
+        System.out.println(newSeq.getCurrent());
 
         newSeq.advance();
         System.out.println(newSeq.getCurrent());
@@ -150,18 +147,5 @@ public class NodeTest {
 
         newSeq.advance();
         System.out.println(newSeq.getCurrent());
-
-        System.out.println();
-        System.out.println();
-
-        seq.start();
-        System.out.println(seq.getCurrent());
-        seq.advance();
-
-        System.out.println(seq.getCurrent());
-        seq.advance();
-
-        System.out.println(seq.getCurrent());
-        seq.advance();
     }
 }
