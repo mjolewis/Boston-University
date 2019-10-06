@@ -132,20 +132,14 @@ public class DoubleLinkedSeq implements Cloneable {
      *   at the front of the sequence. The new element always becomes the new current element of the sequence.
      */
     public void addBefore(double element) {
-        if (this.isCurrent()) {
-            if (this.prev == null) {
-                this.head.addNodeAfter(element);
-            } else {
-                this.prev.addNodeAfter(element); // The new node is added before the current element.
-                this.cursor = this.prev.getNext(); // The new node becomes the new current element of the sequence.
-            }
+        DoubleNode newNode = DoubleNode.getInstance(element, this.cursor);
+
+        if (this.prev == null) {
+            this.head = newNode;
+            this.cursor = newNode;
         } else {
-            DoubleNode node = DoubleNode.getInstance();
-            node.setNext(this.head);
-            node.setData(element);
-            this.head = node;
-            this.cursor = node;
-            this.tail = node.getNext();
+            this.prev.setNext(newNode);
+            this.cursor = newNode;
         }
 
         this.size++;
@@ -189,8 +183,12 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates that there is no current element, so advance may not be called.
      */
     public void advance() {
-        if (this.isCurrent()) { this.cursor = this.cursor.getNext(); }
-        else { throw new IllegalStateException("There is no current element."); }
+        if (this.isCurrent()) {
+            this.prev = this.cursor;
+            this.cursor = this.cursor.getNext();
+        } else {
+            throw new IllegalStateException("There is no current element.");
+        }
     }
 
     /**
@@ -287,13 +285,18 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates that there is no current element, so removeCurrent may not be activated.
      */
     public void removeCurrent() {
-        if (this.isCurrent() && this.prev == null) {
+        if (!this.isCurrent()) { throw new IllegalStateException("There is no current element"); }
+
+        if (this.prev == null) { // The current element is referenced by the head
             this.head = this.head.getNext();
             this.cursor = this.head;
-        } else if (isCurrent()) {
-            this.cursor.setNext(this.cursor.getNext().getNext());
+        } else if (this.cursor.getNext() == null) { // The current element is the final element
+            this.prev = null;
+            this.cursor = null;
+            this.tail = null;
         } else {
-            throw new IllegalStateException("There is no current element.");
+            this.cursor = this.cursor.getNext();
+            this.prev.setNext(this.cursor);
         }
 
         this.size--;
