@@ -1,6 +1,4 @@
 package edu.bostonuniversity.nodes;
-
-import edu.bostonuniversity.collections.DoubleLinkedSeq;
 import edu.bostonuniversity.collections.LinkedList;
 
 public class NodeTest {
@@ -10,18 +8,11 @@ public class NodeTest {
     }
 
     public static void doIt() {
-        LinkedList seq = LinkedList.getInstance();
+        LinkedList<String> seq = LinkedList.getInstance();
 
-
-//        DoubleNode node = DoubleNode.getInstance(1, DoubleNode.getInstance());
-//        DoubleLinkedSeq seq1 = DoubleLinkedSeq.getInstance(1, node);
-//        seq1.addBefore(2);
-//
-//        System.out.println("seq1 is: " + seq1.getCurrent());
-//        System.out.println();
-        DoubleNode node = DoubleNode.getInstance(1, DoubleNode.getInstance());
-        DoubleLinkedSeq seq1 = DoubleLinkedSeq.getInstance(2, node);
-        seq1.addBefore(2);
+        Node<String> node = Node.getInstance("Hi", Node.getInstance());
+        LinkedList<String> seq1 = LinkedList.getInstance("there", node);
+        seq1.addBefore("I");
 
         System.out.println("seq1 is: " + seq1.getCurrent());
         System.out.println();
@@ -30,16 +21,16 @@ public class NodeTest {
         System.out.println();
 
 
-        seq.addBefore(4);
+        seq.addBefore("I am");
         System.out.println(seq.getCurrent());
 
-        seq.addAfter(5);
+        seq.addAfter("a");
         System.out.println(seq.getCurrent());
 
-        seq.addAfter(7);
+        seq.addAfter("Scientist");
         System.out.println(seq.getCurrent());
 
-        seq.addBefore(6);
+        seq.addBefore("Computer");
         System.out.println(seq.getCurrent());
 
         System.out.println("Current after addBefore is: " + seq.getCurrent());
@@ -88,14 +79,14 @@ public class NodeTest {
 
         System.out.println("\nAbout to add more nodes");
 
-        LinkedList linkedSeq = LinkedList.getInstance();
-        linkedSeq.addBefore(100);
-        linkedSeq.addAfter(101);
+        LinkedList<String> linkedSeq = LinkedList.getInstance();
+        linkedSeq.addBefore("and");
+        linkedSeq.addAfter("a");
 
 
         System.out.println();
         System.out.println();
-        LinkedList newSeq = LinkedList.concatenation(seq, linkedSeq);
+        LinkedList<String> newSeq = LinkedList.concatenation(seq, linkedSeq);
 
         newSeq.start();
         System.out.println(newSeq.getCurrent());
@@ -131,8 +122,7 @@ public class NodeTest {
         System.out.println(newSeq.getCurrent());
 
         System.out.println();
-        System.out.println("adding 1000");
-        newSeq.addBefore(1000);
+        newSeq.addBefore("Software Engineer");
 
         newSeq.start();
         System.out.println(newSeq.getCurrent());
