@@ -1,5 +1,5 @@
 package edu.bostonuniversity.collections;
-import edu.bostonuniversity.nodes.DoubleNode;
+import edu.bostonuniversity.nodes.Node;
 
 // FILE: DoubleLinkedSeq.java from the package edu.bostonuniversity.collections
 
@@ -16,7 +16,7 @@ import edu.bostonuniversity.nodes.DoubleNode;
  * @version Oct 6, 2019
  *********************************************************************************************************************/
 
-public class DoubleLinkedSeq implements Cloneable {
+public class LinkedList<E> implements Cloneable {
     // Invariant of the DoubleLinkedSeq class:
     //   1. The number of nodes in the sequence sequence is stored in the instance variable manyNodes.
     //   2. The head and tail are references to the head node and tail node of the linked list. If the list has no
@@ -31,10 +31,10 @@ public class DoubleLinkedSeq implements Cloneable {
     //      the elements of the sequence are stored from the head to the tail.
     //   6. If there is a current element, then it lies between the head node and tail node (inclusive).
     private int size;
-    private DoubleNode prev;
-    private DoubleNode head;
-    private DoubleNode cursor;
-    private DoubleNode tail;
+    private Node<E> prev;
+    private Node<E> head;
+    private Node<E> cursor;
+    private Node<E> tail;
 
     /**
      * Initialize an empty sequence.
@@ -43,7 +43,7 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
-    private DoubleLinkedSeq() {
+    private LinkedList() {
         this.size = 0;
         this.prev = null;
         this.head = null;
@@ -59,10 +59,10 @@ public class DoubleLinkedSeq implements Cloneable {
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
-    private DoubleLinkedSeq(double data, DoubleNode next) {
+    private LinkedList(E data, Node<E> next) {
         this.size++;
         this.prev = null;
-        this.head = DoubleNode.getInstance(data, next);
+        this.head = Node.getInstance(data, next);
         this.cursor = head;
         this.tail = this.head.getNext();
     }
@@ -75,7 +75,7 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
-    public static LinkedList getInstance() { return new LinkedList(); }
+    public static <E> LinkedList<E> getInstance() { return new LinkedList<>(); }
 
     /**
      * Activates an initial sequence with one node. The node contains the initial specified data and link to the next
@@ -90,8 +90,8 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
-    public static LinkedList getInstance(double data, DoubleNode next) {
-        return new LinkedList(data, next);
+    public static <E> LinkedList<E> getInstance(E data, Node<E> next) {
+        return new LinkedList<>(data, next);
     }
 
     /**
@@ -105,7 +105,7 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new node.
      */
-    public void addAfter(double element) {
+    public void addAfter(E element) {
         if (this.isCurrent()) {
             this.prev = this.cursor;
             this.cursor.addNodeAfter(element);
@@ -129,8 +129,8 @@ public class DoubleLinkedSeq implements Cloneable {
      *   the new element before the current element. If there was no current element, addBefore places the new element
      *   at the front of the sequence. The new element always becomes the new current element of the sequence.
      */
-    public void addBefore(double element) {
-        DoubleNode newNode = DoubleNode.getInstance(element, this.cursor);
+    public void addBefore(E element) {
+        Node<E> newNode = Node.getInstance(element, this.cursor);
 
         if (this.prev == null) {
             this.head = newNode;
@@ -151,8 +151,8 @@ public class DoubleLinkedSeq implements Cloneable {
      *   A new copy of the element has been added to the front of this sequence. The new element become the new current
      *   element of the sequence.
      */
-    public void addFirst(double element) {
-        DoubleNode newNode = DoubleNode.getInstance(element, this.head);
+    public void addFirst(E element) {
+        Node<E> newNode = Node.getInstance(element, this.head);
 
         this.head = newNode;
         this.cursor = newNode;
@@ -173,8 +173,8 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory to increase the size of this sequence.
      */
-    public void addAll(LinkedList addend) {
-        DoubleNode current;
+    public void addAll(LinkedList<E> addend) {
+        Node<E> current;
 
         if (addend == null) { throw new NullPointerException("addend is null."); }
 
@@ -214,12 +214,13 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
     @Override
-    public LinkedList clone() {
-        LinkedList answer;
-        DoubleNode[] tmp;
+    @SuppressWarnings("unchecked")
+    public LinkedList<E> clone() {
+        LinkedList<E> answer;
+        Object[] tmp;
 
         try {
-            answer = (LinkedList) super.clone();
+            answer = (LinkedList<E>) super.clone();
         } catch (CloneNotSupportedException e) {
             // This exception should not occur. But if it does, it would probably indicate a programming error that
             // made super.clone unavailable. The most common error would be forgetting the "Implement Cloneable" clause
@@ -229,15 +230,15 @@ public class DoubleLinkedSeq implements Cloneable {
 
         // The clone method needs extra work before it returns. The extra work creates new DoubleNode components for
         // the clone's reference variables to refer to. 1) head, 2) tail...
-        tmp = DoubleNode.listCopyWithTail(this.head);
-        answer.head = tmp[0];
-        answer.tail = tmp[1];
+        tmp = Node.listCopyWithTail(this.head);
+        answer.head = (Node<E>) tmp[0];
+        answer.tail = (Node<E>) tmp[1];
 
         // ...3) precursor and 4) cursor.
         if (this.prev != null && this.cursor != null) {
-            tmp = DoubleNode.listPart(this.prev, this.cursor);
-            answer.prev = tmp[0];
-            answer.cursor = tmp[1];
+            tmp = Node.listPart(this.prev, this.cursor);
+            answer.prev = (Node<E>) tmp[0];
+            answer.cursor = (Node<E>) tmp[1];
         }
 
         return answer;
@@ -256,12 +257,12 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
-    public static LinkedList concatenation(LinkedList s1, LinkedList s2) {
+    public static <E> LinkedList<E> concatenation(LinkedList<E> s1, LinkedList<E> s2) {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
 
-        LinkedList answer = s1.clone(); // Clone the s1 sequence and...
-        LinkedList copyS2 = s2.clone(); // ...clone the s2 sequence and...
+        LinkedList<E> answer = s1.clone(); // Clone the s1 sequence and...
+        LinkedList<E> copyS2 = s2.clone(); // ...clone the s2 sequence and...
         answer.addAll(copyS2); // ...join the two cloned sequences together.
         return answer;
     }
@@ -275,7 +276,7 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception IllegalStateException
      *   Indicates that there is no current element.
      */
-    public double getCurrent() {
+    public E getCurrent() {
         if (this.isCurrent()) { return this.cursor.getData(); }
         else { throw new IllegalStateException("There is no current element."); }
     }

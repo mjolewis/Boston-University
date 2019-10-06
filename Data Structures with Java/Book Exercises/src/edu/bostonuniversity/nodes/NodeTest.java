@@ -1,6 +1,6 @@
 package edu.bostonuniversity.nodes;
 
-import edu.bostonuniversity.collections.DoubleLinkedSeq;
+import edu.bostonuniversity.collections.LinkedList;
 
 public class NodeTest {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class NodeTest {
     }
 
     public static void doIt() {
-        DoubleLinkedSeq seq = DoubleLinkedSeq.getInstance();
+        LinkedList seq = LinkedList.getInstance();
 
 
 //        DoubleNode node = DoubleNode.getInstance(1, DoubleNode.getInstance());
@@ -19,7 +19,7 @@ public class NodeTest {
 //        System.out.println("seq1 is: " + seq1.getCurrent());
 //        System.out.println();
         DoubleNode node = DoubleNode.getInstance(1, DoubleNode.getInstance());
-        DoubleLinkedSeq seq1 = DoubleLinkedSeq.getInstance(2, node);
+        LinkedList seq1 = LinkedList.getInstance(2, node);
         seq1.addBefore(2);
 
         System.out.println("seq1 is: " + seq1.getCurrent());
@@ -87,14 +87,14 @@ public class NodeTest {
 
         System.out.println("\nAbout to add more nodes");
 
-        DoubleLinkedSeq linkedSeq = DoubleLinkedSeq.getInstance();
+        LinkedList linkedSeq = LinkedList.getInstance();
         linkedSeq.addBefore(100);
         linkedSeq.addAfter(101);
 
 
         System.out.println();
         System.out.println();
-        DoubleLinkedSeq newSeq = DoubleLinkedSeq.concatenation(seq, linkedSeq);
+        LinkedList newSeq = LinkedList.concatenation(seq, linkedSeq);
 
         newSeq.start();
         System.out.println(newSeq.getCurrent());

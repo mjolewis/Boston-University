@@ -117,8 +117,7 @@ public class Node<E> {
      * @return next
      *   A reference to the node after this node (or the null reference if there is nothing after this node).
      */
-    @SuppressWarnings("unchecked")
-    public E getNext() { return (E) next; }
+    public Node<E> getNext() { return next; }
 
     /**
      * Copy a linked list
