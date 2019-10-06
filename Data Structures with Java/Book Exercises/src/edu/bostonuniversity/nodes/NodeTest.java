@@ -1,5 +1,6 @@
 package edu.bostonuniversity.nodes;
 
+import edu.bostonuniversity.collections.DoubleLinkedSeq;
 import edu.bostonuniversity.collections.LinkedList;
 
 public class NodeTest {
@@ -19,7 +20,7 @@ public class NodeTest {
 //        System.out.println("seq1 is: " + seq1.getCurrent());
 //        System.out.println();
         DoubleNode node = DoubleNode.getInstance(1, DoubleNode.getInstance());
-        LinkedList seq1 = LinkedList.getInstance(2, node);
+        DoubleLinkedSeq seq1 = DoubleLinkedSeq.getInstance(2, node);
         seq1.addBefore(2);
 
         System.out.println("seq1 is: " + seq1.getCurrent());

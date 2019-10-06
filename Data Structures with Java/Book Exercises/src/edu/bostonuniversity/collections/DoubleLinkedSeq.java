@@ -75,7 +75,7 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
-    public static LinkedList getInstance() { return new LinkedList(); }
+    public static DoubleLinkedSeq getInstance() { return new DoubleLinkedSeq(); }
 
     /**
      * Activates an initial sequence with one node. The node contains the initial specified data and link to the next
@@ -90,8 +90,8 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
-    public static LinkedList getInstance(double data, DoubleNode next) {
-        return new LinkedList(data, next);
+    public static DoubleLinkedSeq getInstance(double data, DoubleNode next) {
+        return new DoubleLinkedSeq(data, next);
     }
 
     /**
@@ -173,7 +173,7 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory to increase the size of this sequence.
      */
-    public void addAll(LinkedList addend) {
+    public void addAll(DoubleLinkedSeq addend) {
         DoubleNode current;
 
         if (addend == null) { throw new NullPointerException("addend is null."); }
@@ -214,12 +214,12 @@ public class DoubleLinkedSeq implements Cloneable {
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
     @Override
-    public LinkedList clone() {
-        LinkedList answer;
+    public DoubleLinkedSeq clone() {
+        DoubleLinkedSeq answer;
         DoubleNode[] tmp;
 
         try {
-            answer = (LinkedList) super.clone();
+            answer = (DoubleLinkedSeq) super.clone();
         } catch (CloneNotSupportedException e) {
             // This exception should not occur. But if it does, it would probably indicate a programming error that
             // made super.clone unavailable. The most common error would be forgetting the "Implement Cloneable" clause
@@ -256,12 +256,12 @@ public class DoubleLinkedSeq implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new DoubleLinkedSeq.
      */
-    public static LinkedList concatenation(LinkedList s1, LinkedList s2) {
+    public static DoubleLinkedSeq concatenation(DoubleLinkedSeq s1, DoubleLinkedSeq s2) {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
 
-        LinkedList answer = s1.clone(); // Clone the s1 sequence and...
-        LinkedList copyS2 = s2.clone(); // ...clone the s2 sequence and...
+        DoubleLinkedSeq answer = s1.clone(); // Clone the s1 sequence and...
+        DoubleLinkedSeq copyS2 = s2.clone(); // ...clone the s2 sequence and...
         answer.addAll(copyS2); // ...join the two cloned sequences together.
         return answer;
     }
