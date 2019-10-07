@@ -298,8 +298,18 @@ public class Node<E> {
     public static <E> Node<E> listSearch(Node<E> head, E target) {
         Node<E> cursor;
 
-        for (cursor = head; cursor != null; cursor = cursor.next) {
-            if (cursor.data.equals(target)) { return cursor; }
+        if (target == null) { // Search for a node in which the data is a null reference.
+            for (cursor = head; cursor != null; cursor = cursor.next) {
+                if (cursor.data == null) {
+                    return cursor;
+                }
+            }
+        } else { // Search for a node that contains the non-null target.
+            for (cursor = head; cursor != null; cursor = cursor.next) {
+                if (target.equals(cursor.data)) {
+                    return cursor;
+                }
+            }
         }
 
         return null;
@@ -316,7 +326,7 @@ public class Node<E> {
      * @exception NullPointerException
      *   Indicates that this was the tail node of the list, so there is nothing after it to remove.
      */
-    public void removeNodeAfter() { next = next.next; }
+    public void removeNodeAfter() { this.next = this.next.next; }
 
     /**
      * Modification method to set the data in this node.
