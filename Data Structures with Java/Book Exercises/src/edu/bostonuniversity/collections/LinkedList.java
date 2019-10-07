@@ -283,6 +283,20 @@ public class LinkedList<E> implements Cloneable {
     }
 
     /**
+     * Accessor method to determine the previous element of the sequence
+     * @precondition
+     *   isCurrent() returns true.
+     * @return E
+     *   The element before the current element of the sequence.
+     * @exception IllegalStateException
+     *   Indicates that there is no previous element.
+     */
+    public E getPrevious() {
+        if (this.isCurrent()) { return this.prev.getData(); }
+        else { throw new IllegalStateException("There is no previous element."); }
+    }
+
+    /**
      * Accessor method to determine whether this sequence has a specified current element that can be retrieved with
      * the getCurrent method
      * @return boolean
