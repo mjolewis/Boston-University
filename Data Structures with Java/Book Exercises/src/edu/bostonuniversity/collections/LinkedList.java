@@ -206,7 +206,8 @@ public class LinkedList<E> implements Cloneable {
     }
 
     /**
-     * Generate a copy of this sequence.
+     * Generate a copy of this sequence. Super.clone() returns a generic object that has had its type information
+     * erased at run time and generates an unchecked warning. However, this implementation suppresses that warning.
      * @return LinkedList
      *   The return value is a copy of this sequence. Subsequent changes to the copy will not affect the original, nor
      *   vice versa. The return value must be typecast to a LinkedList before it is used.
