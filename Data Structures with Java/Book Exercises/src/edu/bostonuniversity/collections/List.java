@@ -9,7 +9,7 @@ public interface List<E> {
 
     void addFirst(E element);
 
-    void addAll(LinkedList<E> addend);
+    void addAll(List<E> addend);
 
     void advance();
 

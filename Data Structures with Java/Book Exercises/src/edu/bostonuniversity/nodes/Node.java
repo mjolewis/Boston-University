@@ -4,9 +4,9 @@ public interface Node<E> {
 
     E getData();
 
-    NodeList<E> getNext();
+    Node<E> getNext();
 
     void setData(E data);
 
-    void setNext(NodeList<E> next);
+    void setNext(Node<E> next);
 }
