@@ -1,5 +1,5 @@
 package edu.bostonuniversity.collections;
-import edu.bostonuniversity.nodes.Node;
+import edu.bostonuniversity.nodes.NodeList;
 
 // FILE: LinkedList.java from the package edu.bostonuniversity.collections
 
@@ -31,10 +31,10 @@ public class LinkedList<E> implements Cloneable {
     //      the elements of the sequence are stored from the head to the tail.
     //   6. If there is a current element, then it lies between the head node and tail node (inclusive).
     private int size;
-    private Node<E> prev;
-    private Node<E> head;
-    private Node<E> cursor;
-    private Node<E> tail;
+    private NodeList<E> prev;
+    private NodeList<E> head;
+    private NodeList<E> cursor;
+    private NodeList<E> tail;
 
     /**
      * Initialize an empty sequence.
@@ -59,10 +59,10 @@ public class LinkedList<E> implements Cloneable {
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
-    private LinkedList(E data, Node<E> next) {
+    private LinkedList(E data, NodeList<E> next) {
         this.size++;
         this.prev = null;
-        this.head = Node.getInstance(data, next);
+        this.head = NodeList.getInstance(data, next);
         this.cursor = head;
         this.tail = this.head.getNext();
     }
@@ -90,7 +90,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new LinkedList.
      */
-    public static <E> LinkedList<E> getInstance(E data, Node<E> next) {
+    public static <E> LinkedList<E> getInstance(E data, NodeList<E> next) {
         return new LinkedList<>(data, next);
     }
 
@@ -130,14 +130,14 @@ public class LinkedList<E> implements Cloneable {
      *   at the front of the sequence. The new element always becomes the new current element of the sequence.
      */
     public void addBefore(E element) {
-        Node<E> newNode = Node.getInstance(element, this.cursor);
+        NodeList<E> newNodeList = NodeList.getInstance(element, this.cursor);
 
         if (this.prev == null) {
-            this.head = newNode;
-            this.cursor = newNode;
+            this.head = newNodeList;
+            this.cursor = newNodeList;
         } else {
-            this.prev.setNext(newNode);
-            this.cursor = newNode;
+            this.prev.setNext(newNodeList);
+            this.cursor = newNodeList;
         }
 
         this.size++;
@@ -152,10 +152,10 @@ public class LinkedList<E> implements Cloneable {
      *   element of the sequence.
      */
     public void addFirst(E element) {
-        Node<E> newNode = Node.getInstance(element, this.head);
+        NodeList<E> newNodeList = NodeList.getInstance(element, this.head);
 
-        this.head = newNode;
-        this.cursor = newNode;
+        this.head = newNodeList;
+        this.cursor = newNodeList;
         this.size++;
     }
 
@@ -174,7 +174,7 @@ public class LinkedList<E> implements Cloneable {
      *   Indicates insufficient memory to increase the size of this sequence.
      */
     public void addAll(LinkedList<E> addend) {
-        Node<E> current;
+        NodeList<E> current;
 
         if (addend == null) { throw new NullPointerException("addend is null."); }
 
@@ -231,15 +231,15 @@ public class LinkedList<E> implements Cloneable {
 
         // The clone method needs extra work before it returns. The extra work creates new Node<E> components for
         // the clone's reference variables to refer to. 1) head, 2) tail...
-        tmp = Node.listCopyWithTail(this.head);
-        answer.head = (Node<E>) tmp[0];
-        answer.tail = (Node<E>) tmp[1];
+        tmp = NodeList.listCopyWithTail(this.head);
+        answer.head = (NodeList<E>) tmp[0];
+        answer.tail = (NodeList<E>) tmp[1];
 
         // ...3) precursor and 4) cursor.
         if (this.prev != null && this.cursor != null) {
-            tmp = Node.listPart(this.prev, this.cursor);
-            answer.prev = (Node<E>) tmp[0];
-            answer.cursor = (Node<E>) tmp[1];
+            tmp = NodeList.listPart(this.prev, this.cursor);
+            answer.prev = (NodeList<E>) tmp[0];
+            answer.cursor = (NodeList<E>) tmp[1];
         }
 
         return answer;
