@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
  *
  *********************************************************************************************************************/
 
-public class NodeList<E> {
+public class NodeList<E> implements Node<E> {
     // Invariant of the Node class:
     //   1. The node's generic data type is in the instance variable data.
     //   2. For the final node of a list, the link part is null. Otherwise, the link part is a reference to the next
@@ -110,6 +110,7 @@ public class NodeList<E> {
      * @return data
      *   The data from this node.
      */
+    @Override
     public E getData() { return data; }
 
     /**
@@ -117,6 +118,7 @@ public class NodeList<E> {
      * @return next
      *   A reference to the node after this node (or the null reference if there is nothing after this node).
      */
+    @Override
     public NodeList<E> getNext() { return next; }
 
     /**
@@ -130,7 +132,7 @@ public class NodeList<E> {
      *   Indicates insufficient memory for the new Node.
      */
     @Contract("null -> null")
-    public static <E> NodeList<E> listCopy(NodeList<E> source) {
+    public static <E> Node<E> listCopy(NodeList<E> source) {
         NodeList<E> copyHead;
         NodeList<E> copyTail;
 
@@ -228,7 +230,7 @@ public class NodeList<E> {
      */
     @NotNull
     @Contract("null, _ -> fail; !null, null -> fail")
-    public static <E> Object[] listPart(NodeList<E> start, NodeList<E> end) {
+    public static <E> Object[] listPart(NodeList<E> start, Node<E> end) {
         NodeList<E> copyHead;
         NodeList<E> copyTail;
         Object[] answer = new Object[2];
@@ -270,7 +272,7 @@ public class NodeList<E> {
      *   Indicates a position is less than or equal to 0
      */
     @Contract(pure = true)
-    public static <E> NodeList<E> listPosition(NodeList<E> head, int position) {
+    public static <E> Node<E> listPosition(NodeList<E> head, int position) {
         NodeList<E> cursor;
         int i;
 
@@ -295,7 +297,7 @@ public class NodeList<E> {
      */
     @Nullable
     @Contract(pure = true)
-    public static <E> NodeList<E> listSearch(NodeList<E> head, E target) {
+    public static <E> Node<E> listSearch(NodeList<E> head, E target) {
         NodeList<E> cursor;
 
         if (target == null) { // Search for a node in which the data is a null reference.
@@ -335,6 +337,7 @@ public class NodeList<E> {
      * @postcondition
      *   The data of this node has been set to data
      */
+    @Override
     public void setData(E data) { this.data = data; }
 
     /**
@@ -346,5 +349,6 @@ public class NodeList<E> {
      *   The link to the node after this node has been set to next. Any other node (that used to be in this link) is no
      *   longer connected to this node.
      */
+    @Override
     public void setNext(NodeList<E> next) { this.next = next; }
 }
