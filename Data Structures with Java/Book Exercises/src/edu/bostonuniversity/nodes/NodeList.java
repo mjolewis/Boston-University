@@ -19,13 +19,13 @@ import org.jetbrains.annotations.Nullable;
  *
  *********************************************************************************************************************/
 
-public class Node<E> {
+public class NodeList<E> {
     // Invariant of the Node class:
     //   1. The node's generic data type is in the instance variable data.
     //   2. For the final node of a list, the link part is null. Otherwise, the link part is a reference to the next
     //      node of the list.
     private E data;
-    private Node<E> next;
+    private NodeList<E> next;
 
     /**
      * Initializes an empty node. Note that the initial next is a null reference, which indicates that the new node has
@@ -36,7 +36,7 @@ public class Node<E> {
      *   Indicates insufficient memory for the new Node
      */
     @Contract(pure = true)
-    private Node() {
+    private NodeList() {
         this.data = null;
         this.next = null;
     }
@@ -55,7 +55,7 @@ public class Node<E> {
      *   Indicates insufficient memory for the new Node.
      */
     @Contract(pure = true)
-    private Node(E data, Node<E> next) {
+    private NodeList(E data, NodeList<E> next) {
         this.data = data;
         this.next = next;
     }
@@ -72,7 +72,7 @@ public class Node<E> {
      */
     @NotNull
     @Contract(value = " -> new", pure = true)
-    public static <E> Node<E> getInstance() { return new Node<>(); }
+    public static <E> NodeList<E> getInstance() { return new NodeList<>(); }
 
     /**
      * Activates the overloaded constructor for Node. Note that the initial next may be a null reference, which
@@ -89,7 +89,7 @@ public class Node<E> {
      */
     @NotNull
     @Contract(value = "_, _ -> new", pure = true)
-    public static <E> Node<E> getInstance(E data, Node<E> next) { return new Node<E>(data, next); }
+    public static <E> NodeList<E> getInstance(E data, NodeList<E> next) { return new NodeList<E>(data, next); }
 
     /**
      * Modification method to add a new node after this node.
@@ -102,7 +102,7 @@ public class Node<E> {
      *   Indicates that there is insufficient memory for a new Node.
      */
     public void addNodeAfter(E element) {
-        next = new Node<>(element, next);
+        next = new NodeList<>(element, next);
     }
 
     /**
@@ -117,7 +117,7 @@ public class Node<E> {
      * @return next
      *   A reference to the node after this node (or the null reference if there is nothing after this node).
      */
-    public Node<E> getNext() { return next; }
+    public NodeList<E> getNext() { return next; }
 
     /**
      * Copy a linked list
@@ -130,9 +130,9 @@ public class Node<E> {
      *   Indicates insufficient memory for the new Node.
      */
     @Contract("null -> null")
-    public static <E> Node<E> listCopy(Node<E> source) {
-        Node<E> copyHead;
-        Node<E> copyTail;
+    public static <E> NodeList<E> listCopy(NodeList<E> source) {
+        NodeList<E> copyHead;
+        NodeList<E> copyTail;
 
         // Handle the special case of an empty list.
         if (source == null) { return null; }
@@ -163,9 +163,9 @@ public class Node<E> {
      *   Indicates insufficient memory for the new Node.
      */
     @NotNull
-    public static <E> Object[] listCopyWithTail(Node<E> source) {
-        Node<E> copyHead;
-        Node<E> copyTail;
+    public static <E> Object[] listCopyWithTail(NodeList<E> source) {
+        NodeList<E> copyHead;
+        NodeList<E> copyTail;
         Object[] answer = new Object[2];
 
         // Handle the special case of an empty list.
@@ -199,8 +199,8 @@ public class Node<E> {
      *   A wrong answer occurs for lists longer than Integer.MAX_VALUE due to arithmetic overflow.
      */
     @Contract(pure = true)
-    public static <E> int listLength(Node<E> head) {
-        Node<E> cursor;
+    public static <E> int listLength(NodeList<E> head) {
+        NodeList<E> cursor;
         int answer;
 
         answer = 0;
@@ -228,9 +228,9 @@ public class Node<E> {
      */
     @NotNull
     @Contract("null, _ -> fail; !null, null -> fail")
-    public static <E> Object[] listPart(Node<E> start, Node<E> end) {
-        Node<E> copyHead;
-        Node<E> copyTail;
+    public static <E> Object[] listPart(NodeList<E> start, NodeList<E> end) {
+        NodeList<E> copyHead;
+        NodeList<E> copyTail;
         Object[] answer = new Object[2];
 
         // Check for illegal null at start or end.
@@ -270,8 +270,8 @@ public class Node<E> {
      *   Indicates a position is less than or equal to 0
      */
     @Contract(pure = true)
-    public static <E> Node<E> listPosition(Node<E> head, int position) {
-        Node<E> cursor;
+    public static <E> NodeList<E> listPosition(NodeList<E> head, int position) {
+        NodeList<E> cursor;
         int i;
 
         if (position <= 0) { throw new IllegalArgumentException("The position must be greater than 0."); }
@@ -295,8 +295,8 @@ public class Node<E> {
      */
     @Nullable
     @Contract(pure = true)
-    public static <E> Node<E> listSearch(Node<E> head, E target) {
-        Node<E> cursor;
+    public static <E> NodeList<E> listSearch(NodeList<E> head, E target) {
+        NodeList<E> cursor;
 
         if (target == null) { // Search for a node in which the data is a null reference.
             for (cursor = head; cursor != null; cursor = cursor.next) {
@@ -346,5 +346,5 @@ public class Node<E> {
      *   The link to the node after this node has been set to next. Any other node (that used to be in this link) is no
      *   longer connected to this node.
      */
-    public void setNext(Node<E> next) { this.next = next; }
+    public void setNext(NodeList<E> next) { this.next = next; }
 }

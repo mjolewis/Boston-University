@@ -10,8 +10,8 @@ public class NodeTest {
     public static void doIt() {
         LinkedList<String> seq = LinkedList.getInstance();
 
-        Node<String> node = Node.getInstance("Hi", Node.getInstance());
-        LinkedList<String> seq1 = LinkedList.getInstance("there", node);
+        NodeList<String> nodeList = NodeList.getInstance("Hi", NodeList.getInstance());
+        LinkedList<String> seq1 = LinkedList.getInstance("there", nodeList);
         seq1.addBefore("I");
 
         System.out.println("seq1 is: " + seq1.getCurrent());
