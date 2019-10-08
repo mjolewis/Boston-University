@@ -16,7 +16,7 @@ import edu.bostonuniversity.nodes.NodeList;
  * @version Oct 6, 2019
  *********************************************************************************************************************/
 
-public class LinkedList<E> implements Cloneable {
+public class LinkedList<E> implements List<E>, Cloneable {
     // Invariant of the LinkedList class:
     //   1. The number of nodes in the sequence is stored in the instance variable size.
     //   2. The head and tail are references to the head node and tail node of the linked list. If the list has no
@@ -105,6 +105,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new node.
      */
+    @Override
     public void addAfter(E element) {
         if (this.isCurrent()) {
             this.prev = this.cursor;
@@ -129,6 +130,7 @@ public class LinkedList<E> implements Cloneable {
      *   the new element before the current element. If there was no current element, addBefore places the new element
      *   at the front of the sequence. The new element always becomes the new current element of the sequence.
      */
+    @Override
     public void addBefore(E element) {
         NodeList<E> newNodeList = NodeList.getInstance(element, this.cursor);
 
@@ -151,6 +153,7 @@ public class LinkedList<E> implements Cloneable {
      *   A new copy of the element has been added to the front of this sequence. The new element become the new current
      *   element of the sequence.
      */
+    @Override
     public void addFirst(E element) {
         NodeList<E> newNodeList = NodeList.getInstance(element, this.head);
 
@@ -173,6 +176,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory to increase the size of this sequence.
      */
+    @Override
     public void addAll(LinkedList<E> addend) {
         NodeList<E> current;
 
@@ -196,6 +200,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception IllegalStateException
      *   Indicates that there is no current element, so advance may not be called.
      */
+    @Override
     public void advance() {
         if (this.isCurrent()) {
             this.prev = this.cursor;
@@ -258,7 +263,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new LinkedList.
      */
-    public static <E> LinkedList<E> concatenation(LinkedList<E> s1, LinkedList<E> s2) {
+    static <E> LinkedList<E> concatenation(List<E> s1, List<E> s2) {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
 
@@ -277,6 +282,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception IllegalStateException
      *   Indicates that there is no current element.
      */
+    @Override
     public E getCurrent() {
         if (this.isCurrent()) { return this.cursor.getData(); }
         else { throw new IllegalStateException("There is no current element."); }
@@ -291,6 +297,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception IllegalStateException
      *   Indicates that there is no previous element.
      */
+    @Override
     public E getPrevious() {
         if (this.isCurrent()) { return this.prev.getData(); }
         else { throw new IllegalStateException("There is no previous element."); }
@@ -302,6 +309,7 @@ public class LinkedList<E> implements Cloneable {
      * @return boolean
      *   true (there is a current element) or false (there is no current element at the moment).
      */
+    @Override
     public boolean isCurrent() { return this.cursor != null; }
 
     /**
@@ -314,6 +322,7 @@ public class LinkedList<E> implements Cloneable {
      * @exception IllegalStateException
      *   Indicates that there is no current element, so removeCurrent may not be activated.
      */
+    @Override
     public void removeCurrent() {
         if (!this.isCurrent()) { throw new IllegalStateException("There is no current element"); }
 
@@ -337,6 +346,7 @@ public class LinkedList<E> implements Cloneable {
      * @return int
      *   The number of elements in this sequence.
      */
+    @Override
     public int size() { return this.size; }
 
     /**
@@ -345,6 +355,7 @@ public class LinkedList<E> implements Cloneable {
      *   The front element of this sequence is now the current element (but if the sequence has no elements at all,
      *   then there is no current element).
      */
+    @Override
     public void start() {
         if (this.size > 0) {
             this.cursor = this.head;
