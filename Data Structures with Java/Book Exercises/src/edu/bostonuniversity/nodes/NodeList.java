@@ -340,6 +340,7 @@ public class NodeList<E> implements Node<E> {
     @Override
     public void setData(E data) { this.data = data; }
 
+
     /**
      * Modification method to set a reference to the next node after this node.
      * @param next
@@ -349,6 +350,5 @@ public class NodeList<E> implements Node<E> {
      *   The link to the node after this node has been set to next. Any other node (that used to be in this link) is no
      *   longer connected to this node.
      */
-    @Override
-    public void setNext(NodeList<E> next) { this.next = next; }
+    public void setNext(Node<E> next) { this.next = (NodeList<E>) next; }
 }

@@ -176,16 +176,17 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory to increase the size of this sequence.
      */
-    @Override
-    public void addAll(LinkedList<E> addend) {
+    public void addAll(List<E> addend) {
         NodeList<E> current;
+        LinkedList<E> tmp;
 
         if (addend == null) { throw new NullPointerException("addend is null."); }
 
         current = this.head;
+        tmp = (LinkedList<E>) addend;
         while (current.getNext() != null) { current = current.getNext(); }
-        current.setNext(addend.head); // The tail of the activating object is linked to the head of addend and...
-        this.tail = addend.tail; // ... the tail of addend becomes the tail of this new sequence.
+        current.setNext(tmp.head); // The tail of the activating object is linked to the head of addend and...
+        this.tail = tmp.tail; // ... the tail of addend becomes the tail of this new sequence.
         this.size += addend.size();
     }
 
@@ -219,8 +220,6 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new LinkedList.
      */
-    @Override
-    @SuppressWarnings("unchecked")
     public LinkedList<E> clone() {
         LinkedList<E> answer;
         Object[] tmp;
@@ -267,8 +266,8 @@ public class LinkedList<E> implements List<E>, Cloneable {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
 
-        LinkedList<E> answer = s1.clone(); // Clone the s1 sequence and...
-        LinkedList<E> copyS2 = s2.clone(); // ...clone the s2 sequence and...
+        LinkedList<E> answer = ((LinkedList<E>) s1).clone(); // Clone the s1 sequence and...
+        LinkedList<E> copyS2 = ((LinkedList<E>) s2).clone(); // ...clone the s2 sequence and...
         answer.addAll(copyS2); // ...join the two cloned sequences together.
         return answer;
     }
