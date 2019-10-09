@@ -1,7 +1,6 @@
 // FILE: Stack.java from the package edu.bostonuniversity.stacks
 
 package edu.bostonuniversity.stacks;
-
 import edu.bostonuniversity.collections.LinkedList;
 import edu.bostonuniversity.nodes.NodeList;
 
@@ -43,7 +42,7 @@ public class Stack<E> extends LinkedList<E> {
      *   The Stack is now empty and every object (if there were any) are now available for garbage collection.
      */
     public boolean clear() {
-        LinkedList();
+        new LinkedList();
         return (this.size() == 0);
     }
 
