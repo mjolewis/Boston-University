@@ -150,8 +150,8 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @param element
      *   The new element that is being added.
      * @postcondition
-     *   A new copy of the element has been added to the front of this sequence. The new element become the new current
-     *   element of the sequence.
+     *   A new copy of the element has been added to the front of this sequence. The new element becomes the new
+     *   current element of the sequence.
      */
     @Override
     public void addFirst(E element) {
@@ -220,6 +220,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new LinkedList.
      */
+    @SuppressWarnings("unchecked")
     public LinkedList<E> clone() {
         LinkedList<E> answer;
         Object[] tmp;
@@ -288,6 +289,12 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * Accessor method to retrieve the head of the LinkedList.
+     * @return NodeList<E>
+     */
+    public NodeList<E> getHead() { return this.head; }
+
+    /**
      * Accessor method to determine the previous element of the sequence
      * @precondition
      *   isCurrent() returns true.
@@ -338,6 +345,22 @@ public class LinkedList<E> implements List<E>, Cloneable {
         }
 
         this.size--;
+    }
+
+    /**
+     * Mutator method that removes the head of the LinkedList. The next item (if there is one) becomes the new head.
+     * Otherwise, head becomes a null reference.
+     * @return NodeList<E>
+     *   The head of the LinkedList
+     * @postcondition
+     *   The head of the LinkedList has been removed. The next item (if there is one) becomes the new head. Otherwise,
+     *   the head becomes a null reference. The size of the LinkedList is decreased by one.
+     */
+    public NodeList<E> removeHead() {
+        NodeList<E> answer = this.head;
+        this.head = this.head.getNext();
+        this.size--;
+        return answer;
     }
 
     /**
