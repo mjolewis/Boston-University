@@ -47,17 +47,16 @@ public class Stack<E> extends LinkedStack<E> {
     }
 
     /**
-     * Compare this Node to another object for equality
+     * Compare this Node to another object for equality.
      * @param obj
      *  An object with which this Node is being compared.
      * @return boolean
-     *  A return value of true indicates that obj refers to a Node object with the same value as this Node. Otherwise,
-     *  the return value is false.
+     *  A return value of true indicates that obj refers to an object with the same data as this node. Otherwise, the
+     *  return value is false.
      */
     @Contract(value = "null -> false", pure = true)
     @SuppressWarnings("unchecked")
     public boolean equals(Object obj) {
-        // TODO: 10/9/19  
         if (obj instanceof NodeList) {
             NodeList<E> candidate = (NodeList<E>) obj;
             return (this.getHead().getData() == candidate.getData());

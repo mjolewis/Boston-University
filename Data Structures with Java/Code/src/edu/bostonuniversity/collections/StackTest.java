@@ -8,13 +8,10 @@ public class StackTest {
 
     public void doIt() {
         Stack<Integer> stack = new Stack<>();
-        Stack<Integer> stack1 = new Stack<>();
 
         stack.push(1);
         stack.push(2);
         stack.push(3);
-
-
 
         System.out.println("Peek --->" + stack.peek());
         System.out.println("Pop ---> " + stack.pop());
@@ -23,15 +20,14 @@ public class StackTest {
         System.out.println("Head --->" + stack.getHead());
 
         System.out.println("Clearing stack ---->");
-        stack.clear();
+        boolean cleared = stack.clear();
+        System.out.println("Stack is cleared? " + cleared);
         System.out.println("Stack size is: " + stack.getSize());
         System.out.println("Stack empty " + stack.isEmpty());
 
+        stack.push(5);
         stack.push(77);
         stack.push(100);
-
-        stack1.push(77);
-        stack1.push(100);
 
         System.out.println("Stack size is: " + stack.getSize());
         System.out.println("Stack empty " + stack.isEmpty());
@@ -40,7 +36,7 @@ public class StackTest {
 
 
 
-        System.out.println(stack.search(stack1));
+        System.out.println(stack.search(5));
 
 
     }
