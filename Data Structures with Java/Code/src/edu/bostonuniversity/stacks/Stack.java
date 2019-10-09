@@ -36,6 +36,35 @@ public class Stack<E> extends LinkedList<E> {
     private Stack() { clear(); }
 
     /**
+     * Mutator method to remove all objects from the Stack.
+     * @return boolean
+     *   Returns true if the Stack was emptied. Otherwise returns false.
+     * @postcondition
+     *   The Stack is now empty and every object (if there were any) are now available for garbage collection.
+     */
+    public boolean clear() {
+        LinkedList();
+        return (this.size() == 0);
+    }
+
+    /**
+     * Compare this Node to another object for equality
+     * @param obj
+     *  An object with which this Node is being compared.
+     * @return boolean
+     *  A return value of true indicates that obj refers to a Node object with the same value as this Node. Otherwise,
+     *  the return value is false.
+     */
+    @SuppressWarnings("unchecked")
+    public boolean equals(Object obj) {
+        if (obj instanceof NodeList) {
+            NodeList<E> candidate = (NodeList<E>) obj;
+            return (this.getHead().getData() == candidate.getData());
+        }
+        return false;
+    }
+
+    /**
      * Accessor method to determine if the Stack is empty.
      * @return boolean
      *   Returns true if the Stack is empty. Otherwise returns false.
@@ -51,7 +80,7 @@ public class Stack<E> extends LinkedList<E> {
      */
     public E peek() {
         if (this.size() == 0) { return null; }
-        return this.head.getData();
+        return this.getHead().getData();
     }
 
     /**
@@ -64,13 +93,11 @@ public class Stack<E> extends LinkedList<E> {
      *   Stack. The size of the Stack has decreased by one.
      */
     public E pop() {
-        E answer;
+        NodeList<E> answer;
 
         if (this.size() == 0) { return null; }
-        answer = this.head.getData();
-        this.head = this.head.getNext();
-        this.setSize = this.size()++;
-        return answer;
+        answer = this.removeHead();
+        return answer.getData();
     }
 
     /**
@@ -85,18 +112,6 @@ public class Stack<E> extends LinkedList<E> {
     public E push(E item) {
         this.addFirst(item);
         return item;
-    }
-
-    /**
-     * Mutator method to remove all objects from the Stack.
-     * @return boolean
-     *   Returns true if the Stack was emptied. Otherwise returns false.
-     * @postcondition
-     *   The Stack is now empty and every object (if there were any) are now available for garbage collection.
-     */
-    public boolean clear() {
-        LinkedList.getInstance();
-        return (this.size() == 0);
     }
 
     /**
@@ -121,21 +136,5 @@ public class Stack<E> extends LinkedList<E> {
             count++;
         }
         return -1;
-    }
-
-    /**
-     * Compare this Node to another object for equality
-     * @param obj
-     *  An object with which this Node is being compared.
-     * @return boolean
-     *  A return value of true indicates that obj refers to a Node object with the same value as this Node. Otherwise,
-     *  the return value is false.
-     */
-    @SuppressWarnings("unchecked")
-    public boolean equals(Object obj) {
-        if (obj instanceof NodeList) {
-            NodeList<E> candidate = (NodeList<E>) obj;
-            return (this.head.getData() == candidate.getData());)
-        }
     }
 }
