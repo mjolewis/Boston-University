@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7573847d-c3b5-4722-aeb6-079632719790" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/LinkedStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/LinkedStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/Stack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/Stack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/StackTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/StackTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/LinkedStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/LinkedStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/StackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/StackTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +85,7 @@
       <workItem from="1569289656342" duration="357000" />
       <workItem from="1569331683287" duration="21000" />
       <workItem from="1569340954629" duration="18000" />
-      <workItem from="1570645785696" duration="4656000" />
+      <workItem from="1570645785696" duration="6185000" />
     </task>
     <servers />
   </component>
