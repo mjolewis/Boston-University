@@ -263,7 +263,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new LinkedList.
      */
-    static <E> LinkedList<E> concatenation(List<E> s1, List<E> s2) {
+    public static <E> LinkedList<E> concatenation(List<E> s1, List<E> s2) {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
 
