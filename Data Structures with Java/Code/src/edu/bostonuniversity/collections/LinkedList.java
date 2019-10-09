@@ -43,7 +43,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new LinkedList.
      */
-    private LinkedList() {
+    public LinkedList() {
         this.size = 0;
         this.prev = null;
         this.head = null;
@@ -59,7 +59,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
-    private LinkedList(E data, NodeList<E> next) {
+    public LinkedList(E data, NodeList<E> next) {
         this.size++;
         this.prev = null;
         this.head = NodeList.getInstance(data, next);
