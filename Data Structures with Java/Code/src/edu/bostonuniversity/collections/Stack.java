@@ -1,7 +1,6 @@
 // FILE: Stack.java from the package edu.bostonuniversity.stacks
 
 package edu.bostonuniversity.collections;
-import edu.bostonuniversity.collections.LinkedList;
 import edu.bostonuniversity.nodes.NodeList;
 
 /**********************************************************************************************************************
@@ -16,7 +15,7 @@ import edu.bostonuniversity.nodes.NodeList;
  *
  *********************************************************************************************************************/
 
-public class Stack<E> extends LinkedList<E> {
+public class Stack<E> extends LinkedStack<E> {
     // Invariant of the Stack class.
     //  1. The instance variable top is the head reference in the Stack.
     //  2. For the final node in the Stack, the next reference is null. Otherwise, the next reference is a reference
@@ -42,8 +41,8 @@ public class Stack<E> extends LinkedList<E> {
      *   The Stack is now empty and every object (if there were any) are now available for garbage collection.
      */
     public boolean clear() {
-        new LinkedList();
-        return (this.size() == 0);
+        new LinkedStack<E>();
+        return (this.getSize() == 0);
     }
 
     /**
@@ -68,7 +67,7 @@ public class Stack<E> extends LinkedList<E> {
      * @return boolean
      *   Returns true if the Stack is empty. Otherwise returns false.
      */
-    public boolean isEmpty() { return this.size() == 0; }
+    public boolean isEmpty() { return this.getSize() == 0; }
 
     /**
      * Accessor method to look at the object on the top of the Stack.
@@ -78,7 +77,7 @@ public class Stack<E> extends LinkedList<E> {
      *   The Stack is not modified and the object on the top of the Stack remains on the top of the Stack.
      */
     public E peek() {
-        if (this.size() == 0) { return null; }
+        if (this.getSize() == 0) { return null; }
         return this.getHead().getData();
     }
 
@@ -94,7 +93,7 @@ public class Stack<E> extends LinkedList<E> {
     public E pop() {
         NodeList<E> answer;
 
-        if (this.size() == 0) { return null; }
+        if (this.getSize() == 0) { return null; }
         answer = this.removeHead();
         return answer.getData();
     }
@@ -109,7 +108,7 @@ public class Stack<E> extends LinkedList<E> {
      *   The item is now on the top of the Stack and the size of the Stack has increased by one.
      */
     public E push(E item) {
-        this.addFirst(item);
+        this.add(item);
         return item;
     }
 
