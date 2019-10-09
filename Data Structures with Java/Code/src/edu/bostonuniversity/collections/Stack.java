@@ -42,7 +42,7 @@ public class Stack<E> extends LinkedStack<E> {
      *   The Stack is now empty and every object (if there were any) are now available for garbage collection.
      */
     public boolean clear() {
-        new LinkedStack<E>();
+        this.removeAll();
         return (this.getSize() == 0);
     }
 
@@ -57,6 +57,7 @@ public class Stack<E> extends LinkedStack<E> {
     @Contract(value = "null -> false", pure = true)
     @SuppressWarnings("unchecked")
     public boolean equals(Object obj) {
+        // TODO: 10/9/19  
         if (obj instanceof NodeList) {
             NodeList<E> candidate = (NodeList<E>) obj;
             return (this.getHead().getData() == candidate.getData());
@@ -130,7 +131,7 @@ public class Stack<E> extends LinkedStack<E> {
 
         current = this.getHead();
         for (count = 1; current != null; current = current.getNext()) {
-            if (current.equals(obj)) {
+            if (current.getData().equals(obj)) {
                 return count;
             }
             count++;

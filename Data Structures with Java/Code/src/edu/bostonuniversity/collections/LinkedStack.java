@@ -107,6 +107,16 @@ public class LinkedStack<E> implements Cloneable {
     public int getSize() { return size; }
 
     /**
+     * Mutator method that removes all the nodes from the LinkedStack.
+     * @postcondition
+     *   LinkedStack is empty.
+     */
+    public void removeAll() {
+        top = null;
+        size = 0;
+    }
+
+    /**
      * Mutator method that removes the head of the LinkedStack. The next item (if there is one) becomes the new head.
      * Otherwise, head becomes a null reference.
      * @return NodeList<E>
