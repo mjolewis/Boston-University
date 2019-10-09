@@ -1,4 +1,4 @@
-// FILE: Stack.java from the package edu.bostonuniversity.stacks
+// FILE: Stack.java from the package edu.bostonuniversity.collections
 
 package edu.bostonuniversity.collections;
 import edu.bostonuniversity.nodes.NodeList;

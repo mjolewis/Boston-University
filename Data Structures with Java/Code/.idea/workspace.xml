@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7573847d-c3b5-4722-aeb6-079632719790" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Class Examples/16 Sep.1/16 Sep.1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Book Exercises/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Book Exercises.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Book Exercises.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Book Exercises.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Book Exercises.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/META-INF/Book Exercises.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/LinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/LinkedList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/DoubleNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/DoubleNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/NodeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/NodeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/Stack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/bostonuniversity/nodes/DoubleNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/nodes/DoubleNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Class Examples/16 Sep.1/bin/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Class Examples/16 Sep.1/bin/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Class Examples/16 Sep.1/bin/Locker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Class Examples/16 Sep.1/bin/Locker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Class Examples/16 Sep.1/bin/LockerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Class Examples/16 Sep.1/bin/LockerManager.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,19 +22,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1RGMouVIxHe6TK7NV8QsXQV9WBt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/out" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -45,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.StackTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="edu.bostonuniversity.nodes.NodeTest" />
       <module name="Book Exercises" />
@@ -53,6 +64,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StackTest" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.bostonuniversity.collections.StackTest" />
+      <module name="Book Exercises" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.StackTest" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -69,6 +91,7 @@
       <workItem from="1569289656342" duration="357000" />
       <workItem from="1569331683287" duration="21000" />
       <workItem from="1569340954629" duration="18000" />
+      <workItem from="1570645785696" duration="1754000" />
     </task>
     <servers />
   </component>
