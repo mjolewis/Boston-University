@@ -1,6 +1,6 @@
 // FILE: Stack.java from the package edu.bostonuniversity.stacks
 
-package edu.bostonuniversity.stacks;
+package edu.bostonuniversity.collections;
 import edu.bostonuniversity.collections.LinkedList;
 import edu.bostonuniversity.nodes.NodeList;
 
