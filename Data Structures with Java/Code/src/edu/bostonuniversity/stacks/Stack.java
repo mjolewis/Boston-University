@@ -32,7 +32,7 @@ public class Stack<E> extends LinkedList<E> {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new Stack.
      */
-    private Stack() { clear(); }
+    public Stack() { clear(); }
 
     /**
      * Mutator method to remove all objects from the Stack.
