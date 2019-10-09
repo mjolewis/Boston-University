@@ -1,6 +1,5 @@
 package edu.bostonuniversity.nodes;
 import edu.bostonuniversity.collections.LinkedList;
-import edu.bostonuniversity.collections.List;
 
 public class NodeTest {
     public static void main(String[] args) {
@@ -87,7 +86,7 @@ public class NodeTest {
 
         System.out.println();
         System.out.println();
-        LinkedList<String> newSeq = List.concatenation(seq, linkedSeq);
+        LinkedList<String> newSeq = LinkedList.concatenation(seq, linkedSeq);
 
         newSeq.start();
         System.out.println(newSeq.getCurrent());
