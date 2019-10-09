@@ -2,6 +2,7 @@
 
 package edu.bostonuniversity.collections;
 import edu.bostonuniversity.nodes.NodeList;
+import org.jetbrains.annotations.Contract;
 
 /**********************************************************************************************************************
  * A generic Stack is a Stack of references to E objects.
@@ -53,6 +54,7 @@ public class Stack<E> extends LinkedStack<E> {
      *  A return value of true indicates that obj refers to a Node object with the same value as this Node. Otherwise,
      *  the return value is false.
      */
+    @Contract(value = "null -> false", pure = true)
     @SuppressWarnings("unchecked")
     public boolean equals(Object obj) {
         if (obj instanceof NodeList) {
