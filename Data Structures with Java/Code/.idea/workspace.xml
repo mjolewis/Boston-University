@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7573847d-c3b5-4722-aeb6-079632719790" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/LinkedStack.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/List.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/Stack.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/StackTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/NodeList.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/StackTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Book Exercises/src/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Book Exercises.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Book Exercises.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Book Exercises.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Book Exercises.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/META-INF/Book Exercises.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/LinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/collections/LinkedList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/DoubleNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/DoubleNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/NodeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Book Exercises/edu/bostonuniversity/nodes/NodeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/collections/Stack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/bostonuniversity/nodes/DoubleNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/bostonuniversity/nodes/DoubleNode.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +79,7 @@
       <workItem from="1569289656342" duration="357000" />
       <workItem from="1569331683287" duration="21000" />
       <workItem from="1569340954629" duration="18000" />
-      <workItem from="1570645785696" duration="2079000" />
+      <workItem from="1570645785696" duration="2398000" />
     </task>
     <servers />
   </component>
