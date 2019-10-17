@@ -107,6 +107,14 @@ public class LinkedStack<E> implements Cloneable {
     public int getSize() { return size; }
 
     /**
+     * Accessor method to determine if the LinkedStack is empty.
+     * @return boolean
+     */
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    /**
      * Mutator method that removes all the nodes from the LinkedStack.
      * @postcondition
      *   LinkedStack is empty.
