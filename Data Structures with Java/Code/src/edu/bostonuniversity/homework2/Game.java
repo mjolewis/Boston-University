@@ -2,7 +2,6 @@
 
 package edu.bostonuniversity.homework2;
 import edu.bostonuniversity.collections.LinkedStack;
-import edu.bostonuniversity.nodes.NodeList;
 
 /**********************************************************************************************************************
  * A Game is a sequence of choices attempting to solve the 8 Queens problem on a chess board. Each choice consists of a
@@ -53,20 +52,87 @@ public class Game {
     }
 
     /**
-     * Attempts to find a solution for the 8 queens problem. If a solution is found, the instance variable success is
-     * set to true
+     * Helper method to determine if there is a diagonal conflict. A diagonal conflict indicates that placing a
+     * queen at the given row and column combination would result in an invalid board setup.
+     * @param row
+     *  Indicates the row on the chess board being tested.
+     * @param column
+     *  Indicates the column on the chess board being tested.
      * @return boolean
-     *  Indicates whether or not a solution to the 8 queens problem has been found
+     *  A return value of true indicates that placing a queen on this diagonal path does not violate a valid board set
+     *  up. A return value of false indicates that a queen cannot be placed in the given location.
      */
-    public boolean play() {
-        while (!success && !stack.isEmpty()) {
-            NodeList current;
-            for (current = stack.getHead(); current.getNext() != null; current = current.getNext()) {
-                if (current.getData() == stack.getHead().getData()) {
+    private boolean isDiagonalValid(int row, int column) {
+        int slope;
 
+        slope = (row - stack.getSize()) / (column - stack.getHead().getData());
+        return slope != 1;
+    }
+
+    /**
+     * Helper method to determine if there is a horizontal conflict. A horizontal conflict indicates that placing a
+     * queen at the given row and column combination would result in an invalid board setup.
+     * @param row
+     *  Indicates the row on the chess board being tested.
+     * @return boolean
+     *  A return value of true indicates that placing a queen on this horizontal path does not violate a valid board
+     *  set up. A return value of false indicates that a queen cannot be placed in the given location.
+     */
+    private boolean isHorizontalValid(int row) {
+        return row != stack.getSize();
+    }
+
+    /**
+     * Helper method used that plays the 8 queens game until a solution is found. The stack is a LinkedStack used to
+     * store the positions of the queens on the board.
+     * @precondition
+     *  A chess board has been constructed.
+     * @postcondition
+     *  A solution to the 8 queens problem has been found
+     */
+    public void play() {
+        int column;
+
+        while (!success) {
+            column = (int) (Math.random() * 8);
+
+            for (int i = 0; i < boardSize; i++) {
+                if (stack.getSize() == boardSize) {
+                    success = true;
+                    stack.toString();
+                    break;
+                } else if (isDiagonalValid(stack.getSize(), column) && isHorizontalValid(stack.getSize())) {
+                    stack.add(column);
                 }
             }
         }
     }
 
+    /**
+     * An override method used to print the chess board and the positions of the queens.
+     * @return String
+     *  A string representation of a chess board and the pattern that solved the 8 queens problem
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < boardSize; i++) {
+            stringBuilder.append("\n");
+            for (int j = 0; j < boardSize; j++) {
+                stringBuilder.append("---");
+            }
+            for (int k = 0; k < boardSize; k++) {
+                if (stack.search(i) == k) {
+                    stringBuilder.append("| Q");
+                } else {
+                    stringBuilder.append(" |");
+                }
+            }
+
+            stringBuilder.append("|");
+        }
+
+        return stringBuilder.toString();
+    }
 }
