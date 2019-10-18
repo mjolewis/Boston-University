@@ -35,7 +35,9 @@ public class Game {
      *   Indicates insufficient memory for the new Game.
      */
     public Game() {
+        success = false;
         this.boardSize = 8;
+        stack = new LinkedStack<>();
     }
 
     /**
