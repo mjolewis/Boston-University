@@ -185,4 +185,111 @@
     }
  }
 
+/**********************************************************************************************************************
+ * A Game is a sequence of choices attempting to solve the 8 Queens problem on a chess board. Each choice consists of a
+ * row and column number and is then pushed onto a LinkedStack.
+ *
+ * The 8 Queens problem postulates that you can place 8 Queens on a chess board, so that no Queen could capture any
+ * other.
+ *
+ * @note
+ *  1. Beyond Integer.MAX_VALUE elements, the size method in LinkedStack does not work.
 
+ * @author mlewis
+ * @version Oct 16, 2019
+ *********************************************************************************************************************/
+
+ public class Game {
+     // Invariant of the Game class.
+     //  1. The instance variable stack is a LinkedStack.
+     //  2. The instance variable success indicates whether or not a solution to the 8 queens problem has been found.
+     //  3. The instance variable boardSize indicates how many rows and columns are on the chess board.
+     //  4. Stack will have access to a top node and size variables within the LinkedStack.java class.
+     private boolean success;
+     private int boardSize;
+     private LinkedStack<Integer> stack;
+
+     /**
+     * Helper method to determine if there is a diagonal conflict. A diagonal conflict indicates that placing a
+     * queen at the given row and column combination would result in an invalid board setup.
+     * @param row
+     *  Indicates the row on the chess board being tested.
+     * @param column
+     *  Indicates the column on the chess board being tested.
+     * @return boolean
+     *  A return value of true indicates that placing a queen on this diagonal path does not violate a valid board set
+     *  up. A return value of false indicates that a queen cannot be placed in the given location.
+     */
+     private boolean isDiagonalValid(int row, int column) {
+        LOOP from 0 to boardSize
+          CALCULATE slope of current row and column relative to previous row and column
+          IF slope equals one
+            THEN a conflict exists
+            RETURN false
+          ELSE
+            Current row and column is a valid option
+            RETURN true
+     }
+
+      /**
+      * Helper method to determine if there is a horizontal conflict. A horizontal conflict indicates that placing a
+      * queen at the given row and column combination would result in an invalid board setup.
+      * @param row
+      *  Indicates the row on the chess board being tested.
+      * @return boolean
+      *  A return value of true indicates that placing a queen on this horizontal path does not violate a valid board
+      *  set up. A return value of false indicates that a queen cannot be placed in the given location.
+      */
+     private boolean isHorizontalValid(int row) {
+        LOOP from 0 to boardSize
+          IF current row equals the row of the previous queen
+            THEN a conflict exists
+            RETURN false
+          ELSE
+            Current row is a valid option
+            RETURN true
+     }
+
+     /**
+     * Helper method used that plays the 8 queens game until a solution is found.
+     * @param stack
+     *  The stack is a LinkedStack used to store the positions of the queens on the board.
+     * @precondition
+     *  A chess board has been constructed.
+     * @return LinkedStack
+     *  A LinkedStack that contains solution to the 8 queens problem
+     * @postcondition
+     *  A solution to the 8 queens problem has been found
+     */
+     public LinkedStack<Integer> play() {
+        INIT column
+
+        WHILE a solution is not found
+          SET column equal to a random column number between 0 and boardSize
+          LOOP from 0 to boardSize
+
+            IF (isDiagonalValid and isHorizontalValid)
+              ADD column to the stack
+              INCREMENT stack.size
+            ELSE IF (stack.size == boardSize)
+              SET success to true
+              PRINT the result
+              BREAK from the loop
+     }
+
+     /**
+     * An override method used to print the chess board and the positions of the queens.
+     * @return String
+     *  A string representation of a chess board and the pattern that solved the 8 queens problem
+     */
+     @override
+     private String toString() {
+        INIT stringBuilder
+        LOOP from 0 to boardSize
+          POP a queen off the stack
+          ADD the position to the stringBuilder
+          ADD a separator indicating a new row and column position on the board
+
+        RETURN stringBuilder
+     }
+ }
