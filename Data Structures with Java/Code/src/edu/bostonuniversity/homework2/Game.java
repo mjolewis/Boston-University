@@ -2,6 +2,7 @@
 
 package edu.bostonuniversity.homework2;
 import edu.bostonuniversity.collections.LinkedStack;
+import edu.bostonuniversity.nodes.NodeList;
 
 /**********************************************************************************************************************
  * A Game is a sequence of choices attempting to solve the 8 Queens problem on a chess board. Each choice consists of a
@@ -88,6 +89,29 @@ public class Game {
      */
     private boolean isRowValid(int row) {
         return row != stack.getSize();
+    }
+
+    /**
+     * Helper method to determine if there is a column conflict. A column conflict indicates that placing a queen at
+     * the given row and column combination would result in an invalid board setup.
+     * @param column
+     * Indicates the column on the chess board being tested.
+     * @return boolean
+     *  A return value of true indicates that placing a queen on this column does not violate a valid board set up. A
+     *  return value of false indicates that a queen cannot be placed in the given location.
+     */
+    private boolean isColumnValid(int column) {
+        int count;
+        NodeList current;
+
+        current = stack.getHead();
+        for (count = 1; current != null; current = current.getNext()) {
+            int tmp = (int) current.getData();
+            if (tmp == column) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
