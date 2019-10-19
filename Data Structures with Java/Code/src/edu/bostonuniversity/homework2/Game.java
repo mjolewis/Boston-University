@@ -135,7 +135,7 @@ public class Game {
                 success = true;
                 System.out.println(stack.toString());
                 break;
-            } else if (isDiagonalValid(row, column) && isRowValid(row)) {
+            } else if (isDiagonalValid(row, column) && isRowValid(row) && isColumnValid(column)) {
                 row++;
                 stack.add(column);
             }
