@@ -251,6 +251,25 @@
      }
 
      /**
+     * Helper method to determine if there is a column conflict. A column conflict indicates that placing a queen at
+     * the given row and column combination would result in an invalid board setup.
+     * @param column
+     * Indicates the column on the chess board being tested.
+     * @return boolean
+     *  A return value of true indicates that placing a queen on this column does not violate a valid board set up. A
+     *  return value of false indicates that a queen cannot be placed in the given location.
+     */
+     private boolean isColumnValid(int column) {
+        ITERATE over the linked stack
+          IF the data at the current node equals the column
+            THEN a conflict exists
+            RETURN false
+          ELSE
+            Current column is a valid option
+            RETURN true
+     }
+
+     /**
      * Helper method used that plays the 8 queens game until a solution is found.
      * @param stack
      *  The stack is a LinkedStack used to store the positions of the queens on the board.
