@@ -86,7 +86,7 @@ public class Game {
      *  A return value of true indicates that placing a queen on this horizontal path does not violate a valid board
      *  set up. A return value of false indicates that a queen cannot be placed in the given location.
      */
-    private boolean isHorizontalValid(int row) {
+    private boolean isRowValid(int row) {
         return row != stack.getSize();
     }
 
@@ -111,7 +111,7 @@ public class Game {
                 success = true;
                 System.out.println(stack.toString());
                 break;
-            } else if (isDiagonalValid(row, column) && isHorizontalValid(row)) {
+            } else if (isDiagonalValid(row, column) && isRowValid(row)) {
                 row++;
                 stack.add(column);
             }
