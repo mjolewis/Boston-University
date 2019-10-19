@@ -138,6 +138,12 @@ public class Game {
             } else if (isDiagonalValid(row, column) && isRowValid(row) && isColumnValid(column)) {
                 row++;
                 stack.add(column);
+            } else if (row == 8) {
+                // If we reach this point, there is no solution given the current board set up. So we remove the top
+                // two elements from the stack and try another solution.
+                row -= 2;
+                stack.removeHead();
+                stack.removeHead();
             }
         }
     }
@@ -149,6 +155,8 @@ public class Game {
      */
     @Override
     public String toString() {
+        int count;
+        NodeList current = stack.getHead();
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < boardSize; i++) {
@@ -156,8 +164,9 @@ public class Game {
             for (int j = 0; j < boardSize; j++) {
                 stringBuilder.append("---");
             }
-            for (int k = 0; k < boardSize; k++) {
-                if (stack.search(i) == k) {
+            for (count = 1; current != null; current = current.getNext()) {
+                int tmp = (int) current.getData();
+                if (tmp == count) {
                     stringBuilder.append("| Q");
                 } else {
                     stringBuilder.append(" |");
