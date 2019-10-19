@@ -66,16 +66,26 @@ public class Game {
      *  up. A return value of false indicates that a queen cannot be placed in the given location.
      */
     private boolean isDiagonalValid(int row, int column) {
-        int slope;
+        double slope;
+        int rowPosition;
+        NodeList cursor;
 
-        try {
-            slope = (row - stack.getSize()) / (column - stack.getHead().getData());
-        } catch (ArithmeticException e) {
-            // This exception should only occur if the column at the top of the stack is equal to the column being
-            // tested. If they are equal, then the queens position is invalid and we return false.
-            return false;
+        rowPosition = stack.getSize();
+        for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
+            try {
+                int tmp = (int) cursor.getData();
+                slope = ((double) row - (double) rowPosition) / ((double) column - (double) tmp);
+            } catch (ArithmeticException e) {
+                // This exception should only occur if the column at the top of the stack is equal to the column being
+                // tested. If they are equal, then the queens position is invalid and we return false.
+                return false;
+            }
+
+            rowPosition--; // Shift the row down by 1 as we traverse the stack.
+            if (Math.abs(slope) == 1) { return false; }
         }
-        return Math.abs(slope) != 1;
+        // If we've reached this point, then no queens on the board have a diagonal conflict with the current queen.
+        return true;
     }
 
     /**
@@ -101,12 +111,10 @@ public class Game {
      *  return value of false indicates that a queen cannot be placed in the given location.
      */
     private boolean isColumnValid(int column) {
-        int count;
-        NodeList current;
+        NodeList cursor;
 
-        current = stack.getHead();
-        for (count = 1; current != null; current = current.getNext()) {
-            int tmp = (int) current.getData();
+        for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
+            int tmp = (int) cursor.getData();
             if (tmp == column) {
                 return false;
             }
@@ -127,22 +135,29 @@ public class Game {
         int column = (int) (Math.random() * 8) + 1;
 
         stack.add(column); // Add first Queen to the stack to avoid a null pointer exception during first iteration.
+        column = (int) (Math.random() * 8) + 1; // Used to compare against the column already on the stack.
         while (!success) {
-
-            column = (int) (Math.random() * 8) + 1; // Used to compare against the column already on the stack.
 
             if (stack.getSize() == boardSize) {
                 success = true;
                 break;
             } else if (isDiagonalValid(row, column) && isRowValid(row) && isColumnValid(column)) {
-                row++;
                 stack.add(column);
-            } else if (row == 8) {
-                // If we reach this point, there is no solution given the current board set up. So we remove the top
-                // two elements from the stack and try another solution.
-                row -= 2;
+                row++;
+                column = (int) (Math.random() * 8) + 1; // Update the column being tested.
+            } else if (column < boardSize && stack.getSize() > 0) {
+                // Reaching this point means a conflict has occurred. Shift the column by 1 and test again.
                 stack.removeHead();
-                stack.removeHead();
+                row--;
+                column += 1; // Update the column being tested.
+            } else {
+                // A conflict has occurred and we've reached the final column. Clear the board and try again.
+                stack.removeAll();
+                column = (int) (Math.random() * 8) + 1; // Add the first queen to the board.
+                stack.add(column);
+
+                column = (int) (Math.random() * 8) + 1; // Update the column being tested.
+                row = 2;
             }
         }
     }
