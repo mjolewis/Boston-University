@@ -158,13 +158,13 @@ public class Game {
         NodeList current;
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 0; i < boardSize; i++) {
-            current = stack.getHead();
+        current = stack.getHead();
+        for (int i = 1; i <= boardSize; i++) {
             stringBuilder.append("+---".repeat(Math.max(0, boardSize)));
             stringBuilder.append("+");
             stringBuilder.append("\n|");
 
-            for (count = 1; current != null; current = current.getNext()) {
+            for (count = 1; count <= boardSize; count++) {
                 int tmp = (int) current.getData();
                 if (tmp == count) {
                     stringBuilder.append(" Q |");
@@ -173,6 +173,7 @@ public class Game {
                 }
             }
 
+            current = current.getNext();
             stringBuilder.append("\n");
         }
 
