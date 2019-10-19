@@ -74,7 +74,7 @@ public class LinkedStack<E> implements Cloneable {
      *   Indicates insufficient memory for the new LinkedStack.
      */
     @SuppressWarnings("unchecked")
-    public NodeList clone() {
+    public NodeList<E> clone() {
         NodeList<E> answer;
 
         try {
