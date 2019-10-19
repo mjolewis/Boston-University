@@ -67,8 +67,14 @@ public class Game {
     private boolean isDiagonalValid(int row, int column) {
         int slope;
 
-        slope = (row - stack.getSize()) / (column - stack.getHead().getData());
-        return slope != 1;
+        try {
+            slope = (row - stack.getSize()) / (column - stack.getHead().getData());
+        } catch (ArithmeticException e) {
+            // This exception should only occur if the column at the top of the stack is equal to the column being
+            // tested. If they are equal, then the queens position is invalid and we return false.
+            return false;
+        }
+        return Math.abs(slope) != 1;
     }
 
     /**
@@ -93,19 +99,21 @@ public class Game {
      *  A solution to the 8 queens problem has been found
      */
     public void play() {
-        int column;
+        int row = 2; // First Queen has nothing to compare against, so we immediately jump to row 2.
+        int column = (int) (Math.random() * 8) + 1;
 
+        stack.add(column); // Add first Queen to the stack to avoid a null pointer exception during first iteration.
         while (!success) {
-            column = (int) (Math.random() * 8);
 
-            for (int i = 0; i < boardSize; i++) {
-                if (stack.getSize() == boardSize) {
-                    success = true;
-                    stack.toString();
-                    break;
-                } else if (isDiagonalValid(stack.getSize(), column) && isHorizontalValid(stack.getSize())) {
-                    stack.add(column);
-                }
+            column = (int) (Math.random() * 8) + 1; // Used to compare against the column already on the stack.
+
+            if (stack.getSize() == boardSize) {
+                success = true;
+                System.out.println(stack.toString());
+                break;
+            } else if (isDiagonalValid(row, column) && isHorizontalValid(row)) {
+                row++;
+                stack.add(column);
             }
         }
     }
