@@ -133,7 +133,6 @@ public class Game {
 
             if (stack.getSize() == boardSize) {
                 success = true;
-                System.out.println(stack.toString());
                 break;
             } else if (isDiagonalValid(row, column) && isRowValid(row) && isColumnValid(column)) {
                 row++;
@@ -156,26 +155,29 @@ public class Game {
     @Override
     public String toString() {
         int count;
-        NodeList current = stack.getHead();
+        NodeList current;
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < boardSize; i++) {
-            stringBuilder.append("\n");
-            for (int j = 0; j < boardSize; j++) {
-                stringBuilder.append("---");
-            }
+            current = stack.getHead();
+            stringBuilder.append("+---".repeat(Math.max(0, boardSize)));
+            stringBuilder.append("+");
+            stringBuilder.append("\n|");
+
             for (count = 1; current != null; current = current.getNext()) {
                 int tmp = (int) current.getData();
                 if (tmp == count) {
-                    stringBuilder.append("| Q");
+                    stringBuilder.append(" Q |");
                 } else {
-                    stringBuilder.append(" |");
+                    stringBuilder.append("   |");
                 }
             }
 
-            stringBuilder.append("|");
+            stringBuilder.append("\n");
         }
 
+        stringBuilder.append("+---".repeat(Math.max(0, boardSize)));
+        stringBuilder.append("+");
         return stringBuilder.toString();
     }
 }
