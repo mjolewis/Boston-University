@@ -5,8 +5,8 @@ import edu.bostonuniversity.collections.LinkedStack;
 import edu.bostonuniversity.nodes.NodeList;
 
 /**********************************************************************************************************************
- * A Game is a sequence of choices attempting to solve the 8 Queens problem. Each choice consists of a row and column
- * and is pushed onto a LinkedStack. The 8 Queens problem postulates that you can place 8 Queens on a chess board, so
+ * A Game is a sequence of choices attempting to solve the n Queens problem. Each choice consists of a row and column
+ * and is pushed onto a LinkedStack. The n Queens problem postulates that you can place n Queens on a chess board, so
  * that no Queen could capture any other.
  *
  * @note
@@ -19,7 +19,7 @@ import edu.bostonuniversity.nodes.NodeList;
 public class Game {
     // Invariant of the Game class.
     //  1. The instance variable stack is a LinkedStack.
-    //  2. The instance variable success indicates whether or not a solution to the 8 queens problem has been found.
+    //  2. The instance variable success indicates whether or not a solution to the n queens problem has been found.
     //  3. The instance variable boardSize indicates how many rows and columns are on the chess board.
     //  4. Stack will have access to a top node and size variables within the LinkedStack.java class.
     private boolean success;
@@ -121,14 +121,14 @@ public class Game {
      * @precondition
      *  A chess board has been constructed.
      * @postcondition
-     *  A solution to the 8 queens problem has been found.
+     *  A solution to the n queens problem has been found.
      */
     public void play() {
         double row = 2; // The first Queen doesn't require a comparison, so we immediately jump to row 2.
-        double column = (int) (Math.random() * 8) + 1;
+        double column = (int) (Math.random() * boardSize) + 1;
 
         stack.add(column); // Add first Queen to the stack to avoid a null pointer exception and...
-        column = (int) (Math.random() * 8) + 1; // ...create a second queen to compare against the first.
+        column = (int) (Math.random() * boardSize) + 1; // ...create a second queen to compare against the first.
         while (!success) {
             if (stack.getSize() == boardSize) {
                 success = true;
@@ -136,13 +136,13 @@ public class Game {
             } else if (isDiagonalValid(row, column) && isRowValid(row) && isColumnValid(column)) {
                 stack.add(column);
                 row++;
-                column = (int) (Math.random() * 8) + 1; // Create another queen to test during the next cycle.
+                column = (int) (Math.random() * boardSize) + 1; // Create another queen to test during the next cycle.
             } else {
                 // A conflict has occurred. Clear the board and try again.
                 stack.removeAll();
-                column = (int) (Math.random() * 8) + 1; // Create the first queen and...
+                column = (int) (Math.random() * boardSize) + 1; // Create the first queen and...
                 stack.add(column); // ...add the queen to the board and...
-                column = (int) (Math.random() * 8) + 1; // ...create a second queen to compare against the first.
+                column = (int) (Math.random() * boardSize) + 1; // ...create a second queen to compare against the first.
                 row = 2;
             }
         }
@@ -151,7 +151,7 @@ public class Game {
     /**
      * An override method used to print the chess board and the positions of the queens.
      * @return String
-     *  A string representation of a chess board and the solution to the 8 queens problem.
+     *  A string representation of a chess board and the solution to the n queens problem.
      */
     @Override
     public String toString() {
