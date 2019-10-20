@@ -139,27 +139,4 @@ public class LinkedStack<E> implements Cloneable {
         size--;
         return answer;
     }
-
-    /**
-     * Accessor method that searches for a target in the LinkedStack.
-     * @param target
-     *  Target represents the position to search for. If the position is found, then the data within the node is
-     *  returned
-     * @return E
-     *  The data from the target node.
-     */
-    public E search(int target) {
-        int count = 0;
-        NodeList tmp = clone();
-
-        while (size != target && size != 0) {
-            if (count == target) {
-                return getHead().getData();
-            } else {
-                removeHead();
-                count++;
-            }
-        }
-        return null;
-    }
 }
