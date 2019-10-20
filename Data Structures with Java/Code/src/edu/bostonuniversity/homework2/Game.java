@@ -66,9 +66,7 @@ public class Game {
 
         for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
             double tmp = (double) cursor.getData();
-            if (tmp == column) {
-                return false;
-            }
+            if (tmp == column) { return false; }
         }
         return true;
     }
@@ -86,39 +84,37 @@ public class Game {
      */
     private boolean isDiagonalValid(double row, double column) {
         double slope;
-        double rowPosition;
+        double prevRow;
         NodeList cursor;
 
-        rowPosition = stack.getSize();
+        prevRow = stack.getSize();
         for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
             try {
                 double tmp = (double) cursor.getData();
-                slope = (row - rowPosition) / (column - tmp);
+                slope = (row - prevRow) / (column - tmp);
             } catch (ArithmeticException e) {
                 // This exception should only occur if the column at the top of the stack is equal to the column being
                 // tested. If they are equal, then the queens position is invalid and we return false.
                 return false;
             }
 
-            rowPosition--; // Shift the row down by 1 as we traverse the stack.
+            prevRow--; // Shift the row by 1 as we move down the stack.
             if (Math.abs(slope) == 1) { return false; }
         }
-        // If we've reached this point, then no queens on the board have a diagonal conflict with the current queen.
+        // If we reach this point, there are no diagonal conflicts.
         return true;
     }
 
     /**
-     * Helper method to determine if there is a horizontal conflict. A horizontal conflict indicates that placing a
-     * queen at the given row and column combination would result in an invalid board setup.
+     * Helper method to determine if there is a row conflict. A horizontal conflict indicates that placing a queen at
+     * the given row and column combination would result in an invalid board setup.
      * @param row
      *  Indicates the row being tested for a conflict.
      * @return boolean
      *  A return value of true indicates that placing a queen on this horizontal path does not violate a valid board
      *  set up. A return value of false indicates that a queen cannot be placed in the given location.
      */
-    private boolean isRowValid(double row) {
-        return row != stack.getSize();
-    }
+    private boolean isRowValid(double row) { return row != stack.getSize(); }
 
     /**
      * A method that activates the game play. The game is played until a solution is found.
