@@ -11,6 +11,7 @@ import edu.bostonuniversity.nodes.NodeList;
  *
  * @note
  *  1. Beyond Integer.MAX_VALUE elements, the size method in LinkedStack does not work.
+ *  2. A Queen can move vertically, horizontally, and diagonally.
  *
  * @author mlewis
  * @version Oct 17, 2019
@@ -21,15 +22,14 @@ public class Game {
     //  1. The instance variable stack is a LinkedStack.
     //  2. The instance variable success indicates whether or not a solution to the n queens problem has been found.
     //  3. The instance variable boardSize indicates how many rows and columns are on the chess board.
-    //  4. Stack will have access to a top node and size variables within the LinkedStack.java class.
     private boolean success;
     private int boardSize;
     private LinkedStack<Double> stack;
 
     /**
-     * A default constructor.
+     * A default constructor that initializes an empty LinkedStack with size of 8.
      * @postcondition
-     *   This LinkedStack is empty and has been initialized with a board size of 8.
+     *   This LinkedStack is empty and has been initialized with a size of 8.
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new Game.
      */
@@ -53,13 +53,13 @@ public class Game {
     }
 
     /**
-     * Helper method to determine if there is a column conflict. A column conflict indicates that placing a queen at
-     * the given row and column combination would result in an invalid board setup.
+     * Helper method to determine if there is a column conflict. A column conflict indicates that placing a queen on
+     * the given column would result in an invalid board setup.
      * @param column
      * Indicates the column being tested for a conflict.
      * @return boolean
      *  A return value of true indicates that placing a queen on this column does not violate a valid board set up. A
-     *  return value of false indicates that a queen cannot be placed in the given location.
+     *  return value of false indicates that a queen cannot be placed on the given column.
      */
     private boolean isColumnValid(double column) {
         NodeList cursor;
@@ -79,8 +79,8 @@ public class Game {
      * @param column
      *  Indicates the column being tested for a conflict.
      * @return boolean
-     *  A return value of true indicates that placing a queen on this diagonal path does not violate a valid board set
-     *  up. A return value of false indicates that a queen cannot be placed in the given location.
+     *  A return value of true indicates that placing a queen in this row and column does not violate a valid board set
+     *  up. A return value of false indicates that a queen cannot be placed in this row and column.
      */
     private boolean isDiagonalValid(double row, double column) {
         double slope;
@@ -90,11 +90,11 @@ public class Game {
         prevRow = stack.getSize();
         for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
             try {
-                double tmp = (double) cursor.getData();
-                slope = (row - prevRow) / (column - tmp);
+                double prevColumn = (double) cursor.getData();
+                slope = (row - prevRow) / (column - prevColumn);
             } catch (ArithmeticException e) {
-                // This exception should only occur if the column at the top of the stack is equal to the column being
-                // tested. If they are equal, then the queens position is invalid and we return false.
+                // This exception should only occur if the column on the stack is equal to the new column. If they are
+                // equal, the queens position is invalid and we return false.
                 return false;
             }
 
@@ -106,20 +106,20 @@ public class Game {
     }
 
     /**
-     * Helper method to determine if there is a row conflict. A horizontal conflict indicates that placing a queen at
-     * the given row and column combination would result in an invalid board setup.
+     * Helper method to determine if there is a row conflict. A horizontal conflict indicates that placing a queen in
+     * the given row would result in an invalid board setup.
      * @param row
      *  Indicates the row being tested for a conflict.
      * @return boolean
-     *  A return value of true indicates that placing a queen on this horizontal path does not violate a valid board
-     *  set up. A return value of false indicates that a queen cannot be placed in the given location.
+     *  A return value of true indicates that placing a queen on this row does not violate a valid board set up. A
+     *  return value of false indicates that a queen cannot be placed in the given location.
      */
     private boolean isRowValid(double row) { return row != stack.getSize(); }
 
     /**
      * A method that activates the game play. The game is played until a solution is found.
      * @precondition
-     *  A chess board has been constructed.
+     *  A game has been initialized.
      * @postcondition
      *  A solution to the n queens problem has been found.
      */
@@ -127,29 +127,27 @@ public class Game {
         double row = 2; // The first Queen doesn't require a comparison, so we immediately jump to row 2.
         double column = (int) (Math.random() * boardSize) + 1;
 
-        stack.add(column); // Add first Queen to the stack to avoid a null pointer exception and...
-        column = (int) (Math.random() * boardSize) + 1; // ...create a second queen to compare against the first.
+        stack.add(column); // Add first position to the stack to avoid a null pointer exception.
         while (!success) {
+            column = (int) (Math.random() * boardSize) + 1; // Another position that we try to add to the stack.
             if (stack.getSize() == boardSize) {
                 success = true;
                 break;
-            } else if (isDiagonalValid(row, column) && isRowValid(row) && isColumnValid(column)) {
+            } else if (isColumnValid(column) && isDiagonalValid(row, column) && isRowValid(row)) {
                 stack.add(column);
                 row++;
-                column = (int) (Math.random() * boardSize) + 1; // Create another queen to test during the next cycle.
             } else {
                 // A conflict has occurred. Clear the board and try again.
                 stack.removeAll();
                 column = (int) (Math.random() * boardSize) + 1; // Create the first queen and...
-                stack.add(column); // ...add the queen to the board and...
-                column = (int) (Math.random() * boardSize) + 1; // ...create a second queen to compare against the first.
+                stack.add(column); // ...add the queen to the board.
                 row = 2;
             }
         }
     }
 
     /**
-     * An override method used to print the chess board and the positions of the queens.
+     * An override method used to print the game results.
      * @return String
      *  A string representation of a chess board and the solution to the n queens problem.
      */
