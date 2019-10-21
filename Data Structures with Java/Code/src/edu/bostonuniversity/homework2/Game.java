@@ -22,11 +22,12 @@ public class Game {
     //  1. The instance variable stack is a LinkedStack.
     //  2. The instance variable success indicates whether or not a solution to the n queens problem has been found.
     //  3. The instance variable boardSize indicates how many rows and columns are on the chess board.
-    private boolean success;
     private int boardSize;
+    private boolean success;
     private LinkedStack<Double> stack;
 
     /**
+     * public Game()
      * A default constructor that initializes an empty LinkedStack with size of 8.
      * @postcondition
      *   This LinkedStack is empty and has been initialized with a size of 8.
@@ -34,25 +35,35 @@ public class Game {
      *   Indicates insufficient memory for the new Game.
      */
     public Game() {
-        success = false;
         this.boardSize = 8;
+        success = false;
         stack = new LinkedStack<>();
     }
 
     /**
+     * public Game(int boardSize)
      * Initializes an empty LinkedStack with a size equal to the integer parameter.
+     * @param boardSize
+     *   The size of the board.
      * @postcondition
      *   This LinkedStack is empty and it's size is equal to size of the given integer parameter.
+     * @exception IllegalArgumentException
+     *   Indicates that the boardSize is less than or equal to two, which is an invalid size.
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new Game.
      */
     public Game(int boardSize) {
+        if (boardSize <= 2) {
+            throw new IllegalArgumentException("Size <= 2: " + boardSize);
+        } else {
+            this.boardSize = boardSize;
+        }
         success = false;
-        this.boardSize = boardSize;
         stack = new LinkedStack<>();
     }
 
     /**
+     * private boolean isColumnValid(double column)
      * Helper method to determine if there is a column conflict. A column conflict indicates that placing a queen on
      * the given column would result in an invalid board setup.
      * @param column
@@ -73,6 +84,7 @@ public class Game {
     }
 
     /**
+     * private boolean isDiagonalValid(double row, double column)
      * Helper method to determine if there is a diagonal conflict. A diagonal conflict indicates that placing a queen
      * at the given row and column combination would result in an invalid board setup.
      * @param row
@@ -108,6 +120,7 @@ public class Game {
     }
 
     /**
+     * private boolean isRowValid(double row)
      * Helper method to determine if there is a row conflict. A horizontal conflict indicates that placing a queen in
      * the given row would result in an invalid board setup.
      * @param row
@@ -119,6 +132,7 @@ public class Game {
     private boolean isRowValid(double row) { return row != stack.getSize(); }
 
     /**
+     * public void play()
      * A method that activates the game play. The game is played until a solution is found.
      * @precondition
      *  A game has been initialized.
@@ -149,6 +163,7 @@ public class Game {
     }
 
     /**
+     * public String toString()
      * An override method used to print the game results.
      * @return String
      *  A string representation of a chess board and the solution to the n queens problem.
