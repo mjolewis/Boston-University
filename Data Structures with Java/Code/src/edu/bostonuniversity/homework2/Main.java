@@ -8,6 +8,7 @@ package edu.bostonuniversity.homework2;
  * @author mlewis
  * @version Oct 17, 2019
  *********************************************************************************************************************/
+
 public class Main {
     public static void main(String[] args) {
         Game game = new Game(8);
