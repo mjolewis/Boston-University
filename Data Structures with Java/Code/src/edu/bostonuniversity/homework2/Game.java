@@ -62,11 +62,12 @@ public class Game {
      *  return value of false indicates that a queen cannot be placed on the given column.
      */
     private boolean isColumnValid(double column) {
+        double prevColumn;
         NodeList cursor;
 
         for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
-            double tmp = (double) cursor.getData();
-            if (tmp == column) { return false; }
+            prevColumn = (double) cursor.getData();
+            if (prevColumn == column) { return false; }
         }
         return true;
     }
@@ -85,12 +86,13 @@ public class Game {
     private boolean isDiagonalValid(double row, double column) {
         double slope;
         double prevRow;
+        double prevColumn;
         NodeList cursor;
 
         prevRow = stack.getSize();
         for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
             try {
-                double prevColumn = (double) cursor.getData();
+                prevColumn = (double) cursor.getData();
                 slope = (row - prevRow) / (column - prevColumn);
             } catch (ArithmeticException e) {
                 // This exception should only occur if the column on the stack is equal to the new column. If they are
@@ -124,13 +126,13 @@ public class Game {
      *  A solution to the n queens problem has been found.
      */
     public void play() {
-        double row = 2; // The first Queen doesn't require a comparison, so we immediately jump to row 2.
+        double row = 2; // The first position doesn't require a comparison, so we immediately jump to row 2.
         double column = (int) (Math.random() * boardSize) + 1;
 
-        stack.add(column); // Add first position to the stack to avoid a null pointer exception.
+        stack.add(column); // Add 1st position to stack. It's the initial comparison and avoids null pointer exception.
         while (!success) {
             column = (int) (Math.random() * boardSize) + 1; // Another position that we try to add to the stack.
-            if (stack.getSize() == boardSize) {
+            if (stack.getSize() == boardSize) { // If we enter here, the board is full and no conflicts exists.
                 success = true;
                 break;
             } else if (isColumnValid(column) && isDiagonalValid(row, column) && isRowValid(row)) {
@@ -139,8 +141,8 @@ public class Game {
             } else {
                 // A conflict has occurred. Clear the board and try again.
                 stack.removeAll();
-                column = (int) (Math.random() * boardSize) + 1; // Create the first queen and...
-                stack.add(column); // ...add the queen to the board.
+                column = (int) (Math.random() * boardSize) + 1; // Create the first position and...
+                stack.add(column); // ...add the position to the board.
                 row = 2;
             }
         }
