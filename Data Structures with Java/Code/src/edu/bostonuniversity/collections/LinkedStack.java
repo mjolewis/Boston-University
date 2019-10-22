@@ -134,8 +134,8 @@ public class LinkedStack<E> implements Cloneable {
      *   the head becomes a null reference. The size of the LinkedStack is decreased by one.
      */
     public NodeList<E> removeHead() {
-        NodeList<E> answer = top;
-        top = top.getNext();
+        NodeList<E> answer;
+        answer = top.getNext();
         size--;
         return answer;
     }
