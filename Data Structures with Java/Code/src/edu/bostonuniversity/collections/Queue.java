@@ -23,7 +23,7 @@ public interface Queue<E> {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this item.
      */
-    public void add(E item);
+    void add(E item);
 
     /**
      * public boolean isEmpty()
@@ -33,7 +33,7 @@ public interface Queue<E> {
      * @postcondition
      *  This Queue has not been modified.
      */
-    public boolean isEmpty();
+    boolean isEmpty();
 
     /**
      * public E remove()
@@ -46,7 +46,7 @@ public interface Queue<E> {
      *  The front item from this Queue has been removed and the next item (if there is one) is now the front item. Size
      *  has been decreased by one.
      */
-    public E remove();
+    E remove();
 
     /**
      * public int size()
@@ -56,5 +56,5 @@ public interface Queue<E> {
      * @postcondition
      *  This Queue has not been modified.
      */
-    public int size();
+    int size();
 }
