@@ -18,7 +18,7 @@ public class NodeQueue<E> implements Node<E>{
     //   2. The instance variable next is null for the final node in the Queue. Otherwise, the instance variable next
     //      is a reference to the next node.
     private E data;
-    private Node<E> next;
+    private NodeQueue<E> next;
 
     /**
      * Initialize an empty node.
@@ -46,7 +46,7 @@ public class NodeQueue<E> implements Node<E>{
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this node.
      */
-    public NodeQueue(E data, Node<E> next) {
+    public NodeQueue(E data, NodeQueue<E> next) {
         this.data = data;
         this.next = next;
     }
@@ -71,7 +71,7 @@ public class NodeQueue<E> implements Node<E>{
      *  This NodeQueue has not been modified.
      */
     @Override
-    public Node<E> getNext() { return next; }
+    public NodeQueue<E> getNext() { return next; }
 
     /**
      * public void setData(E data)
@@ -92,6 +92,6 @@ public class NodeQueue<E> implements Node<E>{
      *  The instance variable next has been set to the object given by the next argument.
      */
     @Override
-    public void setNext(Node<E> next) { this.next = next; }
+    public void setNext(Node<E> next) { this.next = (NodeQueue<E>) next; }
 }
 
