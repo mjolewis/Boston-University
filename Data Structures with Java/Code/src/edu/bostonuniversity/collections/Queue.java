@@ -1,6 +1,8 @@
 // FILE Queue.java from the package edu.bostonuniversity.collections
 
-/**
+package edu.bostonuniversity.collections;
+
+/**********************************************************************************************************************
  * A Queue is a First-in/First-out data structure of ordered items such that items can be inserted at one end (called
  * the rear) and removed from the other end (called the front). The item at the front of the Queue is called the first
  * item.
@@ -10,8 +12,7 @@
  *
  * @author mlewis
  * @version Nov 1, 2019
- */
-package edu.bostonuniversity.collections;
+ *********************************************************************************************************************/
 
 public interface Queue<E> {
 
