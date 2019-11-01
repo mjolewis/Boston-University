@@ -1,8 +1,9 @@
 //FILE LinkedQueue.java from the package edu.bostonuniversity.collections
 
 package edu.bostonuniversity.collections;
+import edu.bostonuniversity.nodes.NodeQueue;
 
-/**
+/**********************************************************************************************************************
  * A LinkedQueue is a First-in/First-out data structure of ordered items such that items can be inserted at one end
  * (called the rear) and removed from the other end (called the front). The item at the front of the Queue is called
  * the first item.
@@ -12,8 +13,9 @@ package edu.bostonuniversity.collections;
  *
  * @author mlewis
  * @version Nov 1, 2019
- */
-public class LinkedQueue implements Queue {
+ *********************************************************************************************************************/
+
+public class LinkedQueue<E> implements Queue<E> {
     // Invariant of the LinkedQueue class.
     // 1. The instance variable front is a reference to the first item in this LinkedQueue.
     // 2. The instance variable rear is a reference to the last item in this LinkedQueue.
@@ -60,13 +62,13 @@ public class LinkedQueue implements Queue {
      *  This Queue has not been modified.
      */
     @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
+    public boolean isEmpty() { return size == 0; }
 
     /**
      * public E remove()
-     * Mutator method that removes the front item from this Queue.
+     * Mutator method that removes the front item from this Queue. Note that the object being removed has had its type
+     * erased; however, we have ensured that the returned object is of type E. Therefore, we suppress the compile time
+     * time warning.
      * @precondition
      *  This Queue is not empty.
      * @return E
@@ -76,13 +78,14 @@ public class LinkedQueue implements Queue {
      *  has been decreased by one.
      */
     @Override
-    public Object remove() {
+    @SuppressWarnings("unchecked")
+    public E remove() {
         NodeQueue<E> answer;
         if (isEmpty()) { return null; }
         answer = front;
-        front = front.getNext;
+        front = front.getNext();
         size--;
-        return answer;
+        return (E) answer;
     }
 
     /**
@@ -94,7 +97,5 @@ public class LinkedQueue implements Queue {
      *  This Queue has not been modified.
      */
     @Override
-    public int size() {
-        return size;
-    }
+    public int size() { return size; }
 }
