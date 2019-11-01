@@ -42,15 +42,27 @@ public class LinkedQueue<E> implements Queue<E> {
 
     /**
      * public void add(E item)
-     * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference.
+     * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference. Note that
+     * the object being removed has had its type erased; however, we have ensured that the returned object is of type
+     * E. Therefore, we suppress the compile time warning.
      * @param item
      *  The item to be added to the Queue.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this item.
      */
     @Override
+    @SuppressWarnings("unchecked")
     public void add(Object item) {
-
+        E element;
+        if (isEmpty()) {
+            element = (E) item;
+            front = new NodeQueue<>(element, front);
+            rear = front;
+        } else {
+            element = (E) item;
+            rear = new NodeQueue<>(element, rear);
+        }
+        size++;
     }
 
     /**
@@ -68,7 +80,7 @@ public class LinkedQueue<E> implements Queue<E> {
      * public E remove()
      * Mutator method that removes the front item from this Queue. Note that the object being removed has had its type
      * erased; however, we have ensured that the returned object is of type E. Therefore, we suppress the compile time
-     * time warning.
+     * warning.
      * @precondition
      *  This Queue is not empty.
      * @return E
