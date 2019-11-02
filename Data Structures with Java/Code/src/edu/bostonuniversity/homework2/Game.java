@@ -2,7 +2,7 @@
 
 package edu.bostonuniversity.homework2;
 import edu.bostonuniversity.collections.LinkedStack;
-import edu.bostonuniversity.nodes.NodeList;
+import edu.bostonuniversity.nodes.Nod;
 
 /**********************************************************************************************************************
  * A Game is a sequence of choices attempting to solve the n Queens problem. Each choice consists of a row and column
@@ -74,9 +74,9 @@ public class Game {
      */
     private boolean isColumnValid(double column) {
         double prevColumn;
-        NodeList cursor;
+        Nod cursor;
 
-        for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
+        for (cursor = stack.getTop(); cursor != null; cursor = cursor.getNext()) {
             prevColumn = (double) cursor.getData();
             if (prevColumn == column) { return false; }
         }
@@ -99,10 +99,10 @@ public class Game {
         double slope;
         double prevRow;
         double prevColumn;
-        NodeList cursor;
+        Nod cursor;
 
         prevRow = stack.getSize();
-        for (cursor = stack.getHead(); cursor != null; cursor = cursor.getNext()) {
+        for (cursor = stack.getTop(); cursor != null; cursor = cursor.getNext()) {
             try {
                 prevColumn = (double) cursor.getData();
                 slope = (row - prevRow) / (column - prevColumn);
@@ -171,10 +171,10 @@ public class Game {
     @Override
     public String toString() {
         double count;
-        NodeList current;
+        Nod current;
         StringBuilder stringBuilder = new StringBuilder();
 
-        current = stack.getHead();
+        current = stack.getTop();
         for (int i = 1; i <= boardSize; i++) {
             stringBuilder.append("+---".repeat(Math.max(0, boardSize)));
             stringBuilder.append("+");
