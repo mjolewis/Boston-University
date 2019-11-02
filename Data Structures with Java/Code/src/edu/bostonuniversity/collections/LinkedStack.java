@@ -1,7 +1,7 @@
 // FILE: LinkedStack.java from the package edu.bostonuniversity.collections
 
 package edu.bostonuniversity.collections;
-import edu.bostonuniversity.nodes.Nod;
+import edu.bostonuniversity.nodes.Node;
 import org.jetbrains.annotations.Contract;
 
 /**********************************************************************************************************************
@@ -25,7 +25,7 @@ public class LinkedStack<E> implements Cloneable {
     //     structure. To access an item other than the first item, you must first remove every node that sits on top of
     //     the target item in the LinkedStack.
     private int size;
-    private Nod<E> top;
+    private Node<E> top;
 
     /**
      * public LinkedStack()
@@ -49,9 +49,9 @@ public class LinkedStack<E> implements Cloneable {
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
-    public LinkedStack(E data, Nod<E> next) {
+    public LinkedStack(E data, Node<E> next) {
         size++;
-        top = new Nod(data, next);
+        top = new Node(data, next);
     }
 
     /**
@@ -64,7 +64,7 @@ public class LinkedStack<E> implements Cloneable {
      *   top.
      */
     public void add(E element) {
-        top = new Nod(element, top);
+        top = new Node(element, top);
         size++;
     }
 
@@ -109,8 +109,8 @@ public class LinkedStack<E> implements Cloneable {
     @Contract(value = "null -> false", pure = true)
     @SuppressWarnings("unchecked")
     public boolean equals(Object obj) {
-        if (obj instanceof Nod) {
-            Nod<E> candidate = (Nod<E>) obj;
+        if (obj instanceof Node) {
+            Node<E> candidate = (Node<E>) obj;
             return (this.getTop().getData() == candidate.getData());
         }
         return false;
@@ -121,7 +121,7 @@ public class LinkedStack<E> implements Cloneable {
      * Accessor method to retrieve the top of the Stack.
      * @return Node<E>
      */
-    public Nod<E> getTop() { return top; }
+    public Node<E> getTop() { return top; }
 
     /**
      * public int getSize()
@@ -208,8 +208,8 @@ public class LinkedStack<E> implements Cloneable {
      *   The top of the Stack has been removed. The next item (if there is one) becomes the new top. Otherwise, the top
      *   becomes a null reference. The size of the Stack is decreased by one.
      */
-    public Nod<E> removeTop() {
-        Nod<E> answer;
+    public Node<E> removeTop() {
+        Node<E> answer;
         answer = top.getNext();
         size--;
         return answer;
@@ -227,7 +227,7 @@ public class LinkedStack<E> implements Cloneable {
      */
     public int search(Object obj) {
         int count;
-        Nod<E> cursor;
+        Node<E> cursor;
 
         cursor = top;
         for (count = 1; cursor != null; cursor = cursor.getNext()) {

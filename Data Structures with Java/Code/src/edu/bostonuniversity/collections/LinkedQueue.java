@@ -1,7 +1,7 @@
 //FILE LinkedQueue.java from the package edu.bostonuniversity.collections
 
 package edu.bostonuniversity.collections;
-import edu.bostonuniversity.nodes.Nod;
+import edu.bostonuniversity.nodes.Node;
 
 /**********************************************************************************************************************
  * A LinkedQueue is a First-in/First-out data structure of ordered items such that items can be inserted at one end
@@ -22,8 +22,8 @@ public class LinkedQueue<E> implements Queue<E> {
     // 3. The instance variable size is a count of the number of items in this LinkedQueue.
     // 4. This LinkedQueue is a first-in/first-out data structure, so items are added at the rear and removed at the
     //    front.
-    private Nod<E> front;
-    private Nod<E> rear;
+    private Node<E> front;
+    private Node<E> rear;
     private int size;
 
     /**
@@ -56,11 +56,11 @@ public class LinkedQueue<E> implements Queue<E> {
         E element;
         if (isEmpty()) {
             element = (E) item;
-            front = new Nod<>(element, front);
+            front = new Node<>(element, front);
             rear = front;
         } else {
             element = (E) item;
-            rear.setNext(new Nod<>(element, null));
+            rear.setNext(new Node<>(element, null));
             rear = rear.getNext();
         }
         size++;
@@ -93,7 +93,7 @@ public class LinkedQueue<E> implements Queue<E> {
     @Override
     @SuppressWarnings("unchecked")
     public E remove() {
-        Nod<E> answer;
+        Node<E> answer;
         if (isEmpty()) { return null; }
         answer = front;
         front = front.getNext();
