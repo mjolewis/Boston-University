@@ -2,6 +2,8 @@ package edu.bostonuniversity.nodes;
 
 import edu.bostonuniversity.collections.LinkedQueue;
 
+import java.util.LinkedList;
+
 public class NodeTest {
     public static void main(String[] args) {
         NodeTest driver = new NodeTest();
@@ -22,6 +24,8 @@ public class NodeTest {
         System.out.println(queue.remove());
         System.out.println(queue.isEmpty());
         System.out.println(queue.remove());
+
+        LinkedList<Integer> list = new LinkedList<>();
 
     }
 }
