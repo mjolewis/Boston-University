@@ -60,7 +60,8 @@ public class LinkedQueue<E> implements Queue<E> {
             rear = front;
         } else {
             element = (E) item;
-            rear = new NodeQueue<>(element, rear);
+            rear.setNext(new NodeQueue<>(element, null));
+            rear = rear.getNext();
         }
         size++;
     }
