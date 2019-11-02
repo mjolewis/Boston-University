@@ -2,7 +2,7 @@
 
 package edu.bostonuniversity.homework2;
 import edu.bostonuniversity.collections.LinkedStack;
-import edu.bostonuniversity.nodes.Nod;
+import edu.bostonuniversity.nodes.Node;
 
 /**********************************************************************************************************************
  * A Game is a sequence of choices attempting to solve the n Queens problem. Each choice consists of a row and column
@@ -74,7 +74,7 @@ public class Game {
      */
     private boolean isColumnValid(double column) {
         double prevColumn;
-        Nod cursor;
+        Node cursor;
 
         for (cursor = stack.getTop(); cursor != null; cursor = cursor.getNext()) {
             prevColumn = (double) cursor.getData();
@@ -99,7 +99,7 @@ public class Game {
         double slope;
         double prevRow;
         double prevColumn;
-        Nod cursor;
+        Node cursor;
 
         prevRow = stack.getSize();
         for (cursor = stack.getTop(); cursor != null; cursor = cursor.getNext()) {
@@ -171,7 +171,7 @@ public class Game {
     @Override
     public String toString() {
         double count;
-        Nod current;
+        Node current;
         StringBuilder stringBuilder = new StringBuilder();
 
         current = stack.getTop();

@@ -1,7 +1,7 @@
 // FILE: LinkedList.java from the package edu.bostonuniversity.collections
 
 package edu.bostonuniversity.collections;
-import edu.bostonuniversity.nodes.Nod;
+import edu.bostonuniversity.nodes.Node;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,10 +32,10 @@ public class LinkedList<E> implements List<E>, Cloneable {
     //      the elements of the sequence are stored from the head to the tail.
     //   6. If there is a current element, then it lies between the head node and tail node (inclusive).
     private int size;
-    private Nod<E> prev;
-    private Nod<E> head;
-    private Nod<E> cursor;
-    private Nod<E> tail;
+    private Node<E> prev;
+    private Node<E> head;
+    private Node<E> cursor;
+    private Node<E> tail;
 
     /**
      * public LinkedList()
@@ -62,10 +62,10 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
-    public LinkedList(E data, Nod<E> next) {
+    public LinkedList(E data, Node<E> next) {
         size++;
         prev = null;
-        head = new Nod(data, next);
+        head = new Node(data, next);
         cursor = head;
         tail = this.head.getNext();
     }
@@ -86,10 +86,10 @@ public class LinkedList<E> implements List<E>, Cloneable {
     public void addAfter(E element) {
         if (isCurrent()) {
             prev = this.cursor;
-            cursor.setNext(new Nod<>(element, cursor.getNext()));
+            cursor.setNext(new Node<>(element, cursor.getNext()));
             cursor = cursor.getNext(); // The new node becomes the new current element and...
         } else {
-            tail.setNext(new Nod<>(element, tail.getNext()));
+            tail.setNext(new Node<>(element, tail.getNext()));
             prev = tail; // The current tail will become the precursor to the new node and...
             cursor = tail.getNext(); // ...the new node becomes the new current element and...
             tail = tail.getNext(); // ...the tail becomes the last node of the sequence.
@@ -110,7 +110,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addBefore(E element) {
-        Nod<E> newNodeList = new Nod<>(element, cursor);
+        Node<E> newNodeList = new Node<>(element, cursor);
 
         if (prev == null) {
             head = newNodeList;
@@ -134,7 +134,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addFirst(E element) {
-        Nod<E> newNodeList = new Nod<>(element, head);
+        Node<E> newNodeList = new Node<>(element, head);
 
         head = newNodeList;
         cursor = newNodeList;
@@ -157,7 +157,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   Indicates insufficient memory to increase the size of this sequence.
      */
     public void addAll(List<E> addend) {
-        Nod<E> current;
+        Node<E> current;
         LinkedList<E> tmp;
 
         if (addend == null) { throw new NullPointerException("addend is null."); }
@@ -219,14 +219,14 @@ public class LinkedList<E> implements List<E>, Cloneable {
         // The clone method needs extra work before it returns. The extra work creates new Node<E> components for
         // the clone's reference variables to refer to. 1) head, 2) tail...
         tmp = listCopyWithTail(head);
-        answer.head = (Nod<E>) tmp[0];
-        answer.tail = (Nod<E>) tmp[1];
+        answer.head = (Node<E>) tmp[0];
+        answer.tail = (Node<E>) tmp[1];
 
         // ...3) precursor and 4) cursor.
         if (prev != null && cursor != null) {
             tmp = listPart(this.prev, cursor);
-            answer.prev = (Nod<E>) tmp[0];
-            answer.cursor = (Nod<E>) tmp[1];
+            answer.prev = (Node<E>) tmp[0];
+            answer.cursor = (Node<E>) tmp[1];
         }
 
         return answer;
@@ -277,7 +277,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * Accessor method to retrieve the head of the LinkedList.
      * @return NodeList<E>
      */
-    public Nod<E> getHead() { return head; }
+    public Node<E> getHead() { return head; }
 
     /**
      * public E getPrevious()
@@ -316,21 +316,21 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   Indicates insufficient memory for the new Node.
      */
     @Contract("null -> null")
-    public static <E> Nod<E> listCopy(Nod<E> source) {
-        Nod<E> copyHead;
-        Nod<E> copyTail;
+    public static <E> Node<E> listCopy(Node<E> source) {
+        Node<E> copyHead;
+        Node<E> copyTail;
 
         // Handle the special case of an empty list.
         if (source == null) { return null; }
 
         // Make the first node for the newly created list.
-        copyHead = new Nod<>(source.getData(), source.getNext());
+        copyHead = new Node<>(source.getData(), source.getNext());
         copyTail = copyHead;
 
         // Make the rest of the nodes for the newly created list...
         while (source.getNext() != null) {
             source = source.getNext();
-            copyTail.setNext(new Nod<>(source.getData(), copyTail.getNext()));
+            copyTail.setNext(new Node<>(source.getData(), copyTail.getNext()));
             copyTail = copyTail.getNext();
         }
 
@@ -349,22 +349,22 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   Indicates insufficient memory for the new Node.
      */
     @NotNull
-    public static <E> Object[] listCopyWithTail(Nod<E> source) {
-        Nod<E> copyHead;
-        Nod<E> copyTail;
+    public static <E> Object[] listCopyWithTail(Node<E> source) {
+        Node<E> copyHead;
+        Node<E> copyTail;
         Object[] answer = new Object[2];
 
         // Handle the special case of an empty list.
         if (source == null) { return answer; }
 
         // Make the first node for the newly created list.
-        copyHead = new Nod<>(source.getData(), source.getNext());
+        copyHead = new Node<>(source.getData(), source.getNext());
         copyTail = copyHead;
 
         // Make the rest of the nodes for the newly created list...
         while (source.getNext() != null) {
             source = source.getNext();
-            copyTail.setNext(new Nod<>(source.getData(), copyTail.getNext()));
+            copyTail.setNext(new Node<>(source.getData(), copyTail.getNext()));
             copyTail = copyTail.getNext();
         }
 
@@ -385,8 +385,8 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   A wrong answer occurs for lists longer than Integer.MAX_VALUE due to arithmetic overflow.
      */
     @Contract(pure = true)
-    public static <E> int listLength(Nod<E> head) {
-        Nod<E> cursor;
+    public static <E> int listLength(Node<E> head) {
+        Node<E> cursor;
         int answer;
 
         answer = 0;
@@ -414,9 +414,9 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @NotNull
     @Contract("null, _ -> fail; !null, null -> fail")
-    public static <E> Object[] listPart(Nod<E> start, Nod<E> end) {
-        Nod<E> copyHead;
-        Nod<E> copyTail;
+    public static <E> Object[] listPart(Node<E> start, Node<E> end) {
+        Node<E> copyHead;
+        Node<E> copyTail;
         Object[] answer = new Object[2];
 
         // Check for illegal null at start or end.
@@ -424,14 +424,14 @@ public class LinkedList<E> implements List<E>, Cloneable {
         if (end == null) { throw new IllegalArgumentException("End is null."); }
 
         // Make the first node for the newly created list.
-        copyHead = new Nod<>(start.getData(), start.getNext());
+        copyHead = new Node<>(start.getData(), start.getNext());
         copyTail = copyHead;
 
         // Make the rest of the nodes for the newly created list...
         while (start != end) {
             start = start.getNext();
             if (start == null) { throw new IllegalArgumentException("End node was not found on the list."); }
-            copyTail.setNext(new Nod<>(start.getData(), copyTail.getNext()));
+            copyTail.setNext(new Node<>(start.getData(), copyTail.getNext()));
             copyTail = copyTail.getNext();
         }
 
@@ -456,8 +456,8 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   Indicates a position is less than or equal to 0
      */
     @Contract(pure = true)
-    public static <E> Nod<E> listPosition(Nod<E> head, int position) {
-        Nod<E> cursor;
+    public static <E> Node<E> listPosition(Node<E> head, int position) {
+        Node<E> cursor;
         int i;
 
         if (position <= 0) { throw new IllegalArgumentException("The position must be greater than 0."); }
@@ -481,8 +481,8 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Nullable
     @Contract(pure = true)
-    public static <E> Nod<E> listSearch(Nod<E> head, E target) {
-        Nod<E> cursor;
+    public static <E> Node<E> listSearch(Node<E> head, E target) {
+        Node<E> cursor;
 
         if (target == null) { // Search for a node in which the data is a null reference.
             for (cursor = head; cursor != null; cursor = cursor.getNext()) {
@@ -541,8 +541,8 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   The head of the LinkedList has been removed. The next item (if there is one) becomes the new head. Otherwise,
      *   the head becomes a null reference. The size of the LinkedList is decreased by one.
      */
-    public Nod<E> removeHead() {
-        Nod<E> answer = head;
+    public Node<E> removeHead() {
+        Node<E> answer = head;
         head = head.getNext();
         size--;
         return answer;
