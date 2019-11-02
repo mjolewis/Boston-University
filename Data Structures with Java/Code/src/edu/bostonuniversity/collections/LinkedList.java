@@ -1,7 +1,10 @@
 // FILE: LinkedList.java from the package edu.bostonuniversity.collections
 
 package edu.bostonuniversity.collections;
-import edu.bostonuniversity.nodes.NodeList;
+import edu.bostonuniversity.nodes.Nod;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**********************************************************************************************************************
  * A LinkedList is a sequence of generic types. The sequence can have a special "current element", which is
@@ -29,10 +32,10 @@ public class LinkedList<E> implements List<E>, Cloneable {
     //      the elements of the sequence are stored from the head to the tail.
     //   6. If there is a current element, then it lies between the head node and tail node (inclusive).
     private int size;
-    private NodeList<E> prev;
-    private NodeList<E> head;
-    private NodeList<E> cursor;
-    private NodeList<E> tail;
+    private Nod<E> prev;
+    private Nod<E> head;
+    private Nod<E> cursor;
+    private Nod<E> tail;
 
     /**
      * public LinkedList()
@@ -59,41 +62,12 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
-    public LinkedList(E data, NodeList<E> next) {
+    public LinkedList(E data, Nod<E> next) {
         size++;
         prev = null;
-        head = NodeList.getInstance(data, next);
+        head = new Nod(data, next);
         cursor = head;
         tail = this.head.getNext();
-    }
-
-    /**
-     * public static <E> LinkedList<E> getInstance()
-     * Activates the no arg constructor for LinkedList. Note that the addBefore and addAfter methods work
-     * efficiently (without ever needing more capacity).
-     * @return LinkedList
-     *   A reference to the LinkedList object.
-     * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new LinkedList.
-     */
-    public static <E> LinkedList<E> getInstance() { return new LinkedList<>(); }
-
-    /**
-     * public static <E> LinkedList<E> getInstance(E data, NodeList<E> next)
-     * Activates an initial sequence with one node. The node contains the initial specified data and link to the next
-     * node. Note that the initial next link may be a null reference, which indicates that the new node has nothing
-     * after it.
-     * @param data
-     *   The element that is being added.
-     * @param next
-     *   A reference to the next node if there is one. If there is no next node, then next can be null.
-     * @return LinkedList
-     *   A reference to the LinkedList object.
-     * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new LinkedList.
-     */
-    public static <E> LinkedList<E> getInstance(E data, NodeList<E> next) {
-        return new LinkedList<>(data, next);
     }
 
     /**
@@ -112,10 +86,10 @@ public class LinkedList<E> implements List<E>, Cloneable {
     public void addAfter(E element) {
         if (isCurrent()) {
             prev = this.cursor;
-            cursor.addNodeAfter(element);
+            cursor.setNext(new Nod<>(element, cursor.getNext()));
             cursor = cursor.getNext(); // The new node becomes the new current element and...
         } else {
-            tail.addNodeAfter(element);
+            tail.setNext(new Nod<>(element, tail.getNext()));
             prev = tail; // The current tail will become the precursor to the new node and...
             cursor = tail.getNext(); // ...the new node becomes the new current element and...
             tail = tail.getNext(); // ...the tail becomes the last node of the sequence.
@@ -136,7 +110,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addBefore(E element) {
-        NodeList<E> newNodeList = NodeList.getInstance(element, cursor);
+        Nod<E> newNodeList = new Nod<>(element, cursor);
 
         if (prev == null) {
             head = newNodeList;
@@ -160,7 +134,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addFirst(E element) {
-        NodeList<E> newNodeList = NodeList.getInstance(element, head);
+        Nod<E> newNodeList = new Nod<>(element, head);
 
         head = newNodeList;
         cursor = newNodeList;
@@ -183,7 +157,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   Indicates insufficient memory to increase the size of this sequence.
      */
     public void addAll(List<E> addend) {
-        NodeList<E> current;
+        Nod<E> current;
         LinkedList<E> tmp;
 
         if (addend == null) { throw new NullPointerException("addend is null."); }
@@ -244,15 +218,15 @@ public class LinkedList<E> implements List<E>, Cloneable {
 
         // The clone method needs extra work before it returns. The extra work creates new Node<E> components for
         // the clone's reference variables to refer to. 1) head, 2) tail...
-        tmp = NodeList.listCopyWithTail(head);
-        answer.head = (NodeList<E>) tmp[0];
-        answer.tail = (NodeList<E>) tmp[1];
+        tmp = listCopyWithTail(head);
+        answer.head = (Nod<E>) tmp[0];
+        answer.tail = (Nod<E>) tmp[1];
 
         // ...3) precursor and 4) cursor.
         if (prev != null && cursor != null) {
-            tmp = NodeList.listPart(this.prev, cursor);
-            answer.prev = (NodeList<E>) tmp[0];
-            answer.cursor = (NodeList<E>) tmp[1];
+            tmp = listPart(this.prev, cursor);
+            answer.prev = (Nod<E>) tmp[0];
+            answer.cursor = (Nod<E>) tmp[1];
         }
 
         return answer;
@@ -299,13 +273,14 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
-     * public E getPrevious()
+     * public Node<E> getHead()
      * Accessor method to retrieve the head of the LinkedList.
      * @return NodeList<E>
      */
-    public NodeList<E> getHead() { return head; }
+    public Nod<E> getHead() { return head; }
 
     /**
+     * public E getPrevious()
      * Accessor method to determine the previous element of the sequence
      * @precondition
      *   isCurrent() returns true.
@@ -329,6 +304,202 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public boolean isCurrent() { return cursor != null; }
+
+    /**
+     * Copy a linked list
+     * @param source
+     *   The head reference for a linked list that will be copied (which may be an empty list where source is null).
+     * @return Node
+     *   The method has made a copy of the linked list starting at source. The return value is the head reference for
+     *   the copy.
+     * @exception OutOfMemoryError
+     *   Indicates insufficient memory for the new Node.
+     */
+    @Contract("null -> null")
+    public static <E> Nod<E> listCopy(Nod<E> source) {
+        Nod<E> copyHead;
+        Nod<E> copyTail;
+
+        // Handle the special case of an empty list.
+        if (source == null) { return null; }
+
+        // Make the first node for the newly created list.
+        copyHead = new Nod<>(source.getData(), source.getNext());
+        copyTail = copyHead;
+
+        // Make the rest of the nodes for the newly created list...
+        while (source.getNext() != null) {
+            source = source.getNext();
+            copyTail.setNext(new Nod<>(source.getData(), copyTail.getNext()));
+            copyTail = copyTail.getNext();
+        }
+
+        // Return the head reference for the new list.
+        return copyHead;
+    }
+
+    /**
+     * Copy a list, returning both a head and a tail reference for the copy
+     * @param source
+     *   The head reference for a linked list that will be copied (which may be an empty list where source is null).
+     * @return Node[]
+     *   The method has made a copy of the linked list starting at source. The return value is an array where [0]
+     *   element is a head reference for the copy and the [1] element is a tail reference for the copy.
+     * @exception OutOfMemoryError
+     *   Indicates insufficient memory for the new Node.
+     */
+    @NotNull
+    public static <E> Object[] listCopyWithTail(Nod<E> source) {
+        Nod<E> copyHead;
+        Nod<E> copyTail;
+        Object[] answer = new Object[2];
+
+        // Handle the special case of an empty list.
+        if (source == null) { return answer; }
+
+        // Make the first node for the newly created list.
+        copyHead = new Nod<>(source.getData(), source.getNext());
+        copyTail = copyHead;
+
+        // Make the rest of the nodes for the newly created list...
+        while (source.getNext() != null) {
+            source = source.getNext();
+            copyTail.setNext(new Nod<>(source.getData(), copyTail.getNext()));
+            copyTail = copyTail.getNext();
+        }
+
+        // ...Return the head and tail references for the new list. The [0] component is the head and the [1] component
+        // is the tail.
+        answer[0] = copyHead;
+        answer[1] = copyTail;
+        return answer;
+    }
+
+    /**
+     * Compute the number of nodes in a linked list
+     * @param head
+     *   The head reference for a linked list (which may be an empty list with a null head)
+     * @return int
+     *   The number of nodes in the list with the given head
+     * @note
+     *   A wrong answer occurs for lists longer than Integer.MAX_VALUE due to arithmetic overflow.
+     */
+    @Contract(pure = true)
+    public static <E> int listLength(Nod<E> head) {
+        Nod<E> cursor;
+        int answer;
+
+        answer = 0;
+        for (cursor = head; cursor != null; cursor = cursor.getNext()) { answer++; }
+        return answer;
+    }
+
+    /**
+     * Copy part of a list, providing a head and tail reference for the new copy.
+     * @param start
+     *   A reference to the start node of a linked list
+     * @param end
+     *   A reference to the end node of a linked list
+     * @precondition
+     *   Start and end are non-null references to nodes on the same linked list, with the start node at or before the
+     *   end node.
+     * @return Node[]
+     *   The method has made a copy of part of a linked list, from the specified start node to the specified end node.
+     *   The return value is an array where the [0] component is a head reference for the copy and the [1] component is
+     *   a tail reference for the copy.
+     * @exception OutOfMemoryError
+     *   Indicates insufficient memory for a new Node.
+     * @exception IllegalArgumentException
+     *   Indicates that start and end do not satisfy the precondition.
+     */
+    @NotNull
+    @Contract("null, _ -> fail; !null, null -> fail")
+    public static <E> Object[] listPart(Nod<E> start, Nod<E> end) {
+        Nod<E> copyHead;
+        Nod<E> copyTail;
+        Object[] answer = new Object[2];
+
+        // Check for illegal null at start or end.
+        if (start == null) { throw new IllegalArgumentException("Start is null."); }
+        if (end == null) { throw new IllegalArgumentException("End is null."); }
+
+        // Make the first node for the newly created list.
+        copyHead = new Nod<>(start.getData(), start.getNext());
+        copyTail = copyHead;
+
+        // Make the rest of the nodes for the newly created list...
+        while (start != end) {
+            start = start.getNext();
+            if (start == null) { throw new IllegalArgumentException("End node was not found on the list."); }
+            copyTail.setNext(new Nod<>(start.getData(), copyTail.getNext()));
+            copyTail = copyTail.getNext();
+        }
+
+        // ...Return the head and tail references for the new list. The [0] component is the head and the [1] component
+        // is the tail.
+        answer[0] = copyHead;
+        answer[1] = copyTail;
+        return answer;
+    }
+
+    /**
+     * Find a node at a specified position in a linked list.
+     * @param head
+     *   The head reference for a linked list (which may be an empty list with a null head)
+     * @param position
+     *   A node number
+     * @return Node
+     *   The return value is a reference to the node at the specified position in the list. (The head node is position
+     *   1, the next node is position 2, and so on). If there is no such position (because the list is too short), then
+     *   null reference is returned.
+     * @exception IllegalArgumentException
+     *   Indicates a position is less than or equal to 0
+     */
+    @Contract(pure = true)
+    public static <E> Nod<E> listPosition(Nod<E> head, int position) {
+        Nod<E> cursor;
+        int i;
+
+        if (position <= 0) { throw new IllegalArgumentException("The position must be greater than 0."); }
+
+        cursor = head;
+        for (i = 1; (i < position) && (cursor != null); i++) {
+            cursor = cursor.getNext();
+        }
+        return cursor;
+    }
+
+    /**
+     * Search for a particular piece of data in a linked list.
+     * @param head
+     *   The head reference for a linked list (which may be an empty list with a null head).
+     * @param target
+     *   A piece of data to search for.
+     * @return Node
+     *   The return is a reference to the first node that contains the specified target. If there is no such node, the
+     *   null reference is returned.
+     */
+    @Nullable
+    @Contract(pure = true)
+    public static <E> Nod<E> listSearch(Nod<E> head, E target) {
+        Nod<E> cursor;
+
+        if (target == null) { // Search for a node in which the data is a null reference.
+            for (cursor = head; cursor != null; cursor = cursor.getNext()) {
+                if (cursor.getData() == null) {
+                    return cursor;
+                }
+            }
+        } else { // Search for a node that contains the non-null target.
+            for (cursor = head; cursor != null; cursor = cursor.getNext()) {
+                if (target.equals(cursor.getData())) {
+                    return cursor;
+                }
+            }
+        }
+
+        return null;
+    }
 
     /**
      * public void removeCurrent()
@@ -370,12 +541,25 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   The head of the LinkedList has been removed. The next item (if there is one) becomes the new head. Otherwise,
      *   the head becomes a null reference. The size of the LinkedList is decreased by one.
      */
-    public NodeList<E> removeHead() {
-        NodeList<E> answer = head;
+    public Nod<E> removeHead() {
+        Nod<E> answer = head;
         head = head.getNext();
         size--;
         return answer;
     }
+
+    /**
+     * Modification method to remove the node after this node.
+     * @precondition
+     *   This node must not be the tail node of the list.
+     * @postcondition
+     *   The node after this node has been removed from the linked list. If there were further nodes after that one,
+     *   they are still present on the list and the node previous to this node is now linked to the node after this
+     *   node.
+     * @exception NullPointerException
+     *   Indicates that this was the tail node of the list, so there is nothing after it to remove.
+     */
+    public void removeNodeAfter() { cursor = cursor.getNext().getNext(); }
 
     /**
      * public int size()
