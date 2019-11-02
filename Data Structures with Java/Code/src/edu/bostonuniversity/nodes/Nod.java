@@ -30,7 +30,7 @@ public class Nod<E> {
      * @postcondition
      *   This new node is an empty node with a null reference as its link.
      * @exception OutOfMemoryError
-     *   Indicates insufficient memory for the new Node
+     *   Indicates insufficient memory for the new Node.
      */
     public Nod() {
         data = null;
@@ -38,7 +38,7 @@ public class Nod<E> {
     }
 
     /**
-     * public Node()
+     * public Node(E data, Node<E> next)
      * Initializes a node with the specified initial data and a link to the next node. Note that the initial next may
      * be a null reference, which indicates that the new node has nothing after it.
      * @param data
@@ -57,7 +57,7 @@ public class Nod<E> {
     }
 
     /**
-     * public getData()
+     * public E getData()
      * Accessor method to get the data from this node.
      * @return data
      *   The data from this node.
@@ -67,7 +67,7 @@ public class Nod<E> {
     }
 
     /**
-     * public getNext()
+     * public Node<E> getNext()
      * Accessor method to get a reference to the next node after this node.
      * @return next
      *  A reference to the node after this node (or the null reference if there is nothing after this node).
@@ -77,7 +77,7 @@ public class Nod<E> {
     }
 
     /**
-     * public setData()
+     * public void setData(E data)
      * Mutator method to set the data in this node.
      * @param data
      *  The new data to place in this node.
@@ -89,7 +89,7 @@ public class Nod<E> {
     }
 
     /**
-     * public setNext()
+     * public void setNext(Node<E> next)
      * Mutator method to set a reference to the next node after this node.
      * @param next
      *  A reference to the node that should appear after this node in the linked list (or the null reference if there
