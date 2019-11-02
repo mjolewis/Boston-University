@@ -1,9 +1,7 @@
-package edu.bostonuniversity.collections;
-import edu.bostonuniversity.nodes.NodeList;
-
 // FILE: LinkedList.java from the package edu.bostonuniversity.collections
 
-// This is a programming project from chapter 4 of "Data Structures and Other Objects Using Java" by Michael Main.
+package edu.bostonuniversity.collections;
+import edu.bostonuniversity.nodes.NodeList;
 
 /**********************************************************************************************************************
  * A LinkedList is a sequence of generic types. The sequence can have a special "current element", which is
@@ -13,7 +11,7 @@ import edu.bostonuniversity.nodes.NodeList;
  *   1. Beyond Integer.MAX_VALUE elements, the size method does not work.
  *
  * @author mlewis
- * @version Oct 6, 2019
+ * @version Nov 2, 2019
  *********************************************************************************************************************/
 
 public class LinkedList<E> implements List<E>, Cloneable {
@@ -44,11 +42,11 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   Indicates insufficient memory for the new LinkedList.
      */
     public LinkedList() {
-        this.size = 0;
-        this.prev = null;
-        this.head = null;
-        this.cursor = null;
-        this.tail = null;
+        size = 0;
+        prev = null;
+        head = null;
+        cursor = null;
+        tail = null;
     }
 
     /**
@@ -60,11 +58,11 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
     public LinkedList(E data, NodeList<E> next) {
-        this.size++;
-        this.prev = null;
-        this.head = NodeList.getInstance(data, next);
-        this.cursor = head;
-        this.tail = this.head.getNext();
+        size++;
+        prev = null;
+        head = NodeList.getInstance(data, next);
+        cursor = head;
+        tail = this.head.getNext();
     }
 
     /**
@@ -107,18 +105,18 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addAfter(E element) {
-        if (this.isCurrent()) {
-            this.prev = this.cursor;
-            this.cursor.addNodeAfter(element);
-            this.cursor = this.cursor.getNext(); // The new node becomes the new current element and...
+        if (isCurrent()) {
+            prev = this.cursor;
+            cursor.addNodeAfter(element);
+            cursor = cursor.getNext(); // The new node becomes the new current element and...
         } else {
-            this.tail.addNodeAfter(element);
-            this.prev = this.tail; // The current tail will become the precursor to the new node and...
-            this.cursor = this.tail.getNext(); // ...the new node becomes the new current element and...
-            this.tail = this.tail.getNext(); // ...the tail becomes the last node of the sequence.
+            tail.addNodeAfter(element);
+            prev = tail; // The current tail will become the precursor to the new node and...
+            cursor = tail.getNext(); // ...the new node becomes the new current element and...
+            tail = tail.getNext(); // ...the tail becomes the last node of the sequence.
         }
 
-        this.size++;
+        size++;
     }
 
     /**
@@ -132,17 +130,17 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addBefore(E element) {
-        NodeList<E> newNodeList = NodeList.getInstance(element, this.cursor);
+        NodeList<E> newNodeList = NodeList.getInstance(element, cursor);
 
-        if (this.prev == null) {
-            this.head = newNodeList;
-            this.cursor = newNodeList;
+        if (prev == null) {
+            head = newNodeList;
+            cursor = newNodeList;
         } else {
-            this.prev.setNext(newNodeList);
-            this.cursor = newNodeList;
+            prev.setNext(newNodeList);
+            cursor = newNodeList;
         }
 
-        this.size++;
+        size++;
     }
 
     /**
@@ -155,11 +153,11 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addFirst(E element) {
-        NodeList<E> newNodeList = NodeList.getInstance(element, this.head);
+        NodeList<E> newNodeList = NodeList.getInstance(element, head);
 
-        this.head = newNodeList;
-        this.cursor = newNodeList;
-        this.size++;
+        head = newNodeList;
+        cursor = newNodeList;
+        size++;
     }
 
     /**
@@ -182,12 +180,12 @@ public class LinkedList<E> implements List<E>, Cloneable {
 
         if (addend == null) { throw new NullPointerException("addend is null."); }
 
-        current = this.head;
+        current = head;
         tmp = (LinkedList<E>) addend;
         while (current.getNext() != null) { current = current.getNext(); }
         current.setNext(tmp.head); // The tail of the activating object is linked to the head of addend and...
-        this.tail = tmp.tail; // ... the tail of addend becomes the tail of this new sequence.
-        this.size += addend.size();
+        tail = tmp.tail; // ... the tail of addend becomes the tail of this new sequence.
+        size += addend.size();
     }
 
     /**
@@ -203,9 +201,9 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void advance() {
-        if (this.isCurrent()) {
-            this.prev = this.cursor;
-            this.cursor = this.cursor.getNext();
+        if (isCurrent()) {
+            prev = cursor;
+            cursor = cursor.getNext();
         } else {
             throw new IllegalStateException("There is no current element.");
         }
@@ -236,13 +234,13 @@ public class LinkedList<E> implements List<E>, Cloneable {
 
         // The clone method needs extra work before it returns. The extra work creates new Node<E> components for
         // the clone's reference variables to refer to. 1) head, 2) tail...
-        tmp = NodeList.listCopyWithTail(this.head);
+        tmp = NodeList.listCopyWithTail(head);
         answer.head = (NodeList<E>) tmp[0];
         answer.tail = (NodeList<E>) tmp[1];
 
         // ...3) precursor and 4) cursor.
-        if (this.prev != null && this.cursor != null) {
-            tmp = NodeList.listPart(this.prev, this.cursor);
+        if (prev != null && cursor != null) {
+            tmp = NodeList.listPart(this.prev, cursor);
             answer.prev = (NodeList<E>) tmp[0];
             answer.cursor = (NodeList<E>) tmp[1];
         }
@@ -284,7 +282,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public E getCurrent() {
-        if (this.isCurrent()) { return this.cursor.getData(); }
+        if (isCurrent()) { return cursor.getData(); }
         else { throw new IllegalStateException("There is no current element."); }
     }
 
@@ -292,7 +290,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * Accessor method to retrieve the head of the LinkedList.
      * @return NodeList<E>
      */
-    public NodeList<E> getHead() { return this.head; }
+    public NodeList<E> getHead() { return head; }
 
     /**
      * Accessor method to determine the previous element of the sequence
@@ -305,7 +303,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public E getPrevious() {
-        if (this.isCurrent()) { return this.prev.getData(); }
+        if (isCurrent()) { return prev.getData(); }
         else { throw new IllegalStateException("There is no previous element."); }
     }
 
@@ -316,7 +314,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   true (there is a current element) or false (there is no current element at the moment).
      */
     @Override
-    public boolean isCurrent() { return this.cursor != null; }
+    public boolean isCurrent() { return cursor != null; }
 
     /**
      * Modification method to remove the current element from this sequence.
@@ -330,21 +328,21 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void removeCurrent() {
-        if (!this.isCurrent()) { throw new IllegalStateException("There is no current element"); }
+        if (!isCurrent()) { throw new IllegalStateException("There is no current element"); }
 
-        if (this.prev == null) { // The current element is referenced by the head
-            this.head = this.head.getNext();
-            this.cursor = this.head;
-        } else if (this.cursor.getNext() == null) { // The current element is the final element
-            this.prev = null;
-            this.cursor = null;
-            this.tail = null;
+        if (prev == null) { // The current element is referenced by the head
+            head = head.getNext();
+            cursor = head;
+        } else if (cursor.getNext() == null) { // The current element is the final element
+            prev = null;
+            cursor = null;
+            tail = null;
         } else {
-            this.cursor = this.cursor.getNext();
-            this.prev.setNext(this.cursor);
+            cursor = cursor.getNext();
+            prev.setNext(cursor);
         }
 
-        this.size--;
+        size--;
     }
 
     /**
@@ -357,9 +355,9 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   the head becomes a null reference. The size of the LinkedList is decreased by one.
      */
     public NodeList<E> removeHead() {
-        NodeList<E> answer = this.head;
-        this.head = this.head.getNext();
-        this.size--;
+        NodeList<E> answer = head;
+        head = head.getNext();
+        size--;
         return answer;
     }
 
@@ -369,7 +367,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      *   The number of elements in this sequence.
      */
     @Override
-    public int size() { return this.size; }
+    public int size() { return size; }
 
     /**
      * Modification method to set the current element at the front of the sequence.
@@ -379,10 +377,10 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void start() {
-        if (this.size > 0) {
-            this.cursor = this.head;
-            this.prev = null;
+        if (size > 0) {
+            cursor = head;
+            prev = null;
         } else {
-            this.cursor = null; }
+            cursor = null; }
     }
 }
