@@ -35,6 +35,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     private NodeList<E> tail;
 
     /**
+     * public LinkedList()
      * Initialize an empty sequence.
      * @postcondition
      *   This sequence is empty.
@@ -50,6 +51,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public LinkedList(E data, NodeList<E> next)
      * Initialize an sequence with one node. The node contains the initial specified data and link to the next node.
      * Note that the initial next link may be a null reference, which indicates that the new node has nothing after it.
      * @param data
@@ -66,6 +68,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public static <E> LinkedList<E> getInstance()
      * Activates the no arg constructor for LinkedList. Note that the addBefore and addAfter methods work
      * efficiently (without ever needing more capacity).
      * @return LinkedList
@@ -76,6 +79,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     public static <E> LinkedList<E> getInstance() { return new LinkedList<>(); }
 
     /**
+     * public static <E> LinkedList<E> getInstance(E data, NodeList<E> next)
      * Activates an initial sequence with one node. The node contains the initial specified data and link to the next
      * node. Note that the initial next link may be a null reference, which indicates that the new node has nothing
      * after it.
@@ -93,6 +97,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public void addAfter(E element)
      * Adds a new element to this sequence after the current element.
      * @param element
      *   The new element that is being added.
@@ -120,6 +125,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public void addBefore(E element)
      * Add a new element to this sequence before the current element.
      * @param element
      *   The new element that is being added.
@@ -144,6 +150,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public void addFirst(E element)
      * Add a new element to the front of this sequence.
      * @param element
      *   The new element that is being added.
@@ -161,6 +168,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public void addAll(List<E> addend)
      * Place the contents of another sequence at the end of this sequence
      * @param addend
      *   A sequence whose contents will be placed at the end of this sequence.
@@ -189,6 +197,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public void advance()
      * Move forward so that the current element is now the next element in the sequence.
      * @precondition
      *   isCurrent() returns true.
@@ -210,6 +219,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public LinkedList<E> clone()
      * Generate a copy of this sequence. Super.clone() returns a generic object that has had its type information
      * erased at run time and generates an unchecked warning. However, this implementation suppresses that warning.
      * @return LinkedList
@@ -249,6 +259,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public static <E> LinkedList<E> concatenate(List<E> s1, List<E> s2)
      * Create a new sequence that contains all the elements from one sequence followed by another.
      * @param s1
      *   The first of two sequences.
@@ -261,7 +272,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new LinkedList.
      */
-    public static <E> LinkedList<E> concatenation(List<E> s1, List<E> s2) {
+    public static <E> LinkedList<E> concatenate(List<E> s1, List<E> s2) {
         if (s1 == null) { throw new IllegalArgumentException("s1 is null."); }
         if (s2 == null) { throw new IllegalArgumentException("s2 is null."); }
 
@@ -272,6 +283,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public E getCurrent()
      * Accessor method to determine the current element of the sequence
      * @precondition
      *   isCurrent() returns true.
@@ -287,6 +299,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public E getPrevious()
      * Accessor method to retrieve the head of the LinkedList.
      * @return NodeList<E>
      */
@@ -308,6 +321,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public boolean isCurrent()
      * Accessor method to determine whether this sequence has a specified current element that can be retrieved with
      * the getCurrent method
      * @return boolean
@@ -317,6 +331,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     public boolean isCurrent() { return cursor != null; }
 
     /**
+     * public void removeCurrent()
      * Modification method to remove the current element from this sequence.
      * @precondition
      *   isCurrent() returns true.
@@ -346,6 +361,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public NodeList<E> removeHead()
      * Mutator method that removes the head of the LinkedList. The next item (if there is one) becomes the new head.
      * Otherwise, head becomes a null reference.
      * @return NodeList<E>
@@ -362,6 +378,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     }
 
     /**
+     * public int size()
      * Accessor method to determine the number of elements in this sequence.
      * @return int
      *   The number of elements in this sequence.
@@ -370,6 +387,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
     public int size() { return size; }
 
     /**
+     * public void start()
      * Modification method to set the current element at the front of the sequence.
      * @postcondition
      *   The front element of this sequence is now the current element (but if the sequence has no elements at all,
