@@ -4,6 +4,8 @@ package edu.bostonuniversity.collections;
 import edu.bostonuniversity.nodes.Node;
 import org.jetbrains.annotations.Contract;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**********************************************************************************************************************
  * A LinkedStack is a sequence of nodes. The LinkedStack is a first-in/last-out data structure meaning that items are
  * added to the top of the stack and only removed when every item on top of it has been removed.
@@ -44,11 +46,14 @@ public class LinkedStack<E> implements Cloneable {
      * public LinkedStack(E data, Node<E> next)
      * Initialize an LinkedStack with one node. The node contains the initial specified data and link to the next node.
      * Note that the initial next link may be a null reference, which indicates that the new node has nothing after it.
+     * @note
+     *  Suppressing compile time warnings because the program ensures that the new Node is of type Node<E>.
      * @param data
      *   The element that is being added.
      * @param next
      *   A reference to the next node if there is one. If there is no next node, then next can be null.
      */
+    @SuppressWarnings("unchecked")
     public LinkedStack(E data, Node<E> next) {
         size++;
         top = new Node(data, next);
@@ -57,46 +62,55 @@ public class LinkedStack<E> implements Cloneable {
     /**
      * public void add(E element)
      * Add a new element to the front of this LinkedStack.
+     * @note
+     *  Suppressing compile time warnings because the program ensures that the new Node is of type Node<E>.
      * @param element
      *   The new element that is being added.
      * @postcondition
      *   A new copy of the element has been added to the front of this LinkedStack. The new element becomes the new
      *   top.
      */
+    @SuppressWarnings("unchecked")
     public void add(E element) {
         top = new Node(element, top);
         size++;
     }
 
-//    /**
-//     * public Node<E> clone()
-//     * Generate a copy of this LinkedStack. Super.clone() returns a generic object that has had its type information
-//     * erased at run time and generates an unchecked warning. However, this implementation suppresses that warning.
-//     * @return LinkedStack
-//     *   The return value is a copy of this LinkedStack. Subsequent changes to the copy will not affect the original,
-//     *   nor vice versa.
-//     * @exception OutOfMemoryError
-//     *   Indicates insufficient memory for the new LinkedStack.
-//     */
-//    @SuppressWarnings("unchecked")
-//    public Nod<E> clone() {
-//        Nod<E> answer;
-//
-//        try {
-//            answer = (Nod<E>) super.clone();
-//        } catch (CloneNotSupportedException e) {
-//            // This exception should not occur. But if it does, it would probably indicate a programming error that
-//            // made super.clone unavailable. The most common error would be forgetting the "Implement Cloneable" clause
-//            // at the start of the class.
-//            throw new RuntimeException("This class does not implement Cloneable.");
-//        }
-//
-//        // The clone method needs extra work before it returns. The extra work creates new Node<E> components for
-//        // the clone's reference variables to refer to. 1) head, 2) tail...
-//        answer = (Nod<E>) NodeList.listCopy(top);
-//
-//        return answer;
-//    }
+    /**
+     * public Node<E> clone()
+     * Generate a copy of this LinkedStack. Super.clone() returns a generic object that has had its type information
+     * erased at run time and generates an unchecked warning. However, this implementation suppresses that warning.
+     * @return LinkedStack<E>
+     *   The return value is a copy of this LinkedStack. Subsequent changes to the copy will not affect the original,
+     *   nor vice versa.
+     * @exception OutOfMemoryError
+     *   Indicates insufficient memory for the new LinkedStack.
+     */
+    @SuppressWarnings("unchecked")
+    public LinkedStack<E> clone() {
+        LinkedStack<E> answer;
+
+        try {
+            answer = (LinkedStack<E>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            // This exception should not occur. But if it does, it would probably indicate a programming error that
+            // made super.clone unavailable. The most common error would be forgetting the "Implement Cloneable" clause
+            // at the start of the class.
+            throw new RuntimeException("This class does not implement Cloneable.");
+        }
+
+        try {
+            answer.top = (Node<E>) top.getClass().getMethod("clone").invoke(top);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("The getMethod() is not available.");
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("Illegal access exception.");
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException("Invocation target exception.");
+        }
+
+        return answer;
+    }
 
     /**
      * Compare this Stack to another Stack for equality.
