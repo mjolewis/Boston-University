@@ -76,6 +76,26 @@ public class LinkedQueue<E> implements Queue<E> {
     public boolean isEmpty() { return size == 0; }
 
     /**
+     * public Node<E> getFront()
+     * Accessor method to retrieve the front node from this Queue.
+     * @return Node<E>
+     *  The front node from this Queue.
+     * @postcondition
+     *  This Queue has not been modified.
+     */
+    public Node<E> getFront() { return front; }
+
+    /**
+     * public Node<E> getRear()
+     * Accessor method to retrieve the rear node from this Queue.
+     * @return Node<E>
+     *  The rear node from this Queue.
+     * @postcondition
+     *  This Queue has not been modified.
+     */
+    public Node<E> getRear() { return rear; }
+
+    /**
      * public E remove()
      * Mutator method that removes the front item from this Queue. Note that the object being removed has had its type
      * erased; however, we have ensured that the returned object is of type E. Therefore, we suppress the compile time
