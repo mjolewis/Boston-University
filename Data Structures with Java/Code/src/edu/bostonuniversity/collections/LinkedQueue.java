@@ -53,14 +53,12 @@ public class LinkedQueue<E> implements Queue<E> {
     @Override
     @SuppressWarnings("unchecked")
     public void add(Object item) {
-        E element;
+        E element = (E) item;
         if (isEmpty()) {
-            element = (E) item;
             front = new Node<>(element, front);
             rear = front;
         } else {
-            element = (E) item;
-            rear.setNext(new Node<>(element, null));
+            rear.setNext(new Node<>(element, rear));
             rear = rear.getNext();
         }
         size++;
@@ -98,7 +96,7 @@ public class LinkedQueue<E> implements Queue<E> {
         answer = front;
         front = front.getNext();
         size--;
-        return (E) answer.getData();
+        return answer.getData();
     }
 
     /**
