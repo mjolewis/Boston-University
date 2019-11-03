@@ -55,4 +55,73 @@ public class BTNode<E> {
         this.left = left;
         this.right = right;
     }
+
+    /**
+     * public E getData()
+     * Accessor method to retrieve the activating nodes data.
+     * @return E
+     *  The activating nodes data.
+     */
+    public E getData() {
+        return data;
+    }
+
+    /**
+     * public BTNode<E> getLeft()
+     * Accessor method that returns a reference to the activating nodes left child.
+     * @return BTNode<E>
+     *  A reference to this nodes left child. Note that this may be a null reference, which indicates that there is no
+     *  left child.
+     */
+    public BTNode<E> getLeft() {
+        return left;
+    }
+
+    /**
+     * public BTNode<E> getRight()
+     * Accessor method that returns a reference to the activating nodes right child.
+     * @return BTNode<E>
+     *  A reference to this nodes right child. Note that this may be a null reference, which indicates that there is no
+     *  right child.
+     */
+    public BTNode<E> getRight() {
+        return right;
+    }
+
+
+    /**
+     * public void setData()
+     * Mutator method that updates the data in the activating node to the specified data.
+     * @param data
+     *  The new data for the activating node.
+     * @postcondition
+     *  The data for the activating node has been set to the specified data.
+     */
+    public void setData(E data) {
+        this.data = data;
+    }
+
+    /**
+     * public void setLeft()
+     * Mutator method that updates the reference of the left node to the specified node.
+     * @param left
+     *  The new reference node for this activating objects left child.
+     * @postcondition
+     *  The reference variable left for the activating node has been set to the specified reference variable.
+     */
+    public void setLeft(BTNode<E> left) {
+        this.left = left;
+    }
+
+    /**
+     * public void setRight()
+     * Mutator method that updates the reference of the right node to the specified node.
+     * @param right
+     *  The new reference node for this activating objects right child.
+     * @postcondition
+     *  The reference variable right for the activating node has been set to the specified reference variable.
+     */
+    public void setRight(BTNode<E> right) {
+        this.right = right;
+    }
 }
