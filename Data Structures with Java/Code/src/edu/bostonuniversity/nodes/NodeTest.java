@@ -1,48 +1,35 @@
 package edu.bostonuniversity.nodes;
 
-import edu.bostonuniversity.collections.LinkedList;
-
 public class NodeTest {
     public static void main(String[] args) {
-        Node<Integer> node = new Node<>();
-        LinkedList<Integer> list = new LinkedList<>(1, null);
+        BTNode<String> root = new BTNode<>("Louise", null, null);
 
-        list.addAfter(3);
+        root.setLeft(new BTNode<String>("Rosemarie", new BTNode<String>("Kortney", null, null),
+                new BTNode<String>("Michael", null, null)));
 
-        System.out.println("Size is : " + list.size());
-        System.out.println("Prev is: " + list.getPrevious());
-        System.out.println("Head is: " + list.getHead().getData());
-        System.out.println("Cursor is: " + list.getCurrent());
-        System.out.println("Tail is: " + list.getTail());
+        root.setRight(new BTNode<String>("Melanie", new BTNode<String>("Rae", null, null),
+                new BTNode<String>("Caitlin", null, null)));
 
-        list.start();
-
-        System.out.println();
-        System.out.println("Size is : " + list.size());
-        System.out.println("Head is: " + list.getHead().getData());
-        System.out.println("Cursor is: " + list.getCurrent());
-        System.out.println("Tail is: " + list.getTail());
+        System.out.println("Root is: " + root.getData());
+        System.out.println("Root left child is: " + root.getLeft().getData());
+        System.out.println("Root right child is: " + root.getRight().getData());
 
         System.out.println();
-        list.addAfter(2);
+
+        System.out.println("Left Child is: " + root.getLeft().getData());
+        System.out.println("Child's left child is: " + root.getLeft().getLeft().getData());
+        System.out.println("Child's right child is: " + root.getLeft().getRight().getData());
 
         System.out.println();
-        System.out.println("Size is : " + list.size());
-        System.out.println("Head is: " + list.getHead().getData());
-        System.out.println("Cursor is: " + list.getCurrent());
-        System.out.println("Tail is: " + list.getTail());
+
+        System.out.println("Right Child is: " + root.getRight().getData());
+        System.out.println("Child's left child is: " + root.getRight().getLeft().getData());
+        System.out.println("Child's right child is: " + root.getRight().getRight().getData());
 
         System.out.println();
-        System.out.println("Current is : " + list.getCursor().getData());
-        System.out.println("Current is : " + list.getCursor().getNext().getData());
-        System.out.println("Current is : " + list.getCursor().getNext().getNext().getData());
+        root.setData("Grandma");
+        System.out.println("Root is: " + root.getData());
 
-        list.removeCurrent();
-        System.out.println();
-        System.out.println("Size is : " + list.size());
-        System.out.println("Prev is: " + list.getPrevious());
-        System.out.println("Head is: " + list.getHead().getData());
-        System.out.println("Cursor is: " + list.getCurrent());
-        System.out.println("Tail is: " + list.getTail());
+
     }
 }
