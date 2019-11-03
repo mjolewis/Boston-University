@@ -135,7 +135,10 @@ public class LinkedStack<E> implements Cloneable {
      * Accessor method to retrieve the top of the Stack.
      * @return Node<E>
      */
-    public Node<E> getTop() { return top; }
+    public Node<E> getTop() {
+        if (size == 0) { return null; }
+        return top;
+    }
 
     /**
      * public int getSize()
@@ -165,17 +168,6 @@ public class LinkedStack<E> implements Cloneable {
     public E peek() {
         if (getSize() == 0) { return null; }
         return top.getData();
-    }
-
-    /**
-     * public void removeAll()
-     * Mutator method that removes all the nodes from the Stack.
-     * @postcondition
-     *   Stack is empty.
-     */
-    public void removeAll() {
-        top = null;
-        size = 0;
     }
 
     /**
@@ -213,20 +205,14 @@ public class LinkedStack<E> implements Cloneable {
     }
 
     /**
-     * public Node<E> removeTop()
-     * Mutator method that removes the top of the Stack. The next item (if there is one) becomes the new top.
-     * Otherwise, top becomes a null reference.
-     * @return Node<E>
-     *   The top node of the Stack.
+     * public void removeAll()
+     * Mutator method that removes all the nodes from the Stack.
      * @postcondition
-     *   The top of the Stack has been removed. The next item (if there is one) becomes the new top. Otherwise, the top
-     *   becomes a null reference. The size of the Stack is decreased by one.
+     *   Stack is empty.
      */
-    public Node<E> removeTop() {
-        Node<E> answer;
-        answer = top.getNext();
-        size--;
-        return answer;
+    public void removeAll() {
+        top = null;
+        size = 0;
     }
 
     /**
