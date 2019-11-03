@@ -67,7 +67,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
         prev = null;
         head = new Node(data, next);
         cursor = head;
-        tail = this.head.getNext();
+        tail = head;
     }
 
     /**
