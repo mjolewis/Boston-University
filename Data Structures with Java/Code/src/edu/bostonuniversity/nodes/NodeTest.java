@@ -37,7 +37,7 @@ public class NodeTest {
         LinkedStack<Integer> clone = stack2.clone();
 
 
-        //clone.getTop().setData(5000);
+        clone.getTop().setData(5000);
 
 
         System.out.println("Changed top in clone");
@@ -54,6 +54,10 @@ public class NodeTest {
         System.out.println("Clone Top is: " + clone.peek());
         System.out.println("Clone Remove top: " + clone.pop());
         System.out.println("Clone Size is: " + clone.getSize());
+
+        System.out.println();
+        System.out.println("Changed top in clone");
+        clone.getTop().setData(27272);
 
         System.out.println();
         System.out.println("Top is: " + stack2.peek());

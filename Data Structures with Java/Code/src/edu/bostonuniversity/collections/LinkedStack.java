@@ -80,7 +80,7 @@ public class LinkedStack<E> implements Cloneable {
             throw new RuntimeException("This class does not implement Cloneable.");
         }
 
-        answer.top = new Node<>();
+        answer.top = listCopy(top);
         return answer;
     }
 
@@ -127,6 +127,39 @@ public class LinkedStack<E> implements Cloneable {
      */
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    /**
+     * A helper method to create a deep clone of a linked list.
+     * @param source
+     *   The head reference for a linked list that will be copied (which may be an empty list where source is null).
+     * @return Node
+     *   The method has made a copy of the linked list starting at source. The return value is the head reference for
+     *   the copy.
+     * @exception OutOfMemoryError
+     *   Indicates insufficient memory for the new Node.
+     */
+    @Contract("null -> null")
+    private Node<E> listCopy(Node<E> source) {
+        Node<E> copyHead;
+        Node<E> copyTail;
+
+        // Handle the special case of an empty list.
+        if (source == null) { return null; }
+
+        // Make the first node for the newly created list.
+        copyHead = new Node<>(source.getData(), source.getNext());
+        copyTail = copyHead;
+
+        // Make the rest of the nodes for the newly created list...
+        while (source.getNext() != null) {
+            source = source.getNext();
+            copyTail.setNext(new Node<>(source.getData(), copyTail.getNext()));
+            copyTail = copyTail.getNext();
+        }
+
+        // Return the head reference for the new list.
+        return copyHead;
     }
 
     /**
