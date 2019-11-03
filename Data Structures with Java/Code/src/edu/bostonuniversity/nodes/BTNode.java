@@ -121,6 +121,36 @@ public class BTNode<E> {
     }
 
     /**
+     * public BTNode<E> removeLeftmost()
+     * Mutator method that removes the left most node starting from the activating nodes root.
+     * @return BTNode<E>
+     *  A reference to the root of the newly modified binary tree. Note that the return value can be null if the
+     *  original binary tree had only one node (which has been removed).
+     * @postcondition
+     *  The binary tree starting at the activating node has had its leftmost node removed.
+     */
+    public BTNode<E> removeLeftmost() {
+        if (left == null) { return right; }
+        left = left.removeLeftmost();
+        return this;
+    }
+
+    /**
+     * public BTNode<E> removeRightmost()
+     * Mutator method that removes the right most node starting from the activating nodes root.
+     * @return BTNode<E>
+     *  A reference to the root of the newly modified binary tree. Note that the return value can be null if the
+     *  original binary tree had only one node (which has been removed).
+     * @postcondition
+     *  The binary tree starting at the activating node has had its rightmost node removed.
+     */
+    public BTNode<E> removeRightmost() {
+        if (right == null) { return left; }
+        right = right.removeRightmost();
+        return this;
+    }
+
+    /**
      * public void setData()
      * Mutator method that updates the data in the activating node to the specified data.
      * @param data
