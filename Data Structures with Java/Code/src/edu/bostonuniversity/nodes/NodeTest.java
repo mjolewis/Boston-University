@@ -3,14 +3,13 @@ package edu.bostonuniversity.nodes;
 public class NodeTest {
     public static void main(String[] args) {
         BTNode<String> root = new BTNode<>("Louise", null, null);
+        BTNode<String> leaf;
 
-        BTNode<String> leaf = new BTNode<>();
+        root.setLeft(new BTNode<>("Rosemarie", new BTNode<>("Kortney", null, null),
+                new BTNode<>("Michael", null, null)));
 
-        root.setLeft(new BTNode<String>("Rosemarie", new BTNode<String>("Kortney", null, null),
-                new BTNode<String>("Michael", null, null)));
-
-        root.setRight(new BTNode<String>("Melanie", new BTNode<String>("Rae", null, null),
-                new BTNode<String>("Caitlin", null, null)));
+        root.setRight(new BTNode<>("Melanie", new BTNode<>("Rae", null, null),
+                new BTNode<>("Caitlin", null, null)));
 
         System.out.println("Root is: " + root.getData());
         System.out.println("Root left child is: " + root.getLeft().getData());
@@ -34,6 +33,10 @@ public class NodeTest {
         System.out.println("Root is: " + root.getData());
         System.out.println("Leaf is : " + leaf.getData());
         System.out.println("Is the root a leaf? " + leaf.isLeaf());
+
+        System.out.println();
+        System.out.println("Get left most data: " + root.getLeftmostData());
+        System.out.println("Get right most data: " + root.getRightmostData());
 
 
     }

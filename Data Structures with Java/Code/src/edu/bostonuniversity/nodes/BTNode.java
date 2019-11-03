@@ -78,6 +78,17 @@ public class BTNode<E> {
     }
 
     /**
+     * public E getLeftmostData()
+     * Accessor method that return the data from the left most node of the activating node.
+     * @return E
+     *  The data from the deepest node that can be reached by following the activating nodes left path.
+     */
+    public E getLeftmostData() {
+        if (left == null) { return data; }
+        return left.getLeftmostData();
+    }
+
+    /**
      * public BTNode<E> getRight()
      * Accessor method that returns a reference to the activating nodes right child.
      * @return BTNode<E>
@@ -86,6 +97,17 @@ public class BTNode<E> {
      */
     public BTNode<E> getRight() {
         return right;
+    }
+
+    /**
+     * public E getRightmostData()
+     * Accessor method that returns the data from the right most node of the activating node.
+     * @return E
+     *  The data from the deepest node that can be reached by following the activating nodes right path.
+     */
+    public E getRightmostData() {
+        if (right == null) { return data; }
+        return right.getRightmostData();
     }
 
     /**
