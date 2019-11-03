@@ -92,6 +92,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
         } else if (!isCurrent()) {
             prev = tail;
             tail = new Node(element, tail);
+            tail.setNext(tail.getNext());
         } else if (head == tail) { // If the head and tail are the first element, then...
             prev = cursor;
             cursor = new Node(element, cursor.getNext()); // ...add the new node and...
@@ -264,7 +265,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
 
     /**
      * public E getCurrent()
-     * Accessor method to determine the current element of the sequence
+     * Accessor method to return the data within the current element of the sequence.
      * @precondition
      *   isCurrent() returns true.
      * @return E
@@ -275,6 +276,21 @@ public class LinkedList<E> implements List<E>, Cloneable {
     @Override
     public E getCurrent() {
         if (isCurrent()) { return cursor.getData(); }
+        else { throw new IllegalStateException("There is no current element."); }
+    }
+
+    /**
+     * public Node<E> getCursor()
+     * Accessor to return the current element of the sequence.
+     * @precondition
+     *   isCurrent() returns true.
+     * @return E
+     *   The current element of the sequence.
+     * @exception IllegalStateException
+     *   Indicates that there is no current element.
+     */
+    public Node<E> getCursor() {
+        if (isCurrent()) { return cursor; }
         else { throw new IllegalStateException("There is no current element."); }
     }
 
@@ -546,7 +562,6 @@ public class LinkedList<E> implements List<E>, Cloneable {
             tail = null;
         } else {
             cursor = cursor.getNext();
-            prev.setNext(cursor);
         }
 
         size--;
