@@ -38,6 +38,19 @@ public class NodeTest {
         System.out.println("Get left most data: " + root.getLeftmostData());
         System.out.println("Get right most data: " + root.getRightmostData());
 
+        System.out.println();
+        System.out.println("Removing leftmost node: " + root.removeLeftmost());
+        System.out.println("Removing rightmost node: " + root.removeRightmost());
 
+        System.out.println();
+        System.out.println("Get left most data: " + root.getLeftmostData());
+        System.out.println("Get right most data: " + root.getRightmostData());
+
+        System.out.println();
+        System.out.println("Removing leftmost node: " + root.removeLeftmost());
+
+        System.out.println();
+        System.out.println("Get left most data: " + root.getLeftmostData());
+        System.out.println("Get right most data: " + root.getRightmostData());
     }
 }
