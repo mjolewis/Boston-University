@@ -291,7 +291,7 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public E getPrevious() {
-        if (isCurrent()) { return prev.getData(); }
+        if (isCurrent() && prev != null) { return prev.getData(); }
         else { throw new IllegalStateException("There is no previous element."); }
     }
 
