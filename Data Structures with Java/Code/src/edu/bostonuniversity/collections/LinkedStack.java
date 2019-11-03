@@ -4,8 +4,6 @@ package edu.bostonuniversity.collections;
 import edu.bostonuniversity.nodes.Node;
 import org.jetbrains.annotations.Contract;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**********************************************************************************************************************
  * A LinkedStack is a sequence of nodes. The LinkedStack is a first-in/last-out data structure meaning that items are
  * added to the top of the stack and only removed when every item on top of it has been removed.
@@ -99,16 +97,7 @@ public class LinkedStack<E> implements Cloneable {
             throw new RuntimeException("This class does not implement Cloneable.");
         }
 
-        try {
-            answer.top = (Node<E>) top.getClass().getMethod("clone").invoke(top);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException("The getMethod() is not available.");
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException("Illegal access exception.");
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException("Invocation target exception.");
-        }
-
+        answer.top = new Node<>();
         return answer;
     }
 
@@ -125,7 +114,7 @@ public class LinkedStack<E> implements Cloneable {
     public boolean equals(Object obj) {
         if (obj instanceof Node) {
             Node<E> candidate = (Node<E>) obj;
-            return (this.getTop().getData() == candidate.getData());
+            return (top.getData() == candidate.getData());
         }
         return false;
     }
@@ -191,7 +180,9 @@ public class LinkedStack<E> implements Cloneable {
 
     /**
      * public E push(E item)
-     * Mutator method that adds a new object to the top of the Stack.
+     * Mutator method that pushes a new node to the top of the Stack.
+     * @note
+     *  Suppressing compile time warnings because the program ensures that the new Node is of type Node<E>.
      * @param item
      *   The item being pushed onto the Stack.
      * @return E
@@ -199,8 +190,10 @@ public class LinkedStack<E> implements Cloneable {
      * @postcondition
      *   The item is now on the top of the Stack and the size of the Stack has increased by one.
      */
+    @SuppressWarnings("unchecked")
     public E push(E item) {
-        add(item);
+        top = new Node(item, top);
+        size++;
         return item;
     }
 
