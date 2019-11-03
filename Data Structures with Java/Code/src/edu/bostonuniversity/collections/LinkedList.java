@@ -84,15 +84,21 @@ public class LinkedList<E> implements List<E>, Cloneable {
      */
     @Override
     public void addAfter(E element) {
-        if (isCurrent()) {
-            prev = this.cursor;
-            cursor.setNext(new Node<>(element, cursor.getNext()));
-            cursor = cursor.getNext(); // The new node becomes the new current element and...
-        } else {
-            tail.setNext(new Node<>(element, tail.getNext()));
-            prev = tail; // The current tail will become the precursor to the new node and...
-            cursor = tail.getNext(); // ...the new node becomes the new current element and...
-            tail = tail.getNext(); // ...the tail becomes the last node of the sequence.
+        if (!isCurrent() && head == tail) {
+            prev = null;
+            head = new Node<>(element, head);
+            cursor = head;
+            tail = head;
+        } else if (!isCurrent()) {
+            prev = tail;
+            tail = new Node(element, tail);
+        } else if (head == tail) { // If the head and tail are the first element, then...
+            prev = cursor;
+            cursor = new Node(element, cursor.getNext()); // ...add the new node and...
+            tail = cursor; // ...update the location of the tail otherwise...
+        } else { // ...the new node is added somewhere between the head and tail.
+            prev = cursor;
+            cursor = new Node(element, cursor.getNext());
         }
 
         size++;
@@ -293,6 +299,21 @@ public class LinkedList<E> implements List<E>, Cloneable {
     public E getPrevious() {
         if (isCurrent() && prev != null) { return prev.getData(); }
         else { throw new IllegalStateException("There is no previous element."); }
+    }
+
+    /**
+     * public E getTail()
+     * Accessor method to determine the tail element of the sequence
+     * @precondition
+     *   isCurrent() returns true.
+     * @return E
+     *   The tail element of the sequence.
+     * @exception IllegalStateException
+     *   Indicates that there is no tail element.
+     */
+    public E getTail() {
+        if (isCurrent() && tail != null) { return tail.getData(); }
+        else { throw new IllegalStateException("There is no tail element."); }
     }
 
     /**
