@@ -1,25 +1,40 @@
 package edu.bostonuniversity.nodes;
-import edu.bostonuniversity.collections.LinkedQueue;
+
+import edu.bostonuniversity.collections.LinkedStack;
 
 public class NodeTest {
     public static void main(String[] args) {
-        LinkedQueue<Integer> queue = new LinkedQueue<>();
 
-        System.out.println("Empty Queue: " + queue.isEmpty());
+        Node<Integer> node = new Node<>();
+        LinkedStack<Integer> stack2 = new LinkedStack<>(7, node);
+        System.out.println("Is empty: " + stack2.isEmpty());
+        stack2.add(4);
 
-        queue.add(7);
-        queue.add(9);
-        System.out.println("Front node is: " + queue.getFront().getData());
-        System.out.println("Rear node is: " + queue.getRear().getData());
-        queue.getFront().setData(77777);
-        System.out.println("Front node is: " + queue.getFront().getData());
-        System.out.println("Empty Queue: " + queue.isEmpty());
-        System.out.println("Size of Queue: " + queue.size());
-        System.out.println("Removing front item: " + queue.remove());
-        System.out.println("Size of Queue: " + queue.size());
-        System.out.println("Removing front item: " + queue.remove());
-        System.out.println("Empty Queue: " + queue.isEmpty());
-        System.out.println("Removing front item: " + queue.remove());
+        System.out.println("Size is: " + stack2.getSize());
+        System.out.println("Top is: " + stack2.getTop().getData());
+        System.out.println("Remove top: " + stack2.pop());
+
+        System.out.println();
+        System.out.println("Size is: " + stack2.getSize());
+        System.out.println("Top is: " + stack2.getTop().getData());
+        System.out.println("Remove top: " + stack2.pop());
+        System.out.println("Is empty: " + stack2.isEmpty());
+
+        System.out.println();
+        System.out.println("Size is: " + stack2.getSize());
+
+        System.out.println();
+        stack2.add(77);
+        stack2.add(88);
+        System.out.println("Size is: " + stack2.getSize());
+        System.out.println("Top is: " + stack2.getTop().getData());
+        System.out.println("Remove top: " + stack2.pop());
+
+        System.out.println();
+        System.out.println("Size is: " + stack2.getSize());
+        System.out.println("Top is: " + stack2.getTop().getData());
+
+
 
     }
 }
