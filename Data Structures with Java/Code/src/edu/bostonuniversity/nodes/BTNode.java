@@ -88,6 +88,15 @@ public class BTNode<E> {
         return right;
     }
 
+    /**
+     * public boolean isLeaf()
+     * Accessor method to determine if the activating node is a leaf.
+     * @return boolean
+     *  True if the activating node is a leaf. Otherwise false.
+     */
+    public boolean isLeaf() {
+        return (left == null) && (right == null);
+    }
 
     /**
      * public void setData()
