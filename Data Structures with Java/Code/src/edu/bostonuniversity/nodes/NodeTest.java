@@ -4,6 +4,8 @@ public class NodeTest {
     public static void main(String[] args) {
         BTNode<String> root = new BTNode<>("Louise", null, null);
 
+        BTNode<String> leaf = new BTNode<>();
+
         root.setLeft(new BTNode<String>("Rosemarie", new BTNode<String>("Kortney", null, null),
                 new BTNode<String>("Michael", null, null)));
 
@@ -27,8 +29,11 @@ public class NodeTest {
         System.out.println("Child's right child is: " + root.getRight().getRight().getData());
 
         System.out.println();
+        leaf = root.getRight().getLeft();
         root.setData("Grandma");
         System.out.println("Root is: " + root.getData());
+        System.out.println("Leaf is : " + leaf.getData());
+        System.out.println("Is the root a leaf? " + leaf.isLeaf());
 
 
     }
