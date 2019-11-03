@@ -35,7 +35,7 @@ public class Game {
      *   Indicates insufficient memory for the new Game.
      */
     public Game() {
-        this.boardSize = 8;
+        boardSize = 8;
         success = false;
         stack = new LinkedStack<>();
     }
@@ -143,20 +143,20 @@ public class Game {
         double row = 2; // The first position doesn't require a comparison, so we immediately jump to row 2.
         double column = (int) (Math.random() * boardSize) + 1;
 
-        stack.add(column); // Add 1st position to stack. It's the initial comparison and avoids null pointer exception.
+        stack.push(column); // Push 1st item onto stack. It's the initial comparison and avoids null pointer exception.
         while (!success) {
-            column = (int) (Math.random() * boardSize) + 1; // Another position that we try to add to the stack.
+            column = (int) (Math.random() * boardSize) + 1; // Another position that we try to push to the stack.
             if (stack.getSize() == boardSize) { // If we enter here, the board is full and no conflicts exists.
                 success = true;
                 break;
             } else if (isColumnValid(column) && isDiagonalValid(row, column) && isRowValid(row)) {
-                stack.add(column);
+                stack.push(column);
                 row++;
             } else {
                 // A conflict has occurred. Clear the board and try again.
                 stack.removeAll();
                 column = (int) (Math.random() * boardSize) + 1; // Create the first position and...
-                stack.add(column); // ...add the position to the board.
+                stack.push(column); // ...push the position to the board.
                 row = 2;
             }
         }

@@ -58,23 +58,6 @@ public class LinkedStack<E> implements Cloneable {
     }
 
     /**
-     * public void add(E element)
-     * Add a new element to the front of this LinkedStack.
-     * @note
-     *  Suppressing compile time warnings because the program ensures that the new Node is of type Node<E>.
-     * @param element
-     *   The new element that is being added.
-     * @postcondition
-     *   A new copy of the element has been added to the front of this LinkedStack. The new element becomes the new
-     *   top.
-     */
-    @SuppressWarnings("unchecked")
-    public void add(E element) {
-        top = new Node(element, top);
-        size++;
-    }
-
-    /**
      * public Node<E> clone()
      * Generate a copy of this LinkedStack. Super.clone() returns a generic object that has had its type information
      * erased at run time and generates an unchecked warning. However, this implementation suppresses that warning.
