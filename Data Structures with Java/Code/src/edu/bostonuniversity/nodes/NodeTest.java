@@ -46,9 +46,15 @@ public class NodeTest {
         System.out.println("Copy root right child is: " + copy.getRight().getData());
 
         System.out.println();
-        root.setData("Great Grandma");
         System.out.println("Root is: " + root.getData());
         System.out.println("Copy root is: " + copy.getData());
+
+        root.setLeft(new BTNode<>("new person here now", null, null));
+
+        System.out.println("Root is: " + root.getData());
+        System.out.println("Root left child is: " + root.getLeft().getData());
+        System.out.println("Copy left child is: " + copy.getLeft().getData());
+
 
 
     }

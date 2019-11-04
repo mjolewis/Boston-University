@@ -79,7 +79,7 @@ public class BTNode<E> {
 
     /**
      * public E getLeftmostData()
-     * Accessor method that return the data from the left most node of the activating node.
+     * Accessor method that return the data from the leftmost node of the activating node.
      * @return E
      *  The data from the deepest node that can be reached by following the activating nodes left path.
      */
@@ -101,7 +101,7 @@ public class BTNode<E> {
 
     /**
      * public E getRightmostData()
-     * Accessor method that returns the data from the right most node of the activating node.
+     * Accessor method that returns the data from the rightmost node of the activating node.
      * @return E
      *  The data from the deepest node that can be reached by following the activating nodes right path.
      */
@@ -194,7 +194,7 @@ public class BTNode<E> {
      * @return BTNode<E>
      *  A copy of the binary tree starting at the source. The return value is a reference to the root node.
      * @postcondition
-     *  A binary tree has been deeply cloned.
+     *  A binary tree has been copied.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this new binary tree.
      */
