@@ -2,7 +2,7 @@ package edu.bostonuniversity.nodes;
 
 public class NodeTest {
     public static void main(String[] args) {
-        BTNode<String> root = new BTNode<>("Louise", null, null);
+        BTNode<String> root = new BTNode<>("Grandma", null, null);
         BTNode<String> copy;
         BTNode<String> leaf;
 
@@ -46,10 +46,9 @@ public class NodeTest {
         System.out.println("Copy root right child is: " + copy.getRight().getData());
 
         System.out.println();
-        copy.setData("Grandma Louise");
+        root.setData("Great Grandma");
         System.out.println("Root is: " + root.getData());
         System.out.println("Copy root is: " + copy.getData());
-
 
 
     }
