@@ -185,4 +185,26 @@ public class BTNode<E> {
     public void setRight(BTNode<E> right) {
         this.right = right;
     }
+
+    /**
+     * public static <E> BTNode<E> treeCopy(BTNode<E> source)
+     * Copy a binary tree.
+     * @param source
+     *  A reference to the root node of the binary tree to be copied. Note that the root may be a null reference.
+     * @return BTNode<E>
+     *  A copy of the binary tree starting at the source. The return value is a reference to the root node.
+     * @postcondition
+     *  A binary tree has been deeply cloned.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for this new binary tree.
+     */
+    public static <E> BTNode<E> treeCopy(BTNode<E> source) {
+        BTNode<E> leftCopy;
+        BTNode<E> rightCopy;
+
+        if (source == null) { return null; }
+        leftCopy = treeCopy(source.left);
+        rightCopy = treeCopy(source.right);
+        return new BTNode<>(source.data, leftCopy, rightCopy);
+    }
 }

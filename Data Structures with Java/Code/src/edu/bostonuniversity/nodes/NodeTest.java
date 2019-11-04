@@ -3,6 +3,7 @@ package edu.bostonuniversity.nodes;
 public class NodeTest {
     public static void main(String[] args) {
         BTNode<String> root = new BTNode<>("Louise", null, null);
+        BTNode<String> copy;
         BTNode<String> leaf;
 
         root.setLeft(new BTNode<>("Rosemarie", new BTNode<>("Kortney", null, null),
@@ -39,18 +40,17 @@ public class NodeTest {
         System.out.println("Get right most data: " + root.getRightmostData());
 
         System.out.println();
-        System.out.println("Removing leftmost node: " + root.removeLeftmost());
-        System.out.println("Removing rightmost node: " + root.removeRightmost());
+        copy = BTNode.treeCopy(root);
+        System.out.println("Copy root is: " + copy.getData());
+        System.out.println("Copy root left child is: " + copy.getLeft().getData());
+        System.out.println("Copy root right child is: " + copy.getRight().getData());
 
         System.out.println();
-        System.out.println("Get left most data: " + root.getLeftmostData());
-        System.out.println("Get right most data: " + root.getRightmostData());
+        copy.setData("Grandma Louise");
+        System.out.println("Root is: " + root.getData());
+        System.out.println("Copy root is: " + copy.getData());
 
-        System.out.println();
-        System.out.println("Removing leftmost node: " + root.removeLeftmost());
 
-        System.out.println();
-        System.out.println("Get left most data: " + root.getLeftmostData());
-        System.out.println("Get right most data: " + root.getRightmostData());
+
     }
 }
