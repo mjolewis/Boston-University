@@ -207,4 +207,19 @@ public class BTNode<E> {
         rightCopy = treeCopy(source.right);
         return new BTNode<>(source.data, leftCopy, rightCopy);
     }
+
+    /**
+     * public static <E> int treeSize(BTNode<E> root)
+     * Compute the number of nodes in this binary tree.
+     * @param root
+     *  A reference to the root of a binary tree (which may be an empty tree with a null root).
+     * @return int
+     *  The number of nodes in this binary tree.
+     * @note
+     *  A wrong answer occurs for trees larger than Integer.MAX_VALUE.
+     */
+    public static <E> int treeSize(BTNode<E> root) {
+        if (root == null) { return 0; }
+        return 1 + treeSize(root.left) + treeSize(root.right);
+    }
 }
