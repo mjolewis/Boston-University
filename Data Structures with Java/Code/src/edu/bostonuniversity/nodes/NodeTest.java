@@ -12,6 +12,12 @@ public class NodeTest {
         root.setRight(new BTNode<>("Melanie", new BTNode<>("Rae", null, null),
                 new BTNode<>("Caitlin", null, null)));
 
+        root.getLeft().getLeft().setLeft(new BTNode<>("Jordyn", null, null));
+        root.getLeft().getLeft().setRight(new BTNode<>("Beau", null, null));
+
+        System.out.println("Tree size is: " + BTNode.treeSize(root));
+        System.out.println("Leftmost data is: " + root.getLeftmostData());
+
         System.out.println("Root is: " + root.getData());
         System.out.println("Root left child is: " + root.getLeft().getData());
         System.out.println("Root right child is: " + root.getRight().getData());
@@ -54,6 +60,8 @@ public class NodeTest {
         System.out.println("Root is: " + root.getData());
         System.out.println("Root left child is: " + root.getLeft().getData());
         System.out.println("Copy left child is: " + copy.getLeft().getData());
+
+        System.out.println("Tree size is: " + BTNode.treeSize(root));
 
 
 
