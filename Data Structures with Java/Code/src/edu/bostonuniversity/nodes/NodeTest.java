@@ -9,14 +9,31 @@ public class NodeTest {
         root.setLeft(new BTNode<>("Rosemarie", new BTNode<>("Kortney", null, null),
                 new BTNode<>("Michael", null, null)));
 
-        root.setRight(new BTNode<>("Melanie", new BTNode<>("Rae", null, null),
-                new BTNode<>("Caitlin", null, null)));
-
         root.getLeft().getLeft().setLeft(new BTNode<>("Jordyn", null, null));
         root.getLeft().getLeft().setRight(new BTNode<>("Beau", null, null));
 
+        root.setRight(new BTNode<>("Melanie", new BTNode<>("Rae", null, null),
+                new BTNode<>("Caitlin", null, null)));
+
         System.out.println("Tree size is: " + BTNode.treeSize(root));
         System.out.println("Leftmost data is: " + root.getLeftmostData());
+
+        System.out.println();
+        System.out.println();
+
+        System.out.println("Starting inorder print:");
+        root.inorderPrint();
+
+        System.out.println();
+        System.out.println("Starting preorder print:");
+        root.preorderPrint();
+
+        System.out.println();
+        System.out.println("Starting postorder print:");
+        root.postorderPrint();
+
+        System.out.println();
+        System.out.println();
 
         System.out.println("Root is: " + root.getData());
         System.out.println("Root left child is: " + root.getLeft().getData());

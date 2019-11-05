@@ -121,6 +121,54 @@ public class BTNode<E> {
     }
 
     /**
+     * public void inorderPrint()
+     * An in-order traversal to print the data from this node and all of its descendants in the binary tree.
+     * @postcondition
+     *  The data of this node and all of its descendants have been written by System.out.println().
+     */
+    public void inorderPrint() {
+        if (left != null) {
+            left.inorderPrint();
+        }
+        System.out.println(data);
+        if (right != null) {
+            right.inorderPrint();
+        }
+    }
+
+    /**
+     * public void preorderPrint()
+     * An pre-order traversal to print the data from this node and all of its descendants in the binary tree.
+     * @postcondition
+     *  The data of this node and all of its descendants have been written by System.out.println().
+     */
+    public void preorderPrint() {
+        System.out.println(data);
+        if (left != null) {
+            left.preorderPrint();
+        }
+        if (right != null) {
+            right.preorderPrint();
+        }
+    }
+
+    /**
+     * public void postorderPrint()
+     * An post-order traversal to print the data from this node and all of its descendants in the binary tree.
+     * @postcondition
+     *  The data of this node and all of its descendants have been written by System.out.println().
+     */
+    public void postorderPrint() {
+        if (left != null) {
+            left.postorderPrint();
+        }
+        if (right != null) {
+            right.postorderPrint();
+        }
+        System.out.println(data);
+    }
+
+    /**
      * public BTNode<E> removeLeftmost()
      * Mutator method that removes the left most node starting from the activating nodes root.
      * @return BTNode<E>
