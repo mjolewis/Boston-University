@@ -6,7 +6,7 @@ package edu.bostonuniversity.nodes;
  * A BTNode<E> provides a node for a binary tree with a reference to an E object as the data in each node.
  *
  * @note
- *  Beyond Integer.MAZx_VALUE elements, treeSize is wrong.
+ *  Beyond Integer.MAX_VALUE elements, treeSize is wrong.
  *
  * @author mlewis
  * @version Nov 3, 2019
