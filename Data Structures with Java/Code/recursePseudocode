@@ -39,6 +39,22 @@
     }
 
     /**
+    * public String convertToString(int n)
+    * A recursive method to return an integer as a String of digits.
+    * @param n
+    *  The integer being converted to a String.
+    * @return String
+    *  A String representation of the integer argument.
+    */
+    public String convertToString(int n) {
+        String answer = "";
+        if (n == 0) {
+            return;
+        }
+        return answer + convertToString(n - 1);
+    }
+
+    /**
     * public int getDepth()
     * Accessor method that returns the depth of recursion.
     * @return int

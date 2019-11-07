@@ -28,6 +28,23 @@ public class Recurse {
     public Recurse() {}
 
     /**
+     * public String convert(int n)
+     * A recursive method to return an integer as a String of digits.
+     * @param n
+     *  The integer being converted to a String.
+     * @return String
+     *  A String representation of the integer argument.
+     */
+    public String convert(int n) {
+        String answer = "";
+        if (n == 0) {
+            return answer;
+        }
+        answer += n % 10;
+        return convert(n / 10) + answer;
+    }
+
+    /**
      * public void printRecursivePattern(int start, int end)
      * A series of asterisks have been written to the terminal using System.out.println(). The first line contains one
      * asterisk, the next line contains 2, and so on, up to the nth line, which contains n asterisks. Line n+1 and n+2
