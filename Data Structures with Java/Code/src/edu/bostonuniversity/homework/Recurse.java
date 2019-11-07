@@ -42,6 +42,7 @@ public class Recurse {
      *  A series of asterisks have been written to the terminal using System.out.println().
      */
     public void printRecursivePattern(int start, int end) {
+        if (start < 0 || end < 0) { return; }
         if (start > end) {
             System.out.println("*".repeat(end));
             return;
