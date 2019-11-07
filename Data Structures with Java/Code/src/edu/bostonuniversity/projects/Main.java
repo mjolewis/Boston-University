@@ -1,6 +1,6 @@
 // File Main.Java from the package edu.bostonuniversity.homework2
 
-package edu.bostonuniversity.homework2;
+package edu.bostonuniversity.projects;
 
 /**********************************************************************************************************************
  * Main.java initiates the Game.java class where a solution for the 8 Queens problem is found.
