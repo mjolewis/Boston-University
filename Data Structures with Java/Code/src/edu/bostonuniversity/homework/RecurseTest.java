@@ -7,7 +7,7 @@ public class RecurseTest {
         recurse.printRecursivePattern(1, 4);
         System.out.println("-----------------------------");
 
-        System.out.println("Run 3 of recursive print ->");
+        System.out.println("Run 2 of recursive print ->");
         recurse.printRecursivePattern(1, 5);
         System.out.println("-----------------------------");
 
