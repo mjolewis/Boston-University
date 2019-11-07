@@ -1,6 +1,6 @@
 // File Game.java from the package edu.bostonuniversity.homework2
 
-package edu.bostonuniversity.homework2;
+package edu.bostonuniversity.projects;
 import edu.bostonuniversity.collections.LinkedStack;
 import edu.bostonuniversity.nodes.Node;
 
