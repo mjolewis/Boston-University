@@ -37,13 +37,14 @@ public class Recurse {
      * @param end
      *  The higher end of a range that goes from start to end.
      * @precondition
-     *  The start and end are greater than or equal to zero with end being greater than start
+     *  The start and end are greater than or equal to zero with end being greater than start.
      * @postcondition
      *  A series of asterisks have been written to the terminal using System.out.println().
      */
     public void printRecursivePattern(int start, int end) {
-        if (start == end) {
+        if (start > end) {
             System.out.println("*".repeat(end));
+            return;
         }
         System.out.println("*".repeat(start));
         printRecursivePattern(start + 1, end);
