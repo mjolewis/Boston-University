@@ -1,0 +1,59 @@
+/**********************************************************************************************************************
+ * Pseudocode for programming project 2 of Data Structures with Java with Professor Berry
+ *
+ * @note
+ *   1. Pseudocode for the Sieve of Eratosthenes
+ *
+ * @author mlewis
+ * @version Nov 8, 2019
+ *********************************************************************************************************************/
+
+ /*********************************************************************************************************************
+ * A user input class builds a GUI with a text input field and a return button. This class implements the
+ * ActionListener interface.
+ *
+ * @author mlewis
+ * @version Nov 8, 2019
+ *********************************************************************************************************************/
+
+ public class UserInput implements ActionListener {
+    // Invariant of the UserInput.java class.
+    //  1. The instance variable userInput stores the value entered by the user.
+    int userInput;
+
+    /**
+    * public void constructGUI()
+    * Constructs a GUI
+    * @postcondition
+    *  A GUID has been constructed.
+    * @exception OutOfMemoryError
+    *  Indicates insufficient memory for this GUI
+    public void constructGUI() {
+        INIT GUI frame
+        INIT GUI panel
+        INIT GUI button
+        INIT GUI text field
+
+        ADD ActionListener to button
+        ADD panel to frame
+        ADD button to frame
+
+        SET frame size
+        SET frame to visible
+    }
+
+    /**
+    * private void actionPerformed(ActionEvent e)
+    * Helper method that captures the users input.
+    * @param e
+    *  An action event listener object.
+    * @postcondition
+    *  The user has pressed the submit button and the input has been stored in the instance variable userInput. The
+    *  test field has been cleared and focus has been restored to the text field.
+    */
+    private void actionPerformed(ActionEvent e) {
+        SET userInput variable to text submitted by user
+        CLEAR text field
+        SET focus back to empty text field
+    }
+ }
