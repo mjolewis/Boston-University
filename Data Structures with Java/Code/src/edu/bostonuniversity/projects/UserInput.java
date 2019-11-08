@@ -18,8 +18,8 @@ public class UserInput implements ActionListener {
     // Invariant of the UserInput.java class.
     //  1. The instance variable userInput stores the value entered by the user.
     //  2. The instance variable field is provides a text box on the GUI for the user to type into.
-    String userInput;
-    JTextField field;
+    private String userInput;
+    private JTextField field;
 
     /**
      * public void constructGUI()
@@ -40,6 +40,16 @@ public class UserInput implements ActionListener {
 
         frame.setSize(300, 100);
         frame.setVisible(true);
+    }
+
+    /**
+     * public String getUserInput()
+     * Getter that returns the value stored in the instance variable userInput
+     * @return String
+     *  The value stored in the instance variable userInput
+     */
+    public String getUserInput() {
+        return userInput;
     }
 
     /**
