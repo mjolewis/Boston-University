@@ -9,9 +9,9 @@ package edu.bostonuniversity.projects;
  * @version Oct 17, 2019
  *********************************************************************************************************************/
 
-public class Main {
+public class NQueensMain {
     public static void main(String[] args) {
-        Game game = new Game(8);
+        NQueensGame game = new NQueensGame(8);
         game.play();
         System.out.println(game);
     }

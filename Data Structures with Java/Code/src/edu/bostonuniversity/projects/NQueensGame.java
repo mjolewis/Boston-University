@@ -17,7 +17,7 @@ import edu.bostonuniversity.nodes.Node;
  * @version Oct 17, 2019
  *********************************************************************************************************************/
 
-public class Game {
+public class NQueensGame {
     // Invariant of the Game class.
     //  1. The instance variable stack is a LinkedStack.
     //  2. The instance variable success indicates whether or not a solution to the n queens problem has been found.
@@ -34,7 +34,7 @@ public class Game {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new Game.
      */
-    public Game() {
+    public NQueensGame() {
         boardSize = 8;
         success = false;
         stack = new LinkedStack<>();
@@ -52,7 +52,7 @@ public class Game {
      * @exception OutOfMemoryError
      *   Indicates insufficient memory for the new Game.
      */
-    public Game(int boardSize) {
+    public NQueensGame(int boardSize) {
         if (boardSize <= 2) {
             throw new IllegalArgumentException("Size <= 2: " + boardSize);
         } else {
