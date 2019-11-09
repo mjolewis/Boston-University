@@ -16,9 +16,7 @@ import java.awt.event.ActionListener;
 
 public class BuildGUI implements ActionListener {
     // Invariant of the BuildGUI.java class.
-    //  1. The instance variable userInput stores the value entered by the user.
-    //  2. The instance variable field is provides a text box on the GUI for the user to type into.
-    private String userInput;
+    //  1. The instance variable field provides a text box on the GUI for the user to type into.
     private JTextField field = new JTextField("Enter an integer value", 20);
 
     /**
@@ -29,12 +27,22 @@ public class BuildGUI implements ActionListener {
      * @postcondition
      *  The user has pressed the submit button and the input has been stored in the instance variable userInput. The
      *  text field has been cleared and focus has been restored to the text field.
+     * @exception NumberFormatException
+     *  Indicates invalid user input.
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        userInput = field.getText();
-        field.setText("");
-        field.requestFocus();
+        int maxNumber;
+
+        try {
+            maxNumber = Integer.parseInt(field.getText());
+            field.setText("");
+            field.requestFocus();
+            new CalculatePrimes(maxNumber);
+        } catch (NumberFormatException e) {
+            field.setText("Error. Please enter an integer.");
+            field.requestFocus();
+        }
     }
 
     /**
@@ -59,15 +67,5 @@ public class BuildGUI implements ActionListener {
         frame.setSize(500, 300);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-    }
-
-    /**
-     * public String getUserInput()
-     * Getter that returns the value stored in the instance variable userInput
-     * @return String
-     *  The value stored in the instance variable userInput
-     */
-    public String getUserInput() {
-        return userInput;
     }
 }
