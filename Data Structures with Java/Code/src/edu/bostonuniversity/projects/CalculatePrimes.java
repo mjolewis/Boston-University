@@ -12,7 +12,7 @@ package edu.bostonuniversity.projects;
  *
  * @author mlewis
  * @version Nov 9, 2019
- */
+ *********************************************************************************************************************/
 
 public class CalculatePrimes {
     // Invariant of the CalculatePrimes class.
