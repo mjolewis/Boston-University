@@ -21,10 +21,12 @@ public class CalculatePrimes {
     //     array-based queue has been initialized with 10 elements starting with the START_VALUE.
     //  2. The instance variable primes is an array-based queue that stores all the prime numbers calculated by the
     //     Sieve of Eratosthenes algorithm.
-    //  3. The instance variable START_VALUE is the first element in the numbers array.
-    //  4. The instance variable MINIMUM_SIZE guarantees the minimum size of the numbers array.
+    //  3. The maxNumber stores the integer entered by the user.
+    //  4. The instance variable START_VALUE is the first element in the numbers array.
+    //  5. The instance variable MINIMUM_SIZE guarantees the minimum size of the numbers array.
     private int[] numbers;
     private int[] primes;
+    private int maxNumber;
     private static final int START_VALUE = 2;
     private static final int MINIMUM_SIZE = 10;
 
@@ -39,29 +41,20 @@ public class CalculatePrimes {
      */
     public CalculatePrimes() {
         numbers = new int[MINIMUM_SIZE];
-        for (int i = START_VALUE; i < START_VALUE + MINIMUM_SIZE; i++) {
-            numbers[i - START_VALUE] = i;
-        }
     }
 
     /**
      * public CalculatePrimes(int n)
      * An overloaded constructor that initializes the numbers queue with consecutive integers 2 through n inclusive.
-     * @param n
+     * @param maxNumber
      *  The maximum value added to the numbers array.
      * @postcondition
      *  The numbers queue has been initialized with consecutive integers 2 through n inclusive.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this queue.
      */
-    public CalculatePrimes(int n) {
-        numbers = new int[n];
-        if (n < START_VALUE + MINIMUM_SIZE) {
-            new CalculatePrimes();
-        } else {
-            for (int i = START_VALUE; i <= n; i++) {
-                numbers[i - START_VALUE] = i;
-            }
-        }
+    public CalculatePrimes(int maxNumber) {
+        this();
+        this.maxNumber = maxNumber;
     }
 }
