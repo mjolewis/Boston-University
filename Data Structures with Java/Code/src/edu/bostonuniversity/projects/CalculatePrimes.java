@@ -20,12 +20,12 @@ public class CalculatePrimes {
     //     through n inclusive.
     //  2. The instance variable primes is an array-based queue that stores all the prime numbers calculated by the
     //     Sieve of Eratosthenes algorithm.
-    //  3. The instance variable MINIMUM_VALUE guarantees the minimum number of elements in the numbers array. The
-    //     MINIMUM_VALUE is initialized to 11 to guarantee the numbers array contains 10 elements because the 0th
-    //     index is initialized to the value of 2.
-    private ArrayQueue<Integer> numbers;
-    private ArrayQueue<Integer> primes;
-    private static final int MINIMUM_VALUE = 11;
+    //  3. The instance variable START_VALUE is the first element in the numbers array.
+    //  4. The instance variable MINIMUM_SIZE guarantees the minimum size of the numbers array.
+    private int[] numbers;
+    private int[] primes;
+    private static final int START_VALUE = 2;
+    private static final int MINIMUM_SIZE = 10;
 
     /**
      * public CalculatePrimes()
@@ -37,8 +37,8 @@ public class CalculatePrimes {
      *  Indicates insufficient memory for this queue.
      */
     public CalculatePrimes() {
-        numbers = new ArrayQueue[];
-        for (int i = 2; i <= MINIMUM_VALUE; i++) {
+        numbers = new int[MINIMUM_SIZE];
+        for (int i = START_VALUE; i < START_VALUE + MINIMUM_SIZE; i++) {
             numbers[i - 2] = i;
         }
     }
@@ -54,11 +54,11 @@ public class CalculatePrimes {
      *  Indicates insufficient memory for this queue.
      */
     public CalculatePrimes(int n) {
-        numbers = new ArrayQueue[n];
-        if (n <= MINIMUM_VALUE) {
+        numbers = new int[n];
+        if (n < MINIMUM_SIZE) {
             new CalculatePrimes();
         } else {
-            for (int i = 2; i <= n; i++) {
+            for (int i = START_VALUE; i < START_VALUE + n; i++) {
                 numbers[i - 2] = i;
             }
         }
