@@ -11,9 +11,7 @@ package edu.bostonuniversity.projects;
 
 public class SieveOfEratosthenesMain {
     public static void main(String[] args) {
-        UserInput start = new UserInput();
+        BuildGUI start = new BuildGUI();
         start.constructGUI();
-        String result = start.getUserInput();
-        System.out.println(result);
     }
 }
