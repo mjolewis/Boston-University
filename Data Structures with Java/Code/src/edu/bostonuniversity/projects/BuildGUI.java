@@ -16,8 +16,11 @@ import java.awt.event.ActionListener;
 
 public class BuildGUI implements ActionListener {
     // Invariant of the BuildGUI.java class.
-    //  1. The instance variable field provides a text box on the GUI for the user to type into.
-    private JTextField field = new JTextField("Enter an integer value", 20);
+    //  1. The instance variable inputField provides a text box on the GUI for the user to type into.
+    //  2. The instance variable outputField provides a text box on the GUI to display all prime numbers from 2 to n
+    //     where n is the value entered by the user.
+    private JTextField inputField = new JTextField("", 20);
+    private JTextField outputField = new JTextField("", 20);
 
     /**
      * public void actionPeformed(ActionEvent actionEvent)
@@ -35,13 +38,13 @@ public class BuildGUI implements ActionListener {
         int maxNumber;
 
         try {
-            maxNumber = Integer.parseInt(field.getText());
-            field.setText("");
-            field.requestFocus();
+            maxNumber = Integer.parseInt(inputField.getText());
+            inputField.setText("");
+            inputField.requestFocus();
             new CalculatePrimes(maxNumber);
         } catch (NumberFormatException e) {
-            field.setText("Error. Please enter an integer.");
-            field.requestFocus();
+            inputField.setText("Error. Please enter an integer.");
+            inputField.requestFocus();
         }
     }
 
@@ -56,14 +59,31 @@ public class BuildGUI implements ActionListener {
     public void constructGUI() {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
+        JLabel inputLabel = new JLabel("Enter an integer: ");
+        JLabel outputLabel = new JLabel("Display all prime numbers: ");
         JButton button = new JButton("Submit");
 
-        panel.add(field);
+        // Build the panel...
+        panel.add(inputLabel);
+        panel.add(inputField);
+        panel.add(outputLabel);
+        panel.add(outputField);
+
+        // ...attach labels to input and output fields...
+        inputLabel.setLabelFor(inputField);
+        outputLabel.setLabelFor(outputField);
+
+        // ...set event listeners and restrictions...
         button.addActionListener(this);
+        button.setBackground(Color.blue);
+        outputField.setEditable(false);
+
+        // ...build the frame and...
         frame.getContentPane().add(BorderLayout.CENTER, panel);
         frame.getContentPane().add(BorderLayout.SOUTH, button);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // ...display the frame
         frame.setSize(500, 300);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
