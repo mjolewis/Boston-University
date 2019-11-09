@@ -1,4 +1,4 @@
-// File UserInput.java from the package edu.bostonuniversity.projects
+// File BuildGUI.java from the package edu.bostonuniversity.projects
 
 package edu.bostonuniversity.projects;
 import javax.swing.*;
@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  *********************************************************************************************************************/
 
 public class BuildGUI implements ActionListener {
-    // Invariant of the UserInput.java class.
+    // Invariant of the BuildGUI.java class.
     //  1. The instance variable userInput stores the value entered by the user.
     //  2. The instance variable field is provides a text box on the GUI for the user to type into.
     private String userInput;
