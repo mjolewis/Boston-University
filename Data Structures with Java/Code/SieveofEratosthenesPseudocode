@@ -194,11 +194,9 @@ public class ArrayQueue<E> implements Queue {
      *  Indicates insufficient memory for this ArrayQueue.
      */
      public ArrayQueue() {
-        final int INITIAL_CAPACITY = 10;
-        front = 0;
-        rear = 0;
-        size = 0;
-        data = new Object[INITIAL_CAPACITY];
+        SET an initial capacity to 10
+        SET front, rear, size to 0
+        INIT a new array-based queue to the initial capacity
      }
 
      /**
@@ -212,14 +210,11 @@ public class ArrayQueue<E> implements Queue {
       *  Indicates insufficient memory for this ArrayQueue.
       */
       public ArrayQueue() {
-        if (capacity < 0) {
-            throw new IllegalArgumentException("Initial capacity is negative. Please provide a positive capacity: "
-            + capacity);
-        }
-        front = 0;
-        rear = 0;
-        size = 0;
-        data = new Object[INITIAL_CAPACITY];
+        IF capacity is less than 0
+            THEN throw an error
+        ELSE
+            SET front, rear, size to 0
+            INIT a new array-based queue to the given capacity
       }
 
     /**
@@ -296,7 +291,10 @@ public class ArrayQueue<E> implements Queue {
      *  This Queue has not been modified.
      */
     public boolean isEmpty() {
-        return size == 0;
+        IF size equal 0
+            RETURN true
+        ELSE
+            RETURN false
     }
 
     /**
@@ -311,11 +309,10 @@ public class ArrayQueue<E> implements Queue {
     *  a new element to the nextIndex will not overwrite data because ensureCapacity() has guaranteed this.
     */
     private int nextIndex(int index) {
-        if (++index >= data.length) {
-            return 0;
-        } else {
-            return index;
-        }
+        IF index + 1 is greater than or equal to the length of this array-based queue
+            THEN return 0 (array is circular)
+        ELSE
+            RETURN the incremented index
     }
 
     /**
@@ -352,6 +349,33 @@ public class ArrayQueue<E> implements Queue {
      */
     public int size() {
         return size;
+    }
+
+    /**
+    * public void trimToSize()
+    * Mutator method to decrease the capacity of this array-based queue.
+    * @postcondition
+    *  The capacity of this array-based queue has been decreased to the size of the array. Note, the capacity may not
+    *  be decreased if capacity and size are equivalent.
+    * @exception OutOfMemoryError
+    *  Indicates insufficient memory for the smaller array-based queue.
+    */
+    public void trimToSize() {
+        Object[] smallerArray;
+
+        IF size equals the length of this array-based queue
+            return
+        ELSE IF size is 0
+            INIT smallerArray to the size of this array-based queue.
+        ELSE IF front is smaller than rear
+            INIT smallerArray to the size of this array-based queue.
+            COPY data from this array based queue into the smaller array, starting from front to rear
+        ELSE
+            INIT smallerArray to the size of this array-based queue.
+            COPY data from this array based queue into the smaller array from front to length of this array
+            COPY data from this array based queue into the smaller array from 0 to rear
+
+        SET this array based queue to the new smaller array based queue.
     }
 }
 
