@@ -201,6 +201,27 @@ public class ArrayQueue<E> implements Queue {
         data = new Object[INITIAL_CAPACITY];
      }
 
+     /**
+      * public ArrayQueue(int capacity)
+      * Initialize an ArrayQueue with the given initial capacity.
+      * @postcondition
+      *  This ArrayQueue has been initialized with the given initial capacity.
+      * @exception IllegalArgumentException
+      *  Indicates an invalid initial capacity. Initial capacity must be a positive integer.
+      * @exception OutOfMemoryError
+      *  Indicates insufficient memory for this ArrayQueue.
+      */
+      public ArrayQueue() {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("Initial capacity is negative. Please provide a positive capacity: "
+            + capacity);
+        }
+        front = 0;
+        rear = 0;
+        size = 0;
+        data = new Object[INITIAL_CAPACITY];
+      }
+
     /**
      * public void add(E item)
      * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference.
