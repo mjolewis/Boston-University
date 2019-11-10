@@ -221,13 +221,13 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
-    * public void ensureCapacity(int minimumCapacity)
+    * public void ensureCapacity(int capacity)
     * Change the current capacity of this array-based queue.
-    * @param minimumCapacity
-    *  The minimum capacity of the array-based queue.
+    * @param capacity
+    *  The new capacity of the array-based queue.
     * @postcondition
-    *  This queue's capacity has been increased to to at least the minimumCapacity. If the capacity was already at or
-    *  greater than minimumCapacity, then the capacity of this array-based queue is unchanged.
+    *  This queue's capacity has been increased to the given capacity. This queue's capacity may not need to increase
+    *  the given capacity is less than this array-based queue's current capacity.
     * @exception OutOfMemoryError
     *  Indicates insufficient memory for the bigger array-based queue.
     */
