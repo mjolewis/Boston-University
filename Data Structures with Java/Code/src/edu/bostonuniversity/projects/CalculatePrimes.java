@@ -28,7 +28,7 @@ public class CalculatePrimes {
     private int[] primes;
     private int maxNumber;
     private static final int START_VALUE = 2;
-    private static final int MINIMUM_SIZE = 10;
+    private static final int INITIAL_CAPACITY = 10;
 
     /**
      * public CalculatePrimes()
@@ -40,7 +40,7 @@ public class CalculatePrimes {
      *  Indicates insufficient memory for this queue.
      */
     public CalculatePrimes() {
-        numbers = new int[MINIMUM_SIZE];
+        numbers = new int[INITIAL_CAPACITY];
     }
 
     /**
