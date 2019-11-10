@@ -231,17 +231,17 @@ public class ArrayQueue<E> implements Queue {
     * @exception OutOfMemoryError
     *  Indicates insufficient memory for the bigger array-based queue.
     */
-    public void ensureCapacity(int minimumCapacity) {
+    public void ensureCapacity(int capacity) {
         ADD local variables for a new array, the front, and rear
 
-        IF length of array is greater than minimumCapacity
+        IF length of array is greater than capacity
             THEN no change to capacity
         ELSE IF size of array is 0, then simply increase the capacity of the array-based queue
         ELSE IF front is less than rear
-            INIT the bigger array to minimum capacity
+            INIT the bigger array to given capacity
             INSERT items into the bigger array from front to rear
         ELSE
-            INIT the bigger array to minimum capacity
+            INIT the bigger array to the given capacity
             INSERT numbers from front to data.length - 1 into the bigger array
             INSERT numbers front rear to front - 1 into the bigger array
     }
