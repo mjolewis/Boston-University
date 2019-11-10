@@ -126,6 +126,16 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
+     * public E getData()
+     * Accessor method that returns a reference to the instance variable data, which is an array-based queue.
+     * @return E
+     *  A reference to the instance variable data, which is an array-based queue.
+     */
+    public Object[] getData() {
+        return data;
+    }
+
+    /**
      * public int getFront()
      * Accessor method that returns the front index of this array-based queue.
      * @return int
