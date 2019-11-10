@@ -109,10 +109,12 @@ public class ArrayQueue<E> implements Queue {
         if (data.length >= capacity) {
             return;
         } else if (size == 0) {
-            largerArray = new Object[capacity];
+            data = new Object[capacity];
         } else if (front <= rear) {
             largerArray = new Object[capacity];
             System.arraycopy(data, front, largerArray, front, size);
+            rear++;
+            data = largerArray;
         } else {
             largerArray = new Object[capacity];
             distanceToEnd = data.length - front;
@@ -121,8 +123,8 @@ public class ArrayQueue<E> implements Queue {
             System.arraycopy(data, 0, largerArray, distanceToEnd, distanceToFront);
             front = 0;
             rear = size - 1;
+            data = largerArray;
         }
-        data = largerArray;
     }
 
     /**
@@ -182,7 +184,7 @@ public class ArrayQueue<E> implements Queue {
      *  a new element to the nextIndex will not overwrite data because ensureCapacity() has guaranteed this.
      */
     private int nextIndex(int index) {
-        if (++index >= data.length) {
+        if (++index == data.length) {
             return 0;
         } else {
             return index;
@@ -247,7 +249,7 @@ public class ArrayQueue<E> implements Queue {
             smallerArray = new Object[size];
         } else if (front <= rear) {
             smallerArray = new Object[size];
-            System.arraycopy(data, front, smallerArray, front , size);
+            System.arraycopy(data, front, smallerArray, front , size - 1);
         } else {
             smallerArray = new Object[size];
             distanceToEnd = size - front;
