@@ -124,11 +124,33 @@ public class ArrayQueue<E> implements Queue {
         } else {
             return index;
         }
+    }
 
+    /**
+     * public E remove()
+     * Mutator method that removes the front item from this Queue. Note, we have suppressed unchecked warnings because
+     * our programming guarantees that an E object is returned.
+     * @precondition
+     *  This Queue is not empty.
+     * @return E
+     *  The front item from this Queue.
+     * @postcondition
+     *  The front item from this Queue has been removed and the next item is now the front item. Size has been
+     *  decreased by one.
+     */
     @Override
-    public Object remove() {
-        // TODO: 11/10/19
-        return null;
+    @SuppressWarnings("unchecked")
+    public E remove() {
+        E removedItem;
+
+        if (size == 0) {
+            return null;
+        } else {
+            removedItem = (E) data[front];
+            front = nextIndex(front);
+            size--;
+            return removedItem;
+        }
     }
 
     /**
