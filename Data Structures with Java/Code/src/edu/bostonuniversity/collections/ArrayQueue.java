@@ -16,8 +16,75 @@ package edu.bostonuniversity.collections;
  *     when free memory is exhausted.
  *
  * @author mlewis
- * @version Nov 9, 2019
+ * @version Nov 10, 2019
  *********************************************************************************************************************/
 
-public class ArrayQueue implements Queue {
+public class ArrayQueue<E> implements Queue {
+    // Invariant of the ArrayQueue class.
+    // 1. For a nonempty ArrayQueue, the items in the ArrayQueue are stored in a circular array beginning at
+    //    data[front] and continuing through data[rear].
+    // 2. The instance variable size is the number of items in this ArrayQueue.
+    // 3. This ArrayQueue is a first-in/first-out data structure, so items are added at the rear and removed at the
+    //    front.
+    private int front;
+    private int rear;
+    private int size;
+    private static final int INITIAL_CAPACITY = 10;
+    private Object[] data;
+
+    /**
+     * public ArrayQueue()
+     * Initialize an ArrayQueue with an initial capacity of 10 elements.
+     * @postcondition
+     *  This ArrayQueue has been initialized with an initial capacity of 10 elements.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for this ArrayQueue.
+     */
+    public ArrayQueue() {
+        front = 0;
+        rear = 0;
+        size = 0;
+        data = new Object[INITIAL_CAPACITY];
+    }
+
+    /**
+     * public void add(E item)
+     * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference.
+     * @param item
+     *  The item to be added to the Queue.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for this item.
+     */
+    @Override
+    public void add(Object item) {
+
+
+    }
+
+    /**
+     * public boolean isEmpty()
+     * Accessor method that determines whether or not this Queue is empty.
+     * @return boolean
+     *  True if this Queue is empty. Otherwise false.
+     * @postcondition
+     *  This Queue has not been modified.
+     */
+    @Override
+    public boolean isEmpty() { return size == 0; }
+
+    @Override
+    public Object remove() {
+        return null;
+    }
+
+    /**
+     * public int size()
+     * Accessor method to determine the number of elements in this Queue.
+     * @return int
+     *  The number of items in this Queue.
+     * @postcondition
+     *  This Queue has not been modified.
+     */
+    @Override
+    public int size() { return size; }
 }
