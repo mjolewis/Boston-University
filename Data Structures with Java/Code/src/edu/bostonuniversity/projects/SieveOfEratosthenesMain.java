@@ -26,24 +26,43 @@ public class SieveOfEratosthenesMain {
         queue.add(5);
         queue.add(6);
         queue.add(7);
-//        queue.add(8);
-//        queue.add(9);
-//        queue.add(10);
+        queue.add(8);
+        queue.add(9);
+        queue.add(10);
 
+        System.out.println("Capacity is: " + queue.getCapacity());
+        System.out.println("Size is: " + queue.size());
+        System.out.println();
+
+        queue.add(11);
+
+        System.out.println("Capacity is: " + queue.getCapacity());
         System.out.println("Size is: " + queue.size());
         System.out.println("Front index is: " + queue.getFront());
         System.out.println("Rear index  is: " + queue.getRear());
 
         Object[] test = queue.getData();
 
+        System.out.println();
         System.out.println("Front item is: " + test[queue.getFront()]);
         System.out.println("Rear item is: " + test[queue.getRear()]);
 
+        System.out.println();
         System.out.println("Removing front: " + queue.remove());
         System.out.println("Front index is: " + queue.getFront());
         System.out.println("Front item is: " + test[queue.getFront()]);
 
+        System.out.println();
+        System.out.println("Rear index  is: " + queue.getRear());
+        System.out.println("Rear item is: " + test[queue.getRear()]);
+
+        System.out.println();
         System.out.println(queue.isEmpty());
         System.out.println("Size is: " + queue.size());
+        System.out.println("Capacity is: " + queue.getCapacity());
+
+        queue.trimToSize();
+        System.out.println("Size is: " + queue.size());
+        System.out.println("Capacity is: " + queue.getCapacity());
     }
 }
