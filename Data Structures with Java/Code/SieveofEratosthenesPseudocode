@@ -110,5 +110,49 @@ public class CalculatePrimes {
         INIT default constructor
         INIT maxNumber to maxNumber
     }
+
+    /**
+    * private void addAll(int n)
+    * Helper method that adds numbers 2 through n to the numbers queue. The numbers queue will automatically resize
+    * if its capacity has been reached.
+    * @param n
+    *  The largest number to be added to the numbers queue. The numbers are added from 2 to n inclusive.
+    * @precondition
+    *  The user has entered a positive integer.
+    * @postcondition
+    *  The numbers 2 through n have been added to the numbers queue.
+    */
+    public void addAll(int n) {
+        LOOP through the array
+            IF size equals capacity
+                THEN increase capacity
+            ELSE
+                ADD the numbers (first number is two) to the end of the numbers queue
+    }
+
+
+    /**
+    * public ArrayQueue<E> findAllPrimes()
+    * A method that finds all prime numbers from 2 to n inclusive. The method adds all prime numbers to an array-based
+    * queue that automatically resizes if it's capacity has been reached.
+    * @precondition
+    *  The numbers 2 through n have been added to the numbers queue.
+    * @return ArrayQueue<E>
+    *  An array-based queue filled with all prime numbers from 2 to n inclusive.
+    * @postcodition
+    *  All prime numbers from 2 to n inclusive have been added to the primes queue.
+    */
+    public ArrayQueue<E> findAllPrimes() {
+        DO
+            Obtain the next prime p by removing the first value from the numbers queue.
+            ADD p to the queue of primes
+            LOOP over the numbers queue and eliminate numbers divisible b y p
+        WHILE
+            p < sqrt(n)
+
+        ADD all remaining numbers from the numbers queue to the primes queue
+
+        RETURN the prime queue
+    }
 }
 
