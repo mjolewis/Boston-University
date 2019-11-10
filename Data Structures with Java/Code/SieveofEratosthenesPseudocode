@@ -273,7 +273,8 @@ public class ArrayQueue<E> implements Queue {
         if (++index >= data.length) {
             return 0;
         } else {
-        return index;
+            return index;
+        }
     }
 
     /**
@@ -288,13 +289,13 @@ public class ArrayQueue<E> implements Queue {
      *  has been decreased by one.
      */
     public E remove() {
-        INIT local variable to hold front element (answer)
+        INIT local variable to hold front element
 
         IF isEmpty()
             THEN return null
         ELSE
             answer = front element
-            front = front + 1
+            front = front + 1 (or wrap to the 0th index)
 
         DECREASE size by one
         RETURN front item
