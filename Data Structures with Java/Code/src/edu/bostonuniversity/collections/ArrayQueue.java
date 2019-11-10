@@ -97,6 +97,22 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
+     * public int getFront()
+     * Accessor method that returns the front index of this array-based queue.
+     * @return int
+     *  The front index of this array-based queue.
+     */
+    public int getFront() { return front; }
+
+    /**
+     * public int getRear()
+     * Accessor method that returns the rear index of this array-based queue.
+     * @return int
+     *  The rear index of this array-based queue.
+     */
+    public int getRear() { return rear; }
+
+    /**
      * public boolean isEmpty()
      * Accessor method that determines whether or not this Queue is empty.
      * @return boolean
