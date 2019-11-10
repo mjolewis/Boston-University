@@ -53,11 +53,20 @@ public class ArrayQueue<E> implements Queue {
      * @param item
      *  The item to be added to the Queue.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for this item.
+     *  Indicates insufficient memory for a larger array-based queue when the capacity of this queue has been reached.
      */
     @Override
     public void add(Object item) {
-        // TODO: 11/10/19
+        if (size == data.length) {
+            ensureCapacity(size * 2 + 1);
+        } else if (size == 0) { // Don't increment rear using nextIndex() when the new size is only one element.
+            front = 0;
+            rear = 0;
+        } else {
+            rear = nextIndex(rear);
+        }
+        data[rear] = item;
+        size++;
     }
 
     /**
