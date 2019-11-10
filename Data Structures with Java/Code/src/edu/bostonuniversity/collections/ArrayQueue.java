@@ -126,6 +126,14 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
+     * public int getCapacity()
+     * Accessor method that returns the capacity of this array-based queue.
+     * @return int
+     *  The capacity of this array-based queue.
+     */
+    public int getCapacity() { return data.length; }
+
+    /**
      * public E getData()
      * Accessor method that returns a reference to the instance variable data, which is an array-based queue.
      * @return E
