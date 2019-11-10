@@ -62,6 +62,42 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
+     * public void ensureCapacity(int capacity)
+     * Increase the capacity of this array-based queue. Note that the capacity will not be increased if the current
+     * capacity is already larger than the given capacity.
+     * @param capacity
+     *  The new capacity of this array-based queue.
+     * @postcondition
+     *  This queue's capacity has been increased to the given capacity. Note that the capacity will not be increased if
+     *  the current capacity is already larger than the given capacity.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for the larger array-based queue.
+     */
+    public void ensureCapacity(int capacity) {
+        Object[] largerArray;
+        int distanceToEnd;
+        int distanceToFront;
+
+        if (data.length >= capacity) {
+            return;
+        } else if (size == 0) {
+            largerArray = new Object[capacity];
+        } else if (front <= rear) {
+            largerArray = new Object[capacity];
+            System.arraycopy(data, front, largerArray, front, size);
+        } else {
+            largerArray = new Object[capacity];
+            distanceToEnd = data.length - front;
+            distanceToFront = rear + 1;
+            System.arraycopy(data, front, largerArray, 0, distanceToEnd);
+            System.arraycopy(data, 0, largerArray, distanceToEnd, distanceToFront);
+            front = 0;
+            rear = size - 1;
+        }
+        data = largerArray;
+    }
+
+    /**
      * public boolean isEmpty()
      * Accessor method that determines whether or not this Queue is empty.
      * @return boolean
