@@ -208,4 +208,38 @@ public class ArrayQueue<E> implements Queue {
      */
     @Override
     public int size() { return size; }
+
+    /**
+     * public void trimToSize()
+     * Mutator method to decrease the capacity of this array-based queue.
+     * @postcondition
+     *  The capacity of this array-based queue has been decreased to the size of the array. Note, the capacity may not
+     *  be decreased if capacity and size are equivalent.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for the smaller array-based queue.
+     */
+    public void trimToSize() {
+        int distanceToEnd;
+        int distanceToFront;
+        Object[] smallerArray;
+
+        if (size == data.length) {
+            return;
+        } else if (size == 0) {
+            smallerArray = new Object[size];
+        } else if (front <= rear) {
+            smallerArray = new Object[size];
+            System.arraycopy(data, front, smallerArray, front , size);
+        } else {
+            smallerArray = new Object[size];
+            distanceToEnd = size - front;
+            distanceToFront = rear + 1;
+            System.arraycopy(data, front, smallerArray, 0, distanceToEnd);
+            System.arraycopy(data, 0, smallerArray, distanceToEnd, distanceToFront);
+            front = 0;
+            rear = size - 1;
+        }
+
+        data = smallerArray;
+    }
 }
