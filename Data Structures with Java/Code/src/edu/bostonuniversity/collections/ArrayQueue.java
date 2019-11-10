@@ -57,8 +57,7 @@ public class ArrayQueue<E> implements Queue {
      */
     @Override
     public void add(Object item) {
-
-
+        // TODO: 11/10/19
     }
 
     /**
@@ -108,8 +107,27 @@ public class ArrayQueue<E> implements Queue {
     @Override
     public boolean isEmpty() { return size == 0; }
 
+    /**
+     * private int nextIndex(int index)
+     * Helper method that finds the next index when adding or removing from this array-based queue.
+     * @param index
+     *  The current front or rear index in this array-based queue.
+     * @return int
+     *  The next available index in this array-based queue.
+     * @postcondition
+     *  The return value is 0 if front equals the length of the array. Otherwise the return value is index + 1. Adding
+     *  a new element to the nextIndex will not overwrite data because ensureCapacity() has guaranteed this.
+     */
+    private int nextIndex(int index) {
+        if (++index >= data.length) {
+            return 0;
+        } else {
+            return index;
+        }
+
     @Override
     public Object remove() {
+        // TODO: 11/10/19
         return null;
     }
 
