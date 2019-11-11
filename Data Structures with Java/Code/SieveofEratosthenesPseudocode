@@ -152,6 +152,26 @@ public class CalculatePrimes {
 
         RETURN the prime queue
     }
+
+    /**
+    * public ArrayQueue getNumbers()
+    * Accessor method that returns a reference to the numbers ArrayQueue.
+    * @return ArrayQueue
+    *  A reference to the numbers ArrayQueue
+    */
+    public ArrayQueue getNumbers() {
+        return numbers;
+    }
+
+    /**
+    * public ArrayQueue getPrimes()
+    * Accessor method that returns a reference to the primes ArrayQueue.
+    * @return ArrayQueue
+    *  A reference to the primes ArrayQueue
+    */
+    public ArrayQueue getPrimes() {
+        return primes;
+    }
 }
 
 /**********************************************************************************************************************
