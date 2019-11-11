@@ -16,10 +16,18 @@ public class SieveOfEratosthenesMain {
 
         CalculatePrimes queue = new CalculatePrimes();
 
-        queue.getNumbers().print();
+        //queue.getNumbers().print();
 
         System.out.println();
         queue.getNumbers().add(12);
+        //queue.getNumbers().print();
+
+        System.out.println();
+        queue.getNumbers().clear();
+        queue.getNumbers().trimToSize();
+        queue.getNumbers().print();
+
+        System.out.println();
         queue.getNumbers().print();
     }
 }
