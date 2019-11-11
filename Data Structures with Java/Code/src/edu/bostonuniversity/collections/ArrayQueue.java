@@ -173,6 +173,23 @@ public class ArrayQueue<E> implements Queue {
     public E getFront() { return (E) data[front]; }
 
     /**
+     * public int getItem(int index)
+     * Accessor method that returns the item at the specified index. Note, we have suppressed warnings because
+     * our programming guarantees that an E object is returned.
+     * @param index
+     *  The target index.
+     * @return int
+     *  The item at the target index.
+     */
+    @SuppressWarnings("unchecked")
+    public E getItem(int index) {
+        if (index >= size) {
+            // No work needed.
+        }
+        return (E) data[index];
+    }
+
+    /**
      * public int getRear()
      * Accessor method that returns the rear item of this ArrayQueue. Note, we have suppressed warnings because
      * our programming guarantees that an E object is returned.
@@ -246,6 +263,23 @@ public class ArrayQueue<E> implements Queue {
             size--;
             return removedItem;
         }
+    }
+
+    /**
+     * public void setItem(int index, E item)
+     * Mutator method that sets the value of the item at the specified index to the given item.
+     * @param index
+     *  The target index.
+     * @param index
+     *  The new item.
+     * @postcondition
+     *  The item at the specified index has been set to the specified item.
+     */
+    public void setItem(int index, E item) {
+        if (index >= size) {
+            // No work needed.
+        }
+        data[index] = item;
     }
 
     /**
