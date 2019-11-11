@@ -99,21 +99,33 @@ public class CalculatePrimes {
      * queue that automatically re-sizes if it's capacity has been reached.
      * @precondition
      *  The numbers 2 through n have been added to the numbers queue.
-     * @return ArrayQueue<E>
-     *  An ArrayQueue filled with all prime numbers from 2 to n inclusive.
-     * @postcodition
-     *  All prime numbers from 2 to n inclusive have been added to the primes ArrayQueue.
+     * @postcondition
+     *  All prime numbers from 2 to n inclusive have been added to the primes ArrayQueue. The numbers queue is now
+     *  empty.
      */
     public void findPrimeNumbers() {
+        Integer item;
+        Integer rear = numbers.getRear();
+
         do {
-            int item = numbers.remove();
+            item = numbers.remove();
             primes.add(item);
 
-            for (int i = 0; i < numbers.size(); i++) {
-                if (numbers.getItem(i) % item == 0) {
-                    numbers
+            for (int i = 0; i <= numbers.size(); i++) {
+                if (numbers.getItem(i) != null && numbers.getItem(i) % item == 0) {
+                    numbers.setItem(i, null);
                 }
             }
+        } while (item < Math.sqrt(numbers.size()));
+
+        // All remaining items in the numbers queue are prime, so remove them and insert them into the primes queue...
+        for (int i = 0; i <= numbers.size(); i++) {
+            item = numbers.getItem(i);
+            if (item != null) {
+                primes.add(item);
+                numbers.setItem(i, null);
+            }
         }
+        primes.trimToSize(); // ...and clean up the primes queue.
     }
 }

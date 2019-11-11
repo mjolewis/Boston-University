@@ -311,7 +311,7 @@ public class ArrayQueue<E> implements Queue {
             smallerArray = new Object[size];
         } else if (front <= rear) {
             smallerArray = new Object[size];
-            System.arraycopy(data, front, smallerArray, front , size - 1);
+            System.arraycopy(data, front, smallerArray, front , size);
         } else {
             smallerArray = new Object[size];
             distanceToEnd = size - front;
