@@ -111,6 +111,7 @@ public class CalculatePrimes {
             primes.add(item);
 
             for (int i = 0; i <= numbers.size(); i++) {
+                // TODO: 11/11/19 should i implement the removeAtIndex??
                 if (numbers.getItem(i) != null && numbers.getItem(i) % item == 0) {
                     numbers.insert(i, null);
                 }
