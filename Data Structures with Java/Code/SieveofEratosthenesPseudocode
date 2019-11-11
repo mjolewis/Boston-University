@@ -255,6 +255,17 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
+    * public void clear()
+    * Mutator method that clears the queue and resets front, rear, and size to zero.
+    * @postcondition
+    *  The array is now empty and front, rear, and size are zero.
+    */
+    public void clear() {
+        EMPTY the array
+        SET front, rear, size to zero
+    }
+
+    /**
     * public void ensureCapacity(int capacity)
     * Change the current capacity of this array-based queue.
     * @param capacity
@@ -287,7 +298,7 @@ public class ArrayQueue<E> implements Queue {
     *  The front index of this array-based queue.
     */
     public int getFront() {
-        return front;
+        RETURN front;
     }
 
     /**
@@ -297,7 +308,7 @@ public class ArrayQueue<E> implements Queue {
     *  The capacity of this array-based queue
     */
     public int getCapacity() {
-        return data.length
+        RETRN data.length
     }
 
     /**
@@ -307,7 +318,7 @@ public class ArrayQueue<E> implements Queue {
     *  A reference to the instance variable data, which is an array-based queue.
     */
     public ArrayQueue<E> getData() {
-        return (ArrayQueue) data;
+        RETURN (ArrayQueue) data;
     }
 
     /**
@@ -317,7 +328,7 @@ public class ArrayQueue<E> implements Queue {
     *  The rear index of this array-based queue.
     */
     public int getRear() {
-        return rear;
+        RETRN rear;
     }
 
     /**
@@ -360,9 +371,9 @@ public class ArrayQueue<E> implements Queue {
     *  The values in the specified queue have been written using System.out.println()
     */
     public void print(ArrayQueue queue) {
-        for (int i = 0; i < queue.size(); i++) {
-            System.out.println(queue[i];
-        }
+        FOR each element in queue
+            PRINT element
+    }
     }
 
     /**
