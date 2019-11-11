@@ -2,59 +2,94 @@
 
 package edu.bostonuniversity.projects;
 
+import edu.bostonuniversity.collections.ArrayQueue;
+
 /**********************************************************************************************************************
- * A calculate primes class uses the Sieve of Eratosthenes to calculate all the prime numbers up to some integer n. The
- * technique was developed by a Greek mathematician and poet Eratosthenes who lived in the third century BC and it is
- * implemented with an array-based queue.
+ * The calculate primes class uses the Sieve of Eratosthenes methodology to calculate all the prime numbers up to some
+ * integer n. The technique was developed by a Greek mathematician and poet Eratosthenes who lived in the third century
+ *  BC and it is implemented with an ArrayQueue.
  *
  * @note
- *  1) Beyond Integer.MAX_VALUE elements, the array-based queue won't work properly.
+ *  1) Beyond Integer.MAX_VALUE elements, the ArrayQueue won't work properly.
  *
  * @author mlewis
- * @version Nov 9, 2019
+ * @version Nov 11, 2019
  *********************************************************************************************************************/
 
 public class CalculatePrimes {
     // Invariant of the CalculatePrimes class.
-    //  1. The instance variable numbers is an array-based queue that has been initialized with consecutive integers 2
-    //     through n inclusive if the value of n is greater than START_VALUE (+) MINIMUM_SIZE. Otherwise, the
-    //     array-based queue has been initialized with 10 elements starting with the START_VALUE.
-    //  2. The instance variable primes is an array-based queue that stores all the prime numbers calculated by the
-    //     Sieve of Eratosthenes algorithm.
-    //  3. The maxNumber stores the integer entered by the user.
-    //  4. The instance variable START_VALUE is the first element in the numbers array.
-    //  5. The instance variable MINIMUM_SIZE guarantees the minimum size of the numbers array.
-    private int[] numbers;
-    private int[] primes;
-    private int maxNumber;
+    //  1. The instance variable numbers is an ArrayQueue that has been initialized with consecutive integers 2 through
+    //     n inclusive.
+    //  2. The instance variable primes is an ArrayQueue that stores all the prime numbers calculated by the Sieve of
+    //     Eratosthenes algorithm.
+    //  3. The variable START_VALUE is a constant that references the first prime number (2).
+    private ArrayQueue<Integer> numbers;
+    private ArrayQueue<Integer> primes;
     private static final int START_VALUE = 2;
-    private static final int INITIAL_CAPACITY = 10;
 
     /**
      * public CalculatePrimes()
-     * A default constructor that initializes the numbers queue with 10 elements.
+     * A default constructor that initializes the numbers queue and prime queue to their initial capacity.
      * @postcondition
      *  This numbers queue has been initialized with 10 elements. The integer value at index 0 is 2 and each subsequent
-     *  index is initialized to a value that has been incremented by 1.
+     *  index is initialized to a value that has been incremented by 1. The prime queue is empty, but has a default
+     *  capacity of 10.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this queue.
      */
     public CalculatePrimes() {
-        numbers = new int[INITIAL_CAPACITY];
+        numbers = new ArrayQueue<>();
+        primes = new ArrayQueue<>();
+
+        addAll(START_VALUE + numbers.getCapacity());
     }
 
     /**
-     * public CalculatePrimes(int n)
-     * An overloaded constructor that initializes the numbers queue with consecutive integers 2 through n inclusive.
-     * @param maxNumber
-     *  The maximum value added to the numbers array.
+     * public CalculatePrimes(int capacity)
+     * An overloaded constructor that initializes the numbers queue and prime queue to the specified capacity.
+     * @param capacity
+     *  The initial capacity for this numbers queue and prime queue.
      * @postcondition
-     *  The numbers queue has been initialized with consecutive integers 2 through n inclusive.
+     *  This numbers queue has been initialized with the specified capacity. The integer value at index 0 is 2 and each
+     *  subsequent index is initialized to a value that has been incremented by 1. The prime queue is empty, but has
+     *  been initialized to the specified capacity.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this queue.
      */
-    public CalculatePrimes(int maxNumber) {
-        this();
-        this.maxNumber = maxNumber;
+    public CalculatePrimes(int capacity) {
+        numbers = new ArrayQueue<>(capacity);
+        primes = new ArrayQueue<>(capacity);
+
+        addAll(START_VALUE + capacity);
     }
+
+    /**
+     * private void addAll(int n)
+     * Helper method that fills the numbers queue with integers 2 through n inclusive.
+     * @param n
+     *  The final number added to the numbers queue.
+     * @postcondition
+     *  The numbers queue has been filled with numbers 2 through n inclusive.
+     */
+    private void addAll(int n) {
+        for (int i = START_VALUE; i < n; i++) {
+            numbers.add(i);
+        }
+    }
+
+    /**
+     * public ArrayQueue getNumbers()
+     * Accessor method that returns a reference to the numbers ArrayQueue.
+     * @return ArrayQueue
+     *  A reference to the numbers ArrayQueue
+     */
+    public ArrayQueue getNumbers() { return numbers; }
+
+    /**
+     * public ArrayQueue getPrimes()
+     * Accessor method that returns a reference to the primes ArrayQueue.
+     * @return ArrayQueue
+     *  A reference to the primes ArrayQueue
+     */
+    public ArrayQueue getPrimes() { return primes; }
 }
