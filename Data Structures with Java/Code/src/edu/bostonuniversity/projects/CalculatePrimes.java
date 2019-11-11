@@ -112,7 +112,7 @@ public class CalculatePrimes {
 
             for (int i = 0; i <= numbers.size(); i++) {
                 if (numbers.getItem(i) != null && numbers.getItem(i) % item == 0) {
-                    numbers.setItem(i, null);
+                    numbers.insert(i, null);
                 }
             }
         } while (item < Math.sqrt(numbers.size()));
@@ -122,7 +122,7 @@ public class CalculatePrimes {
             item = numbers.getItem(i);
             if (item != null) {
                 primes.add(item);
-                numbers.setItem(i, null);
+                numbers.insert(i, null);
             }
         }
         primes.trimToSize(); // ...and clean up the primes queue.
