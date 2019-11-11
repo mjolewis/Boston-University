@@ -20,14 +20,13 @@ public class SieveOfEratosthenesMain {
 
         System.out.println();
         queue.getNumbers().add(12);
-        //queue.getNumbers().print();
-
-        System.out.println();
-        queue.getNumbers().clear();
-        queue.getNumbers().trimToSize();
+        System.out.println("Size of numbers is: " + queue.getNumbers().size());
         queue.getNumbers().print();
 
         System.out.println();
-        queue.getNumbers().print();
+
+        queue.findPrimeNumbers();
+        System.out.println("Prime numbers are: ");
+        queue.getPrimes().print();
     }
 }
