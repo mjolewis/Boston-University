@@ -3,27 +3,27 @@
 package edu.bostonuniversity.collections;
 
 /**********************************************************************************************************************
- * A ArrayQueue is a First-in/First-out data structure of ordered items such that items can be inserted at one end
- * (called the rear) and removed from the other end (called the front). The item at the front of the Queue is called
- * the first item.
+ * An ArrayQueue is a First-in/First-out data structure of ordered items such that items can be inserted at one end
+ * (called the rear) and removed from the other end (called the front).
  *
  * @note
  *  1. Beyond Integer.MAX_VALUE elements, the size method does not work.
- *  2. A queue's capacity cannot exceed Integer.MAX_VALUE. Any attempt to create a larger capacity results in failure
- *     due to arithmetic overflow.
- *  3. The capacity of the queues can change after it's created, but the capacity is limited by the amount of free
- *     memory on the machine. The constructors, ensureCapacity, add, and trimToSize will result in an OutOfMemoryError
- *     when free memory is exhausted.
+ *  2. An ArrayQueue's capacity cannot exceed Integer.MAX_VALUE.
+ *  3. The capacity of this ArrayQueue can change after it's created by directly or indirectly activated the
+ *     ensureCapacity() method. However, the capacity is limited by the amount of free memory. Any attempt to exceed
+ *     the free memory will result in an OutOfMemoryError.
  *
  * @author mlewis
- * @version Nov 10, 2019
+ * @version Nov 11, 2019
  *********************************************************************************************************************/
 
 public class ArrayQueue<E> implements Queue {
     // Invariant of the ArrayQueue class.
     // 1. For a nonempty ArrayQueue, the items in the ArrayQueue are stored in a circular array beginning at
-    //    data[front] and continuing through data[rear].
+    //    data[front] and continuing through data[rear]. Note that the rear can be at a lower index than the front due
+    //    to the mechanics of a circular array.
     // 2. The instance variable size is the number of items in this ArrayQueue.
+    // 3. The instance variable INITIAL_CAPACITY is a constant and is used as the initial capacity of this ArrayQueue.
     // 3. This ArrayQueue is a first-in/first-out data structure, so items are added at the rear and removed at the
     //    front.
     private int front;
@@ -69,37 +69,39 @@ public class ArrayQueue<E> implements Queue {
 
     /**
      * public void add(E item)
-     * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference.
+     * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference. Note that
+     * the rear item may be at an lower index than the front item due to the mechanics of a circular array.
      * @param item
-     *  The item to be added to the Queue.
+     *  The item to be added to this ArrayQueue.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for a larger array-based queue when the capacity of this queue has been reached.
+     *  Indicates insufficient memory for a larger ArrayQueue.
      */
     @Override
     public void add(Object item) {
-        if (size == data.length) {
-            ensureCapacity(size * 2 + 1);
-        } else if (size == 0) { // Don't increment rear using nextIndex() when the new size is only one element.
+        if (size == data.length) { ensureCapacity(size * 2 + 1); }
+
+        if (size == 0) {
             front = 0;
             rear = 0;
         } else {
-            rear = nextIndex(rear);
+            rear = nextIndex(rear); // Increment rear so the new item doesn't overwrite the current rear item.
         }
+
         data[rear] = item;
         size++;
     }
 
     /**
      * public void ensureCapacity(int capacity)
-     * Increase the capacity of this array-based queue. Note that the capacity will not be increased if the current
-     * capacity is already larger than the given capacity.
+     * Increase the capacity of this ArrayQueue. Note that the capacity will not be increased if the current capacity
+     * is already larger than the given capacity.
      * @param capacity
-     *  The new capacity of this array-based queue.
+     *  The new capacity of this ArrayQueue.
      * @postcondition
-     *  This queue's capacity has been increased to the given capacity. Note that the capacity will not be increased if
-     *  the current capacity is already larger than the given capacity.
+     *  This ArrayQueue's capacity has been increased to the given capacity. Note that the capacity will not be
+     *  increased if the current capacity is already larger than the given capacity.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for the larger array-based queue.
+     *  Indicates insufficient memory for the larger ArrayQueue.
      */
     public void ensureCapacity(int capacity) {
         Object[] largerArray;
@@ -111,9 +113,9 @@ public class ArrayQueue<E> implements Queue {
         } else if (size == 0) {
             data = new Object[capacity];
         } else if (front <= rear) {
+            // Don't reset front and rear because they are already in the correct position.
             largerArray = new Object[capacity];
             System.arraycopy(data, front, largerArray, front, size);
-            rear++;
             data = largerArray;
         } else {
             largerArray = new Object[capacity];
@@ -121,6 +123,8 @@ public class ArrayQueue<E> implements Queue {
             distanceToFront = rear + 1;
             System.arraycopy(data, front, largerArray, 0, distanceToEnd);
             System.arraycopy(data, 0, largerArray, distanceToEnd, distanceToFront);
+
+            // Reset front and rear because they are in the wrong position due to the mechanics of a circular array.
             front = 0;
             rear = size - 1;
             data = largerArray;
@@ -129,59 +133,54 @@ public class ArrayQueue<E> implements Queue {
 
     /**
      * public int getCapacity()
-     * Accessor method that returns the capacity of this array-based queue.
+     * Accessor method that returns the capacity of this ArrayQueue.
      * @return int
-     *  The capacity of this array-based queue.
+     *  The capacity of this ArrayQueue.
      */
     public int getCapacity() { return data.length; }
 
     /**
      * public E getData()
-     * Accessor method that returns a reference to the instance variable data, which is an array-based queue.
+     * Accessor method that returns a reference to the instance variable data, which is an ArrayQueue.
      * @return E
-     *  A reference to the instance variable data, which is an array-based queue.
+     *  A reference to the instance variable data, which is an ArrayQueue.
      */
-    public Object[] getData() {
-        return data;
-    }
+    public Object[] getData() { return data; }
 
     /**
      * public int getFront()
-     * Accessor method that returns the front index of this array-based queue.
+     * Accessor method that returns the front index of this ArrayQueue.
      * @return int
-     *  The front index of this array-based queue.
+     *  The front index of this ArrayQueue.
      */
     public int getFront() { return front; }
 
     /**
      * public int getRear()
-     * Accessor method that returns the rear index of this array-based queue.
+     * Accessor method that returns the rear index of this ArrayQueue.
      * @return int
-     *  The rear index of this array-based queue.
+     *  The rear index of this ArrayQueue.
      */
     public int getRear() { return rear; }
 
     /**
      * public boolean isEmpty()
-     * Accessor method that determines whether or not this Queue is empty.
+     * Accessor method that determines whether or not this ArrayQueue is empty.
      * @return boolean
-     *  True if this Queue is empty. Otherwise false.
-     * @postcondition
-     *  This Queue has not been modified.
+     *  True if this ArrayQueue is empty. Otherwise false.
      */
     @Override
     public boolean isEmpty() { return size == 0; }
 
     /**
      * private int nextIndex(int index)
-     * Helper method that finds the next index when adding or removing from this array-based queue.
+     * Helper method that finds the next index when adding or removing from this ArrayQueue.
      * @param index
-     *  The current front or rear index in this array-based queue.
+     *  The current front or rear index in this ArrayQueue.
      * @return int
-     *  The next available index in this array-based queue.
+     *  The next available index in this ArrayQueue
      * @postcondition
-     *  The return value is 0 if front equals the length of the array. Otherwise the return value is index + 1. Adding
-     *  a new element to the nextIndex will not overwrite data because ensureCapacity() has guaranteed this.
+     *  The return value is 0 if front equals the length of the array. Otherwise the return value is index + 1.
      */
     private int nextIndex(int index) {
         if (++index == data.length) {
@@ -193,14 +192,14 @@ public class ArrayQueue<E> implements Queue {
 
     /**
      * public E remove()
-     * Mutator method that removes the front item from this Queue. Note, we have suppressed unchecked warnings because
+     * Mutator method that removes the front item from this ArrayQueue. Note, we have suppressed warnings because
      * our programming guarantees that an E object is returned.
      * @precondition
-     *  This Queue is not empty.
+     *  This ArrayQueue is not empty.
      * @return E
-     *  The front item from this Queue.
+     *  The front item from this ArrayQueue.
      * @postcondition
-     *  The front item from this Queue has been removed and the next item is now the front item. Size has been
+     *  The front item from this ArrayQueue has been removed and the next item is now the front item. Size has been
      *  decreased by one.
      */
     @Override
@@ -220,23 +219,21 @@ public class ArrayQueue<E> implements Queue {
 
     /**
      * public int size()
-     * Accessor method to determine the number of elements in this Queue.
+     * Accessor method to determine the number of elements in this ArrayQueue.
      * @return int
-     *  The number of items in this Queue.
-     * @postcondition
-     *  This Queue has not been modified.
+     *  The number of items in this ArrayQueue.
      */
     @Override
     public int size() { return size; }
 
     /**
      * public void trimToSize()
-     * Mutator method to decrease the capacity of this array-based queue.
+     * Mutator method to decrease the capacity of this ArrayQueue.
      * @postcondition
-     *  The capacity of this array-based queue has been decreased to the size of the array. Note, the capacity may not
-     *  be decreased if capacity and size are equivalent.
+     *  The capacity of this ArrayQueue has been decreased to the size of the array. Note, the capacity may not be
+     *  decreased if capacity and size are equivalent.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for the smaller array-based queue.
+     *  Indicates insufficient memory for the smaller ArrayQueue.
      */
     public void trimToSize() {
         int distanceToEnd;
