@@ -149,19 +149,23 @@ public class ArrayQueue<E> implements Queue {
 
     /**
      * public int getFront()
-     * Accessor method that returns the front index of this ArrayQueue.
+     * Accessor method that returns the front item of this ArrayQueue. Note, we have suppressed warnings because
+     * our programming guarantees that an E object is returned.
      * @return int
      *  The front index of this ArrayQueue.
      */
-    public int getFront() { return front; }
+    @SuppressWarnings("unchecked")
+    public E getFront() { return (E) data[front]; }
 
     /**
      * public int getRear()
-     * Accessor method that returns the rear index of this ArrayQueue.
+     * Accessor method that returns the rear item of this ArrayQueue. Note, we have suppressed warnings because
+     * our programming guarantees that an E object is returned.
      * @return int
      *  The rear index of this ArrayQueue.
      */
-    public int getRear() { return rear; }
+    @SuppressWarnings("unchecked")
+    public E getRear() { return (E) data[rear]; }
 
     /**
      * public boolean isEmpty()
