@@ -92,4 +92,28 @@ public class CalculatePrimes {
      *  A reference to the primes ArrayQueue
      */
     public ArrayQueue getPrimes() { return primes; }
+
+    /**
+     * public void findPrimeNumbers()
+     * A method that finds all prime numbers from 2 to n inclusive. The method adds all prime numbers to an array-based
+     * queue that automatically re-sizes if it's capacity has been reached.
+     * @precondition
+     *  The numbers 2 through n have been added to the numbers queue.
+     * @return ArrayQueue<E>
+     *  An ArrayQueue filled with all prime numbers from 2 to n inclusive.
+     * @postcodition
+     *  All prime numbers from 2 to n inclusive have been added to the primes ArrayQueue.
+     */
+    public void findPrimeNumbers() {
+        do {
+            int item = numbers.remove();
+            primes.add(item);
+
+            for (int i = 0; i < numbers.size(); i++) {
+                if (numbers.getItem(i) % item == 0) {
+                    numbers
+                }
+            }
+        }
+    }
 }
