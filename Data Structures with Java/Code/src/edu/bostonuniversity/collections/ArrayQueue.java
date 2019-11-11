@@ -240,8 +240,8 @@ public class ArrayQueue<E> implements Queue {
 
     /**
      * public E remove()
-     * Mutator method that removes the front item from this ArrayQueue. Note, we have suppressed warnings because
-     * our programming guarantees that an E object is returned.
+     * Mutator method that removes the front item from this ArrayQueue. Note, we have suppressed warnings because our
+     * programming guarantees that an E object is returned.
      * @precondition
      *  This ArrayQueue is not empty.
      * @return E
@@ -255,14 +255,36 @@ public class ArrayQueue<E> implements Queue {
     public E remove() {
         E removedItem;
 
-        if (size == 0) {
-            return null;
-        } else {
-            removedItem = (E) data[front];
-            front = nextIndex(front);
-            size--;
-            return removedItem;
-        }
+        if (size == 0) { return null; }
+
+        removedItem = (E) data[front];
+        front = nextIndex(front);
+        size--;
+        return removedItem;
+    }
+
+
+    /**
+     * public E removeAtIndex(int index)
+     * Mutator method that removes the item at the specified index. Note, we have suppressed warnings because our
+     * programming guarantees that an E object is returned.
+     * @precondition
+     *  This ArrayQueue is not empty.
+     * @return E
+     *  The item at the specified index.
+     * @postcondition
+     *  The item at the specified index has been removed and the E object has been set to null.
+     */
+    @SuppressWarnings("unchecked")
+    public E removeAtIndex(int index) {
+        E removedItem;
+
+        if (size == 0) { return null; }
+
+        removedItem = (E) data[index];
+        data[index] = null;
+        size--;
+        return removedItem;
     }
 
     /**
