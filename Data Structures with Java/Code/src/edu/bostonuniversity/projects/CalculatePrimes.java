@@ -41,7 +41,7 @@ public class CalculatePrimes {
         numbers = new ArrayQueue<>();
         primes = new ArrayQueue<>();
 
-        addAll(START_VALUE + numbers.getCapacity());
+        addAll( 1 + numbers.getCapacity());
     }
 
     /**
@@ -60,7 +60,7 @@ public class CalculatePrimes {
         numbers = new ArrayQueue<>(capacity);
         primes = new ArrayQueue<>(capacity);
 
-        addAll(START_VALUE + capacity);
+        addAll(1 + capacity);
     }
 
     /**
@@ -72,7 +72,7 @@ public class CalculatePrimes {
      *  The numbers queue has been filled with numbers 2 through n inclusive.
      */
     private void addAll(int n) {
-        for (int i = START_VALUE; i < n; i++) {
+        for (int i = START_VALUE; i <= n; i++) {
             numbers.add(i);
         }
     }

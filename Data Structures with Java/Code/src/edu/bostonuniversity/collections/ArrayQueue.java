@@ -195,6 +195,18 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
+     * public void print()
+     * Prints every element contained in the activating queue. Note that front may be at a higher index than rear.
+     * @postcondition
+     *  The values in the activating queue have been written using System.out.println()
+     */
+    public void print() {
+        for (Object elem : data) {
+            System.out.println(elem);
+        }
+    }
+
+    /**
      * public E remove()
      * Mutator method that removes the front item from this ArrayQueue. Note, we have suppressed warnings because
      * our programming guarantees that an E object is returned.
