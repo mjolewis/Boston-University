@@ -92,6 +92,21 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
+     * public void clear()
+     * Mutator method that clears the queue and resets front, rear, and size to zero.
+     * @postcondition
+     *  The array is now empty and front, rear, and size are zero.
+     */
+    public void clear() {
+        for (int i = 0; i < data.length; i++) {
+            data[i] = null;
+        }
+        front = 0;
+        rear = 0;
+        size = 0;
+    }
+
+    /**
      * public void ensureCapacity(int capacity)
      * Increase the capacity of this ArrayQueue. Note that the capacity will not be increased if the current capacity
      * is already larger than the given capacity.
