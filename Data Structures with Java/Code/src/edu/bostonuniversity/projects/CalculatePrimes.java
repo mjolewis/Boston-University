@@ -105,7 +105,6 @@ public class CalculatePrimes {
      */
     public void findPrimeNumbers() {
         Integer item;
-        Integer rear = numbers.getRear();
 
         do {
             item = numbers.remove();
