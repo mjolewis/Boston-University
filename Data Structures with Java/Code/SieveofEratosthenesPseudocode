@@ -79,11 +79,10 @@ public class CalculatePrimes {
     //     Sieve of Eratosthenes algorithm.
     //  3. The instance variable START_VALUE is the first element in the numbers array.
     //  4. The instance variable MINIMUM_SIZE guarantees the minimum size of the numbers array.
-    private int[] numbers;
-    private int[] primes;
+    private ArrayQueue<Integer> numbers;
+    private ArrayQueue<Integer> primes;
     private int maxNumber;
     private static final int START_VALUE = 2;
-    private static final int MINIMUM_SIZE = 10;
 
     /**
     * public CalculatePrimes()
@@ -96,6 +95,7 @@ public class CalculatePrimes {
     public CalculatePrimes() {
         INIT numbers array to minimum number of elements.
         INIT primes array to minimum number of elements.
+        ACTIVATE the addAll method to fill the numbers queue from 2 to size inclusive
     }
 
     /**
@@ -109,6 +109,7 @@ public class CalculatePrimes {
     public CalculatePrimes(int maxNumber) {
         INIT default constructor
         INIT maxNumber to maxNumber
+        ACTIVATE the addAll method to fill the numbers queue from 2 to size inclusive
     }
 
     /**
@@ -123,11 +124,8 @@ public class CalculatePrimes {
     *  The numbers 2 through n have been added to the numbers queue.
     */
     public void addAll(int n) {
-        LOOP through the array
-            IF size equals capacity
-                THEN increase capacity
-            ELSE
-                ADD the numbers (first number is two) to the end of the numbers queue
+        LOOP from 2 to n + 2
+            ADD the numbers (first number is two) to the end of the numbers queue
     }
 
 
