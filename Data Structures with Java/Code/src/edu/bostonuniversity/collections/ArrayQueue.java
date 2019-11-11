@@ -266,16 +266,16 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
-     * public void setItem(int index, E item)
-     * Mutator method that sets the value of the item at the specified index to the given item.
+     * public void insert(int index, E item)
+     * Mutator method that inserts the item at the specified index.
      * @param index
      *  The target index.
      * @param index
      *  The new item.
      * @postcondition
-     *  The item at the specified index has been set to the specified item.
+     *  The item has been inserted at the specified index.
      */
-    public void setItem(int index, E item) {
+    public void insert(int index, E item) {
         if (index >= size) {
             // No work needed.
         }
