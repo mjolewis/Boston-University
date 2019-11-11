@@ -109,7 +109,7 @@ public class ArrayQueue<E> implements Queue {
         int distanceToFront;
 
         if (data.length >= capacity) {
-            return;
+            // No work required because the capacity of this ArrayQueue is larger than the given capacity.
         } else if (size == 0) {
             data = new Object[capacity];
         } else if (front <= rear) {
