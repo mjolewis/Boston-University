@@ -118,14 +118,12 @@ public class CalculatePrimes {
             }
         } while (item < Math.sqrt(numbers.size()));
 
-        // All remaining items in the numbers queue are prime, so remove them and insert them into the primes queue...
+        // All remaining items in the numbers queue are prime, so insert them into the primes queue...
         for (int i = 0; i <= numbers.size(); i++) {
-            item = numbers.getItem(i);
-            if (item != null) {
-                primes.add(item);
-                numbers.insert(i, null);
-            }
+            if (numbers.getItem(i) != null) { primes.add(numbers.getItem(i)); }
         }
-        primes.trimToSize(); // ...and clean up the primes queue.
+
+        numbers.clear(); // ...and clear the numbers queue...
+        primes.trimToSize(); // ...and remove any excess capacity from the primes queue.
     }
 }
