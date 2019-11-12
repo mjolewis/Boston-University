@@ -45,22 +45,22 @@ public class CalculatePrimes {
     }
 
     /**
-     * public CalculatePrimes(int capacity)
-     * An overloaded constructor that initializes the numbers queue and prime queue to the specified capacity.
-     * @param capacity
-     *  The initial capacity for this numbers queue and prime queue.
+     * public CalculatePrimes(int target)
+     * An overloaded constructor that initializes the numbers queue to the target and prime queue to it's initial
+     * capacity.
+     * @param target
+     *  The largest number being added to this numbers queue.
      * @postcondition
-     *  This numbers queue has been initialized with the specified capacity. The integer value at index 0 is 2 and each
-     *  subsequent index is initialized to a value that has been incremented by 1. The prime queue is empty, but has
-     *  been initialized to the specified capacity.
+     *  This numbers queue has been initialized with integers from 2 to target. The prime queue is empty, but has been
+     *  initialized to it's initial capacity.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this queue.
      */
-    public CalculatePrimes(int capacity) {
-        numbers = new ArrayQueue<>(capacity);
-        primes = new ArrayQueue<>(capacity);
+    public CalculatePrimes(int target) {
+        numbers = new ArrayQueue<>();
+        primes = new ArrayQueue<>();
 
-        addAll(1 + capacity);
+        addAll(target);
     }
 
     /**
@@ -107,11 +107,11 @@ public class CalculatePrimes {
         Integer item;
 
         do {
+            // TODO: 11/11/19 null pointer exception on numbers.remove() 
             item = numbers.remove();
             primes.add(item);
 
             for (int i = 0; i <= numbers.size(); i++) {
-                // TODO: 11/11/19 should i implement the removeAtIndex??
                 if (numbers.getItem(i) != null && numbers.getItem(i) % item == 0) {
                     numbers.insert(i, null);
                 }
