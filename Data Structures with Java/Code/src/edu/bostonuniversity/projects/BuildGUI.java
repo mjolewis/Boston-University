@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
  * interface to capture the users input.
  *
  * @author mlewis
- * @version Nov 8, 2019
+ * @version Nov 12, 2019
  *********************************************************************************************************************/
 
 public class BuildGUI implements ActionListener {
@@ -20,8 +20,8 @@ public class BuildGUI implements ActionListener {
     //  2. The instance variable outputField provides a text box on the GUI to display all prime numbers from 2 to n
     //     where n is the value entered by the user.
     //  3. The instance variable primes is a reference to a CalculatePrimes object.
-    private JTextField inputField = new JTextField("", 25);
-    private JTextArea outputArea = new JTextArea(15, 25);
+    private JTextField inputField = new JTextField("", 75);
+    private JTextArea outputArea = new JTextArea(15, 75);
     private CalculatePrimes primes;
 
     /**
@@ -86,7 +86,7 @@ public class BuildGUI implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // ...display the frame
-        frame.setSize(500, 300);
+        frame.setSize(1000, 400);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
@@ -98,4 +98,34 @@ public class BuildGUI implements ActionListener {
      *  A reference to a CalculatePrimes object.
      */
     public CalculatePrimes getPrimes() { return primes; }
+
+    /**
+     * public void setOutputArea(Object[] arr)
+     * Mutator method that updates the content of the JTextArea.
+     * @param arr
+     *  An array container of prime numbers.
+     * @postcondition
+     *  The numbers in the array container have been added to the JTextArea. Note that there are ten numbers per line.
+     *  If any line has fewer than ten numbers, then it is the final line.
+     */
+    public void setOutputArea(Object[] arr) {
+        Integer tmp;
+        String input;
+        int newLineCounter = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Object o : arr) {
+            if (newLineCounter++ % 10 == 0) {
+                stringBuilder.append("\n");
+                tmp = (Integer) o;
+                input = Integer.toString(tmp);
+                stringBuilder.append(input).append(", ");
+            } else {
+                tmp = (Integer) o;
+                input = Integer.toString(tmp);
+                stringBuilder.append(input).append(", ");
+            }
+        }
+        outputArea.setText(String.valueOf(stringBuilder));
+    }
 }

@@ -64,7 +64,19 @@ public class BuildGUI implements ActionListener {
     *  A reference to a CalculatePrimes object.
     */
     public CalculatePrimes getPrimes() {
-        return primes;
+        RETURN primes;
+    }
+
+    /**
+    * public void setOutputArea(int values)
+    * Mutator method that updates the content of the JTextArea.
+    * @param values
+    *  The data to add to the JTextArea.
+    * @postcondition
+    *  The data has been added to the JTextArea.
+    */
+    public void setOutputArea(int values) {
+        ADD values to JTextArea
     }
 }
 
