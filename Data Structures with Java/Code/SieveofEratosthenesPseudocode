@@ -56,6 +56,16 @@ public class BuildGUI implements ActionListener {
         CLEAR text field
         SET focus back to empty text field
     }
+
+    /**
+    * public CalculatePrimes getPrimes()
+    * Accessor method that returns a reference to a CalculatePrimes object
+    * @return CalculatePrimes
+    *  A reference to a CalculatePrimes object.
+    */
+    public CalculatePrimes getPrimes() {
+        return primes;
+    }
 }
 
 /**********************************************************************************************************************

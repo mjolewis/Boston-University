@@ -19,8 +19,10 @@ public class BuildGUI implements ActionListener {
     //  1. The instance variable inputField provides a text box on the GUI for the user to type into.
     //  2. The instance variable outputField provides a text box on the GUI to display all prime numbers from 2 to n
     //     where n is the value entered by the user.
-    private JTextField inputField = new JTextField("", 20);
-    private JTextField outputField = new JTextField("", 20);
+    //  3. The instance variable primes is a reference to a CalculatePrimes object.
+    private JTextField inputField = new JTextField("", 25);
+    private JTextArea outputArea = new JTextArea(15, 25);
+    private CalculatePrimes primes;
 
     /**
      * public void actionPeformed(ActionEvent actionEvent)
@@ -35,13 +37,13 @@ public class BuildGUI implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        int maxNumber;
+        int sentinelValue;
 
         try {
-            maxNumber = Integer.parseInt(inputField.getText());
+            sentinelValue = Integer.parseInt(inputField.getText());
             inputField.setText("");
             inputField.requestFocus();
-            new CalculatePrimes(maxNumber);
+            primes = new CalculatePrimes(sentinelValue);
         } catch (NumberFormatException e) {
             inputField.setText("Error. Please enter an integer.");
             inputField.requestFocus();
@@ -60,23 +62,23 @@ public class BuildGUI implements ActionListener {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
         JLabel inputLabel = new JLabel("Enter an integer: ");
-        JLabel outputLabel = new JLabel("Display all prime numbers: ");
+        JLabel outputLabel = new JLabel("Prime numbers:  ");
         JButton button = new JButton("Submit");
 
         // Build the panel...
         panel.add(inputLabel);
         panel.add(inputField);
         panel.add(outputLabel);
-        panel.add(outputField);
+        panel.add(outputArea);
 
         // ...attach labels to input and output fields...
         inputLabel.setLabelFor(inputField);
-        outputLabel.setLabelFor(outputField);
+        outputLabel.setLabelFor(outputArea);
 
         // ...set event listeners and restrictions...
         button.addActionListener(this);
         button.setBackground(Color.blue);
-        outputField.setEditable(false);
+        outputArea.setEditable(false);
 
         // ...build the frame and...
         frame.getContentPane().add(BorderLayout.CENTER, panel);
@@ -88,4 +90,12 @@ public class BuildGUI implements ActionListener {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+
+    /**
+     * public CalculatePrimes getPrimes()
+     * Accessor method that returns a reference to a CalculatePrimes object
+     * @return CalculatePrimes
+     *  A reference to a CalculatePrimes object.
+     */
+    public CalculatePrimes getPrimes() { return primes; }
 }
