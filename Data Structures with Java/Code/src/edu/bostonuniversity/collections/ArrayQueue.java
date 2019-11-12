@@ -200,6 +200,23 @@ public class ArrayQueue<E> implements Queue {
     public E getRear() { return (E) data[rear]; }
 
     /**
+     * public void insert(int index, E item)
+     * Mutator method that inserts the item at the specified index.
+     * @param index
+     *  The target index.
+     * @param index
+     *  The new item.
+     * @postcondition
+     *  The item has been inserted at the specified index.
+     */
+    public void insert(int index, E item) {
+        if (index >= size) {
+            // No work needed.
+        }
+        data[index] = item;
+    }
+
+    /**
      * public boolean isEmpty()
      * Accessor method that determines whether or not this ArrayQueue is empty.
      * @return boolean
@@ -223,18 +240,6 @@ public class ArrayQueue<E> implements Queue {
             return 0;
         } else {
             return index;
-        }
-    }
-
-    /**
-     * public void print()
-     * Prints every element contained in the activating queue. Note that front may be at a higher index than rear.
-     * @postcondition
-     *  The values in the activating queue have been written using System.out.println()
-     */
-    public void print() {
-        for (Object elem : data) {
-            System.out.println(elem);
         }
     }
 
@@ -288,23 +293,6 @@ public class ArrayQueue<E> implements Queue {
     }
 
     /**
-     * public void insert(int index, E item)
-     * Mutator method that inserts the item at the specified index.
-     * @param index
-     *  The target index.
-     * @param index
-     *  The new item.
-     * @postcondition
-     *  The item has been inserted at the specified index.
-     */
-    public void insert(int index, E item) {
-        if (index >= size) {
-            // No work needed.
-        }
-        data[index] = item;
-    }
-
-    /**
      * public int size()
      * Accessor method to determine the number of elements in this ArrayQueue.
      * @return int
@@ -312,6 +300,18 @@ public class ArrayQueue<E> implements Queue {
      */
     @Override
     public int size() { return size; }
+
+    /**
+     * public String toString()
+     * Prints every element contained in the activating queue.
+     * @postcondition
+     *  The values in the activating queue have been written using System.out.println()
+     */
+    @Override
+    public String toString() {
+        for (Object elem : data) { System.out.println(elem); }
+        return "";
+    }
 
     /**
      * public void trimToSize()
