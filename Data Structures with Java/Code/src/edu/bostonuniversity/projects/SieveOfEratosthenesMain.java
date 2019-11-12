@@ -11,22 +11,22 @@ package edu.bostonuniversity.projects;
 
 public class SieveOfEratosthenesMain {
     public static void main(String[] args) {
-//        BuildGUI start = new BuildGUI();
-//        start.constructGUI();
+        BuildGUI start = new BuildGUI();
+        start.constructGUI();
 
-        CalculatePrimes queue = new CalculatePrimes(500);
-
-        //queue.getNumbers().print();
-
-        System.out.println();
-        //queue.getNumbers().add(12);
-        System.out.println("Size of numbers is: " + queue.getNumbers().size());
-        queue.getNumbers().toString();
+        CalculatePrimes primes = start.getPrimes();
+        while (primes == null) {
+            primes = start.getPrimes();
+        }
+        primes.findPrimeNumbers();
 
         System.out.println();
+        System.out.println("Size of numbers is: " + primes.getNumbers().size());
+        start.getPrimes().getNumbers().toString();
 
-        queue.findPrimeNumbers();
+        System.out.println();
+
         System.out.println("Prime numbers are: ");
-        queue.getPrimes().toString();
+        primes.getPrimes().toString();
     }
 }
