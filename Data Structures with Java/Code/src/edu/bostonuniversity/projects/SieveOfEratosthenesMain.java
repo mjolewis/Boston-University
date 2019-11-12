@@ -14,12 +14,12 @@ public class SieveOfEratosthenesMain {
 //        BuildGUI start = new BuildGUI();
 //        start.constructGUI();
 
-        CalculatePrimes queue = new CalculatePrimes();
+        CalculatePrimes queue = new CalculatePrimes(100);
 
         //queue.getNumbers().print();
 
         System.out.println();
-        queue.getNumbers().add(12);
+        //queue.getNumbers().add(12);
         System.out.println("Size of numbers is: " + queue.getNumbers().size());
         queue.getNumbers().toString();
 
