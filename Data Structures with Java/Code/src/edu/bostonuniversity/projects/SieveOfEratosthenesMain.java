@@ -19,12 +19,7 @@ public class SieveOfEratosthenesMain {
             primes = start.getPrimes();
         }
         primes.findPrimeNumbers();
-
-        System.out.println();
-        System.out.println("Size of numbers is: " + primes.getNumbers().size());
-        start.getPrimes().getNumbers().toString();
-
-        System.out.println();
+        start.setOutputArea(primes.getPrimes().getData());
 
         System.out.println("Prime numbers are: ");
         primes.getPrimes().toString();
