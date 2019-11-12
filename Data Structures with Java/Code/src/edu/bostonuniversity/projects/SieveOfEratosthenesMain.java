@@ -14,7 +14,7 @@ public class SieveOfEratosthenesMain {
 //        BuildGUI start = new BuildGUI();
 //        start.constructGUI();
 
-        CalculatePrimes queue = new CalculatePrimes(100);
+        CalculatePrimes queue = new CalculatePrimes(500);
 
         //queue.getNumbers().print();
 

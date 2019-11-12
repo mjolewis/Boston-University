@@ -19,12 +19,15 @@ import edu.bostonuniversity.collections.ArrayQueue;
 public class CalculatePrimes {
     // Invariant of the CalculatePrimes class.
     //  1. The instance variable numbers is an ArrayQueue that has been initialized with consecutive integers 2 through
-    //     n inclusive.
+    //     a sentinel value inclusive.
     //  2. The instance variable primes is an ArrayQueue that stores all the prime numbers calculated by the Sieve of
     //     Eratosthenes algorithm.
-    //  3. The variable START_VALUE is a constant that references the first prime number (2).
+    //  3. The instance variable sentinelValue indicates the end of the search range. This number is provided by the
+    //     user and the algorithm searches from prime numbers from 2 to sentinelValue inclusive.
+    //  4. The variable START_VALUE is a constant that references the first prime number (2).
     private ArrayQueue<Integer> numbers;
     private ArrayQueue<Integer> primes;
+    private int sentinelValue;
     private static final int START_VALUE = 2;
 
     /**
@@ -40,15 +43,15 @@ public class CalculatePrimes {
     public CalculatePrimes() {
         numbers = new ArrayQueue<>();
         primes = new ArrayQueue<>();
-
-        addAll( 1 + numbers.getCapacity());
+        addAll(numbers.getCapacity());
+        sentinelValue = numbers.getRear();
     }
 
     /**
      * public CalculatePrimes(int target)
      * An overloaded constructor that initializes the numbers queue to the target and prime queue to it's initial
      * capacity.
-     * @param target
+     * @param sentinelValue
      *  The largest number being added to this numbers queue.
      * @postcondition
      *  This numbers queue has been initialized with integers from 2 to target. The prime queue is empty, but has been
@@ -56,25 +59,23 @@ public class CalculatePrimes {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this queue.
      */
-    public CalculatePrimes(int target) {
+    public CalculatePrimes(int sentinelValue) {
         numbers = new ArrayQueue<>();
         primes = new ArrayQueue<>();
-
-        addAll(target);
+        this.sentinelValue = sentinelValue;
+        addAll(sentinelValue);
     }
 
     /**
-     * private void addAll(int n)
-     * Helper method that fills the numbers queue with integers 2 through n inclusive.
-     * @param n
+     * public void addAll(int sentinelValue)
+     * Mutator method that fills the numbers queue with integers 2 through sentinelValue inclusive.
+     * @param sentinelValue
      *  The final number added to the numbers queue.
      * @postcondition
-     *  The numbers queue has been filled with numbers 2 through n inclusive.
+     *  The numbers queue has been filled with numbers 2 through sentinelValue inclusive.
      */
-    private void addAll(int n) {
-        for (int i = START_VALUE; i <= n; i++) {
-            numbers.add(i);
-        }
+    public void addAll(int sentinelValue) {
+        for (int i = START_VALUE; i <= sentinelValue; i++) { numbers.add(i); }
     }
 
     /**
@@ -104,23 +105,25 @@ public class CalculatePrimes {
      *  empty.
      */
     public void findPrimeNumbers() {
-        Integer item;
+        Integer targetNum;
 
         do {
-            // TODO: 11/11/19 null pointer exception on numbers.remove() 
-            item = numbers.remove();
-            primes.add(item);
+            targetNum = numbers.remove();
+            while (targetNum == null) { targetNum = numbers.remove(); }
 
-            for (int i = 0; i <= numbers.size(); i++) {
-                if (numbers.getItem(i) != null && numbers.getItem(i) % item == 0) {
+            primes.add(targetNum);
+            for (int i = 0; i < sentinelValue; i++) {
+                Integer currentNum = numbers.getItem(i);
+                if (currentNum != null && currentNum % targetNum == 0) {
                     numbers.insert(i, null);
                 }
             }
-        } while (item < Math.sqrt(numbers.size()));
+        } while (targetNum <= Math.sqrt(sentinelValue));
 
-        // All remaining items in the numbers queue are prime, so insert them into the primes queue...
-        for (int i = 0; i <= numbers.size(); i++) {
-            if (numbers.getItem(i) != null) { primes.add(numbers.getItem(i)); }
+        // All remaining integers in the numbers queue are prime, so insert them into the primes queue...
+        for (int i = 0; i < sentinelValue; i++) {
+            targetNum = numbers.getItem(i);
+            if (targetNum != null) { primes.add(targetNum); }
         }
 
         numbers.clear(); // ...and clear the numbers queue...
