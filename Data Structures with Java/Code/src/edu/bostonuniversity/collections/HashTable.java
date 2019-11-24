@@ -17,7 +17,7 @@ package edu.bostonuniversity.collections;
  * @version November 24, 2019
  *********************************************************************************************************************/
 
-public class HashTable {
+public class HashTable implements Map{
     // Invariant of the HashTable class.
     // 1. The number of elements in the table is in the instance variable size.
     // 2. The proper bucket for any given value with a specified key is at hash(key). However, if a collision occurs
@@ -62,5 +62,30 @@ public class HashTable {
         keys = new int[capacity];
         data = new String[capacity];
         hasBeenUsed = new boolean[capacity];
+    }
+
+    @Override
+    public String get(int k) {
+        return null;
+    }
+
+    @Override
+    public void put(int k, String v) {
+
+    }
+
+    @Override
+    public boolean contains(int k) {
+        return false;
+    }
+
+    @Override
+    public void delete(int k) {
+
+    }
+
+    @Override
+    public void printHash() {
+
     }
 }
