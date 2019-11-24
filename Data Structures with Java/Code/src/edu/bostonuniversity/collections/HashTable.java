@@ -30,13 +30,13 @@ public class HashTable implements Map{
     private Integer[] keys;
     private String[] data;
     private boolean[] hasBeenUsed;
-    private static final Integer CAPACITY = 103; // One portion of a twin prime.
+    private static final Integer CAPACITY = 31; // One portion of a twin prime.
 
     /**
      * public HashTable()
-     * Initialize an empty HashTable with an initial capacity of 103, which is a twin prime.
+     * Initialize an empty HashTable with an initial capacity of 31, which is a twin prime.
      * @postcondition
-     *  An empty HashTable with an initial capacity of 103 has been initialized.
+     *  An empty HashTable with an initial capacity of 31 has been initialized.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this HashTable
      */
@@ -135,6 +135,14 @@ public class HashTable implements Map{
         return null;
     }
 
+    /**
+     * public int getSize()
+     * Accessor method that retrieves the size of the data array.
+     * @return int
+     *  The size of the data array.
+     */
+    public int getSize() { return size; }
+
     /*
      * private int hash(int k)
      * Helper method that returns a valid index in this HashTable. The index is calculated using division hashing where
@@ -200,7 +208,7 @@ public class HashTable implements Map{
      */
     @Override
     public void printHash() {
-        data.toString();
+        System.out.println(toString());
     }
 
     /**
@@ -215,10 +223,10 @@ public class HashTable implements Map{
 
         for (int i = 0; i < data.length; i++) {
             stringBuilder.append("Table[").append(i).append("] = ");
-            if (data[i] == null) {
+            if (data[i] == null && !hasBeenUsed[i]) {
                 stringBuilder.append("<Never Used> \n");
-            } else if (hasBeenUsed[i]) {
-                stringBuilder.append("Previously Used> \n");
+            } else if (data[i] == null && hasBeenUsed[i]) {
+                stringBuilder.append("<Previously Used> \n");
             } else {
                 stringBuilder.append(data[i]).append("\n");
             }
