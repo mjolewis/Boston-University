@@ -1,7 +1,8 @@
+// File HashTableTest.java from the package edu.bostonuniversity.homework
+
 package edu.bostonuniversity.homework;
 
 import edu.bostonuniversity.collections.HashTable;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ import java.util.Scanner;
  * A HashTableTest class provides a terminal interface to test the functionality of the HashTable.java class.
  *
  * @author mlewis
- * @version Nov 24, 2019
+ * @version November 24, 2019
  *********************************************************************************************************************/
 
 public class HashTableTest {
