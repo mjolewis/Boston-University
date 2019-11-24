@@ -100,9 +100,19 @@ public class HashTable implements Map{
         return -1;
     }
 
+    /**
+     * public String get(int k)
+     * Accessor method that retrieves the value associated with the specified key.
+     * @param k
+     *  The key to search for.
+     * @return String
+     *  The value associated with the specified key. If the key is not found, then null is returned.
+     */
     @Override
     public String get(int k) {
-
+        int index = findIndex(k);
+        if (index != -1) { return data[index]; }
+        return null;
     }
 
     /*
