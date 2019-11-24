@@ -30,15 +30,15 @@ public class HashTable implements Map{
     private Integer[] keys;
     private String[] data;
     private boolean[] hasBeenUsed;
-    private static final Integer CAPACITY = 31; // One portion of a twin prime.
+    private static final Integer CAPACITY = 31;
 
     /**
      * public HashTable()
-     * Initialize an empty HashTable with an initial capacity of 31, which is a twin prime.
+     * Initialize an empty HashTable with an initial capacity of 31.
      * @postcondition
      *  An empty HashTable with an initial capacity of 31 has been initialized.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for this HashTable
+     *  Indicates insufficient memory for this HashTable.
      */
     public HashTable() {
         size = 0;
@@ -55,7 +55,7 @@ public class HashTable implements Map{
      * @postcondition
      *  A HashTable with an initial capacity has been initialized.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for this HashTable
+     *  Indicates insufficient memory for this HashTable.
      */
     public HashTable(int capacity) {
         if (capacity < 0) {
@@ -150,7 +150,7 @@ public class HashTable implements Map{
      * @param k
      *  The key to hash.
      * @return int
-     *  The hash code for the specified key
+     *  The hash code for the specified key.
      */
     private int hash(int k) { return k % data.length; }
 
@@ -174,7 +174,7 @@ public class HashTable implements Map{
      * @param k
      *  The key to search for.
      * @param v
-     *  The value associated with the specified key
+     *  The value associated with the specified key.
      * @postcondition
      *  The specified key and value have been added to this HashTable and size has been incremented. If the key already
      *  existed in this HashTable, then the old value has been replaced with the new specified value and size is not
@@ -204,7 +204,7 @@ public class HashTable implements Map{
      * public void printHash()
      * Prints every key and value pair in this HashTable.
      * @postcondition
-     *  The keys and values in this HashTable have been written using System.out.println()
+     *  The keys and values in this HashTable have been written using System.out.println().
      */
     @Override
     public void printHash() {
@@ -215,7 +215,7 @@ public class HashTable implements Map{
      * public String toString()
      * Prints every key and value pair in this HashTable.
      * @postcondition
-     *  The keys and values in this HashTable have been written using System.out.println()
+     *  The keys and values in this HashTable have been written using System.out.println().
      */
     @Override
     public String toString() {

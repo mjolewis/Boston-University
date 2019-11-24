@@ -226,3 +226,30 @@ public interface Map {
         RETURN the return string
      }
  }
+
+/**********************************************************************************************************************
+ * A HashTableTest class provides a terminal interface to test the functionality of the HashTable.java class.
+ *
+ * @author mlewis
+ * @version November 24, 2019
+ *********************************************************************************************************************/
+
+public class HashTableTest {
+    INIT the main entry point (public static void main)
+    INIT HashTable
+    WHILE user wants to keep adding to the HashTable
+        GET an integer key from the user
+        GET a string value from the user
+        PUT key and value into HashTable
+    PRINT the current table using System.out.println
+
+    WHILE user wants to keep deleting from the HashTable
+        GET an integer key to use during deletion
+        IF key is in HashTable
+            REMOVE the key and value
+        ELSE
+            No work needs to be done
+    PRINT the modified table using System.out.println
+
+}
+
