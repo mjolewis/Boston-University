@@ -74,4 +74,127 @@ public interface Map {
         INIT data = new String[capacity];
         INIT hasBeenUsed = new String[capacity];
     }
+
+    /**
+    * public boolean contains(int k)
+    * Accessor method that confirms whether or not a key is in this HashTable.
+    * @param k
+    *  The key to search for.
+    * @return boolean
+    *  True if k is in this HashTable. Otherwise false.
+    */
+     public boolean contains(int k) {
+        ACTIVATE the findIndex helper method
+        IF findIndex NOT -1
+            RETURN true
+        ELSE
+            RETURN false
+     }
+
+    /**
+    * public void delete(int k)
+    * Mutator method that removes the specified key and it's value from this HashTable.
+    * @param k
+    *  The key to search for.
+    * @postcondition
+    *  The specified k and it's value has been removed from this HashTable if it existed. Otherwise, no mutation occurs
+    */
+     public void delete(int k) {
+        ACTIVATE the findIndex helper method
+        IF findIndex NOT -1
+            SET keys[index] to null
+            SET data[index] to null
+            DECREMENT size
+     }
+
+     /**
+     * private int findIndex(int k)
+     * Helper method that returns the index of the specified key if it exists. Otherwise it returns -1.
+     * @param k
+     *  The key to search for.
+     * @return int
+     *  The index of the specified key or -1 if the key is not in this HashTable.
+     */
+     private int findIndex(int k) {
+        INIT count
+        INIT index using a hash function
+
+        WHILE count < data.length AND the index has been previously used
+            EVAL k versus key[index]
+                IF equal
+                    RETURN index
+                ELSE
+                    INCREMENT count
+                    INCREMENT index
+        RETURN -1 if key is not found
+     }
+
+    /**
+    * public String get(int k)
+    * Accessor method that retrieves the value associated with the specified key
+    * @param k
+    *  The key to search for.
+    * @return String
+    *  The value associated with the specified key. If the key is not found the null is returned.
+    */
+     public String get(int k) {
+        INIT findIndex
+        IF findIndex NOT -1
+            RETURN data[index]
+        ELSE
+            RETURN null
+     }
+
+    /**
+    * public void put(int k, String v)
+    * Mutator method that adds the specified key and value to this HashTable. If the specified key was already in this
+    * HashTable, then the old value will be replaced with the specified value.
+    * @param k
+    *  The key to search for.
+    * @param v
+    *  The value associated with the specified key
+    * @postcondition
+    *  The specified key and value have been added to this HashTable and size has been incremented. If the key already
+    *  existed in this HashTable, then the old value has been replaced with the new specified value and size is not
+    *  incremented.
+    */
+     public void put(int k, String v) {
+        INIT findIndex
+
+        IF findIndex NOT -1
+            REPLACE old value with new value
+        ELSE IF size is less than capacity
+            INIT index to the hash function
+            FIND next open index using open addressing
+            SET keys[index] = keys
+            SET data[index] = value
+            SET hasBeenUsed[index] = true
+            INCREMENT size
+        ELSE
+            THROW error because this HashTable is full
+     }
+
+    /**
+    * public void printHash()
+    * Prints every key and value pair in this HashTable.
+    * @postcondition
+    *  The keys and values in this HashTable have been written using System.out.println()
+    */
+     public void printHash() {
+        ACTIVATE toString()
+     }
+
+     /*
+     * public String toString()
+     * Prints every key and value pair in this HashTable.
+     * @postcondition
+     *  The keys and values in this HashTable have been written using System.out.println()
+     */
+     public String toString() {
+        INIT an empty return string
+
+        ITERATE through the entire HashTable
+            CONCATENATE the key and value
+        RETURN the return string
+     }
  }
