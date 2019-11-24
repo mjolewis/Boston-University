@@ -27,10 +27,10 @@ public class HashTable implements Map{
     // 4. The instance variable CAPACITY is part of a twin prime, which is an ideal number for the capacity of a
     //    HashTable.
     private int size;
-    private int[] keys;
+    private Integer[] keys;
     private String[] data;
     private boolean[] hasBeenUsed;
-    private static final int CAPACITY = 103; // One portion of a twin prime.
+    private static final Integer CAPACITY = 103; // One portion of a twin prime.
 
     /**
      * public HashTable()
@@ -42,7 +42,7 @@ public class HashTable implements Map{
      */
     public HashTable() {
         size = 0;
-        keys = new int[CAPACITY];
+        keys = new Integer[CAPACITY];
         data = new String[CAPACITY];
         hasBeenUsed = new boolean[CAPACITY];
     }
@@ -62,7 +62,7 @@ public class HashTable implements Map{
             throw new IllegalArgumentException("Capacity cannot be negative: " + capacity);
         }
         size = 0;
-        keys = new int[capacity];
+        keys = new Integer[capacity];
         data = new String[capacity];
         hasBeenUsed = new boolean[capacity];
     }
@@ -78,9 +78,23 @@ public class HashTable implements Map{
     @Override
     public boolean contains(int k) { return findIndex(k) != -1; }
 
+    /**
+     * public void delete(int k)
+     * Mutator method that removes the specified key and it's value from this HashTable.
+     * @param k
+     *  The key to search for.
+     * @postcondition
+     *  The specified key and it's value have been removed from this HashTable if they existed. Otherwise, no mutation
+     *  occurs.
+     */
     @Override
     public void delete(int k) {
-
+        int index = findIndex(k);
+        if (index != -1) {
+            keys[index] = null;
+            data[index] = null;
+            size--;
+        }
     }
 
     /**
@@ -145,13 +159,71 @@ public class HashTable implements Map{
         return index;
     }
 
+    /**
+     * public void put(int k, String v)
+     * Mutator method that adds the specified key and value to this HashTable. If the specified key was already in this
+     * HashTable, then the old value will be replaced with the specified value.
+     * @param k
+     *  The key to search for.
+     * @param v
+     *  The value associated with the specified key
+     * @postcondition
+     *  The specified key and value have been added to this HashTable and size has been incremented. If the key already
+     *  existed in this HashTable, then the old value has been replaced with the new specified value and size is not
+     *  incremented.
+     */
     @Override
     public void put(int k, String v) {
+        int index = findIndex(k);
 
+        if (index != -1) { // The key already exists
+            data[index] = v;
+        } else if (size < data.length) {
+            index = hash(k);
+            while (keys[index] != null) { // Implements open addressing to find the next available bucket
+                index = nextIndex(index);
+            }
+            keys[index] = k;
+            data[index] = v;
+            hasBeenUsed[index] = true;
+            size++;
+        } else {
+            throw new IllegalStateException("This HashTable is full.");
+        }
     }
 
+    /**
+     * public void printHash()
+     * Prints every key and value pair in this HashTable.
+     * @postcondition
+     *  The keys and values in this HashTable have been written using System.out.println()
+     */
     @Override
     public void printHash() {
+        data.toString();
+    }
 
+    /**
+     * public String toString()
+     * Prints every key and value pair in this HashTable.
+     * @postcondition
+     *  The keys and values in this HashTable have been written using System.out.println()
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < data.length; i++) {
+            stringBuilder.append("Table[").append(i).append("] = ");
+            if (data[i] == null) {
+                stringBuilder.append("<Never Used> \n");
+            } else if (hasBeenUsed[i]) {
+                stringBuilder.append("Previously Used> \n");
+            } else {
+                stringBuilder.append(data[i]).append("\n");
+            }
+        }
+
+        return stringBuilder.toString();
     }
 }
