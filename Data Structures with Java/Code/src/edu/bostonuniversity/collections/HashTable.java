@@ -67,10 +67,16 @@ public class HashTable implements Map{
         hasBeenUsed = new boolean[capacity];
     }
 
+    /**
+     * public boolean contains(int k)
+     * Accessor method that confirms whether or not a specified key is in this HashTable.
+     * @param k
+     *  The key to search for.
+     * @return boolean
+     *  True if k is in this HashTable. Otherwise false.
+     */
     @Override
-    public boolean contains(int k) {
-        return false;
-    }
+    public boolean contains(int k) { return findIndex(k) != -1; }
 
     @Override
     public void delete(int k) {
