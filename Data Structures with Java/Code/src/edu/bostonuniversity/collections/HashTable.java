@@ -68,22 +68,69 @@ public class HashTable implements Map{
     }
 
     @Override
-    public String get(int k) {
-        return null;
-    }
-
-    @Override
-    public void put(int k, String v) {
-
-    }
-
-    @Override
     public boolean contains(int k) {
         return false;
     }
 
     @Override
     public void delete(int k) {
+
+    }
+
+    /**
+     * public int findIndex(int k)
+     * Helper method that returns the index of the specified key if it exists. Otherwise it returns -1.
+     * @param k
+     *  The key to search for.
+     * @return
+     *  The index of the specified key or -1 if the key is not in this HashTable.
+     */
+    private int findIndex(int k) {
+        int count = 0;
+        int index = hash(k);
+
+        while (count < data.length && hasBeenUsed[index]) {
+            if (k == keys[index]) {
+                return index;
+            } else {
+                count++;
+                index = nextIndex(index);
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public String get(int k) {
+
+    }
+
+    /*
+     * private int hash(int k)
+     * Helper method that returns a valid index in this HashTable. The index is calculated using division hashing where
+     * the hash is the remainder when the key's hash code is divided by the capacity of data.
+     * @param k
+     *  The key to hash.
+     * @return int
+     *  The hash code for the specified key
+     */
+    private int hash(int k) { return k % data.length; }
+
+    /*
+     * private int nextIndex(int index)
+     * A helper method used to step through the array one index at a time with wrap around.
+     * @param index
+     *  The current index in this HashTable.
+     * @return int
+     *  The next available index using open addressing.
+     */
+    private int nextIndex(int index) {
+        if (++index == data.length) { return 0; }
+        return index;
+    }
+
+    @Override
+    public void put(int k, String v) {
 
     }
 

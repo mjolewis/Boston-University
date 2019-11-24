@@ -145,6 +145,34 @@ public interface Map {
             RETURN null
      }
 
+     /*
+     * private int hash(int k)
+     * Helper method that returns a valid index in this HashTable. The index is calculated using division hashing where
+     * the hash is the remainder when the key's hash code is divided by the capacity of data.
+     * @param k
+     *  The key to hash.
+     * @return int
+     *  The hash code for the specified key
+     */
+     private int hash(int k) {
+        return Math.abs(key.hashCode()) % data.length;
+     }
+
+     /*
+     * private int nextIndex(int index)
+     * A helper method used to step through the array one index at a time with wrap around.
+     * @param index
+     *  The current index in this HashTable.
+     * @return int
+     *  The next available index using open addressing.
+     */
+     private int nextIndex(int index) {
+        IF the next index equals the capacity of data
+            RETURN 0 due to wrap around
+        ELSE
+            RETURN index + 1
+     }
+
     /**
     * public void put(int k, String v)
     * Mutator method that adds the specified key and value to this HashTable. If the specified key was already in this
