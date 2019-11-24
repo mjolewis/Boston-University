@@ -24,10 +24,13 @@ public class HashTable implements Map{
     //    then we use open addressing to find the next available bucket. Whenever an open bucket is found, we store
     //    the value in data[index] and the value's key in key[index].
     // 3. The instance variable hasBeenUsed indicates whether or not data[index] has ever been used.
+    // 4. The instance variable CAPACITY is part of a twin prime, which is an ideal number for the capacity of a
+    //    HashTable.
     private int size;
     private int[] keys;
     private String[] data;
     private boolean[] hasBeenUsed;
+    private static final int CAPACITY = 103; // One portion of a twin prime.
 
     /**
      * public HashTable()
@@ -39,9 +42,9 @@ public class HashTable implements Map{
      */
     public HashTable() {
         size = 0;
-        keys = new int[103];
-        data = new String[103];
-        hasBeenUsed = new boolean[103];
+        keys = new int[CAPACITY];
+        data = new String[CAPACITY];
+        hasBeenUsed = new boolean[CAPACITY];
     }
 
     /**
