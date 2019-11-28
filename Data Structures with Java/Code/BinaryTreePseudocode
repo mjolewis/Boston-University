@@ -353,6 +353,16 @@ public class TextAnalyzer {
     }
 
     /**
+    * public BTNode<T> getRoot()
+    * Accessor method that returns the root node of this binary tree.
+    * @return BTNode<T>
+    *  The root node of this binary tree.
+    */
+    public BTNode<T> getRoot() {
+        RETURN root node
+    }
+
+    /**
      * public int size()
      * Accessor method that determines how many nodes are in this tree.
      * @return int
