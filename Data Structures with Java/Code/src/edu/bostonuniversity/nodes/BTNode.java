@@ -92,7 +92,7 @@ public class BTNode<E> {
 
     /**
      * public E getLeftmostData()
-     * Accessor method that return the data from the leftmost node of the activating node.
+     * Accessor method that returns the data from the leftmost node of the activating node.
      * @return E
      *  The data from the deepest node that can be reached by following the activating nodes left path.
      */
