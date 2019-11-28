@@ -6,7 +6,9 @@ package edu.bostonuniversity.nodes;
  * A BTNode<E> provides a node for a binary tree with a reference to an E object as the data in each node.
  *
  * @note
- *  Beyond Integer.MAX_VALUE elements, treeSize is wrong.
+ *  1. Beyond Integer.MAX_VALUE elements, treeSize is wrong.
+ *  2. Nodes can be dynamically created or destroyed (not subject to static memory allocation like arrays). However,
+ *     they are limited by the amount of free memory on the heap.
  *
  * @author mlewis
  * @version Nov 3, 2019
@@ -58,6 +60,14 @@ public class BTNode<E> {
         this.left = left;
         this.right = right;
     }
+
+    /**
+     * public int getCount()
+     * Accessor method that returns how many times this node has been accessed.
+     * @return int
+     *  The number of times this node has been accessed.
+     */
+    public int getCount() { return count; }
 
     /**
      * public E getData()
@@ -112,6 +122,14 @@ public class BTNode<E> {
         if (right == null) { return data; }
         return right.getRightmostData();
     }
+
+    /**
+     * public void incrementCount()
+     * Mutator method that increments the instance variable count by one.
+     * @postcondition
+     *  The instance variable count has been incremented by one.
+     */
+    public void incrementCount() { count++; }
 
     /**
      * public boolean isLeaf()
