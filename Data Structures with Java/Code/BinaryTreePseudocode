@@ -328,7 +328,8 @@ public class TextAnalyzer {
     *  Indicates insufficient memory for this TextAnalyzer.
     */
     public TextAnalyzer() {
-        scanner = new Scanner();
+        INIT root = null;
+        INIT new parser object
     }
 
     /**
