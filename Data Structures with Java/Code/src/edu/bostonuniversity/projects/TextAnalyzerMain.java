@@ -14,9 +14,9 @@ import edu.bu.met.cs342a1.TextParser;
 
 public class TextAnalyzerMain {
     public static void main(String[] args) {
-        String FILE_NAME = ;
+        String FILE_NAME = "/Users/mlewis/Downloads/Dracula.txt";
         String word;
-        TextAnalyzer textAnalyzer = new TextAnalyzer();
+        TextAnalyzer<String> textAnalyzer = new TextAnalyzer<>();
         TextParser parser = new TextParser();
         boolean fileExists;
 
@@ -28,5 +28,7 @@ public class TextAnalyzerMain {
                 word = parser.getNextWord();
             }
         }
+
+        textAnalyzer.getRoot().postorderPrint();
     }
 }
