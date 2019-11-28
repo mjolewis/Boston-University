@@ -314,8 +314,10 @@ public class TextAnalyzer {
     // Invariant of the TextAnalyzer.java class
     //  1. The instance variable scanner is a Scanner object used to read in a text file.
     //  2. The instance variable root in the root node of the Binary Tree.
+    //  3. The instance variable parser is a TextParser object used to preprocess text from a given file.
     private Scanner scanner;
     private BTNode<E> root;
+    private TextParser parser;
 
     /**
     * public TextAnalyzer()
@@ -340,13 +342,30 @@ public class TextAnalyzer {
     *  The word has been added to the binary tree if it did not exist. Otherwise, the words counter has been
     *  incremented.
     */
-    private void parseText(String word) {
+    private void add(String word) {
         TRAVERSE the tree
         IF word already exists in the tree
             INCREMENT counter
         ELSE
-            ADD the word to the tree
+            ADD the word to the tree in alphabetic order
             INCREMENT counter
+    }
+
+    /**
+     * public int size()
+     * Accessor method that determines how many nodes are in this tree.
+     * @return int
+     *  The number of nodes in this tree.
+     */
+    public int size() {
+        INIT count;
+
+        TRAVERSE the left side of the tree
+            IF left child is not null
+                INCREMENT count
+        TRAVERSE the right side of the tree
+            IF right child is not null
+                INCREMENT count
     }
 
 }
