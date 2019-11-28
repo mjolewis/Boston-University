@@ -14,11 +14,14 @@ package edu.bostonuniversity.nodes;
 
 public class BTNode<E> {
     // Invariant of the BTNode<E> class
-    //  1. The instance variable data stores the data of each node.
-    //  2. The instance variable left is a reference to the left child of the activating node. If there is no left
+    //  1. The instance variable count counts the number of times data has occurred in the tree. Thus, our programming
+    //     will prevent duplicate entries in the tree and instead count the number of duplicates.
+    //  2. The instance variable data stores the data of each node.
+    //  3. The instance variable left is a reference to the left child of the activating node. If there is no left
     //     child, left is a null reference.
-    //  3. The instance variable right is a reference to the right child of the activating node. If there is no right
+    //  4. The instance variable right is a reference to the right child of the activating node. If there is no right
     //     child, right is a null reference.
+    private int count;
     private E data;
     private BTNode<E> left;
     private BTNode<E> right;
