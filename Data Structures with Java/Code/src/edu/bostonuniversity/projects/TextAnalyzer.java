@@ -3,12 +3,10 @@
 package edu.bostonuniversity.projects;
 
 import edu.bostonuniversity.nodes.BTNode;
-import edu.bu.met.cs342a1.TextParser;
 
 /**********************************************************************************************************************
- * A TextAnalyzer class reads in a text file and maps each word to a node in a Binary Tree. If the word is already in
- * this Binary Tree, we increment a counter instead of adding a duplicate. The TextAnalyzer is capable of performing
- * queries on the text.
+ * A TextAnalyzer class is used to add E objects to a binary tree. If the E object is already in the binary tree
+ * (using the Comparable interface) we increment a counter instead of adding a duplicate node.
  *
  * @author mlewis
  * @version November 27, 2019
@@ -16,9 +14,7 @@ import edu.bu.met.cs342a1.TextParser;
 
 public class TextAnalyzer<T extends Comparable<? super T>> {
     // Invariant of the TextAnalyzer.java class
-    //  1. The instance variable parser is a TextParser object used to preprocess text from a given file.
-    //  2. The instance variable root is a reference to the root of a Binary Search Tree.
-    private TextParser parser;
+    //  1. The instance variable root is a reference to the root of a Binary Search Tree.
     private BTNode<T> root;
 
     /**
@@ -29,10 +25,7 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for the new TextAnalyzer.
      */
-    public TextAnalyzer() {
-        parser = new TextParser();
-        root = null;
-    }
+    public TextAnalyzer() { root = null; }
 
     /**
      * public BTNode<T> parseText(BTNode<T>, T word)
@@ -60,6 +53,14 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
 
         return root;
     }
+
+    /**
+     * public BTNode<T> getRoot()
+     * Accessor method that returns the root node of this binary tree.
+     * @return BTNode<T>
+     *  The root node of this binary tree.
+     */
+    public BTNode<T> getRoot() { return root; }
 
     /**
      * public int size()
