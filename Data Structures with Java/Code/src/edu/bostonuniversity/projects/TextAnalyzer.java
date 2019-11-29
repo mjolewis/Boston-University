@@ -121,6 +121,38 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
     }
 
     /**
+     * public int search(String element)
+     * Accessor method that returns the number of times the specified element was processed by this Binary Search Tree.
+     * @param element
+     *  The element to search for in this Binary Search Tree.
+     * @return int
+     *  The number of times the specified element was processed by this Binary Search Tree.
+     */
+    public int search(T element) {
+        boolean terminate = false;
+        BTNode<T> cursor = root;
+
+        while (!terminate) {
+            if (element.compareTo(cursor.getData()) < 0) {
+                if (cursor.getLeft() == null) {
+                    terminate = true;
+                } else {
+                    cursor = cursor.getLeft();
+                }
+            } else if (element.compareTo(cursor.getData()) > 0) {
+                if (cursor.getRight() == null) {
+                    terminate = true;
+                } else {
+                    cursor = cursor.getRight();
+                }
+            } else {
+                return cursor.getCount();
+            }
+        }
+        return 0;
+    }
+
+    /**
      * public int size()
      * Accessor method that determines how many nodes are in this tree.
      * @return int
