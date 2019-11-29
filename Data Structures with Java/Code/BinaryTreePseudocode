@@ -379,4 +379,13 @@ public class TextAnalyzer {
                 INCREMENT count
     }
 
+    /**
+    * public String toString()
+    * Print the data in every node within this binary tree.
+    * @return String
+    *  The data from each node in this binary tree.
+    public String toString() {
+        ACTIVATE preorder print from BTNode class
+    }
+
 }
