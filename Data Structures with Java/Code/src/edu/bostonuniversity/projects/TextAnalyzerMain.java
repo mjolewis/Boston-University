@@ -26,17 +26,6 @@ public class TextAnalyzerMain {
     private boolean fileExists;
 
     /**
-     * public static void main(String[] args)
-     * The main entry point for the TextAnalyzer.java class
-     * @param args
-     *  The required signature for Java's main method.
-     */
-    public static void main(String[] args) {
-        TextAnalyzerMain start = new TextAnalyzerMain();
-        start.openFile(FILE_NAME);
-    }
-
-    /**
      * public void buildTree(TextParser file)
      * Builds a binary search tree from the text stored in the specified file.
      * @postcondition
@@ -46,6 +35,17 @@ public class TextAnalyzerMain {
         textAnalyzer = new TextAnalyzer<>();
         textAnalyzer.parse(parser);
 
+    }
+
+    /**
+     * public static void main(String[] args)
+     * The main entry point for the TextAnalyzer.java class
+     * @param args
+     *  The required signature for Java's main method.
+     */
+    public static void main(String[] args) {
+        TextAnalyzerMain start = new TextAnalyzerMain();
+        start.openFile(FILE_NAME);
     }
 
     /**
@@ -59,5 +59,51 @@ public class TextAnalyzerMain {
         parser = new TextParser();
         fileExists = parser.openFile(fileName);
         if (fileExists) { buildTree(parser); }
+    }
+
+    /**
+     * public void query()
+     * Query the binary search tree to programmatically answer a series of questions.
+     * @postcondition
+     *  All questions have programmatically been answered and written to the terminal using System.out.println().
+     */
+    public void query() {
+        String answer;
+        System.out.println("How many times do each of the following words appear in the text?");
+        answer = textAnalyzer.search("transylvania");
+        System.out.println("transylvania appears " + answer + " times.");
+
+        answer = textAnalyzer.search("harker");
+        System.out.println("harker appears " + answer + " times.");
+
+        answer = textAnalyzer.search("renfield");
+        System.out.println("renfield appears " + answer + " times.");
+
+        answer = textAnalyzer.search("vampire");
+        System.out.println("vampire appears " + answer + " times.");
+
+        answer = textAnalyzer.search("expostulate");
+        System.out.println("expostulate appears " + answer + " times.");
+
+        answer = textAnalyzer.search("fang");
+        System.out.println("fang appears " + answer + " times.");
+
+//        System.out.println();
+//        System.out.println("The depth of the tree is " +  + " nodes.");
+
+        System.out.println();
+        System.out.println("There are " + textAnalyzer.size() + " different words in the book.");
+
+        System.out.println();
+        System.out.println("The word at the root of the tree is " + textAnalyzer.getRoot().getData() + ".");
+
+//        System.out.println();
+//        System.out.println("The words at the deepest leaves in the tree are: " + );
+
+        System.out.println();
+        System.out.println("There are " + textAnalyzer.getCount() + " words in the book.");
+
+        System.out.println();
+
     }
 }

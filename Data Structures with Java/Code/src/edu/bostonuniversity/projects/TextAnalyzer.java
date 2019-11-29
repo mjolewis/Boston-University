@@ -16,7 +16,10 @@ import edu.bu.met.cs342a1.TextParser;
 public class TextAnalyzer<T extends Comparable<? super T>> {
     // Invariant of the TextAnalyzer.java class
     //  1. The instance variable root is a reference to the root of a Binary Tree.
+    //  2. The instance variable count is a reference to the total number of elements being added to this Binary Search
+    //     tree.
     private BTNode<T> root;
+    private int count;
 
     /**
      * public TextAnalyzer()
@@ -73,6 +76,26 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
     }
 
     /**
+     * public int getCount()
+     * Accessor method that returns a reference to the total number of elements processed by this Binary Search Tree.
+     * @return int
+     *  The total number of elements processed by this Binary Search Tree.
+     */
+    public int getCount() {
+        return count;
+    }
+
+    /**
+     * public BTNode<T> getRoot()
+     * Accessor method that returns the root node of this Binary Search Tree.
+     * @return BTNode<T>
+     *  The root node of this Binary Search Tree.
+     */
+    public BTNode<T> getRoot() {
+        return root;
+    }
+
+    /**
      * public void parse()
      * Parses the data one element at a time and adds that elements to the binary tree if the element is not already
      * in the tree.
@@ -87,8 +110,11 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
         if (data == null) { return; }
 
         T cursor = (T) data.getNextWord();
+
+        count = 0;
         root = new BTNode<>(cursor, null, null);
         while (cursor != null) {
+            count++;
             add(root, cursor);
             cursor = (T) data.getNextWord();
         }
