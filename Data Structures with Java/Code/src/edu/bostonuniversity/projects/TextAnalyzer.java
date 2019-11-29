@@ -3,6 +3,7 @@
 package edu.bostonuniversity.projects;
 
 import edu.bostonuniversity.nodes.BTNode;
+import edu.bu.met.cs342a1.TextParser;
 
 /**********************************************************************************************************************
  * A TextAnalyzer class is used to add E objects to a binary tree. If the E object is already in the binary tree
@@ -14,7 +15,7 @@ import edu.bostonuniversity.nodes.BTNode;
 
 public class TextAnalyzer<T extends Comparable<? super T>> {
     // Invariant of the TextAnalyzer.java class
-    //  1. The instance variable root is a reference to the root of a Binary Search Tree.
+    //  1. The instance variable root is a reference to the root of a Binary Tree.
     private BTNode<T> root;
 
     /**
@@ -28,53 +29,69 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
     public TextAnalyzer() { root = null; }
 
     /**
-     * public BTNode<T> parseText(BTNode<T>, T word)
-     * Mutator method that adds the given word to a node in the binary tree in lexicographic order. If the word is
-     * already in the binary tree then we do not add the word and instead update the instance variable counter
-     * associated with the given word.
-     * @param root
+     * public BTNode<T> parseText(BTNode<T> node, T data)
+     * Mutator method that adds the given data to a node in the binary tree in lexicographic order. If the data is
+     * already in the binary tree then we do not add the data. Instead, we update the instance variable count by one to
+     * count how many times the data occurred.
+     * @param node
      *  The root of this binary tree.
-     * @param word
-     *  The word to add to the binary tree. If the word is already in the tree, we do not add it. Instead, we increment
-     *  the words counter.
+     * @param data
+     *  The data to add to the binary tree. If the data is already in the tree, we do not add it. Instead, we increment
+     *  the data's counter.
      * @postcondition
-     *  The word has been added to the binary tree in lexicographic order if the word was not already in the tree.
-     *  Otherwise, the word is already in the tree and it has not been added; however, the counter associated with the
-     *  word has been incremented.
+     *  The data has been added to the binary tree in lexicographic order if the data was not already in the tree.
+     *  Otherwise, the data is already in the tree and it has not been added; however, the counter associated with the
+     *  data has been incremented.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for this new word.
+     *  Indicates insufficient memory for this new data.
      */
-    public BTNode<T> add(BTNode<T> root, T word) {
-        if (root == null) { root = new BTNode<T>(word, null, null); }
+    public BTNode<T> add(BTNode<T> node, T data) {
+        boolean nodeAdded = false;
 
-        if (root.getData().compareTo(word) < 0) { return add(root.getLeft(), word); }
-        if (root.getData().compareTo(word) == 0) { root.incrementCount(); }
-        if (root.getData().compareTo(word) > 0) { return add(root.getRight(), word); }
+        while (!nodeAdded) {
+            if (data.compareTo(node.getData()) < 0) {
+                if (node.getLeft() == null) {
+                    node.setLeft(new BTNode<>(data, null, null));
+                    node.getLeft().incrementCount();
+                    nodeAdded = true;
+                } else {
+                    node = node.getLeft();
+                }
+            } else if (data.compareTo(node.getData()) > 0) {
+                if (node.getRight() == null) {
+                    node.setRight(new BTNode<>(data, null, null));
+                    node.getRight().incrementCount();
+                    nodeAdded = true;
+                } else {
+                    node = node.getRight();
+                }
+            } else {
+                node.incrementCount();
+                nodeAdded = true;
+            }
+        }
 
-        return root;
+        return node;
     }
 
     /**
-     * public BTNode<T> getRoot()
-     * Accessor method that returns the root node of this binary tree.
-     * @return BTNode<T>
-     *  The root node of this binary tree.
+     * public void parse()
+     * Parses the data one element at a time and adds that elements to the binary tree if the element is not already
+     * in the tree.
+     * @param data
+     *  The data being added to the binary tree.
+     * @postcondition
+     *  The data has been added to the binary tree one element at a time. Each unique element is added in it's own node
+     *  and if there is a duplicate element, then a counter is incremented.
      */
-    public BTNode<T> getRoot() { return root; }
+    @SuppressWarnings("unchecked")
+    public void parse(TextParser data) {
+        T cursor = (T) data.getNextWord();
 
-    /**
-     * public int size()
-     * Accessor method that determines how many nodes are in this tree.
-     * @return int
-     *  The number of nodes in this tree.
-     */
-    public int size() {
-        int count;
-
-        count = 0;
-        while (root.getLeft() != null) { count++; }
-        while (root.getRight() != null) { count++; }
-
-        return count;
+        root = new BTNode<>(cursor, null, null);
+        while (cursor != null) {
+            add(root, cursor);
+            cursor = (T) data.getNextWord();
+        }
     }
 }
