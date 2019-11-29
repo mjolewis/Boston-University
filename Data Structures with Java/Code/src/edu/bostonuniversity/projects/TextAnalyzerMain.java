@@ -15,20 +15,11 @@ import edu.bu.met.cs342a1.TextParser;
 public class TextAnalyzerMain {
     public static void main(String[] args) {
         String FILE_NAME = "/Users/mlewis/Downloads/Dracula.txt";
-        String word;
         TextAnalyzer<String> textAnalyzer = new TextAnalyzer<>();
         TextParser parser = new TextParser();
         boolean fileExists;
 
         fileExists = parser.openFile(FILE_NAME);
-        if (fileExists) {
-            word = parser.getNextWord();
-            while (word != null) {
-                textAnalyzer.add(textAnalyzer.getRoot(), word);
-                word = parser.getNextWord();
-            }
-        }
-
-        textAnalyzer.getRoot().postorderPrint();
+        if (fileExists) { textAnalyzer.parse(parser); }
     }
 }
