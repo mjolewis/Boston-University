@@ -424,6 +424,33 @@ public class TextAnalyzer {
     }
 
     /**
+     * public void preorderPrint()
+     * An pre-order traversal to print the data from this node and all of its descendants in the binary tree.
+     * @postcondition
+     *  The data of this node and all of its descendants have been written by System.out.println().
+     */
+    public void preorderPrint() {
+        PRINT data from the activating node
+        TRAVERSE the tree down the left child pathway
+        IF left child becomes null
+            TRAVERSE the tree down the right child pathway
+            IF right child pathway is null
+                END traversal
+    }
+
+    /**
+     * public void postorderPrint()
+     * An post-order traversal to print the data from this node and all of its descendants in the binary tree.
+     * @postcondition
+     *  The data of this node and all of its descendants have been written by System.out.println().
+     */
+    public void postorderPrint() {
+        TRAVERSE the tree down the left child pathway until the left child become null
+        TRAVERSE the tree down the right child pathway until the right child becomes null
+        PRINT the data from each node as you traverse back up the tree
+    }
+
+    /**
      * public int size()
      * Accessor method that determines how many nodes are in this tree.
      * @return int
