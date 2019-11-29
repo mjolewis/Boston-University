@@ -313,11 +313,13 @@
 public class TextAnalyzer {
     // Invariant of the TextAnalyzer.java class
     //  1. The instance variable scanner is a Scanner object used to read in a text file.
-    //  2. The instance variable root in the root node of the Binary Tree.
+    //  2. The instance variable root in the root node of the Binary Search Tree.
     //  3. The instance variable parser is a TextParser object used to preprocess text from a given file.
+    //  4. The instance variable count is a reference to the total number of elements added to this Binary Search Tree.
     private Scanner scanner;
     private BTNode<E> root;
     private TextParser parser;
+    private int count;
 
     /**
     * public TextAnalyzer()
@@ -350,6 +352,16 @@ public class TextAnalyzer {
         ELSE
             ADD the word to the tree in alphabetic order
             INCREMENT counter
+    }
+
+    /**
+    * public int getCount()
+    * Accessor method that returns a reference to the total number of elements processed by this Binary Search Tree.
+    * @return int
+    *  The total number of elements processed by this Binary Search Tree.
+    */
+    public int getCount() {
+        RETURN count;
     }
 
     /**
@@ -444,5 +456,17 @@ public class TextAnalyzerMain {
         TRY to open the specified file
         IF file exists
             ACTIVATE the buildtree method
+    }
+
+    /**
+    * public void query()
+    * Query the binary search tree to programmatically answer a series of questions.
+    * @postcondition
+    *  All questions have programmatically been answered and written to the terminal using System.out.println().
+    */
+    public void query() {
+        DISPLAY questions being asked
+        QUERY the binary search tree
+        DISPLAY the result to the terminal
     }
 }
