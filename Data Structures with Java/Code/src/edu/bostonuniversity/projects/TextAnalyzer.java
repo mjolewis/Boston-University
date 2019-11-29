@@ -29,7 +29,7 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
     public TextAnalyzer() { root = null; }
 
     /**
-     * public BTNode<T> parseText(BTNode<T> node, T data)
+     * public void add(BTNode<T> node, T data)
      * Mutator method that adds the given data to a node in the binary tree in lexicographic order. If the data is
      * already in the binary tree then we do not add the data. Instead, we update the instance variable count by one to
      * count how many times the data occurred.
@@ -45,7 +45,7 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this new data.
      */
-    public BTNode<T> add(BTNode<T> node, T data) {
+    public void add(BTNode<T> node, T data) {
         boolean nodeAdded = false;
 
         while (!nodeAdded) {
@@ -70,8 +70,6 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
                 nodeAdded = true;
             }
         }
-
-        return node;
     }
 
     /**
