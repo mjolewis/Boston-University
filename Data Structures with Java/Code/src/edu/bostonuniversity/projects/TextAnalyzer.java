@@ -86,8 +86,9 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
      */
     @SuppressWarnings("unchecked")
     public void parse(TextParser data) {
-        T cursor = (T) data.getNextWord();
+        if (data == null) { return; }
 
+        T cursor = (T) data.getNextWord();
         root = new BTNode<>(cursor, null, null);
         while (cursor != null) {
             add(root, cursor);
