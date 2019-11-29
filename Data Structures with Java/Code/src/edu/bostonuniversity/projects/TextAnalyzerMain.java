@@ -34,7 +34,7 @@ public class TextAnalyzerMain {
     public void buildTree(TextParser file) {
         textAnalyzer = new TextAnalyzer<>();
         textAnalyzer.parse(parser);
-
+        query();
     }
 
     /**
@@ -68,7 +68,7 @@ public class TextAnalyzerMain {
      *  All questions have programmatically been answered and written to the terminal using System.out.println().
      */
     public void query() {
-        String answer;
+        int answer;
         System.out.println("How many times do each of the following words appear in the text?");
         answer = textAnalyzer.search("transylvania");
         System.out.println("transylvania appears " + answer + " times.");
@@ -104,6 +104,7 @@ public class TextAnalyzerMain {
         System.out.println("There are " + textAnalyzer.getCount() + " words in the book.");
 
         System.out.println();
+        System.out.println(textAnalyzer.mostFrequent() + " occurs most frequently.");
 
     }
 }

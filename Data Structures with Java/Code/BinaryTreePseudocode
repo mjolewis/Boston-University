@@ -375,6 +375,23 @@ public class TextAnalyzer {
     }
 
     /**
+    * public T mostFrequent()
+    * Accessor method that returns a reference to the element that occurs most frequently.
+    * @return T
+    *  The element that occurs most frequently.
+    */
+    public T mostFrequent() {
+        INIT count
+        INIT answer
+        TRAVERSE the tree
+        IF the count of the current node > than count
+            UPDATE count
+            UPDATE answer
+        ELSE
+            TRAVERSE the tree until there are no more nodes to search
+    }
+
+    /**
      * public int size()
      * Accessor method that determines how many nodes are in this tree.
      * @return int
@@ -398,6 +415,7 @@ public class TextAnalyzer {
     *  The element to search for in this Binary Search Tree.
     * @return int
     *  The number of times the specified element was processed by this Binary Search Tree.
+    */
     public int search(String element) {
         TRAVERSE the tree
         IF the data of any given node matches the specified element
