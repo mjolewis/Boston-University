@@ -392,6 +392,21 @@ public class TextAnalyzer {
     }
 
     /**
+    * public int search(String element)
+    * Accessor method that returns the number of times the specified element was processed by this Binary Search Tree.
+    * @param element
+    *  The element to search for in this Binary Search Tree.
+    * @return int
+    *  The number of times the specified element was processed by this Binary Search Tree.
+    public int search(String element) {
+        TRAVERSE the tree
+        IF the data of any given node matches the specified element
+            RETURN the count attached to that node
+        ELSE
+            CONTINUE searching until you have search the entire tree
+    }
+
+    /**
     * public String toString()
     * Print the data in every node within this binary tree.
     * @return String
