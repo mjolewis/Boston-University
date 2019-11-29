@@ -114,7 +114,7 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
      */
     @Override
     public String toString() {
-        root.preorderPrint();
+        root.inorderPrint();
         return "";
     }
 }
