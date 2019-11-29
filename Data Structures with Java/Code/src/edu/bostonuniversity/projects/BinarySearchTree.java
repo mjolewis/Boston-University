@@ -6,20 +6,26 @@ import edu.bostonuniversity.nodes.BTNode;
 import edu.bu.met.cs342a1.TextParser;
 
 /**********************************************************************************************************************
- * A TextAnalyzer class is used to add E objects to a binary tree. If the E object is already in the binary tree
- * (using the Comparable interface) we increment a counter instead of adding a duplicate node.
+ * A BinarySearchTree class is used to add E objects to a binary tree. If the E object is already in the Binary Search
+ * Tree (using the Comparable interface) we increment a counter instead of adding a duplicate node.
  *
  * @author mlewis
  * @version November 27, 2019
  *********************************************************************************************************************/
 
-public class TextAnalyzer<T extends Comparable<? super T>> {
+public class BinarySearchTree<T extends Comparable<? super T>> {
     // Invariant of the TextAnalyzer.java class
-    //  1. The instance variable root is a reference to the root of a Binary Tree.
+    //  1. The instance variable root is a reference to the root of a Binary Search Tree.
     //  2. The instance variable count is a reference to the total number of elements being added to this Binary Search
-    //     tree.
+    //     Tree.
+    //  3. The instance variable maxOccurrence is the number of times the most frequent element occurred in this
+    //     Binary Search Tree.
+    //  4. The instance variable mostFrequent is a reference to the data that most frequently occurred in this Binary
+    //     Search Tree.
     private BTNode<T> root;
     private int count;
+    private int maxOccurrence;
+    private T mostFrequent;
 
     /**
      * public TextAnalyzer()
@@ -29,22 +35,22 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for the new TextAnalyzer.
      */
-    public TextAnalyzer() { root = null; }
+    public BinarySearchTree() { root = null; }
 
     /**
      * public void add(BTNode<T> node, T data)
-     * Mutator method that adds the given data to a node in the binary tree in lexicographic order. If the data is
-     * already in the binary tree then we do not add the data. Instead, we update the instance variable count by one to
-     * count how many times the data occurred.
+     * Mutator method that adds the given data to a node in the Binary Search Tree in lexicographic order. If the data
+     * is already in the Binary Search Tree then we do not add the data. Instead, we update the instance variable count
+     * by one to count how many times the data occurred.
      * @param node
-     *  The root of this binary tree.
+     *  The root of this Binary Search Tree.
      * @param data
-     *  The data to add to the binary tree. If the data is already in the tree, we do not add it. Instead, we increment
-     *  the data's counter.
+     *  The data to add to the Binary Search Tree. If the data is already in the tree, we do not add it. Instead, we
+     *  increment the data's counter.
      * @postcondition
-     *  The data has been added to the binary tree in lexicographic order if the data was not already in the tree.
-     *  Otherwise, the data is already in the tree and it has not been added; however, the counter associated with the
-     *  data has been incremented.
+     *  The data has been added to the Binary Search Tree in lexicographic order if the data was not already in the
+     *  tree. Otherwise, the data is already in the tree and it has not been added; however, the counter associated
+     *  with the data has been incremented.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this new data.
      */
@@ -70,6 +76,10 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
                 }
             } else {
                 node.incrementCount();
+                if (node.getCount() > maxOccurrence) {
+                    maxOccurrence = node.getCount();
+                    mostFrequent = node.getData();
+                }
                 nodeAdded = true;
             }
         }
@@ -86,6 +96,20 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
     }
 
     /**
+     * public T getMostFrequent()
+     * Accessor method that returns a reference to the most frequently occurring element in this Binary Search Tree.
+     * @return T
+     *  A reference to the most frequently occurring element in this Binary Search Tree.
+     */
+    public T getMostFrequent() {
+        return mostFrequent;
+    }
+
+    public int getMaxOccurrence() {
+        return maxOccurrence;
+    }
+
+    /**
      * public BTNode<T> getRoot()
      * Accessor method that returns the root node of this Binary Search Tree.
      * @return BTNode<T>
@@ -95,39 +119,15 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
         return root;
     }
 
-//    /**
-//     * public T mostFrequent()
-//     * Accessor method that returns a reference to the element that occurs most frequently. We suppress warnings in
-//     * this method because our programming ensures that the return element is of type T.
-//     * @return T
-//     *  The element that occurs most frequently.
-//     */
-//    @SuppressWarnings("unchecked")
-//    public static <T> T mostFrequent(BTNode<T> root) {
-//        int count = 0;
-//        T answer = (T) root.getData();
-//
-//        if (root == null) { return null; }
-//        if (root.getCount() > count) {
-//            count = root.getCount();
-//            answer = root.getData();
-//        }
-//
-//        mostFrequent(root.getLeft());
-//        mostFrequent(root.getRight());
-//
-//        return answer;
-//    }
-
     /**
      * public void parse()
-     * Parses the data one element at a time and adds that elements to the binary tree if the element is not already
-     * in the tree.
+     * Parses the data one element at a time and adds that elements to the Binary Search Tree if the element is not
+     * already in the Binary Search Tree.
      * @param data
-     *  The data being added to the binary tree.
+     *  The data being added to the Binary Search Tree.
      * @postcondition
-     *  The data has been added to the binary tree one element at a time. Each unique element is added in it's own node
-     *  and if there is a duplicate element, then a counter is incremented.
+     *  The data has been added to the Binary Search Tree one element at a time. Each unique element is added in it's
+     *  own node and if there is a duplicate element, then a counter is incremented.
      */
     @SuppressWarnings("unchecked")
     public void parse(TextParser data) {
@@ -180,7 +180,7 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
      * public int size()
      * Accessor method that determines how many nodes are in this tree.
      * @return int
-     *  The number of nodes in this binary tree.
+     *  The number of nodes in this Binary Search Tree.
      * @note
      *  A wrong answer occurs for trees larger than Integer.MAX_VALUE.
      */
@@ -190,9 +190,9 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
 
     /**
      * public String toString()
-     * Print the data in every node within this binary tree.
+     * Print the data in every node within this Binary Search Tree.
      * @return String
-     *  The data from each node in this binary tree.
+     *  The data from each node in this Binary Search Tree.
      */
     @Override
     public String toString() {
