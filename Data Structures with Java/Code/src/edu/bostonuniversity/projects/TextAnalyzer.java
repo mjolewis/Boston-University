@@ -93,4 +93,16 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
             cursor = (T) data.getNextWord();
         }
     }
+
+    /**
+     * public int size()
+     * Accessor method that determines how many nodes are in this tree.
+     * @return int
+     *  The number of nodes in this binary tree.
+     * @note
+     *  A wrong answer occurs for trees larger than Integer.MAX_VALUE.
+     */
+    public int size() {
+        return BTNode.treeSize(root);
+    }
 }
