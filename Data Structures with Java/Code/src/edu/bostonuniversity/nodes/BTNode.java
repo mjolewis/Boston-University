@@ -278,6 +278,28 @@ public class BTNode<E> {
     }
 
     /**
+     * public static <E> int treeDepth(BTNode<E> root)
+     * Computer the depth of this binary tree.
+     * @param root
+     *  A reference to the root of a binary tree (which may be an empty tree with a null root).
+     * @return int
+     *  The depth of this binary tree.
+     * @note
+     *  A wrong answer occurs for trees larger than Integer.MAX_VALUE.
+     */
+    public static <E> int treeDepth(BTNode<E> root) {
+        if (root == null) { return 0; }
+
+        int leftDepth;
+        int rightDepth;
+
+        leftDepth = 1 + treeDepth(root.left);
+        rightDepth = 1 + treeDepth(root.right);
+
+        return Math.max(leftDepth, rightDepth);
+    }
+
+    /**
      * public static <E> int treeSize(BTNode<E> root)
      * Compute the number of nodes in this binary tree.
      * @param root
