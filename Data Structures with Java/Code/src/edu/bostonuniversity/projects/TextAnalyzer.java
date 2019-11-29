@@ -95,6 +95,30 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
         return root;
     }
 
+//    /**
+//     * public T mostFrequent()
+//     * Accessor method that returns a reference to the element that occurs most frequently. We suppress warnings in
+//     * this method because our programming ensures that the return element is of type T.
+//     * @return T
+//     *  The element that occurs most frequently.
+//     */
+//    @SuppressWarnings("unchecked")
+//    public static <T> T mostFrequent(BTNode<T> root) {
+//        int count = 0;
+//        T answer = (T) root.getData();
+//
+//        if (root == null) { return null; }
+//        if (root.getCount() > count) {
+//            count = root.getCount();
+//            answer = root.getData();
+//        }
+//
+//        mostFrequent(root.getLeft());
+//        mostFrequent(root.getRight());
+//
+//        return answer;
+//    }
+
     /**
      * public void parse()
      * Parses the data one element at a time and adds that elements to the binary tree if the element is not already
