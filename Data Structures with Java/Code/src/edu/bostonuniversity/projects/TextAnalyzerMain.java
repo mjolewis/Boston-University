@@ -106,7 +106,6 @@ public class TextAnalyzerMain {
 
         System.out.println();
         System.out.println("\"" + binarySearchTree.getMostFrequent() + "\" occurs most frequently.");
-        System.out.println(binarySearchTree.getMaxOccurrence());
 
     }
 }

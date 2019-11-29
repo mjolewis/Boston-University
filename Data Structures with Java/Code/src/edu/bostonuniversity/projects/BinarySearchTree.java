@@ -96,6 +96,18 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     /**
+     * public getMaxOccurrence()
+     * Accessor method that returns the number of times the most frequent element occurred in this Binary Search Tree.
+     * @return int
+     *  The number of times the most frequent element occurred in this Binary Search Tree.
+     * @note
+     *  A wrong answer occurs for trees larger than Integer.MAX_VALUE.
+     */
+    public int getMaxOccurrence() {
+        return maxOccurrence;
+    }
+
+    /**
      * public T getMostFrequent()
      * Accessor method that returns a reference to the most frequently occurring element in this Binary Search Tree.
      * @return T
@@ -103,10 +115,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public T getMostFrequent() {
         return mostFrequent;
-    }
-
-    public int getMaxOccurrence() {
-        return maxOccurrence;
     }
 
     /**
@@ -143,6 +151,29 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             cursor = (T) data.getNextWord();
         }
     }
+
+//    /**
+//     * public void preorderPrint()
+//     * An pre-order traversal to print the data from the first 20 nodes in this Binary Search Tree.
+//     * @postcondition
+//     *  The data of the first 20 nodes have been written by System.out.println().
+//     */
+//    public void preorderTraversal(BTNode<T> cursor) {
+//        int count = 0;
+//        final int maxTraversals = 20;
+//
+//        while (count <= maxTraversals) {
+//            System.out.println(cursor.getData());
+//            if (cursor != null) {
+//                count++;
+//                cursor = cursor.getLeft();
+//                preorderTraversal(cursor);
+//            }
+//            if (right != null) {
+//                right.preorderPrint();
+//            }
+//        }
+//    }
 
     /**
      * public int search(String element)
