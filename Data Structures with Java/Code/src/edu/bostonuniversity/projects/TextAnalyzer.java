@@ -105,4 +105,16 @@ public class TextAnalyzer<T extends Comparable<? super T>> {
     public int size() {
         return BTNode.treeSize(root);
     }
+
+    /**
+     * public String toString()
+     * Print the data in every node within this binary tree.
+     * @return String
+     *  The data from each node in this binary tree.
+     */
+    @Override
+    public String toString() {
+        root.preorderPrint();
+        return "";
+    }
 }
