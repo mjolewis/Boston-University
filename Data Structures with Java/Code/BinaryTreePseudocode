@@ -332,10 +332,16 @@ public class TextAnalyzer {
     //  2. The instance variable root in the root node of the Binary Search Tree.
     //  3. The instance variable parser is a TextParser object used to preprocess text from a given file.
     //  4. The instance variable count is a reference to the total number of elements added to this Binary Search Tree.
+    //  5. The instance variable maxOccurrence is the number of times the most frequent element occurred in this
+    //     Binary Search Tree.
+    //  6. The instance variable mostFrequent is a reference to the data that most frequently occurred in this Binary
+    //     Search Tree.
     private Scanner scanner;
     private BTNode<E> root;
     private TextParser parser;
     private int count;
+    private int maxOccurrence;
+    private T mostFrequent;
 
     /**
     * public TextAnalyzer()
@@ -378,6 +384,16 @@ public class TextAnalyzer {
     */
     public int getCount() {
         RETURN count;
+    }
+
+    /**
+    * public T getMostFrequent()
+    * Accessor method that returns a reference to the most frequently occurring element in this Binary Search Tree.
+    * @return T
+    *  A reference to the most frequently occurring element in this Binary Search Tree.
+    */
+    public T getMostFrequent() {
+        RETURN mostFrequent;
     }
 
     /**

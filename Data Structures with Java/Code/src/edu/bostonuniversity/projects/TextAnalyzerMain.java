@@ -2,6 +2,7 @@
 
 package edu.bostonuniversity.projects;
 
+import edu.bostonuniversity.nodes.BTNode;
 import edu.bu.met.cs342a1.TextParser;
 
 /**********************************************************************************************************************
@@ -21,7 +22,7 @@ public class TextAnalyzerMain {
     //  4. The instance variable fileExists is a boolean object used to confirm whether or not the file stored in
     //     FILE_NAME exists and has been opened for processing.
     private static final String FILE_NAME = "/Users/mlewis/Downloads/Dracula.txt";
-    private TextAnalyzer<String> textAnalyzer;
+    private BinarySearchTree<String> binarySearchTree;
     private TextParser parser;
     private boolean fileExists;
 
@@ -32,8 +33,8 @@ public class TextAnalyzerMain {
      *  A binary search tree has been built using the text stored in the specified file.
      */
     public void buildTree(TextParser file) {
-        textAnalyzer = new TextAnalyzer<>();
-        textAnalyzer.parse(parser);
+        binarySearchTree = new BinarySearchTree<>();
+        binarySearchTree.parse(parser);
         query();
     }
 
@@ -70,41 +71,42 @@ public class TextAnalyzerMain {
     public void query() {
         int answer;
         System.out.println("How many times do each of the following words appear in the text?");
-        answer = textAnalyzer.search("transylvania");
+        answer = binarySearchTree.search("transylvania");
         System.out.println("transylvania appears " + answer + " times.");
 
-        answer = textAnalyzer.search("harker");
+        answer = binarySearchTree.search("harker");
         System.out.println("harker appears " + answer + " times.");
 
-        answer = textAnalyzer.search("renfield");
+        answer = binarySearchTree.search("renfield");
         System.out.println("renfield appears " + answer + " times.");
 
-        answer = textAnalyzer.search("vampire");
+        answer = binarySearchTree.search("vampire");
         System.out.println("vampire appears " + answer + " times.");
 
-        answer = textAnalyzer.search("expostulate");
+        answer = binarySearchTree.search("expostulate");
         System.out.println("expostulate appears " + answer + " times.");
 
-        answer = textAnalyzer.search("fang");
+        answer = binarySearchTree.search("fang");
         System.out.println("fang appears " + answer + " times.");
 
-//        System.out.println();
-//        System.out.println("The depth of the tree is " +  + " nodes.");
+        System.out.println();
+        System.out.println("The depth of the tree is " + BTNode.treeDepth(binarySearchTree.getRoot()) + " nodes.");
 
         System.out.println();
-        System.out.println("There are " + textAnalyzer.size() + " different words in the book.");
+        System.out.println("There are " + binarySearchTree.size() + " different words in the book.");
 
         System.out.println();
-        System.out.println("The word at the root of the tree is " + textAnalyzer.getRoot().getData() + ".");
+        System.out.println("The word at the root of the tree is \"" + binarySearchTree.getRoot().getData() + "\".");
 
 //        System.out.println();
 //        System.out.println("The words at the deepest leaves in the tree are: " + );
 
         System.out.println();
-        System.out.println("There are " + textAnalyzer.getCount() + " words in the book.");
+        System.out.println("There are " + binarySearchTree.getCount() + " words in the book.");
 
         System.out.println();
-        System.out.println(textAnalyzer.mostFrequent() + " occurs most frequently.");
+        System.out.println("\"" + binarySearchTree.getMostFrequent() + "\" occurs most frequently.");
+        System.out.println(binarySearchTree.getMaxOccurrence());
 
     }
 }
