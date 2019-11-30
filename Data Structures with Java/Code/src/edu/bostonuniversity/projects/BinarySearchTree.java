@@ -133,6 +133,21 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     /**
+     * public void inorderPrint(BTNode<T> cursor)
+     * An inorder traversal to print the data from the first 20 nodes in this Binary Search Tree.
+     * @postcondition
+     *  The data of the first 20 nodes have been written by System.out.println().
+     */
+    public void inorderTraversal(BTNode<T> cursor) {
+        if (cursor == null) { return; }
+        inorderTraversal(cursor.getLeft());
+        depth++;
+        if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " -> "); }
+        if (depth == MAX_DEPTH) { System.out.print(cursor.getData()); }
+        inorderTraversal(cursor.getRight());
+    }
+
+    /**
      * public void parse()
      * Parses the data one element at a time and adds that elements to the Binary Search Tree if the element is not
      * already in the Binary Search Tree.
@@ -168,9 +183,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         postorderTraversal(cursor.getLeft());
         postorderTraversal(cursor.getRight());
         depth++;
-        if (depth <= MAX_DEPTH) {
-            System.out.println(cursor.getData());
-        }
+        if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " -> "); }
+        if (depth == MAX_DEPTH) { System.out.print(cursor.getData()); }
     }
 
     /**
@@ -181,10 +195,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void preorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-
-        if (depth < MAX_DEPTH) {
-            System.out.println(cursor.getData());
-        }
+        if (depth < MAX_DEPTH - 1) { System.out.print(cursor.getData() + " -> "); }
+        if (depth == MAX_DEPTH - 1) { System.out.print(cursor.getData()); }
         depth++;
         preorderTraversal(cursor.getLeft());
         preorderTraversal(cursor.getRight());
