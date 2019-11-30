@@ -22,10 +22,15 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     //     Binary Search Tree.
     //  4. The instance variable mostFrequent is a reference to the data that most frequently occurred in this Binary
     //     Search Tree.
+    //  5. The instance variable MAX_DEPTH is the maximum depth allowed during any print traversal activation.
+    //  6. The instance variable depth is a static variable used to terminate the recursive print traversal
+    //     activations.
     private BTNode<T> root;
     private int count;
     private int maxOccurrence;
     private T mostFrequent;
+    private static final int MAX_DEPTH = 20;
+    private static int depth = 0;
 
     /**
      * public TextAnalyzer()
@@ -152,28 +157,37 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         }
     }
 
-//    /**
-//     * public void preorderPrint()
-//     * An pre-order traversal to print the data from the first 20 nodes in this Binary Search Tree.
-//     * @postcondition
-//     *  The data of the first 20 nodes have been written by System.out.println().
-//     */
-//    public void preorderTraversal(BTNode<T> cursor) {
-//        int count = 0;
-//        final int maxTraversals = 20;
-//
-//        while (count <= maxTraversals) {
-//            System.out.println(cursor.getData());
-//            if (cursor != null) {
-//                count++;
-//                cursor = cursor.getLeft();
-//                preorderTraversal(cursor);
-//            }
-//            if (right != null) {
-//                right.preorderPrint();
-//            }
-//        }
-//    }
+    /**
+     * public void postorderTraversal(BTNode<T> cursor)
+     * An post-order traversal to print the data from the first 20 nodes in this Binary Search Tree.
+     * @postcondition
+     *  The data of the first 20 nodes have been written by System.out.println().
+     */
+    public void postorderTraversal(BTNode<T> cursor) {
+        if (cursor == null) { return; }
+        if (depth < MAX_DEPTH) {
+            postorderTraversal(cursor.getLeft());
+            postorderTraversal(cursor.getRight());
+            depth++;
+            System.out.println(cursor.getData());
+        }
+    }
+
+    /**
+     * public void preorderPrint(BTNode<T> cursor)
+     * An pre-order traversal to print the data from the first 20 nodes in this Binary Search Tree.
+     * @postcondition
+     *  The data of the first 20 nodes have been written by System.out.println().
+     */
+    public void preorderTraversal(BTNode<T> cursor) {
+        if (depth < MAX_DEPTH) {
+            if (cursor == null) { return; }
+            System.out.println(cursor.getData());
+            depth++;
+            preorderTraversal(cursor.getLeft());
+            preorderTraversal(cursor.getRight());
+        }
+    }
 
     /**
      * public int search(String element)
@@ -205,6 +219,18 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             }
         }
         return 0;
+    }
+
+    /**
+     * public void setDepth(int depth)
+     * Mutator method that sets the instance variable depth to the specified depth
+     * @param depth
+     *  The target depth.
+     * @postcondition
+     *  The instance variable depth has been initialized to the specified depth.
+     */
+    public void setDepth(int depth) {
+        BinarySearchTree.depth = depth;
     }
 
     /**
