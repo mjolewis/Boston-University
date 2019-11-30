@@ -104,16 +104,19 @@ public class BinarySearchTreeMain {
         System.out.println();
         System.out.println("\"" + binarySearchTree.getMostFrequent() + "\" occurs most frequently.");
 
-        System.out.println();
         binarySearchTree.setDepth(0);
+        System.out.println("\n");
         System.out.println("The first 20 words in a pre-order traversal are: ");
         binarySearchTree.preorderTraversal(binarySearchTree.getRoot());
-        binarySearchTree.getRoot().preorderPrint();
 
-        System.out.println();
         binarySearchTree.setDepth(0);
+        System.out.println("\n");
         System.out.println("The first 20 words in a post-order traversal are: ");
         binarySearchTree.postorderTraversal(binarySearchTree.getRoot());
 
+        binarySearchTree.setDepth(0);
+        System.out.println("\n");
+        System.out.println("The first 20 words in a in-order traversal are: ");
+        binarySearchTree.inorderTraversal(binarySearchTree.getRoot());
     }
 }
