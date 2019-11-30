@@ -67,22 +67,22 @@ public class BinarySearchTreeMain {
     private void query() {
         int answer;
         System.out.println("How many times do each of the following words appear in the text?");
-        answer = binarySearchTree.search("transylvania");
+        answer = binarySearchTree.countOccurrences("transylvania");
         System.out.println("transylvania appears " + answer + " times.");
 
-        answer = binarySearchTree.search("harker");
+        answer = binarySearchTree.countOccurrences("harker");
         System.out.println("harker appears " + answer + " times.");
 
-        answer = binarySearchTree.search("renfield");
+        answer = binarySearchTree.countOccurrences("renfield");
         System.out.println("renfield appears " + answer + " times.");
 
-        answer = binarySearchTree.search("vampire");
+        answer = binarySearchTree.countOccurrences("vampire");
         System.out.println("vampire appears " + answer + " times.");
 
-        answer = binarySearchTree.search("expostulate");
+        answer = binarySearchTree.countOccurrences("expostulate");
         System.out.println("expostulate appears " + answer + " times.");
 
-        answer = binarySearchTree.search("fang");
+        answer = binarySearchTree.countOccurrences("fang");
         System.out.println("fang appears " + answer + " times.");
 
         System.out.println();
@@ -94,17 +94,19 @@ public class BinarySearchTreeMain {
         System.out.println();
         System.out.println("The word at the root of the tree is \"" + binarySearchTree.getRoot().getData() + "\".");
 
-//        System.out.println();
-//        System.out.println("The words at the deepest leaves in the tree are: " + );
-
+        binarySearchTree.setDepth(0);
         System.out.println();
+        System.out.println("The words at the deepest leaves in the tree are: ");
+        binarySearchTree.getDeepestLeaves(binarySearchTree.getRoot());
+
+        System.out.println("\n");
         System.out.println("There are " + binarySearchTree.getCount() + " words in the book.");
 
         System.out.println();
         System.out.println("\"" + binarySearchTree.getMostFrequent() + "\" occurs most frequently.");
 
         binarySearchTree.setDepth(0);
-        System.out.println("\n");
+        System.out.println();
         System.out.println("The first 20 words in a pre-order traversal are: ");
         binarySearchTree.preorderTraversal(binarySearchTree.getRoot());
 
@@ -117,5 +119,10 @@ public class BinarySearchTreeMain {
         System.out.println("\n");
         System.out.println("The first 20 words in a in-order traversal are: ");
         binarySearchTree.inorderTraversal(binarySearchTree.getRoot());
+
+        System.out.println();
+        System.out.println();
+        System.out.println(binarySearchTree.getRoot().getLeftmostData());
+        System.out.println(binarySearchTree.getRoot().getRightmostData());
     }
 }
