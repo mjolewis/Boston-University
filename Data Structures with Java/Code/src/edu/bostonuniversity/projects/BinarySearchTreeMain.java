@@ -24,12 +24,12 @@ public class BinarySearchTreeMain {
     private TextParser parser;
 
     /**
-     * public void buildTree(TextParser file)
-     * Builds a binary search tree from the text stored in the specified file.
+     * public void buildTree()
+     * Helper method that builds a binary search tree from the text stored in the specified file.
      * @postcondition
      *  A binary search tree has been built using the text stored in the specified file.
      */
-    public void buildTree(TextParser file) {
+    private void buildTree() {
         binarySearchTree = new BinarySearchTree<>();
         binarySearchTree.parse(parser);
         query();
@@ -43,29 +43,28 @@ public class BinarySearchTreeMain {
      */
     public static void main(String[] args) {
         BinarySearchTreeMain start = new BinarySearchTreeMain();
-        start.openFile(FILE_NAME);
+        start.openFile();
     }
 
     /**
-     * public void openFIle(String fileName)
-     * @param fileName
-     *  The absolute pathname for a file on your local system.
+     * public void openFile()
+     * Helper method to open a file from a specified absolute path.
      * @postcondition
      *  If the file exists, then it has been opened.
      */
-    public void openFile(String fileName) {
+    private void openFile() {
         parser = new TextParser();
-        boolean fileExists = parser.openFile(fileName);
-        if (fileExists) { buildTree(parser); }
+        boolean fileExists = parser.openFile(BinarySearchTreeMain.FILE_NAME);
+        if (fileExists) { buildTree(); }
     }
 
     /**
      * public void query()
-     * Query the binary search tree to programmatically answer a series of questions.
+     * Helper method to query the Binary Search Tree and programmatically answer a series of questions.
      * @postcondition
      *  All questions have programmatically been answered and written to the terminal using System.out.println().
      */
-    public void query() {
+    private void query() {
         int answer;
         System.out.println("How many times do each of the following words appear in the text?");
         answer = binarySearchTree.search("transylvania");
