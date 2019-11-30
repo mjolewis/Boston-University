@@ -108,6 +108,7 @@ public class BinarySearchTreeMain {
         binarySearchTree.setDepth(0);
         System.out.println("The first 20 words in a pre-order traversal are: ");
         binarySearchTree.preorderTraversal(binarySearchTree.getRoot());
+        binarySearchTree.getRoot().preorderPrint();
 
         System.out.println();
         binarySearchTree.setDepth(0);
