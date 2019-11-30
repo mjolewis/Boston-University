@@ -11,7 +11,7 @@ import edu.bu.met.cs342a1.TextParser;
  * to keep track of how many times this element occurred.
  *
  * @author mlewis
- * @version November 30, 2019
+ * @version Nov 30, 2019
  *********************************************************************************************************************/
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
@@ -243,10 +243,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     @SuppressWarnings("unchecked")
     public void parse(TextParser data) {
+        T cursor;
+
         if (data == null) { return; }
-
-        T cursor = (T) data.getNextWord();
-
+        cursor = (T) data.getNextWord();
         count = 0; // Tracks how many elements are processed by our parser.
         root = new BTNode<>(cursor, null, null);
         while (cursor != null) {

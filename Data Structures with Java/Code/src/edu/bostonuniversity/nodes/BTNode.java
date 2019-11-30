@@ -11,7 +11,7 @@ package edu.bostonuniversity.nodes;
  *     they are limited by the amount of free memory on the heap.
  *
  * @author mlewis
- * @version Nov 3, 2019
+ * @version Nov 30, 2019
  *********************************************************************************************************************/
 
 public class BTNode<E> {
@@ -75,9 +75,7 @@ public class BTNode<E> {
      * @return E
      *  The activating nodes data.
      */
-    public E getData() {
-        return data;
-    }
+    public E getData() { return data; }
 
     /**
      * public BTNode<E> getLeft()
@@ -86,9 +84,7 @@ public class BTNode<E> {
      *  A reference to this nodes left child. Note that this may be a null reference, which indicates that there is no
      *  left child.
      */
-    public BTNode<E> getLeft() {
-        return left;
-    }
+    public BTNode<E> getLeft() { return left; }
 
     /**
      * public E getLeftmostData()
@@ -108,9 +104,7 @@ public class BTNode<E> {
      *  A reference to this nodes right child. Note that this may be a null reference, which indicates that there is no
      *  right child.
      */
-    public BTNode<E> getRight() {
-        return right;
-    }
+    public BTNode<E> getRight() { return right; }
 
     /**
      * public E getRightmostData()
@@ -227,9 +221,7 @@ public class BTNode<E> {
      * @postcondition
      *  The data for the activating node has been set to the specified data.
      */
-    public void setData(E data) {
-        this.data = data;
-    }
+    public void setData(E data) { this.data = data; }
 
     /**
      * public void setLeft()
@@ -239,9 +231,7 @@ public class BTNode<E> {
      * @postcondition
      *  The reference variable left for the activating node has been set to the specified reference variable.
      */
-    public void setLeft(BTNode<E> left) {
-        this.left = left;
-    }
+    public void setLeft(BTNode<E> left) { this.left = left; }
 
     /**
      * public void setRight()
@@ -251,9 +241,7 @@ public class BTNode<E> {
      * @postcondition
      *  The reference variable right for the activating node has been set to the specified reference variable.
      */
-    public void setRight(BTNode<E> right) {
-        this.right = right;
-    }
+    public void setRight(BTNode<E> right) { this.right = right; }
 
     /**
      * public static <E> BTNode<E> treeCopy(BTNode<E> source)
@@ -288,14 +276,12 @@ public class BTNode<E> {
      *  A wrong answer occurs for trees larger than Integer.MAX_VALUE.
      */
     public static <E> int treeDepth(BTNode<E> root) {
-        if (root == null) { return 0; }
-
         int leftDepth;
         int rightDepth;
 
+        if (root == null) { return 0; }
         leftDepth = 1 + treeDepth(root.left);
         rightDepth = 1 + treeDepth(root.right);
-
         return Math.max(leftDepth, rightDepth);
     }
 
