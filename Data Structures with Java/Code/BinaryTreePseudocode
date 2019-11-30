@@ -378,6 +378,26 @@ public class BinarySearchTree {
     }
 
     /**
+     * private int depthOfNode(BTNode<T> node)
+     * Helper method that calculates the depth of the specified node. Note that node may be a null reference.
+     * @param node
+     *  The node whose depth we are finding.
+     * @param node
+     *  A reference to the node for which we calculate its depth.
+     */
+     private int depthOfNode(BTNode<T> node) {
+        INIT cursor to the root node
+        IF node's data is less than cursor's data (using the comparable interface)
+            INCREMENT depth
+            TRAVERSE the left side of the tree
+        IF node's data is greater than cursor's data (using the comparable interface)
+            INCREMENT depth
+            TRAVERSE the right side of the tree
+        IF node's data is equal to cursor's data (using the comparable interface)
+            RETURN depth
+     }
+
+    /**
     * public int getCount()
     * Accessor method that returns a reference to the total number of elements processed by this Binary Search Tree.
     * @return int
@@ -385,6 +405,26 @@ public class BinarySearchTree {
     */
     public int getCount() {
         RETURN count;
+    }
+
+    /**
+     * public void getDeepestLeaves(BTNode<T> cursor)
+     * Finds every leaf that is as deep as the tree depth using a post-order traversal. The data from each of those
+     * leaves is then written by System.out.println().
+     * @param cursor
+     *  The node whose depth we are finding.
+     * @postcondition
+     *  The data from all the deepest leaves (if the leaf depth is equal to the tree depth) has been written by
+     *  System.out.println().
+     */
+    public void getDeepestLeaves(BTNode<T> cursor) {
+        IF cursor is null
+            RETURN to end recursion
+        ACTIVATE a recursive call on the left child
+        ACTIVATE a recursive call on the right child
+        ACTIVATE helper method
+            IF helper method is equal to depth of tree
+                PRINT out the data of the cursor
     }
 
     /**
