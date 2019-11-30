@@ -10,7 +10,7 @@ import edu.bu.met.cs342a1.TextParser;
  * into a Binary Search Tree, and answer a series of questions about the body of text.
  *
  * @author mlewis
- * @version November 28, 2019
+ * @version Nov 30, 2019
  *********************************************************************************************************************/
 
 public class BinarySearchTreeMain {
@@ -66,6 +66,9 @@ public class BinarySearchTreeMain {
      */
     private void query() {
         int answer;
+
+        System.out.println("\n----------BEGIN TEXT ANALYSIS----------\n");
+
         System.out.println("How many times do each of the following words appear in the text?");
         answer = binarySearchTree.countOccurrences("transylvania");
         System.out.println("transylvania appears " + answer + " times.");
@@ -96,7 +99,7 @@ public class BinarySearchTreeMain {
 
         binarySearchTree.setDepth(0);
         System.out.println();
-        System.out.println("The words at the deepest leaves in the tree are: ");
+        System.out.println("The word(s) at the deepest leaves in the tree is (are): ");
         binarySearchTree.getDeepestLeaves(binarySearchTree.getRoot());
 
         System.out.println("\n");
@@ -120,9 +123,6 @@ public class BinarySearchTreeMain {
         System.out.println("The first 20 words in a in-order traversal are: ");
         binarySearchTree.inorderTraversal(binarySearchTree.getRoot());
 
-        System.out.println();
-        System.out.println();
-        System.out.println(binarySearchTree.getRoot().getLeftmostData());
-        System.out.println(binarySearchTree.getRoot().getRightmostData());
+        System.out.println("\n\n----------END TEXT ANALYSIS----------");
     }
 }
