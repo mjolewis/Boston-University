@@ -19,7 +19,7 @@ public class BinarySearchTreeMain {
     //  2. The instance variable binarySearchTree is a binarySearchTree object used to build a Binary Search Tree
     //     the text from the text stored in FILE_NAME.
     //  3. The instance variable parser is a TextParser object used to read in a text file stored at FILE_NAME.
-    private static final String FILE_NAME = "/Users/mlewis/Downloads/Dracula.txt";
+    private static final String FILE_NAME = "/Users/mlewis/Downloads/pg345.txt";
     private BinarySearchTree<String> binarySearchTree;
     private TextParser parser;
 
@@ -54,7 +54,7 @@ public class BinarySearchTreeMain {
      */
     private void openFile() {
         parser = new TextParser();
-        boolean fileExists = parser.openFile(BinarySearchTreeMain.FILE_NAME);
+        boolean fileExists = parser.openFile(FILE_NAME);
         if (fileExists) { buildTree(); }
     }
 

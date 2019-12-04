@@ -53,7 +53,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      * Mutator method that adds the given data to a node in this Binary Search Tree in lexicographic order. If the data
      * is already in this Binary Search Tree then we do not add the data. Instead, we update the instance variable
      * count by one to count how many times the data occurred.
-     * @param node
+     * @param root
      *  The root of this Binary Search Tree.
      * @param data
      *  The data to add to this Binary Search Tree. If the data is already in the tree, we do not add it. Instead, we
@@ -65,31 +65,31 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this new data.
      */
-    public void add(BTNode<T> node, T data) {
+    public void add(BTNode<T> root, T data) {
         boolean nodeAdded = false;
 
         while (!nodeAdded) {
-            if (data.compareTo(node.getData()) < 0) {
-                if (node.getLeft() == null) {
-                    node.setLeft(new BTNode<>(data, null, null));
-                    node.getLeft().incrementCount();
+            if (data.compareTo(root.getData()) < 0) {
+                if (root.getLeft() == null) {
+                    root.setLeft(new BTNode<>(data, null, null));
+                    root.getLeft().incrementCount();
                     nodeAdded = true;
                 } else {
-                    node = node.getLeft();
+                    root = root.getLeft();
                 }
-            } else if (data.compareTo(node.getData()) > 0) {
-                if (node.getRight() == null) {
-                    node.setRight(new BTNode<>(data, null, null));
-                    node.getRight().incrementCount();
+            } else if (data.compareTo(root.getData()) > 0) {
+                if (root.getRight() == null) {
+                    root.setRight(new BTNode<>(data, null, null));
+                    root.getRight().incrementCount();
                     nodeAdded = true;
                 } else {
-                    node = node.getRight();
+                    root = root.getRight();
                 }
             } else {
-                node.incrementCount();
-                if (node.getCount() > maxOccurrence) {
-                    maxOccurrence = node.getCount();
-                    mostFrequent = node.getData();
+                root.incrementCount();
+                if (root.getCount() > maxOccurrence) {
+                    maxOccurrence = root.getCount();
+                    mostFrequent = root.getData();
                 }
                 nodeAdded = true;
             }
@@ -184,7 +184,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         getDeepestLeaves(cursor.getLeft());
         getDeepestLeaves(cursor.getRight());
         depth = 0;
-        if (depthOfNode(cursor) == BTNode.treeDepth(root)) { System.out.print(cursor.getData() + " -> "); }
+        if (depthOfNode(cursor) == BTNode.treeDepth(root)) { System.out.print(cursor.getData()); }
     }
 
     /**
@@ -222,12 +222,16 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  The data of the first 20 nodes have been written by System.out.println().
      */
     public void inorderTraversal(BTNode<T> cursor) {
-        if (cursor == null) { return; }
-        inorderTraversal(cursor.getLeft());
-        depth++;
+        if (cursor.getLeft() != null) { inorderTraversal(cursor.getLeft()); }
         if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " -> "); }
         if (depth == MAX_DEPTH) { System.out.print(cursor.getData()); }
-        inorderTraversal(cursor.getRight());
+        if (cursor.getRight() != null) { inorderTraversal(cursor.getRight()); }
+        depth++;
+
+//            if (cursor == null) { return; }
+//            inorderTraversal(cursor.getLeft());
+//            depth++;
+//        inorderTraversal(cursor.getRight());
     }
 
     /**
@@ -249,6 +253,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         cursor = (T) data.getNextWord();
         count = 0; // Tracks how many elements are processed by our parser.
         root = new BTNode<>(cursor, null, null);
+        cursor = (T) data.getNextWord(); // Get the word after root so we don't double count the root.
         while (cursor != null) {
             count++;
             add(root, cursor);
@@ -265,9 +270,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  The data of the first 20 nodes have been written by System.out.println().
      */
     public void postorderTraversal(BTNode<T> cursor) {
-        if (cursor == null) { return; }
-        postorderTraversal(cursor.getLeft());
-        postorderTraversal(cursor.getRight());
+        if (cursor.getLeft() != null) { postorderTraversal(cursor.getLeft()); }
+        if (cursor.getRight() != null) { postorderTraversal(cursor.getRight()); }
         depth++;
         if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " -> "); }
         if (depth == MAX_DEPTH) { System.out.print(cursor.getData()); }
@@ -282,12 +286,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  The data of the first 20 nodes has been written by System.out.println().
      */
     public void preorderTraversal(BTNode<T> cursor) {
-        if (cursor == null) { return; }
         if (depth < MAX_DEPTH - 1) { System.out.print(cursor.getData() + " -> "); }
         if (depth == MAX_DEPTH - 1) { System.out.print(cursor.getData()); }
         depth++;
-        preorderTraversal(cursor.getLeft());
-        preorderTraversal(cursor.getRight());
+        if (cursor.getLeft() != null) { preorderTraversal(cursor.getLeft()); }
+        if (cursor.getRight() != null) { preorderTraversal(cursor.getRight()); }
     }
 
     /**
