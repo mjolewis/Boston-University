@@ -1,4 +1,4 @@
-// File BinaryTree.java from the package edu.bostonuniversity.projects
+// File BinarySearchTree.java from the package edu.bostonuniversity.projects
 
 package edu.bostonuniversity.projects;
 
@@ -11,7 +11,7 @@ import edu.bu.met.cs342a1.TextParser;
  * to keep track of how many times this element occurred.
  *
  * @author mlewis
- * @version Nov 30, 2019
+ * @version Dec 7, 2019
  *********************************************************************************************************************/
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
@@ -49,12 +49,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     /**
-     * public void add(BTNode<T> node, T data)
+     * public void add(T data)
      * Mutator method that adds the given data to a node in this Binary Search Tree in lexicographic order. If the data
      * is already in this Binary Search Tree then we do not add the data. Instead, we update the instance variable
      * count by one to count how many times the data occurred.
-     * @param root
-     *  The root of this Binary Search Tree.
      * @param data
      *  The data to add to this Binary Search Tree. If the data is already in the tree, we do not add it. Instead, we
      *  increment the data's counter.
@@ -65,35 +63,44 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this new data.
      */
-    public void add(BTNode<T> root, T data) {
-        boolean nodeAdded = false;
+    public void add(T data) {
+        BTNode<T> cursor;
 
-        while (!nodeAdded) {
-            if (data.compareTo(root.getData()) < 0) {
-                if (root.getLeft() == null) {
-                    root.setLeft(new BTNode<>(data, null, null));
-                    root.getLeft().incrementCount();
-                    nodeAdded = true;
+        if (root == null) {
+            root = new BTNode<>(data, null, null);
+            root.incrementCount();
+            count++;
+            return;
+        }
+
+        cursor = root;
+        while (true) {
+            if (data.compareTo(cursor.getData()) < 0) {
+                if (cursor.getLeft() == null) {
+                    cursor.setLeft(new BTNode<>(data, null, null));
+                    cursor.getLeft().incrementCount();
+                    break;
                 } else {
-                    root = root.getLeft();
+                    cursor = cursor.getLeft();
                 }
-            } else if (data.compareTo(root.getData()) > 0) {
-                if (root.getRight() == null) {
-                    root.setRight(new BTNode<>(data, null, null));
-                    root.getRight().incrementCount();
-                    nodeAdded = true;
+            } else if (data.compareTo(cursor.getData()) > 0) {
+                if (cursor.getRight() == null) {
+                    cursor.setRight(new BTNode<>(data, null, null));
+                    cursor.getRight().incrementCount();
+                    break;
                 } else {
-                    root = root.getRight();
+                    cursor = cursor.getRight();
                 }
             } else {
-                root.incrementCount();
-                if (root.getCount() > maxOccurrence) {
-                    maxOccurrence = root.getCount();
-                    mostFrequent = root.getData();
+                cursor.incrementCount();
+                if (cursor.getCount() > maxOccurrence) {
+                    maxOccurrence = cursor.getCount();
+                    mostFrequent = cursor.getData();
                 }
-                nodeAdded = true;
+                break;
             }
         }
+        count++;
     }
 
     /**
@@ -222,23 +229,19 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  The data of the first 20 nodes have been written by System.out.println().
      */
     public void inorderTraversal(BTNode<T> cursor) {
+        if (cursor == null) { return; }
         if (cursor.getLeft() != null) { inorderTraversal(cursor.getLeft()); }
+        depth++;
         if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " -> "); }
         if (depth == MAX_DEPTH) { System.out.print(cursor.getData()); }
         if (cursor.getRight() != null) { inorderTraversal(cursor.getRight()); }
-        depth++;
-
-//            if (cursor == null) { return; }
-//            inorderTraversal(cursor.getLeft());
-//            depth++;
-//        inorderTraversal(cursor.getRight());
     }
 
     /**
      * public void parse()
      * Parses the data one element at a time and adds that elements to the Binary Search Tree only if the element is
      * not already in the Binary Search Tree.
-     * @param data
+     * @param file
      *  The data being added to the Binary Search Tree.
      * @postcondition
      *  The data has been added to the Binary Search Tree one element at a time. Each unique element is added; however,
@@ -246,18 +249,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  comparable interface and increment a counter to keep track of how many times this element occurred.
      */
     @SuppressWarnings("unchecked")
-    public void parse(TextParser data) {
-        T cursor;
-
-        if (data == null) { return; }
-        cursor = (T) data.getNextWord();
-        count = 0; // Tracks how many elements are processed by our parser.
-        root = new BTNode<>(cursor, null, null);
-        cursor = (T) data.getNextWord(); // Get the word after root so we don't double count the root.
-        while (cursor != null) {
-            count++;
-            add(root, cursor);
-            cursor = (T) data.getNextWord();
+    public void parse(TextParser file) {
+        T word;
+        if (file == null) { return; }
+        for(word = (T) file.getNextWord(); word != null; word = (T) file.getNextWord()) {
+            add(word);
         }
     }
 
@@ -270,6 +266,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  The data of the first 20 nodes have been written by System.out.println().
      */
     public void postorderTraversal(BTNode<T> cursor) {
+        if (cursor == null) { return; }
         if (cursor.getLeft() != null) { postorderTraversal(cursor.getLeft()); }
         if (cursor.getRight() != null) { postorderTraversal(cursor.getRight()); }
         depth++;
@@ -286,6 +283,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  The data of the first 20 nodes has been written by System.out.println().
      */
     public void preorderTraversal(BTNode<T> cursor) {
+        if (cursor == null) { return; }
         if (depth < MAX_DEPTH - 1) { System.out.print(cursor.getData() + " -> "); }
         if (depth == MAX_DEPTH - 1) { System.out.print(cursor.getData()); }
         depth++;
