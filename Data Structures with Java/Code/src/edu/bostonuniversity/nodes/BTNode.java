@@ -11,7 +11,7 @@ package edu.bostonuniversity.nodes;
  *     they are limited by the amount of free memory on the heap.
  *
  * @author mlewis
- * @version Nov 30, 2019
+ * @version Dec 7, 2019
  *********************************************************************************************************************/
 
 public class BTNode<E> {
@@ -142,13 +142,9 @@ public class BTNode<E> {
      *  The data of this node and all of its descendants have been written by System.out.println().
      */
     public void inorderPrint() {
-        if (left != null) {
-            left.inorderPrint();
-        }
+        if (left != null) { left.inorderPrint(); }
         System.out.println(data);
-        if (right != null) {
-            right.inorderPrint();
-        }
+        if (right != null) { right.inorderPrint(); }
     }
 
     /**
@@ -159,12 +155,8 @@ public class BTNode<E> {
      */
     public void preorderPrint() {
         System.out.println(data);
-        if (left != null) {
-            left.preorderPrint();
-        }
-        if (right != null) {
-            right.preorderPrint();
-        }
+        if (left != null) { left.preorderPrint(); }
+        if (right != null) { right.preorderPrint(); }
     }
 
     /**
@@ -174,12 +166,8 @@ public class BTNode<E> {
      *  The data of this node and all of its descendants have been written by System.out.println().
      */
     public void postorderPrint() {
-        if (left != null) {
-            left.postorderPrint();
-        }
-        if (right != null) {
-            right.postorderPrint();
-        }
+        if (left != null) { left.postorderPrint(); }
+        if (right != null) { right.postorderPrint(); }
         System.out.println(data);
     }
 

@@ -10,7 +10,7 @@ import edu.bu.met.cs342a1.TextParser;
  * into a Binary Search Tree, and answer a series of questions about the body of text.
  *
  * @author mlewis
- * @version Nov 30, 2019
+ * @version Dec 7, 2019
  *********************************************************************************************************************/
 
 public class BinarySearchTreeMain {
@@ -18,10 +18,10 @@ public class BinarySearchTreeMain {
     //  1. The instance variable FILE_NAME is an absolute pathname to a text file on your local system.
     //  2. The instance variable binarySearchTree is a binarySearchTree object used to build a Binary Search Tree
     //     the text from the text stored in FILE_NAME.
-    //  3. The instance variable parser is a TextParser object used to read in a text file stored at FILE_NAME.
-    private static final String FILE_NAME = "/Users/mlewis/Downloads/pg345.txt";
+    //  3. The instance variable file is a TextParser object used to read in a text file stored at FILE_NAME.
+    private static final String FILE_NAME = "/Users/mlewis/Downloads/pg345 (1).txt";
     private BinarySearchTree<String> binarySearchTree;
-    private TextParser parser;
+    private TextParser file;
 
     /**
      * public void buildTree()
@@ -31,7 +31,7 @@ public class BinarySearchTreeMain {
      */
     private void buildTree() {
         binarySearchTree = new BinarySearchTree<>();
-        binarySearchTree.parse(parser);
+        binarySearchTree.parse(file);
         query();
     }
 
@@ -53,8 +53,8 @@ public class BinarySearchTreeMain {
      *  If the file exists, then it has been opened.
      */
     private void openFile() {
-        parser = new TextParser();
-        boolean fileExists = parser.openFile(FILE_NAME);
+        file = new TextParser();
+        boolean fileExists = file.openFile(FILE_NAME);
         if (fileExists) { buildTree(); }
     }
 
@@ -69,44 +69,42 @@ public class BinarySearchTreeMain {
 
         System.out.println("\n----------BEGIN TEXT ANALYSIS----------\n");
 
-        System.out.println("How many times do each of the following words appear in the text?");
+        System.out.println("Text contains " + binarySearchTree.getCount() + " total words.");
+
         answer = binarySearchTree.countOccurrences("transylvania");
-        System.out.println("transylvania appears " + answer + " times.");
+        System.out.println("transylvania occurs: " + answer + " times");
 
         answer = binarySearchTree.countOccurrences("harker");
-        System.out.println("harker appears " + answer + " times.");
+        System.out.println("harker occurs: " + answer + " times");
 
         answer = binarySearchTree.countOccurrences("renfield");
-        System.out.println("renfield appears " + answer + " times.");
+        System.out.println("renfield occurs: " + answer + " times");
 
         answer = binarySearchTree.countOccurrences("vampire");
-        System.out.println("vampire appears " + answer + " times.");
+        System.out.println("vampire occurs: " + answer + " times");
 
         answer = binarySearchTree.countOccurrences("expostulate");
-        System.out.println("expostulate appears " + answer + " times.");
+        System.out.println("expostulate occurs: " + answer + " times");
 
         answer = binarySearchTree.countOccurrences("fang");
-        System.out.println("fang appears " + answer + " times.");
+        System.out.println("fang occurs: " + answer + " times");
 
-        System.out.println();
-        System.out.println("The depth of the tree is " + BTNode.treeDepth(binarySearchTree.getRoot()) + " nodes.");
+        System.out.println("Tree is: " + BTNode.treeDepth(binarySearchTree.getRoot()) + " nodes deep");
 
-        System.out.println();
-        System.out.println("There are " + binarySearchTree.size() + " different words in the book.");
+        System.out.println("Tree contains: " + binarySearchTree.size() + " distinct words");
 
-        System.out.println();
-        System.out.println("The word at the root of the tree is \"" + binarySearchTree.getRoot().getData() + "\".");
+        System.out.println("Word at root is: " + binarySearchTree.getRoot().getData());
 
         binarySearchTree.setDepth(0);
-        System.out.println();
-        System.out.println("The word(s) at the deepest leaves in the tree is (are): ");
+        System.out.print("Deepest word(s) is/are: ");
         binarySearchTree.getDeepestLeaves(binarySearchTree.getRoot());
 
-        System.out.println("\n");
-        System.out.println("There are " + binarySearchTree.getCount() + " words in the book.");
-
         System.out.println();
-        System.out.println("\"" + binarySearchTree.getMostFrequent() + "\" occurs most frequently.");
+        System.out.println("Total word count: " + binarySearchTree.getCount());
+
+        answer = binarySearchTree.countOccurrences(binarySearchTree.getMostFrequent());
+        System.out.println("Most frequent is: \"" + binarySearchTree.getMostFrequent() + "\" occuring " + answer +
+                " times");
 
         binarySearchTree.setDepth(0);
         System.out.println();
