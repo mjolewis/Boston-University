@@ -173,10 +173,12 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void inorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-        inorderTraversal(cursor.getLeft());
-        depth++;
-        if (depth <= MAX_DEPTH) { System.out.print(cursor.getData() + " "); }
-        inorderTraversal(cursor.getRight());
+        if (depth < MAX_DEPTH) {
+            depth++;
+            inorderTraversal(cursor.getLeft());
+            System.out.print(cursor.getData() + " ");
+            inorderTraversal(cursor.getRight());
+        }
     }
 
     /**
