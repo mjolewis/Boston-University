@@ -15,7 +15,7 @@ import edu.bu.met.cs342a1.TextParser;
  *********************************************************************************************************************/
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
-    // Invariant of the TextAnalyzer.java class
+    // Invariant of the BinarySearchTree.java class
     //  1. The instance variable root is a reference to the root of a Binary Search Tree.
     //  2. The instance variable count is a reference to the total number of elements being added to this Binary Search
     //     Tree.
@@ -34,12 +34,12 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     private static int depth;
 
     /**
-     * public TextAnalyzer()
-     * Initializes an empty TextAnalyzer.
+     * public BinarySearchTree()
+     * Initializes an empty BinarySearchTree.
      * @postcondition
-     *  An empty TextAnalyzer has been initialized.
+     *  An empty BinarySearchTree has been initialized.
      * @exception OutOfMemoryError
-     *  Indicates insufficient memory for the new TextAnalyzer.
+     *  Indicates insufficient memory for the new BinarySearchTree.
      */
     public BinarySearchTree() {
         root = null;
@@ -112,19 +112,18 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      *  The number of times the specified element occurred.
      */
     public int countOccurrences(T element) {
-        boolean terminate = false;
         BTNode<T> cursor = root;
 
-        while (!terminate) {
+        while (true) {
             if (element.compareTo(cursor.getData()) < 0) {
                 if (cursor.getLeft() == null) {
-                    terminate = true;
+                    break;
                 } else {
                     cursor = cursor.getLeft();
                 }
             } else if (element.compareTo(cursor.getData()) > 0) {
                 if (cursor.getRight() == null) {
-                    terminate = true;
+                    break;
                 } else {
                     cursor = cursor.getRight();
                 }
