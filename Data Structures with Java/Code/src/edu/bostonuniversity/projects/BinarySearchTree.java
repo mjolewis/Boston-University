@@ -69,7 +69,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         if (root == null) {
             root = new BTNode<>(data, null, null);
             root.incrementCount();
-            count++;
             return;
         }
 
@@ -229,11 +228,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void inorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-        if (cursor.getLeft() != null) { inorderTraversal(cursor.getLeft()); }
+        inorderTraversal(cursor.getLeft());
         depth++;
-        if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " -> "); }
-        if (depth == MAX_DEPTH) { System.out.print(cursor.getData()); }
-        if (cursor.getRight() != null) { inorderTraversal(cursor.getRight()); }
+        if (depth <= MAX_DEPTH) { System.out.print(cursor.getData() + " "); }
+        inorderTraversal(cursor.getRight());
     }
 
     /**
@@ -266,11 +264,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void postorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-        if (cursor.getLeft() != null) { postorderTraversal(cursor.getLeft()); }
-        if (cursor.getRight() != null) { postorderTraversal(cursor.getRight()); }
+        postorderTraversal(cursor.getLeft());
+        postorderTraversal(cursor.getRight());
         depth++;
-        if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " -> "); }
-        if (depth == MAX_DEPTH) { System.out.print(cursor.getData()); }
+        if (depth <= MAX_DEPTH) { System.out.print(cursor.getData() + " "); }
     }
 
     /**
@@ -283,11 +280,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void preorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-        if (depth < MAX_DEPTH - 1) { System.out.print(cursor.getData() + " -> "); }
-        if (depth == MAX_DEPTH - 1) { System.out.print(cursor.getData()); }
+        if (depth < MAX_DEPTH) { System.out.print(cursor.getData() + " "); }
         depth++;
-        if (cursor.getLeft() != null) { preorderTraversal(cursor.getLeft()); }
-        if (cursor.getRight() != null) { preorderTraversal(cursor.getRight()); }
+        preorderTraversal(cursor.getLeft());
+        preorderTraversal(cursor.getRight());
     }
 
     /**
