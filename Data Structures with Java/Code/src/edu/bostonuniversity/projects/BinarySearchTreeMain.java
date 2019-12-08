@@ -107,18 +107,17 @@ public class BinarySearchTreeMain {
                 " times");
 
         binarySearchTree.setDepth(0);
-        System.out.println();
-        System.out.println("The first 20 words in a pre-order traversal are: ");
+        System.out.print("First 20 words pre-order: ");
         binarySearchTree.preorderTraversal(binarySearchTree.getRoot());
 
         binarySearchTree.setDepth(0);
-        System.out.println("\n");
-        System.out.println("The first 20 words in a post-order traversal are: ");
+        System.out.println();
+        System.out.print("First 20 words post-order: ");
         binarySearchTree.postorderTraversal(binarySearchTree.getRoot());
 
         binarySearchTree.setDepth(0);
-        System.out.println("\n");
-        System.out.println("The first 20 words in a in-order traversal are: ");
+        System.out.println();
+        System.out.print("First 20 words in-order: ");
         binarySearchTree.inorderTraversal(binarySearchTree.getRoot());
 
         System.out.println("\n\n----------END TEXT ANALYSIS----------");
