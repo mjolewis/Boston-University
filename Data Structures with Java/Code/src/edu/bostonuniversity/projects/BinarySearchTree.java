@@ -11,27 +11,27 @@ import edu.bu.met.cs342a1.TextParser;
  * to keep track of how many times this element occurred.
  *
  * @author mlewis
- * @version Dec 7, 2019
+ * @version Dec 8, 2019
  *********************************************************************************************************************/
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
     // Invariant of the BinarySearchTree.java class
-    //  1. The instance variable root is a reference to the root of a Binary Search Tree.
-    //  2. The instance variable count is a reference to the total number of elements being added to this Binary Search
+    //  1. The instance variable count is a reference to the total number of elements being added to this Binary Search
     //     Tree.
-    //  3. The instance variable maxOccurrence is the number of times the most frequent element occurred in this
-    //     Binary Search Tree.
-    //  4. The instance variable mostFrequent is a reference to the data that most frequently occurred in this Binary
-    //     Search Tree.
-    //  5. The instance variable MAX_DEPTH is the maximum depth allowed during any print traversal activation.
-    //  6. The instance variable depth is a static variable used to terminate the recursive print traversal
+    //  2. The instance variable depth is a static variable used to terminate the recursive print traversal
     //     activations.
-    private BTNode<T> root;
+    //  3. The instance variable MAX_DEPTH is the maximum depth allowed during any print traversal activation.
+    //  4. The instance variable maxOccurrence is the number of times the most frequent element occurred in this
+    //     Binary Search Tree.
+    //  5. The instance variable mostFrequent is a reference to the data that most frequently occurred in this Binary
+    //     Search Tree.
+    //  6. The instance variable root is a reference to the root of a Binary Search Tree.
     private int count;
+    private static int depth;
+    private static final int MAX_DEPTH = 20;
     private int maxOccurrence;
     private T mostFrequent;
-    private static final int MAX_DEPTH = 20;
-    private static int depth;
+    private BTNode<T> root;
 
     /**
      * public BinarySearchTree()
@@ -46,60 +46,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         count = 0;
         maxOccurrence = 0;
         depth = 0;
-    }
-
-    /**
-     * public void add(T data)
-     * Mutator method that adds the given data to a node in this Binary Search Tree in lexicographic order. If the data
-     * is already in this Binary Search Tree then we do not add the data. Instead, we update the instance variable
-     * count by one to count how many times the data occurred.
-     * @param data
-     *  The data to add to this Binary Search Tree. If the data is already in the tree, we do not add it. Instead, we
-     *  increment the data's counter.
-     * @postcondition
-     *  The data has been added to the Binary Search Tree one element at a time. Each unique element is added; however,
-     *  duplicate elements are not added to this Binary Search Tree. Instead, we find the matching data using the
-     *  comparable interface and increment a counter to keep track of how many times this element occurred.
-     * @exception OutOfMemoryError
-     *  Indicates insufficient memory for this new data.
-     */
-    public void add(T data) {
-        BTNode<T> cursor;
-
-        if (root == null) {
-            root = new BTNode<>(data, null, null);
-            root.incrementCount();
-            return;
-        }
-
-        cursor = root;
-        while (true) {
-            if (data.compareTo(cursor.getData()) < 0) {
-                if (cursor.getLeft() == null) {
-                    cursor.setLeft(new BTNode<>(data, null, null));
-                    cursor.getLeft().incrementCount();
-                    break;
-                } else {
-                    cursor = cursor.getLeft();
-                }
-            } else if (data.compareTo(cursor.getData()) > 0) {
-                if (cursor.getRight() == null) {
-                    cursor.setRight(new BTNode<>(data, null, null));
-                    cursor.getRight().incrementCount();
-                    break;
-                } else {
-                    cursor = cursor.getRight();
-                }
-            } else {
-                cursor.incrementCount();
-                if (cursor.getCount() > maxOccurrence) {
-                    maxOccurrence = cursor.getCount();
-                    mostFrequent = cursor.getData();
-                }
-                break;
-            }
-        }
-        count++;
     }
 
     /**
@@ -235,6 +181,60 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     /**
+     * public void insert(T data)
+     * Mutator method that inserts the given data to a node in this Binary Search Tree in lexicographic order. If the
+     * data is already in this Binary Search Tree then we do not add the data. Instead, we update the instance variable
+     * count by one to count how many times the data occurred.
+     * @param data
+     *  The data to insert to this Binary Search Tree. If the data is already in the tree, we do not add it. Instead,
+     *  we increment the data's counter.
+     * @postcondition
+     *  The data has been inserted to the Binary Search Tree one element at a time. Each unique element is added;
+     *  however, duplicate elements are not added to this Binary Search Tree. Instead, we find the matching data using
+     *  the comparable interface and increment a counter to keep track of how many times this element occurred.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for this new data.
+     */
+    public void insert(T data) {
+        BTNode<T> cursor;
+
+        if (root == null) {
+            root = new BTNode<>(data, null, null);
+            root.incrementCount();
+            return;
+        }
+
+        cursor = root;
+        while (true) {
+            if (data.compareTo(cursor.getData()) < 0) {
+                if (cursor.getLeft() == null) {
+                    cursor.setLeft(new BTNode<>(data, null, null));
+                    cursor.getLeft().incrementCount();
+                    break;
+                } else {
+                    cursor = cursor.getLeft();
+                }
+            } else if (data.compareTo(cursor.getData()) > 0) {
+                if (cursor.getRight() == null) {
+                    cursor.setRight(new BTNode<>(data, null, null));
+                    cursor.getRight().incrementCount();
+                    break;
+                } else {
+                    cursor = cursor.getRight();
+                }
+            } else {
+                cursor.incrementCount();
+                if (cursor.getCount() > maxOccurrence) {
+                    maxOccurrence = cursor.getCount();
+                    mostFrequent = cursor.getData();
+                }
+                break;
+            }
+        }
+        count++;
+    }
+
+    /**
      * public void parse()
      * Parses the data one element at a time and adds that elements to the Binary Search Tree only if the element is
      * not already in the Binary Search Tree.
@@ -250,7 +250,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         T word;
         if (file == null) { return; }
         for(word = (T) file.getNextWord(); word != null; word = (T) file.getNextWord()) {
-            add(word);
+            insert(word);
         }
     }
 
