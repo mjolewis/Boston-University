@@ -6,9 +6,9 @@ import edu.bostonuniversity.nodes.BTNode;
 import edu.bu.met.cs342a1.TextParser;
 
 /**********************************************************************************************************************
- * A BinarySearchTree class is used to add T objects to a binary tree. However, duplicate elements are not added to
- * this Binary Search Tree. Instead, we find the matching data using the comparable interface and increment a counter
- * to keep track of how many times this element occurred.
+ * A BinarySearchTree class is used to add T objects to a binary tree. However, duplicate elements (as determined by
+ * the Comparable interface) are not added to this Binary Search Tree. Instead, we increment a counter to track the
+ * number of times the duplicate element occurred.
  *
  * @author mlewis
  * @version Dec 8, 2019
@@ -122,7 +122,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     /**
      * public void getDeepestLeaves(BTNode<T> cursor)
      * Finds every leaf that is as deep as the tree depth using a post-order traversal. The data from each of those
-     * leaves is then written by System.out.println().
+     * leaves is written by System.out.println().
      * @param cursor
      *  The starting node of our search.
      * @postcondition
@@ -165,9 +165,9 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
     /**
      * public void inorderPrint(BTNode<T> cursor)
-     * The root of this Binary Search Tree. Each recursive call activates the root of a smaller subtree.
+     * An inorder traversal to print the data from the first 20 nodes in this Binary Search Tree.
      * @param cursor
-     *  An inorder traversal to print the data from the first 20 nodes in this Binary Search Tree.
+     *  The root of this Binary Search Tree. Each recursive call activates the root of a smaller subtree.
      * @postcondition
      *  The data of the first 20 nodes have been written by System.out.println().
      */
