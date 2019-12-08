@@ -124,7 +124,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      * Finds every leaf that is as deep as the tree depth using a post-order traversal. The data from each of those
      * leaves is then written by System.out.println().
      * @param cursor
-     *  The node whose depth we are finding.
+     *  The starting node of our search.
      * @postcondition
      *  The data from all the deepest leaves (if the leaf depth is equal to the tree depth) has been written by
      *  System.out.println().
@@ -185,12 +185,12 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      * data is already in this Binary Search Tree then we do not add the data. Instead, we update the instance variable
      * count by one to count how many times the data occurred.
      * @param data
-     *  The data to insert to this Binary Search Tree. If the data is already in the tree, we do not add it. Instead,
+     *  The data to insert into this Binary Search Tree. If the data is already in the tree, we do not add it. Instead,
      *  we increment the data's counter.
      * @postcondition
-     *  The data has been inserted to the Binary Search Tree one element at a time. Each unique element is added;
-     *  however, duplicate elements are not added to this Binary Search Tree. Instead, we find the matching data using
-     *  the comparable interface and increment a counter to keep track of how many times this element occurred.
+     *  The data has been inserted into this Binary Search Tree only if it did not already exist. If data was already
+     *  in this Binary Search Tree (as determined the Comparable interface), we increment a counter to track the
+     *  number of times this data occurred.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this new data.
      */
@@ -234,11 +234,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     /**
-     * public void parse()
-     * Parses the data one element at a time and adds that elements to the Binary Search Tree only if the element is
+     * public void parse(TextParser file)
+     * Parses the data one element at a time and adds that element to the Binary Search Tree only if the element is
      * not already in the Binary Search Tree.
      * @param file
-     *  The data being added to the Binary Search Tree.
+     *  The source file containing the data being added to this Binary Search Tree.
      * @postcondition
      *  The data has been added to the Binary Search Tree one element at a time. Each unique element is added; however,
      *  duplicate elements are not added to this Binary Search Tree. Instead, we find the matching data using the
@@ -263,10 +263,12 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void postorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-        postorderTraversal(cursor.getLeft());
-        postorderTraversal(cursor.getRight());
-        depth++;
-        if (depth <= MAX_DEPTH) { System.out.print(cursor.getData() + " "); }
+        if (depth < MAX_DEPTH) {
+            depth++;
+            postorderTraversal(cursor.getLeft());
+            postorderTraversal(cursor.getRight());
+            System.out.print(cursor.getData() + " ");
+        }
     }
 
     /**
