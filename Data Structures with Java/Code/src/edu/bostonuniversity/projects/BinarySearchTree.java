@@ -89,19 +89,18 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     private int depthOfNode(BTNode<T> node) {
         BTNode<T> cursor = root;
-        boolean terminate = false;
 
-        while (!terminate) {
+        while (true) {
             depth++;
             if (node.getData().compareTo(cursor.getData()) < 0) {
                 if (cursor.getLeft() == null) {
-                    terminate = true;
+                    break;
                 } else {
                     cursor = cursor.getLeft();
                 }
             } else if (node.getData().compareTo(cursor.getData()) > 0) {
                 if (cursor.getRight() == null) {
-                    terminate = true;
+                    break;
                 } else {
                     cursor = cursor.getRight();
                 }
