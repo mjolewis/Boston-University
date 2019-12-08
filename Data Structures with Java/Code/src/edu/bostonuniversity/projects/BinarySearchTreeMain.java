@@ -103,7 +103,7 @@ public class BinarySearchTreeMain {
         System.out.println("Total word count: " + binarySearchTree.getCount());
 
         answer = binarySearchTree.countOccurrences(binarySearchTree.getMostFrequent());
-        System.out.println("Most frequent is: \"" + binarySearchTree.getMostFrequent() + "\" occuring " + answer +
+        System.out.println("Most frequent is: \"" + binarySearchTree.getMostFrequent() + "\" occurring " + answer +
                 " times");
 
         binarySearchTree.setDepth(0);
