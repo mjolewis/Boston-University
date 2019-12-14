@@ -118,10 +118,28 @@ public class EdgeList<E> implements Graph<E>{
      *  Indicates insufficient memory for an array of boolean values used by this method.
      */
     public void breadthFirstTraversal(int vertex) {
+        GraphQueue graphQueue;
+        int[] neighbors;
+
         visited = new boolean[vertices.length];
         for (int i = 0; i < vertices.length; i++) { visited[i] = false; }
 
-
+        graphQueue = new GraphQueue();
+        visited[vertex] = true;
+        graphQueue.add(vertex);
+        while (!graphQueue.isEmpty()) {
+            Integer front = graphQueue.remove(); // Removes the front of the GraphQueue
+            neighbors = neighbors(front);
+            for (int i = 0; i < neighbors.length; i++) {
+                if (visited[neighbors[i]]) {
+                    continue;
+                } else {
+                    visited[neighbors[i]] = true;
+                    System.out.println("Adding " + neighbors[i] + " to the queue.");
+                    graphQueue.add(i);
+                }
+            }
+        }
     }
 
     /**
