@@ -2,7 +2,6 @@
 
 package edu.bostonuniversity.graphs;
 
-import edu.bostonuniversity.collections.Queue;
 import edu.bostonuniversity.nodes.GraphNode;
 
 /**********************************************************************************************************************
@@ -14,13 +13,13 @@ import edu.bostonuniversity.nodes.GraphNode;
  * @version Dec 14, 2019
  *********************************************************************************************************************/
 
-public class GraphQueue<E> implements Queue<E> {
+public class GraphQueue {
     // Invariant of the GraphQueue.java class
     //  1. The front is a reference to the first node in this Queue.
     //  2. The rear is a reference to the final node in this Queue.
     //  3. The size is a reference to the number of elements in this Queue.
-    private GraphNode<E> front;
-    private GraphNode<E> rear;
+    private GraphNode front;
+    private GraphNode rear;
     private int size;
 
     public GraphQueue() {
@@ -30,17 +29,16 @@ public class GraphQueue<E> implements Queue<E> {
     }
 
     /**
-     * public void add(E item)
+     * public void add(Integer vertex)
      * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference.
-     * @param item
-     *  The item to be added to the Queue.
+     * @param vertex
+     *  The vertex to be added to the Queue.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this item.
      */
-    @Override
-    public void add(E item) {
-        GraphNode<E> graphNode = new GraphNode<>();
-        graphNode.setVertex(item);
+    public void add(Integer vertex) {
+        GraphNode graphNode = new GraphNode();
+        graphNode.setVertex(vertex);
 
         if (size == 0) {
             front = graphNode;
@@ -61,7 +59,6 @@ public class GraphQueue<E> implements Queue<E> {
      * @postcondition
      *  This Queue has not been modified.
      */
-    @Override
     public boolean isEmpty() { return size == 0; }
 
     /**
@@ -75,9 +72,8 @@ public class GraphQueue<E> implements Queue<E> {
      *  The front item from this Queue has been removed and the next item (if there is one) is now the front item. Size
      *  has been decreased by one.
      */
-    @Override
-    public E remove() {
-        E answer;
+    public Integer remove() {
+        Integer answer;
 
         if (size == 0) { return null; }
 
@@ -98,6 +94,5 @@ public class GraphQueue<E> implements Queue<E> {
      * @postcondition
      *  This Queue has not been modified.
      */
-    @Override
     public int size() { return size; }
 }
