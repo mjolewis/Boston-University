@@ -14,12 +14,15 @@ package edu.bostonuniversity.graphs;
 
 public class EdgeList<E> implements Graph<E>{
     // Invariant of the EdgeList.java class
-    //  1. The instance variable vertex is an array of vertices that act as a reference to the head of a linked list.
+    //  1. The instance variable INITIAL_CAPACITY is the default initial capacity of the vertices array.
+    //  2. The instance variable vertex is an array of vertices that act as a reference to the head of a linked list.
     //     If the vertex has any neighbors, we can access those neighbors by looping through the linked list at the
     //     specified vertex.
-    //  2. The instance variable INITIAL_CAPACITY is the default initial capacity of the vertices array.
-    private Vertex[] vertices;
+    //  3. The instance variable visited is an array that tracks with vertices have been visited during a Graph
+    //     traversal.
     private static final int INITIAL_CAPACITY = 13;
+    private Vertex[] vertices;
+    private boolean[] visited;
 
     /**
      * public EdgeList()
@@ -92,6 +95,12 @@ public class EdgeList<E> implements Graph<E>{
 
     }
 
+    public void depthFirstTraversal(int vertex) {
+        visited = new boolean[vertices.length];
+        for (int i = 0; i < vertices.length; i++) { visited[i] = false; }
+        recursiveDepthFirstTraversal(vertex);
+    }
+
     /**
      * getLabel(source)
      * Accessor method that retrieves a reference to the vertex's label. Our implementation suppresses warnings because
@@ -127,6 +136,28 @@ public class EdgeList<E> implements Graph<E>{
             edge = edge.getNext();
         }
         return false;
+    }
+
+    /*
+     * private void recursiveDepthFirstTraversal(int vertex)
+     * Helper method to recursively traverse a Graph and write the label of each visited vertex using
+     * System.out.println().
+     * @param vertex
+     *  The starting vertex of this recursive Graph traversal.
+     * @postcondition
+     *  Each vertex has been visited by this Graph traversal if an edge existed between the source vertex and a target
+     *  vertex and the label of each vertex has been written using System.out.println().
+     */
+    private void recursiveDepthFirstTraversal(int vertex) {
+        int[] neighbors;
+
+        if (visited[vertex]) { return; } // Stop if already visited.
+
+        visited[vertex] = true;
+        System.out.println("Visited " + getLabel(vertex));
+
+        neighbors = neighbors(vertex);
+        for (int neighbor : neighbors) { recursiveDepthFirstTraversal(neighbor); }
     }
 
     /**
