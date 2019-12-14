@@ -167,6 +167,33 @@ public class EdgeList<E> implements Graph<E>{
     }
 
     /**
+     * public int getCost(int source, int target)
+     * Accessor method that retrieves the cost of the edge that connects a source and target vertex. Our implementation
+     * suppresses warnings because our programming ensures that the list is of type E.
+     * @param source
+     *  The source vertex.
+     * @param target
+     *  The target vertex.
+     * @precondition
+     *  The source and target vertex are non-negative and are less than the size of this Graph.
+     * @return int
+     *  The cost of the edge that connects the source and target vertex.
+     * @exception ArrayIndexOutOfBoundsException
+     *  Indicates an invalid source or target index.
+     */
+    @SuppressWarnings("unchecked")
+    public int getCost(int source, int target) {
+        Edge<E> edge;
+
+        edge = (Edge<E>) vertices[source].getList();
+        while (edge != null) {
+            if (edge.getVertex() == target) { return edge.getCost(); }
+            edge = edge.getNext();
+        }
+        return Integer.MAX_VALUE;
+    }
+
+    /**
      * public getLabel(source)
      * Accessor method that retrieves a reference to the vertex's label. Our implementation suppresses warnings because
      * our programming ensures that the label is of type E.
