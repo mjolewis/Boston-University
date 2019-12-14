@@ -18,23 +18,23 @@ public interface Graph<E> {
 
     /**
      * void addEdge(int source, int target, int cost)
-     * Adds an edge from the specified source to the specified target. Note that target may be null, which indicates
-     * that the edge is only connected to the source vertex.
-     * @precondition
-     *  The source vertex is not null.
+     * Adds an edge from the specified source to the specified target. Our implementation suppresses warnings because
+     * our programming ensures that the list is of type E.
      * @param source
-     *  A reference to source vertex. Note that the source vertex cannot be a null reference.
+     *  The source vertex.
      * @param target
-     *  A reference to the target vertex.
+     *  The target vertex.
+     * @param cost
+     *  The cost of using this Edge.
      * @postcondition
-     *  An edge has been added between the source vertex and target vertex. Note that if the target is a null reference
-     *  then the edge is only connected to the source vertex.
+     *  An edge has been added between the source vertex and target vertex.
      */
     void addEdge(int source, int target, int cost);
 
     /**
      * getLabel(source)
-     * Accessor method that retrieves a reference to the vertex's label.
+     * Accessor method that retrieves a reference to the vertex's label. Our implementation suppresses warnings because
+     * our programming ensures that the label is of type E.
      * @param source
      *  A reference to the source vertex whose label we are retrieving.
      * @return E
@@ -44,11 +44,12 @@ public interface Graph<E> {
 
     /**
      * boolean isEdge(int source, int target)
-     * Accessor method that determines whether or not there is an edge between the source and target vertices.
+     * Accessor method that determines if there is an edge between the source and target vertices. Our implementation
+     * suppresses warnings because our programming ensures that the list is of type E.
      * @param source
-     *  A reference to the source vertex.
+     *  The source vertex.
      * @param target
-     *  A reference to the target vertex.
+     *  The target vertex.
      * @return boolean
      *  True if there is an edge between the source and target vertices. Otherwise, false.
      */
@@ -58,9 +59,8 @@ public interface Graph<E> {
      * int[] neighbors(int vertex)
      * Utility method that retrieves all of the neighbors of the specified vertex. A vertex has neighbors if there is
      * an edge between the vertex and a target vertex. For example, if there is an edge between vertex1 and vertex2,
-     * then vertex1 and vertex2 are neighbors.
-     * @precondition
-     *  Vertex is a non-null reference.
+     * then vertex1 and vertex2 are neighbors. Our implementation suppresses warnings because our programming ensures
+     * that the list is of type E.
      * @param vertex
      *  A non-null reference to the source vertex.
      * @return int[]
@@ -77,7 +77,8 @@ public interface Graph<E> {
      * @param source
      *  A reference to the source vertex.
      * @param target
-     *  A reference to the target vertex. Note that the target vertex can be a null reference.
+     *  A reference to the target vertex. Note that the target vertex can be a null reference. Our implementation
+     *  suppresses warnings because our programming ensures that the list is of type E.
      * @postcondition
      *  The edge (if it existed) has been removed and the source and target vertices are no longer connected.
      */
@@ -85,15 +86,19 @@ public interface Graph<E> {
 
     /**
      * setLabel(int source, E label)
-     * Mutator method that sets the label for the specified source vertex.
+     * Mutator method that sets the label for the specified source vertex. Our implementation suppresses warnings
+     * because our programming ensures that the label is of type E.
      * @precondition
-     *  The source vertex is a non-null reference.
+     *  The source vertex is within the bounds of the vertices array.
      * @param source
      *  A reference to the source vertex.
      * @param label
      *  A reference to the label of this vertex.
      * @postcondition
-     *  The label for this vertex has been set. However, if the source is a null reference, then no work is performed.
+     *  The label for this vertex has been set. However, if the source vertex is outside the bounds of this Vertex,
+     *  then an ArrayIndexOutOfBoundsException is thrown.
+     * @exception ArrayIndexOutOfBoundsException
+     *  Indicates that the source vertex is outside the bounds of this Vertex.
      */
     void setLabel(int source, E label);
 

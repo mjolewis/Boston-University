@@ -77,9 +77,11 @@ public class EdgeList<E> implements Graph<E>{
      * Adds an edge from the specified source to the specified target. Our implementation suppresses warnings because
      * our programming ensures that the list is of type E.
      * @param source
-     *  A reference to source vertex.
+     *  The source vertex.
      * @param target
-     *  A reference to the target vertex.
+     *  The target vertex.
+     * @param cost
+     *  The cost of using this Edge.
      * @postcondition
      *  An edge has been added between the source vertex and target vertex.
      */
@@ -164,13 +166,13 @@ public class EdgeList<E> implements Graph<E>{
      * removeEdge(int source, int target)
      * Mutator method that removes the edge (if one exists) between the source and target vertices. If there is no edge
      * then no work is performed.
+     * @precondition
+     *  The reference to the source vertex is a non-null reference.
      * @param source
      *  A reference to the source vertex.
      * @param target
      *  A reference to the target vertex. Note that the target vertex can be a null reference. Our implementation
      *  suppresses warnings because our programming ensures that the list is of type E.
-     * @precondition
-     *  The reference to the source vertex is a non-null reference.
      * @postcondition
      *  The edge (if it existed) has been removed and the source and target vertices are no longer connected.
      */
@@ -236,8 +238,6 @@ public class EdgeList<E> implements Graph<E>{
      *  A non-null reference to the source vertex.
      * @return int[]
      *  A reference to an integer array that contains all of the specified vertex's neighbors.
-     * @precondition
-     *  Vertex is a non-null reference.
      */
     @Override
     @SuppressWarnings("unchecked")
