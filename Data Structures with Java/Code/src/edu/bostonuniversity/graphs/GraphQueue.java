@@ -3,6 +3,7 @@
 package edu.bostonuniversity.graphs;
 
 import edu.bostonuniversity.collections.Queue;
+import edu.bostonuniversity.nodes.GraphNode;
 
 /**********************************************************************************************************************
  * A GraphQueue is used to implement a breadth-first search of a Graph. The queue keeps track of which vertices might
@@ -14,18 +15,28 @@ import edu.bostonuniversity.collections.Queue;
  *********************************************************************************************************************/
 
 public class GraphQueue<E> implements Queue<E> {
-    //
+    // Invariant of the GraphQueue.java class
+    //  1. The front is a reference to the first node in this Queue.
+    //  2. The rear is a reference to the final node in this Queue.
+    //  3. The size is a reference to the number of elements in this Queue.
+    private GraphNode<E> front;
+    private GraphNode<E> rear;
+    private int size;
+
+
     /**
      * public void add(E item)
-     * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference
+     * Mutator method that adds a new item to the rear of the Queue. The new item may be a null reference.
      * @param item
      *  The item to be added to the Queue.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this item.
      */
     @Override
-    public void add(Object item) {
-
+    public void add(E item) {
+        if (size == 0) {
+            front =
+        }
     }
 
     /**
