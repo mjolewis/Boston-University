@@ -83,7 +83,7 @@ public class EdgeList<E> implements Graph<E>{
     @Override
     @SuppressWarnings("unchecked")
     public void addEdge(int source, int target, int cost) {
-        if (isEdge(source, target)) { return; }
+        if (isEdge(source, target)) { return; } // If the edge already exists, then no work is performed.
 
         Edge<E> edge = new Edge<>();
         edge.setCost(cost);
@@ -108,7 +108,7 @@ public class EdgeList<E> implements Graph<E>{
     /**
      * boolean isEdge(int source, int target)
      * Accessor method that determines if there is an edge between the source and target vertices. Our implementation
-     * suppresses warnings because our programming ensures that the label is of type E.
+     * suppresses warnings because our programming ensures that the list is of type E.
      * @param source
      *  The source vertex.
      * @param target
@@ -136,15 +136,34 @@ public class EdgeList<E> implements Graph<E>{
      * @param source
      *  A reference to the source vertex.
      * @param target
-     *  A reference to the target vertex. Note that the target vertex can be a null reference.
+     *  A reference to the target vertex. Note that the target vertex can be a null reference. Our implementation
+     *  suppresses warnings because our programming ensures that the list is of type E.
      * @precondition
      *  The reference to the source vertex is a non-null reference.
      * @postcondition
      *  The edge (if it existed) has been removed and the source and target vertices are no longer connected.
      */
     @Override
+    @SuppressWarnings("unchecked")
     public void removeEdge(int source, int target) {
+        Edge<E> previous;
+        Edge<E> edge;
 
+        if (!isEdge(source, target)) { return; }
+
+        previous = null;
+        edge = (Edge<E>) vertices[source].getList();
+        while (edge != null) {
+            if (edge.getVertex() == target) {
+                if (previous == null) {
+                    vertices[source].setList(edge.getNext());
+                } else {
+                    previous.setNext(edge.getNext());
+                }
+            }
+            previous = edge;
+            edge = edge.getNext();
+        }
     }
 
     /**
@@ -175,6 +194,7 @@ public class EdgeList<E> implements Graph<E>{
      */
     @Override
     public int size() {
+        // TODO: 12/14/19  
         return 0;
     }
 
@@ -192,6 +212,7 @@ public class EdgeList<E> implements Graph<E>{
      */
     @Override
     public int[] neighbors(int vertex) {
+        // TODO: 12/14/19
         return new int[0];
     }
 }
