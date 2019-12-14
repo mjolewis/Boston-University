@@ -70,21 +70,25 @@ public class EdgeList<E> implements Graph<E>{
     }
 
     /**
-     * void addEdge(int source, int target)
-     * Adds an edge from the specified source to the specified target. Note that target may be null, which indicates
-     * that the edge is only connected to the source vertex.
+     * void addEdge(int source, int target, int cost)
+     * Adds an edge from the specified source to the specified target. Our implementation suppresses warnings because
+     * our programming ensures that the list is of type E.
      * @param source
-     *  A reference to source vertex. Note that the source vertex cannot be a null reference.
+     *  A reference to source vertex.
      * @param target
      *  A reference to the target vertex.
-     * @precondition
-     *  The source vertex is not null.
      * @postcondition
-     *  An edge has been added between the source vertex and target vertex. Note that if the target is a null reference
-     *         then the edge is only connected to the source vertex.
+     *  An edge has been added between the source vertex and target vertex.
      */
     @Override
-    public void addEdge(int source, int target) {
+    @SuppressWarnings("unchecked")
+    public void addEdge(int source, int target, int cost) {
+        if (isEdge(source, target)) { return; }
+
+        Edge<E> edge = new Edge<>();
+        edge.setCost(cost);
+        edge.setVertex(target);
+        edge.setNext(vertices[source].getList());
 
     }
 
@@ -103,16 +107,25 @@ public class EdgeList<E> implements Graph<E>{
 
     /**
      * boolean isEdge(int source, int target)
-     * Accessor method that determines whether or not there is an edge between the source and target vertices.
+     * Accessor method that determines if there is an edge between the source and target vertices. Our implementation
+     * suppresses warnings because our programming ensures that the label is of type E.
      * @param source
-     *  A reference to the source vertex.
+     *  The source vertex.
      * @param target
-     *  A reference to the target vertex.
+     *  The target vertex.
      * @return boolean
      *  True if there is an edge between the source and target vertices. Otherwise, false.
      */
     @Override
+    @SuppressWarnings("unchecked")
     public boolean isEdge(int source, int target) {
+        Edge<E> edge;
+
+        edge = (Edge<E>) vertices[source].getList();
+        while (edge != null) {
+            if (edge.getVertex() == target) { return true; }
+            edge = edge.getNext();
+        }
         return false;
     }
 
