@@ -23,14 +23,23 @@ public class EdgeList<E> implements Graph<E>{
 
     /**
      * public EdgeList()
-     * Initializes an empty array of vertices whose size is equal to the INITIAL_CAPACITY.
+     * Initializes an array of vertices whose size is equal to the INITIAL_CAPACITY and whose label is set by our call
+     * to the setLabel method. Our implementation suppresses warnings because our programming ensures tha the label is
+     * of type E.
      * @postcondition
      *  The Vertex array has been initialized with an initial size of INITIAL_CAPACITY. Each vertex is a null
      *  reference.
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for this new Vertex array.
      */
-    public EdgeList() { vertices = new Vertex[INITIAL_CAPACITY]; }
+    @SuppressWarnings("unchecked")
+    public EdgeList() {
+        vertices = new Vertex[INITIAL_CAPACITY];
+        for (int i = 0; i < INITIAL_CAPACITY; i++) {
+            vertices[i] = new Vertex();
+            vertices[i].setLabel("V" + i);
+        }
+    }
 
     /**
      * public EdgeList(int initialCapacity)
