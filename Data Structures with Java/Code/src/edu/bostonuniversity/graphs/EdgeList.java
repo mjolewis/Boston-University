@@ -90,16 +90,16 @@ public class EdgeList<E> implements Graph<E>{
 
     /**
      * getLabel(source)
-     * Accessor method that retrieves a reference to the vertex's label.
+     * Accessor method that retrieves a reference to the vertex's label. Our implementation suppresses warnings because
+     * our programming ensures that the label is of type E.
      * @param source
      *  A reference to the source vertex whose label we are retrieving.
      * @return E
      *  A reference to the source vertex's label
      */
     @Override
-    public E getLabel(int source) {
-        return null;
-    }
+    @SuppressWarnings("unchecked")
+    public E getLabel(int source) { return (E) vertices[source].getLabel(); }
 
     /**
      * boolean isEdge(int source, int target)
@@ -136,20 +136,23 @@ public class EdgeList<E> implements Graph<E>{
 
     /**
      * setLabel(int source, E label)
-     * Mutator method that sets the label for the specified source vertex.
+     * Mutator method that sets the label for the specified source vertex. Our implementation suppresses warnings
+     * because our programming ensures that the label is of type E.
+     * @precondition
+     *  The source vertex is within the bounds of the vertices array.
      * @param source
      *  A reference to the source vertex.
      * @param label
      *  A reference to the label of this vertex.
-     * @precondition
-     *  The source vertex is a non-null reference.
      * @postcondition
-     *  The label for this vertex has been set. However, if the source is a null reference, then no work is performed.
+     *  The label for this vertex has been set. However, if the source vertex is outside the bounds of this Vertex,
+     *  then an ArrayIndexOutOfBoundsException is thrown.
+     * @exception ArrayIndexOutOfBoundsException
+     *  Indicates that the source vertex is outside the bounds of this Vertex.
      */
     @Override
-    public void setLabel(int source, E label) {
-
-    }
+    @SuppressWarnings("unchecked")
+    public void setLabel(int source, E label) { vertices[source].setLabel(label); }
 
     /**
      * size()
