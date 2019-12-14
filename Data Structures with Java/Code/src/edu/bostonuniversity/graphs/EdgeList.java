@@ -34,7 +34,9 @@ public class EdgeList<E> implements Graph<E>{
 
     /**
      * public EdgeList(int initialCapacity)
-     * Initializes an empty array of vertices whose size is equal to the initialCapacity.
+     * Initializes an array of vertices whose size is equal to the initialCapacity and whose label is set by our call
+     * to the setLabel method. Our implementation suppresses warnings because our programming ensures that the label is
+     * of type E.
      * @precondition
      *  The initialCapacity is a non-negative integer.
      * @param initialCapacity
@@ -46,11 +48,16 @@ public class EdgeList<E> implements Graph<E>{
      * @exception IllegalArgumentException
      *  Indicates a negative initial capacity.
      */
+    @SuppressWarnings("unchecked")
     public EdgeList(int initialCapacity) {
         if (initialCapacity < 0) {
             throw new IllegalArgumentException("Initial capacity is negative: " + initialCapacity);
         }
         vertices = new Vertex[initialCapacity];
+        for (int i = 0; i < initialCapacity; i++) {
+            vertices[i] = new Vertex();
+            vertices[i].setLabel("V" + i);
+        }
     }
 
     /**
