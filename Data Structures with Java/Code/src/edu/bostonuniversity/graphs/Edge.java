@@ -123,7 +123,7 @@ public class Edge<E> {
      * @param vertex
      *  The integer value representing this vertex.
      * @postcondition
-     *  The integer value representing this vertex has been set.
+*  The integer value representing this vertex has been set.
      */
     public void setVertex(int vertex) { this.vertex = vertex; }
 }
