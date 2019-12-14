@@ -193,10 +193,7 @@ public class EdgeList<E> implements Graph<E>{
      *  The size of this Graph. Note that the size can be 0.
      */
     @Override
-    public int size() {
-        // TODO: 12/14/19  
-        return 0;
-    }
+    public int size() { return vertices.length; }
 
     /**
      * int[] neighbors(int vertex)
