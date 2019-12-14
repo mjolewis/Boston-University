@@ -17,7 +17,7 @@ package edu.bostonuniversity.graphs;
 public interface Graph<E> {
 
     /**
-     * void addEdge(int source, int target)
+     * void addEdge(int source, int target, int cost)
      * Adds an edge from the specified source to the specified target. Note that target may be null, which indicates
      * that the edge is only connected to the source vertex.
      * @precondition
@@ -30,7 +30,7 @@ public interface Graph<E> {
      *  An edge has been added between the source vertex and target vertex. Note that if the target is a null reference
      *  then the edge is only connected to the source vertex.
      */
-    void addEdge(int source, int target);
+    void addEdge(int source, int target, int cost);
 
     /**
      * getLabel(source)
