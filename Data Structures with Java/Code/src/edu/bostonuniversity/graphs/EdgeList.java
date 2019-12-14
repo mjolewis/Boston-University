@@ -102,12 +102,35 @@ public class EdgeList<E> implements Graph<E>{
     }
 
     /**
-     * public void depthFirstTraversal(int vertex)
-     * Traversal method to print the labels of a Graph with a depth first search.
+     * public void breadthFirstTraversal(int vertex)
+     * Traversal method to print the labels of a Graph with a breadth-first search.
      * @param vertex
      *  The vertex number from this Graph.
      * @precondition
-     *  Vertex is non-negative and is less that the size of this Graph.
+     *  Vertex is non-negative and is less than the size of this Graph.
+     * @postcondition
+     *  A breadth-first search of this Graph has been conducted, starting at the specified start vertex. Each vertex
+     *  has its label printed using System.out.println(). Note that vertices that are not connected to the start
+     *  vertex will not be visited.
+     * @exception NullPointerException
+     *  Indicates that this Graph is null.
+     * @exception ArrayIndexOutOfBoundsException
+     *  Indicates insufficient memory for an array of boolean values used by this method.
+     */
+    public void breadthFirstTraversal(int vertex) {
+        visited = new boolean[vertices.length];
+        for (int i = 0; i < vertices.length; i++) { visited[i] = false; }
+
+
+    }
+
+    /**
+     * public void depthFirstTraversal(int vertex)
+     * Traversal method to print the labels of a Graph with a depth-first search.
+     * @param vertex
+     *  The vertex number from this Graph.
+     * @precondition
+     *  Vertex is non-negative and is less than the size of this Graph.
      * @postcondition
      *  A depth-first search of this Graph has been conducted, starting at the specified start vertex. Each vertex has
      *  its label printed using System.out.println(). Note that vertices that are not connected to the start vertex
