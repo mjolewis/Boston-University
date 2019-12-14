@@ -199,7 +199,8 @@ public class EdgeList<E> implements Graph<E>{
      * int[] neighbors(int vertex)
      * Utility method that retrieves all of the neighbors of the specified vertex. A vertex has neighbors if there is
      * an edge between the vertex and a target vertex. For example, if there is an edge between vertex1 and vertex2,
-     * then vertex1 and vertex2 are neighbors.
+     * then vertex1 and vertex2 are neighbors. Our implementation suppresses warnings because our programming ensures
+     * that the list is of type E.
      * @param vertex
      *  A non-null reference to the source vertex.
      * @return int[]
@@ -208,8 +209,26 @@ public class EdgeList<E> implements Graph<E>{
      *  Vertex is a non-null reference.
      */
     @Override
+    @SuppressWarnings("unchecked")
     public int[] neighbors(int vertex) {
-        // TODO: 12/14/19
-        return new int[0];
+        int[] answer;
+        int count;
+        Edge<E> edge;
+
+        count = 0;
+        edge = (Edge<E>) vertices[vertex].getList();
+        while (edge != null) {
+            count++;
+            edge = edge.getNext();
+        }
+
+        answer = new int[count];
+        count = 0;
+        edge = (Edge<E>) vertices[vertex].getList();
+        while (edge != null) {
+            answer[count++] = edge.getVertex();
+            edge = edge.getNext();
+        }
+        return answer;
     }
 }
