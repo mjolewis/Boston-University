@@ -23,6 +23,11 @@ public class GraphQueue<E> implements Queue<E> {
     private GraphNode<E> rear;
     private int size;
 
+    public GraphQueue() {
+        front = null;
+        rear = null;
+        size = 0;
+    }
 
     /**
      * public void add(E item)
@@ -34,8 +39,17 @@ public class GraphQueue<E> implements Queue<E> {
      */
     @Override
     public void add(E item) {
+        GraphNode<E> graphNode = new GraphNode<>();
+        graphNode.setVertex(item);
+
         if (size == 0) {
-            front =
+            front = graphNode;
+            rear = graphNode;
+            size++;
+        } else {
+            rear.setNext(graphNode);
+            rear = graphNode;
+            size++;
         }
     }
 
@@ -48,7 +62,7 @@ public class GraphQueue<E> implements Queue<E> {
      *  This Queue has not been modified.
      */
     @Override
-    public boolean isEmpty() { return size() == 0; }
+    public boolean isEmpty() { return size == 0; }
 
     /**
      * public E remove()
@@ -62,8 +76,18 @@ public class GraphQueue<E> implements Queue<E> {
      *  has been decreased by one.
      */
     @Override
-    public Object remove() {
-        return null;
+    public E remove() {
+        E answer;
+
+        if (size == 0) { return null; }
+
+        answer = front.getVertex();
+        front = front.getNext();
+        size--;
+
+        if (size == 0) { front = rear = null; }
+
+        return answer;
     }
 
     /**
@@ -75,7 +99,5 @@ public class GraphQueue<E> implements Queue<E> {
      *  This Queue has not been modified.
      */
     @Override
-    public int size() {
-        return 0;
-    }
+    public int size() { return size; }
 }

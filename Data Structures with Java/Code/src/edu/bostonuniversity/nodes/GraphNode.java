@@ -16,7 +16,7 @@ public class GraphNode<E> {
     //  1. The instance variable vertex
     //  2. The instance variable next is a reference to the next node in the queue. For the final node of the queue,
     //     the link is a null reference.
-    private Integer vertex;
+    private E vertex;
     private GraphNode<E> next;
 
     /**
@@ -46,7 +46,7 @@ public class GraphNode<E> {
      * @exception OutOfMemoryError
      *  Indicates insufficient memory for the new Node.
      */
-    public GraphNode(Integer vertex, GraphNode<E> next) {
+    public GraphNode(E vertex, GraphNode<E> next) {
         this.vertex = vertex;
         this.next = next;
     }
@@ -57,7 +57,7 @@ public class GraphNode<E> {
      * @return Integer
      *  A reference to the specified vertex.
      */
-    public Integer getVertex() { return vertex; }
+    public E getVertex() { return vertex; }
 
     /**
      * public GraphNode<E> getNext()
@@ -81,5 +81,5 @@ public class GraphNode<E> {
      * @param vertex
      *  The specified vertex used to set this vertex.
      */
-    public void setVertex(Integer vertex) { this.vertex = vertex; }
+    public void setVertex(E vertex) { this.vertex = vertex; }
 }
