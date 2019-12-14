@@ -17,7 +17,41 @@ public class EdgeList<E> implements Graph<E>{
     //  1. The instance variable vertex is an array of vertices that act as a reference to the head of a linked list.
     //     If the vertex has any neighbors, we can access those neighbors by looping through the linked list at the
     //     specified vertex.
+    //  2. The instance variable INITIAL_CAPACITY is the default initial capacity of the vertices array.
     private Vertex[] vertices;
+    private static final int INITIAL_CAPACITY = 13;
+
+    /**
+     * public EdgeList()
+     * Initializes an empty array of vertices whose size is equal to the INITIAL_CAPACITY.
+     * @postcondition
+     *  The Vertex array has been initialized with an initial size of INITIAL_CAPACITY. Each vertex is a null
+     *  reference.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for this new Vertex array.
+     */
+    public EdgeList() { vertices = new Vertex[INITIAL_CAPACITY]; }
+
+    /**
+     * public EdgeList(int initialCapacity)
+     * Initializes an empty array of vertices whose size is equal to the initialCapacity.
+     * @precondition
+     *  The initialCapacity is a non-negative integer.
+     * @param initialCapacity
+     *  The initial capacity of the Vertex array.
+     * @postcondition
+     *  The Vertex array has been initialized with the specified initial capacity. Each vertex is a null reference.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for this new Vertex array.
+     * @exception IllegalArgumentException
+     *  Indicates a negative initial capacity.
+     */
+    public EdgeList(int initialCapacity) {
+        if (initialCapacity < 0) {
+            throw new IllegalArgumentException("Initial capacity is negative: " + initialCapacity);
+        }
+        vertices = new Vertex[initialCapacity];
+    }
 
     /**
      * void addEdge(int source, int target)
