@@ -309,9 +309,9 @@ public class EdgeList<E> implements Graph<E>{
      *  A reference to the source vertex.
      * @param target
      *  A reference to the target vertex. Note that the target vertex can be a null reference. Our implementation
+     *  suppresses warnings because our programming ensures that the list is of type E.
      * @precondition
      *  The reference to the source vertex is a non-null reference.
-     *  suppresses warnings because our programming ensures that the list is of type E.
      * @postcondition
      *  The edge (if it existed) has been removed and the source and target vertices are no longer connected.
      * @exception ArrayIndexOutOfBoundsException
@@ -359,6 +359,22 @@ public class EdgeList<E> implements Graph<E>{
     @Override
     @SuppressWarnings("unchecked")
     public void setLabel(int source, E label) { vertices[source].setLabel(label); }
+
+    /**
+     * public int[] shortestPath(int vertex)
+     * Utility method that determines the shortest path using Dijkstra's algorithm. The shortest path between two
+     * vertices is the path with the lowest total cost.
+     * @param vertex
+     *  The starting vertex.
+     * @precondition
+     *  The vertex is non-negative and is less than the size of this Graph.
+     * @return int[]
+     *  A distance array filled with integers such that for each vertex v, the value of int[v] is the cost of the
+     *  shortest path from the starting vertex to v.
+     */
+    public int[] shortestPath(int vertex) {
+        // TODO: 12/14/19
+    }
 
     /**
      * public int size()
