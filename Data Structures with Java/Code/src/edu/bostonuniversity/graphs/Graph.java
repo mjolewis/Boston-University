@@ -55,6 +55,20 @@ public interface Graph<E> {
     boolean isEdge(int source, int target);
 
     /**
+     * int[] neighbors(int vertex)
+     * Utility method that retrieves all of the neighbors of the specified vertex. A vertex has neighbors if there is
+     * an edge between the vertex and a target vertex. For example, if there is an edge between vertex1 and vertex2,
+     * then vertex1 and vertex2 are neighbors.
+     * @precondition
+     *  Vertex is a non-null reference.
+     * @param vertex
+     *  A non-null reference to the source vertex.
+     * @return int[]
+     *  A reference to an integer array that contains all of the specified vertex's neighbors.
+     */
+    int[] neighbors(int vertex);
+
+    /**
      * removeEdge(int source, int target)
      * Mutator method that removes the edge (if one exists) between the source and target vertices. If there is no edge
      * then no work is performed.
@@ -90,18 +104,4 @@ public interface Graph<E> {
      *  The size of this Graph. Note that the size can be 0.
      */
     int size();
-
-    /**
-     * int[] neighbors(int vertex)
-     * Utility method that retrieves all of the neighbors of the specified vertex. A vertex has neighbors if there is
-     * an edge between the vertex and a target vertex. For example, if there is an edge between vertex1 and vertex2,
-     * then vertex1 and vertex2 are neighbors.
-     * @precondition
-     *  Vertex is a non-null reference.
-     * @param vertex
-     *  A non-null reference to the source vertex.
-     * @return int[]
-     *  A reference to an integer array that contains all of the specified vertex's neighbors.
-     */
-    int[] neighbors(int vertex);
 }
