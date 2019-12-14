@@ -20,6 +20,38 @@ public class GraphNode<E> {
     private GraphNode<E> next;
 
     /**
+     * public GraphNode()
+     * Initialize an empty GraphNode.
+     * @postcondition
+     *  An empty GraphNode has been initialized.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for this GraphNode.
+     */
+    public GraphNode() {
+        vertex = null;
+        next = null;
+    }
+
+    /**
+     * public GraphNode(Integer vertex, GraphNode<E> next)
+     * Initializes a GraphNode with the specified initial vertex and a link to the next node. Note that the initial
+     * next may be a null reference, which indicates that the new GraphNode has nothing after it.
+     * @param vertex
+     *  The initial vertex of this new GraphNode.
+     * @param next
+     *  A reference to the GraphNode after this new GraphNode (this reference may be null to indicate that there is no
+     *  GraphNode after this new node).
+     * @postcondition
+     *  This new GraphNode contains the specified data and a link to the next GraphNode.
+     * @exception OutOfMemoryError
+     *  Indicates insufficient memory for the new Node.
+     */
+    public GraphNode(Integer vertex, GraphNode<E> next) {
+        this.vertex = vertex;
+        this.next = next;
+    }
+
+    /**
      * public Integer getVertex()
      * Accessor method that retrieves a reference to this vertex.
      * @return Integer
