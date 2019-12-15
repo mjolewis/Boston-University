@@ -367,7 +367,7 @@ public class EdgeList<E> implements Graph<E>{
      * public int[] shortestPath(int vertex)
      * Utility method that determines the shortest path using Dijkstra's algorithm. The shortest path between two
      * vertices is the path with the lowest total cost.
-     * @param vertex
+     * @param start
      *  The starting vertex.
      * @precondition
      *  The vertex is non-negative and is less than the size of this Graph.
@@ -377,7 +377,7 @@ public class EdgeList<E> implements Graph<E>{
      * @exception ArrayIndexOutOfBoundsException
      *  Indicates the the start vertex was not a valid vertex number.
      */
-    public int[] shortestPath(int vertex) {
+    public int[] shortestPath(int start) {
         boolean done;
         int current;
         int[] distance;
@@ -391,7 +391,7 @@ public class EdgeList<E> implements Graph<E>{
             unvisited[i] = true;
         }
 
-        current = vertex;
+        current = start;
         distance[current] = 0;
 
         // Loop until all processable vertices are processed.
