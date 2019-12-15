@@ -45,5 +45,7 @@ public class GraphMain {
             }
             System.out.println();
         }
+
+        graph.breadthFirstTraversal(0);
     }
 }
