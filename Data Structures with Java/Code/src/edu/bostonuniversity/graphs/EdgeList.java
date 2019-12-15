@@ -135,9 +135,7 @@ public class EdgeList<E> implements Graph<E>{
             Integer front = graphQueue.remove(); // Removes the front of the GraphQueue
             neighbors = neighbors(front);
             for (int i = 0; i < neighbors.length; i++) {
-                if (visited[neighbors[i]]) {
-                    continue;
-                } else {
+                if (!visited[neighbors[i]]) {
                     visited[neighbors[i]] = true;
                     System.out.println("Adding " + neighbors[i] + " to the queue.");
                     graphQueue.add(i);
