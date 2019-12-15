@@ -1,30 +1,49 @@
 package edu.bostonuniversity.projects;
 
-import edu.bostonuniversity.graphs.Graph;
+import edu.bostonuniversity.graphs.EdgeList;
 
 public class GraphMain {
     public static void main(String[] args) {
         GraphMain graph = new GraphMain();
-        graph.start();
+        graph.doIt();
     }
 
-    public void start() {
-        Graph<String> graph = new Graph<>(7);
-        int[][] matrix = {{0, 5, 2, -1, -1, 5, -1},
-                {-1, 0, -1, -1, 2, 4, -1},
-                {-1, -1, -1, -1, 3, -1, -1},
-                {-1, -1, 3, -1, -1, -1, 4},
-                {-1, -1, -1, -1, 0, -1, 2},
-                {-1, -1, -1, -1, -1, 0, 3},
-                {-1, -1, -1, -1, -1, -1, 0}};
+    public void doIt() {
+        EdgeList<Integer> graph = new EdgeList<>(7);
 
-        for (int i = 0; i < matrix.length; i++) {
-            graph.shortestPath(i);
+        graph.addEdge(0, 1, 5);
+        graph.addEdge(0, 2, 2);
+        graph.addEdge(0, 5, 5);
+        graph.addEdge(1, 4, 2);
+        graph.addEdge(1, 5, 4);
+        graph.addEdge(2, 4, 3);
+        graph.addEdge(3, 2, 3);
+        graph.addEdge(3, 6, 4);
+        graph.addEdge(4, 6, 2);
+        graph.addEdge(5, 6, 3);
+
+        //graph.DFTraversal(0);
+
+        //System.out.println("BF Traversal");
+        //graph.BFTraversal(0);
+
+        int cost[][] = new int[7][];
+
+        for (int i = 0; i < graph.size(); i++) {
+            cost[i]= graph.shortestPath(i);
         }
 
-
-        graph.setDistance(matrix);
-        //graph.shortestPath(0);
-        graph.test();
+        for(int x = 0; x < cost[0].length; x++) {
+            System.out.print("From V" + x + "\t");
+            for (int y = 0; y < cost[0].length; y++) {
+                System.out.print("V"+ y + " = " );
+                if (cost[x][y] == Integer.MAX_VALUE) {
+                    System.out.print("\u221E ");
+                } else {
+                    System.out.print(cost[x][y] + " ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
