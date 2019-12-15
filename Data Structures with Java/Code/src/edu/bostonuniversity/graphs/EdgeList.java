@@ -14,13 +14,16 @@ package edu.bostonuniversity.graphs;
 
 public class EdgeList<E> implements Graph<E>{
     // Invariant of the EdgeList.java class
-    //  1. The instance variable INITIAL_CAPACITY is the default initial capacity of the vertices array.
-    //  2. The instance variable vertex is an array of vertices that act as a reference to the head of a linked list.
-    //     If the vertex has any neighbors, we can access those neighbors by looping through the linked list at the
-    //     specified vertex.
-    //  3. The instance variable visited is an array that tracks with vertices have been visited during a Graph
-    //     traversal.
+    //  1. INITIAL_CAPACITY is the default initial capacity of the vertices array.
+    //  2. distance is an array filled with the shortest path (lowest cost) from a start vertex to the target
+    //     vertex.
+    //  3. vertices is an array of Vertex's that act as a reference to the head of a linked list. Each vertices[i] has
+    //     a label and an edge list. If the vertex has any any neighbors, we can access those neighbors by looping
+    //     through the linked list at v[i].
+    //  4. visited is an array that tracks the vertices have been visited during a Graph traversal.
     private static final int INITIAL_CAPACITY = 13;
+    private int[] distance;
+    private boolean[] unvisited;
     private Vertex[] vertices;
     private boolean[] visited;
 
@@ -38,7 +41,13 @@ public class EdgeList<E> implements Graph<E>{
     @SuppressWarnings("unchecked")
     public EdgeList() {
         vertices = new Vertex[INITIAL_CAPACITY];
+        distance = new int[INITIAL_CAPACITY];
+        unvisited = new boolean[INITIAL_CAPACITY];
+        visited = new boolean[INITIAL_CAPACITY];
         for (int i = 0; i < INITIAL_CAPACITY; i++) {
+            distance[i] = Integer.MAX_VALUE;
+            unvisited[i] = true;
+            visited[i] = false;
             vertices[i] = new Vertex();
             vertices[i].setLabel("V" + i);
         }
@@ -65,8 +74,14 @@ public class EdgeList<E> implements Graph<E>{
         if (initialCapacity < 0) {
             throw new IllegalArgumentException("Initial capacity is negative: " + initialCapacity);
         }
+        distance = new int[initialCapacity];
+        unvisited = new boolean[initialCapacity];
         vertices = new Vertex[initialCapacity];
+        visited = new boolean[initialCapacity];
         for (int i = 0; i < initialCapacity; i++) {
+            distance[i] = Integer.MAX_VALUE;
+            unvisited[i] = true;
+            visited[i] = false;
             vertices[i] = new Vertex();
             vertices[i].setLabel("V" + i);
         }
@@ -121,7 +136,6 @@ public class EdgeList<E> implements Graph<E>{
         GraphQueue graphQueue;
         int[] neighbors;
 
-        visited = new boolean[vertices.length];
         for (int i = 0; i < vertices.length; i++) { visited[i] = false; }
 
         graphQueue = new GraphQueue();
@@ -161,7 +175,6 @@ public class EdgeList<E> implements Graph<E>{
      *  Indicates insufficient memory for an array of boolean values used by this method.
      */
     public void depthFirstTraversal(int vertex) {
-        visited = new boolean[vertices.length];
         for (int i = 0; i < vertices.length; i++) { visited[i] = false; }
         recursiveDepthFirstTraversal(vertex);
     }
@@ -371,9 +384,57 @@ public class EdgeList<E> implements Graph<E>{
      * @return int[]
      *  A distance array filled with integers such that for each vertex v, the value of int[v] is the cost of the
      *  shortest path from the starting vertex to v.
+     * @exception ArrayIndexOutOfBoundsException
+     *  Indicates the the start vertex was not a valid vertex number.
      */
     public int[] shortestPath(int vertex) {
-        // TODO: 12/14/19
+        boolean done = false;
+        int current;
+        int[] neighbors;
+
+        for (int i = 0; i < distance.length; i++) {
+            distance[i] = Integer.MAX_VALUE;
+            unvisited[i] = false;
+        }
+
+        current = vertex;
+        distance[current] = 0;
+
+        // Loop until all processable vertices are processed.
+        while (!done) {
+            neighbors = neighbors(current);
+
+            for (int neighbor : neighbors) {
+                if (unvisited[neighbor]) { // If the vertex is unvisited...
+                    int newCost = distance[current] + getCost(current, neighbor); // ...find the cost of the path...
+                    if (newCost < distance[neighbor]) { // ...if the current path has a lower cost then...
+                        distance[neighbor] = newCost; // ...use the lower cost.
+                    }
+                }
+            }
+
+            unvisited[current] = false; // Mark the current vertex as visited.
+            int currentMinimumCost = Integer.MAX_VALUE; // Use as the new lowest cost of the unvisited vertex.
+
+            for (int i = 0; i < distance.length; i++) {
+                if (unvisited[i]) {
+                    if (distance[i] < currentMinimumCost) {
+                        currentMinimumCost = distance[i];
+                        current = i;
+                    }
+                }
+            }
+
+            done = true;
+            for (int i = 0; i < distance.length; i++) {
+                if (unvisited[i] && (distance[i] != Integer.MAX_VALUE)) {
+                    // There are unvisited neighbors that we still need to process
+                    done = false;
+                    break;
+                }
+            }
+        }
+        return distance;
     }
 
     /**
