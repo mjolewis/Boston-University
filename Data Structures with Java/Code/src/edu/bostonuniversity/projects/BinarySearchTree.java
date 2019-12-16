@@ -173,12 +173,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void inorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-        if (depth < MAX_DEPTH) {
-            depth++;
-            inorderTraversal(cursor.getLeft());
-            System.out.print(cursor.getData() + " ");
-            inorderTraversal(cursor.getRight());
-        }
+        inorderTraversal(cursor.getLeft());
+        depth++;
+        if (depth <= MAX_DEPTH) { System.out.print(cursor.getData() + " "); }
+        inorderTraversal(cursor.getRight());
     }
 
     /**
@@ -265,12 +263,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
      */
     public void postorderTraversal(BTNode<T> cursor) {
         if (cursor == null) { return; }
-        if (depth < MAX_DEPTH) {
-            depth++;
-            postorderTraversal(cursor.getLeft());
-            postorderTraversal(cursor.getRight());
-            System.out.print(cursor.getData() + " ");
-        }
+        postorderTraversal(cursor.getLeft());
+        postorderTraversal(cursor.getRight());
+        depth++;
+        if (depth <= MAX_DEPTH) { System.out.print(cursor.getData() + " "); }
     }
 
     /**
