@@ -54,51 +54,28 @@ public class Sort {
      *  The pivot index.
      */
     private static int partition(int[] data, int start, int end) {
-        int pivotIndex;
-        int pivot;
-        int randomIndex1;
-        int randomIndex2;
-        int randomIndex3;
-        int temp;
-        int tooBigIndex;
-        int tooSmallIndex;
+        int pivot, randomIndex1, randomIndex2, randomIndex3, temp, tooBigIndex, tooSmallIndex;
 
-        // Find three random numbers within the bounds of the data array and use the values at those indexes to
-        // determine a pivotElement.
+        // Use median of three random numbers in the array to reduce the probability of incurring O(n^2).
         randomIndex1 = start + (int) (Math.random() * end);
         randomIndex2 = start + (int) (Math.random() * end);
         randomIndex3 = start + (int) (Math.random() * end);
-
         pivot = Math.max(Math.min(data[randomIndex1], data[randomIndex2]), Math.min(Math.max(data[randomIndex1],
                 data[randomIndex2]), data[randomIndex3]));
 
-        // Find the pivot index
-        if (data[randomIndex1] == pivot) {
-            pivotIndex = randomIndex1;
-        } else if (data[randomIndex2] == pivot) {
-            pivotIndex = randomIndex2;
-        } else {
-            pivotIndex = randomIndex3;
-        }
-
+        // Sort the array.
         tooBigIndex = start;
         tooSmallIndex = start + end - 1;
         while (tooBigIndex < tooSmallIndex) {
             while (data[tooBigIndex] < pivot) { tooBigIndex++; }
             while (data[tooSmallIndex] > pivot) { tooSmallIndex--; }
 
-            // Swap the elements so that they are in the correct partition of the array.
+            // Put the elements in the correct partition.
             if (tooBigIndex < tooSmallIndex) {
                 temp = data[tooBigIndex];
                 data[tooBigIndex] = data[tooSmallIndex];
                 data[tooSmallIndex] = temp;
             }
-        }
-
-        if (data[tooSmallIndex] < pivot) {
-            temp = data[tooSmallIndex];
-            data[tooSmallIndex] = pivot;
-            data[pivotIndex] = temp;
         }
 
         return tooSmallIndex;
