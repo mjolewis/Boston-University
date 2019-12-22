@@ -3,10 +3,10 @@
 package edu.bostonuniversity.sorts;
 
 /**********************************************************************************************************************
- * A utility class for sorting arrays of generic data types.
+ * A utility class for sorting data arrays into ascending order.
  *
  * @author mlewis
- * @version Dec 20, 2019
+ * @version Dec 22, 2019
  *********************************************************************************************************************/
 
 public class Sort {
@@ -15,9 +15,9 @@ public class Sort {
     //  2. Elements that are determined to be equal are positioned in the correct order.
 
     /*
-     * private static int getPivot(int[] data, int lo, int hi)
-     * Helper method for quickSort. Returns a randomized pivot element to reduce the probability of incurring O(n^2)
-     * time complexity.
+     * private static int partition(int[] data, int lo, int hi)
+     * Helper method to generate a randomized pivot element, which increases the probability of O(n log n) time
+     * complexity in the quickSort method.
      * @param data
      *  The array to be sorted.
      * @param lo
@@ -29,14 +29,13 @@ public class Sort {
      * @postcondition
      *  A random pivot element within the lower and upper bound is used as the pivot.
      */
-    private static int getPivot(int[] data, int lo, int hi) {
+    private static int partition(int[] data, int lo, int hi) {
         int i, j, k, pivot, pivotIndex;
 
         i = lo + (int) (Math.random() * (hi - lo));
         j = lo + (int) (Math.random() * (hi - lo));
         k = lo + (int) (Math.random() * (hi - lo));
         pivot = Math.max(Math.min(data[i], data[j]), Math.min(Math.max(data[i], data[j]), data[k]));
-
 
         if (data[i] == pivot) {
             pivotIndex = i;
@@ -46,10 +45,43 @@ public class Sort {
             pivotIndex = k;
         }
 
-        // Swapping the first element with the pivot element allows us to use the Dutch National Flag pattern in our
-        // quickSort implementation.
+        // Putting the pivot element at the lower bound eases the implementation of the Dutch National Flag pattern in
+        // our quickSort implementation.
         swap(data, lo, pivotIndex);
-        return data[lo];
+        return pivot;
+    }
+
+    /*
+     * private static int partition(int[] data, int first, int n)
+     * Helper method used to sort the specified array in O(n log n) time complexity. Note, to achieve O(n log n) time
+     * complexity, our implementation uses the median of three partitioning method and Dijkstra's Dutch National Flag
+     * algorithm to handle duplicate keys. Note that our implementation is based on a single left-to-right pass through
+     * the array.
+     * @param data
+     *  The array to be sorted.
+     * @param lo
+     *  The lower bound of this array partition.
+     * @param hi
+     *  The upper bound of this array partition.
+     */
+    private static void quickSort(int[] data, int lo, int hi) {
+        int i, gt, lt, pivot;
+
+        if (hi <= lo) { return; }
+
+        pivot = partition(data, lo, hi);
+
+        // Sort the array.
+        i = lo + 1;
+        gt = hi;
+        lt = lo;
+        while (i <= gt) {
+            if (data[i] < pivot) { swap(data, lt++, i++); }
+            else if (data[i] > pivot) { swap(data, i , gt--); }
+            else { i++; }
+        }
+        quickSort(data, lo, lt - 1);
+        quickSort(data, gt + 1, hi);
     }
 
     /**
@@ -65,38 +97,6 @@ public class Sort {
      *  The data array has been sorted from smallest to largest.
      */
     public static void quickSort(int[] data) { quickSort(data, 0, data.length - 1);}
-
-    /*
-     * private static int partition(int[] data, int first, int n)
-     * Helper method used to sort the specified array in O(n log n) time complexity. Note, to achieve O(n log n) time
-     * complexity, our implementation uses the median of three partitioning method and Dijkstra's Dutch National Flag
-     * algorithm to handle duplicate keys.
-     * @param data
-     *  The array to be sorted.
-     * @param lo
-     *  The lower bound of this array partition.
-     * @param hi
-     *  The upper bound of this array partition.
-     */
-    private static void quickSort(int[] data, int lo, int hi) {
-        int i, gt, lt, pivot;
-
-        if (hi <= lo) { return; }
-
-        pivot = getPivot(data, lo, hi);
-
-        // Sort the array.
-        i = lo + 1;
-        gt = hi;
-        lt = lo;
-        while (i <= gt) {
-            if (data[i] < pivot) { swap(data, lt++, i++); }
-            else if (data[i] > pivot) { swap(data, i , gt--); }
-            else { i++; }
-        }
-        quickSort(data, lo, lt - 1);
-        quickSort(data, gt + 1, hi);
-    }
 
     /*
      * private static void swap(int[] data, int lo, int hi)
