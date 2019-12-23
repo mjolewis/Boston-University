@@ -3,7 +3,7 @@
 package edu.bostonuniversity.sorts;
 
 /**********************************************************************************************************************
- * A utility class for sorting data arrays into ascending order.
+ * A utility class to sort data arrays into ascending order.
  *
  * @author mlewis
  * @version Dec 22, 2019
@@ -12,11 +12,11 @@ package edu.bostonuniversity.sorts;
 public class Sort {
     // Invariant of the Sort.java class
     //  1. The data in the given array is sorted in ascending order based on our implementation of compareTo.
-    //  2. Elements that are determined to be equal are positioned in the correct order.
+    //  2. Equal elements are positioned in the correct order.
 
     /*
      * private static int partition(int[] data, int lo, int hi)
-     * Helper method to generate a randomized pivot element, which increases the probability of O(n log n) time
+     * Helper method to generate a randomized pivot element, which probabilistically guarantees O(n log n) time
      * complexity in the quickSort method.
      * @param data
      *  The array to be sorted.
@@ -27,7 +27,8 @@ public class Sort {
      * @return int
      *  The pivot element.
      * @postcondition
-     *  A random pivot element within the lower and upper bound is used as the pivot.
+     *  A random pivot element within the lower and upper bound has been returned and placed at the lower bound of this
+     *  partition.
      */
     private static int partition(int[] data, int lo, int hi) {
         int i, j, k, pivot, pivotIndex;
@@ -54,9 +55,8 @@ public class Sort {
     /*
      * private static int partition(int[] data, int first, int n)
      * Helper method used to sort the specified array in O(n log n) time complexity. Note, to achieve O(n log n) time
-     * complexity, our implementation uses the median of three partitioning method and Dijkstra's Dutch National Flag
-     * algorithm to handle duplicate keys. Note that our implementation is based on a single left-to-right pass through
-     * the array.
+     * complexity, our implementation uses the median of three partitioning method. We also use Dijkstra's Dutch
+     * National Flag algorithm to handle duplicate keys.
      * @param data
      *  The array to be sorted.
      * @param lo
@@ -71,7 +71,6 @@ public class Sort {
 
         pivot = partition(data, lo, hi);
 
-        // Sort the array.
         i = lo + 1;
         gt = hi;
         lt = lo;
@@ -87,8 +86,8 @@ public class Sort {
     /**
      * public static int[] quickSort(int[] data, int first, int n)
      * Utility method used to sort the specified array in O(n log n) time complexity. Note, to achieve O(n log n) time
-     * complexity, our implementation uses the median of three partitioning method and Dijkstra's Dutch National Flag
-     * algorithm to handle duplicate keys.
+     * complexity, our implementation uses the median of three partitioning method. We also use Dijkstra's Dutch
+     * National Flag algorithm to handle duplicate keys.
      * @param data
      *  The array to be sorted.
      * @precondition
@@ -108,7 +107,7 @@ public class Sort {
      * @param hi
      *  The upper bound of this partition.
      * @postcondition
-     *  The elements at the lo and hi indexes have been swapped.
+     *  The elements at the lo and hi indices have been swapped.
      */
     private static void swap(int[] data, int lo, int hi) {
         int swap = data[lo];
