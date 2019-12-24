@@ -7,24 +7,39 @@ public class SortTest {
     }
 
     public void doIt() {
-        int[] data = new int[15];
+        long start, end, time;
+        int[] data;
+
+        data = new int[200000];
         for (int i = 0; i < data.length; i++) {
-            int j = (int) (Math.random() * 100);
+            int j = (int) (Math.random() * 100000);
             data[i] = j;
         }
 
-        System.out.println("Starting sort");
-        long start = System.nanoTime();
 
-        //Quicksort.quicksort(data);
+        // Quicksort test
+        System.out.println("Starting quick sort");
+        start = System.nanoTime();
+        Quicksort.quicksort(data);
         //S.quicksort(data);
+        end = System.nanoTime();
+        time = end - start;
+        System.out.println("Quick sort took: " + time / 1000000000.0 + " seconds");
+        //for (int datum : data) { System.out.print(datum + " "); }
+
+        // Randomize data again for insertion sort
+        for (int i = 0; i < data.length; i++) {
+            int j = (int) (Math.random() * 100000);
+            data[i] = j;
+        }
+
+        System.out.println("\n\nStarting insertion sort");
+        start = System.nanoTime();
         Insertionsort.insertionsort(data);
-
-        long end = System.nanoTime();
-        long time = end - start;
-
-        for (int datum : data) { System.out.print(datum + " "); }
-
-        System.out.println("\nTook: " + time / 1000000000.0 + " seconds");
+        //S.insertionsort(data);
+        end = System.nanoTime();
+        time = end - start;
+        System.out.println("Insertion sort took: " + time / 1000000000.0 + " seconds");
+        //for (int datum : data) { System.out.print(datum + " "); }
     }
 }
