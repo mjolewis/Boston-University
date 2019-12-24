@@ -1,6 +1,6 @@
-// File QuickSort.java from the package edu.bostonuniversity.edu
+// File Quicksort.java from the package edu.bostonuniversity.edu
 
-package edu.bostonuniversity.sorts;
+package edu.bostonuniversity.utils;
 
 /**********************************************************************************************************************
  * A utility class to sort data arrays into ascending order.
@@ -9,7 +9,7 @@ package edu.bostonuniversity.sorts;
  * @version Dec 22, 2019
  *********************************************************************************************************************/
 
-public class Sort {
+public class Quicksort {
     // Invariant of the Sort.java class
     //  1. The data in the given array is sorted in ascending order based on our implementation of compareTo.
     //  2. Equal elements are positioned in the correct order.
@@ -17,7 +17,7 @@ public class Sort {
     /*
      * private static int partition(int[] data, int lo, int hi)
      * Helper method to generate a randomized pivot element, which probabilistically guarantees O(n log n) time
-     * complexity in the quickSort method.
+     * complexity in the quicksort method.
      * @param data
      *  The array to be sorted.
      * @param lo
@@ -53,18 +53,18 @@ public class Sort {
     }
 
     /*
-     * private static int partition(int[] data, int first, int n)
-     * Helper method used to sort the specified array in O(n log n) time complexity. Note, to achieve O(n log n) time
+     * private static int[] quicksort(int[] data, int first, int n)
+     * Utility method used to sort the specified array in O(n log n) time complexity. Note, to achieve O(n log n) time
      * complexity, our implementation uses the median of three partitioning method. We also use Dijkstra's Dutch
      * National Flag algorithm to handle duplicate keys.
      * @param data
      *  The array to be sorted.
-     * @param lo
-     *  The lower bound of this array partition.
-     * @param hi
-     *  The upper bound of this array partition.
+     * @precondition
+     *  n is greater than 1, indicating that the array contains data.
+     * @postcondition
+     *  The data array has been sorted from smallest to largest.
      */
-    private static void quickSort(int[] data, int lo, int hi) {
+    private static void quicksort(int[] data, int lo, int hi) {
         int i, gt, lt, pivot;
 
         if (hi <= lo) { return; }
@@ -79,12 +79,12 @@ public class Sort {
             else if (data[i] > pivot) { swap(data, i , gt--); }
             else { i++; }
         }
-        quickSort(data, lo, lt - 1);
-        quickSort(data, gt + 1, hi);
+        quicksort(data, lo, lt - 1);
+        quicksort(data, gt + 1, hi);
     }
 
     /**
-     * public static int[] quickSort(int[] data, int first, int n)
+     * public static int[] quicksort(int[] data, int first, int n)
      * Utility method used to sort the specified array in O(n log n) time complexity. Note, to achieve O(n log n) time
      * complexity, our implementation uses the median of three partitioning method. We also use Dijkstra's Dutch
      * National Flag algorithm to handle duplicate keys.
@@ -95,7 +95,7 @@ public class Sort {
      * @postcondition
      *  The data array has been sorted from smallest to largest.
      */
-    public static void quickSort(int[] data) { quickSort(data, 0, data.length - 1);}
+    public static void quicksort(int[] data) { quicksort(data, 0, data.length - 1);}
 
     /*
      * private static void swap(int[] data, int lo, int hi)
