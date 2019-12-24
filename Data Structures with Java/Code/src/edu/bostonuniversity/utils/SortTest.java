@@ -7,7 +7,7 @@ public class SortTest {
     }
 
     public void doIt() {
-        int[] data = new int[20];
+        int[] data = new int[25];
         for (int i = 0; i < data.length; i++) {
             int j = (int) (Math.random() * 100);
             data[i] = j;
