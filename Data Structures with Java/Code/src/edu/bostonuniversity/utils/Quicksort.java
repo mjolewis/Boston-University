@@ -3,7 +3,13 @@
 package edu.bostonuniversity.utils;
 
 /**********************************************************************************************************************
- * A utility class to sort data arrays into ascending order.
+ * Quicksort is a divide-and-conquer sorting algorithm with a probabilistic guarantee of O(n log n) time complexity
+ * similar to mergesort. However, quicksort is faster in practice due to its in place sorting characteristics. Unlike
+ * mergesort, quicksort is not a stable sorting algorithm.
+ *
+ * @Note:
+ *  Our implementation uses Dijkstra's Dutch National Flag algorithm. Additionally, our implementation uses the median
+ *  of three partitioning approach to probabilistically guarantee O(n log n) time complexity.
  *
  * @author mlewis
  * @version Dec 22, 2019
