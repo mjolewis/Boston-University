@@ -10,9 +10,9 @@ public class SortTest {
         long start, end, time;
         int[] data;
 
-        data = new int[200000];
+        data = new int[15];
         for (int i = 0; i < data.length; i++) {
-            int j = (int) (Math.random() * 100000);
+            int j = (int) (Math.random() * 100);
             data[i] = j;
         }
 
@@ -25,11 +25,11 @@ public class SortTest {
         end = System.nanoTime();
         time = end - start;
         System.out.println("Quick sort took: " + time / 1000000000.0 + " seconds");
-        //for (int datum : data) { System.out.print(datum + " "); }
+        for (int datum : data) { System.out.print(datum + " "); }
 
         // Randomize data again for insertion sort
         for (int i = 0; i < data.length; i++) {
-            int j = (int) (Math.random() * 100000);
+            int j = (int) (Math.random() * 100);
             data[i] = j;
         }
 
@@ -40,6 +40,6 @@ public class SortTest {
         end = System.nanoTime();
         time = end - start;
         System.out.println("Insertion sort took: " + time / 1000000000.0 + " seconds");
-        //for (int datum : data) { System.out.print(datum + " "); }
+        for (int datum : data) { System.out.print(datum + " "); }
     }
 }
