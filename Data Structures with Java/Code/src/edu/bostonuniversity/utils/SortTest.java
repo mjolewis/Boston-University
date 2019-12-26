@@ -10,7 +10,7 @@ public class SortTest {
         long start, end, time;
         int[] data;
 
-        data = new int[15];
+        data = new int[20];
         for (int i = 0; i < data.length; i++) {
             int j = (int) (Math.random() * 100);
             data[i] = j;
@@ -21,7 +21,7 @@ public class SortTest {
         System.out.println("Starting quick sort");
         start = System.nanoTime();
         Quicksort.quicksort(data);
-        //S.quicksort(data);
+        //Playground.quicksort(data);
         end = System.nanoTime();
         time = end - start;
         System.out.println("Quick sort took: " + time / 1000000000.0 + " seconds");
@@ -36,7 +36,7 @@ public class SortTest {
         System.out.println("\n\nStarting insertion sort");
         start = System.nanoTime();
         Insertionsort.insertionsort(data);
-        //S.insertionsort(data);
+        //Playground.insertionsort(data);
         end = System.nanoTime();
         time = end - start;
         System.out.println("Insertion sort took: " + time / 1000000000.0 + " seconds");
