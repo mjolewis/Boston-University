@@ -17,7 +17,7 @@ package edu.bostonuniversity.utils;
 
 public class Quicksort {
     // Invariant of the Sort.java class
-    //  1. The data in the given array is sorted in ascending order based on our implementation of compareTo.
+    //  1. The data in the given array is sorted in ascending order.
     //  2. Equal elements are positioned in the correct order.
 
     /*
