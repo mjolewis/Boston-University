@@ -1,6 +1,6 @@
 package edu.bostonuniversity.playground;
 
-public class Playground {
+public class Playground{
     private static void insertionsort(int[] data, int n) {
         int i, lt;
 
@@ -47,7 +47,7 @@ public class Playground {
         quicksort(data, gt + 1, hi);
     }
 
-    public static void quicksort(int[] data) { quicksort(data, 0, data.length - 1); }
+    public static void quicksort(int[] data) { quicksort(data,0,data.length - 1); }
 
     private static void swap(int[] data, int lo, int hi) {
         int temp = data[lo];
