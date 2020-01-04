@@ -82,7 +82,7 @@ public class Quicksort {
         lt = lo;
         while (i <= gt) {
             if (data[i] < pivot) { swap(data, lt++, i++); }
-            else if (data[i] > pivot) { swap(data, i , gt--); }
+            else if (data[i] > pivot) { swap(data, i, gt--); }
             else { i++; }
         }
         quicksort(data, lo, lt - 1);
