@@ -6,7 +6,7 @@ public class Playground{
 
         for (i = 1; i <= n; i++) {
             lt = i - 1;
-            while (lt >= 0 && data[lt] > data[i]) { swap(data, lt--, i--); }
+            while (lt>= 0 && data[lt] > data[i]) { swap(data, lt--, i--); }
         }
     }
 
@@ -47,7 +47,7 @@ public class Playground{
         quicksort(data, gt + 1, hi);
     }
 
-    public static void quicksort(int[] data) { quicksort(data,0,data.length - 1); }
+    public static void quicksort(int[] data) { quicksort(data, 0, data.length - 1); }
 
     private static void swap(int[] data, int lo, int hi) {
         int temp = data[lo];
