@@ -24,6 +24,7 @@ public class Playground{
         else if (data[j] == pivot) { pivotIndex = j; }
         else { pivotIndex = k; }
 
+
         swap(data, lo, pivotIndex);
         return pivot;
     }
