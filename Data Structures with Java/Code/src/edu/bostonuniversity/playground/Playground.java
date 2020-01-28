@@ -1,10 +1,10 @@
 package edu.bostonuniversity.playground;
 
-public class Playground{
+public class Playground {
     private static void insertionsort(int[] data, int n) {
         int i, lt;
 
-        for (i = 1; i <= n; i ++) {
+        for (i = 1; i <= n; i++) {
             lt = i - 1;
             while (lt >= 0 && data[lt] > data[i]) { swap(data, lt--, i--); }
         }
