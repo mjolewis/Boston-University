@@ -1,18 +1,18 @@
-<h1 align="center">Boston University</h1>
+![alt text](https://user-images.githubusercontent.com/12025538/85956751-f0b56580-b955-11ea-86d6-c9eb9da5311c.png)
 <h2 align="center">Master of Science, Computer Science</h2>
 <div>
-    <h4>Fall 2019</h4>
     <ol>
-        <li>Data Structures</li>
-    </ol>
-    <h4>Spring 2020</h4>
-    <ol>
-        <li>Discrete Mathematics</li>
-        <li>Operating Systems</li>
-    </ol>
-    <h4>Summer 2020</h4>
-    <ol>
+        <li>Advanced Programming</li>
         <li>Analysis of Algorithms</li>
+        <li>Artificial Intelligence</li>
+        <li>Computer Language Theory</li>
         <li>Computer Networks</li>
+        <li>Data Structures</li>
+        <li>Discrete Mathematics</li>
+        <li>Financial Informatics</li>
+        <li>Operating Systems</li>
+        <li>Server-Side Development</li>
+        <li>Software Design and Patterns</li>
+        <li>Software Engineering</li>
     </ol>
 </div>
