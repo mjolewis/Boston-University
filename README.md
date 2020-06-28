@@ -1,5 +1,7 @@
-![alt text](https://user-images.githubusercontent.com/12025538/85956751-f0b56580-b955-11ea-86d6-c9eb9da5311c.png)
-<h2 align="center">Master of Science, Computer Science</h2>
+<div>
+<img src="https://user-images.githubusercontent.com/12025538/85956751-f0b56580-b955-11ea-86d6-c9eb9da5311c.png" width="500"/>
+</div>
+<h2>Master of Science, Computer Science</h2>
 <div>
     <ol>
         <li>Advanced Programming</li>
