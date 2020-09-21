@@ -2,8 +2,192 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b758323e-891b-4f73-9159-f1ec3041a175" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Courses.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Courses.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/.idea/Data Structures with Java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Algorithmic Design.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/16 Sep.1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/bin/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/bin/Locker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/bin/LockerManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/src/Driver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/src/Locker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/16 Sep.1/src/LockerManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/bin/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/bin/LinkedList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/bin/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/src/Driver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/src/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.1/src/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Class Examples/30 Sep.1/30 Sep.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/Pseudocode/BinaryTreePseudocode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/Pseudocode/Book Exercises.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/Pseudocode/OpenAddressHashingPseudocode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/Pseudocode/SieveofEratosthenesPseudocode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/Pseudocode/nQueensPseudocode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/Pseudocode/recursePseudocode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/ArrayQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/DoubleArraySeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/DoubleLinkedSeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/HashTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/LinkedList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/LinkedQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/LinkedStack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/List.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/Map.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/collections/Queue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/graphs/Edge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/graphs/EdgeList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/graphs/Graph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/graphs/GraphQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/graphs/Vertex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/homework/HashTableTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/homework/Recurse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/homework/RecurseTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/nodes/BTNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/nodes/DoubleNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/nodes/GraphNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/nodes/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/nodes/NodeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/playground/Playground.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/playground/Testground.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/BinarySearchTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/BinarySearchTreeMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/BuildGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/CalculatePrimes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/GraphMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/NQueensGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/NQueensMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/projects/SieveOfEratosthenesMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/utils/Insertionsort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/Code/edu/bostonuniversity/utils/Quicksort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/collections/DoubleArraySeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/collections/DoubleLinkedSeq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/collections/LinkedList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/collections/LinkedStack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/collections/List.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/collections/Stack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/collections/StackTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/nodes/DoubleNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/nodes/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/nodes/NodeList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/out/production/edu/bostonuniversity/nodes/NodeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/bostonuniversity.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/ArrayQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/DoubleArraySeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/DoubleLinkedSeq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/HashTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/LinkedQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/LinkedStack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/List.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/Map.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/collections/Queue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/graphs/Edge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/graphs/EdgeList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/graphs/Graph.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/graphs/GraphQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/graphs/Vertex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/homework/HashTableTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/homework/Recurse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/homework/RecurseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/nodes/BTNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/nodes/DoubleNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/nodes/GraphNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/nodes/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/nodes/NodeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/playground/Playground.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/playground/Testground.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/BinarySearchTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/BinarySearchTreeMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/BuildGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/CalculatePrimes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/GraphMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/NQueensGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/NQueensMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/projects/SieveOfEratosthenesMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/utils/Insertionsort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Code/src/edu/bostonuniversity/utils/Quicksort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/.idea/Bank Simulation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/out/production/Bank Simulation/ArrayQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/out/production/Bank Simulation/BankSimulation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/out/production/Bank Simulation/Driver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/out/production/Bank Simulation/LinkedQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/out/production/Bank Simulation/META-INF/Bank Simulation.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/out/production/Bank Simulation/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/src/ArrayQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/src/BankSimulation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/src/Driver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/src/LinkedQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Bank Simulation/src/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework 2 Output/Homework2 Output.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework 3 Output/Run1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework 3 Output/Run2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework 3 Output/Run3.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/Guessing Game.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/out/production/Guessing Game/GuessingGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/out/production/Guessing Game/PlayGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/src/GuessingGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Guessing Game/src/PlayGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/Homework1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Homework1/LEWIS_Homework_1.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 1 Output/RUN1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 1 Output/RUN2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 1 Output/RUN3.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 1 Output/RUN4.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 2 Output/Primes up to 100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 2 Output/Primes up to 200.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 2 Output/Primes up to 500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 3 Output/RUN 1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 3 Output/RUN 2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Homework/Programming Project 3 Output/RUN 3.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data Structures with Java/Syllabus.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +204,27 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager">
+    <configuration name="QuickSort" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="edu.bu.playground.Testground" />
+      <module name="Courses" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -51,6 +252,8 @@
       <workItem from="1584812399316" duration="60000" />
       <workItem from="1593373372856" duration="1072000" />
       <workItem from="1593548500315" duration="2381000" />
+      <workItem from="1600647065666" duration="801000" />
+      <workItem from="1600647917255" duration="4206000" />
     </task>
     <servers />
   </component>
@@ -71,11 +274,47 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="320" y="115" key="#Project_Structure" timestamp="1600647987193">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="115" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1600647987193" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600648677247">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1600648677247" />
+    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1600648668608">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="457" y="241" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1600648668608" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1600648839299">
+      <screen x="0" y="23" width="1440" height="810" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1600648839299" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1600648839297">
+      <screen x="0" y="23" width="1440" height="810" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1600648839297" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1600648839295">
+      <screen x="0" y="23" width="1440" height="810" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1600648839295" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1600648839298">
+      <screen x="0" y="23" width="1440" height="810" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1600648839298" />
+    <state x="221" y="23" width="1024" height="810" key="SettingsEditor" timestamp="1600648182400">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="23" width="1024" height="810" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1600648182400" />
     <state x="397" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1593548514112">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="397" y="257" key="com.intellij.ide.util.TipDialog/0.23.1440.800@0.23.1440.800" timestamp="1593373371822" />
     <state x="397" y="257" key="com.intellij.ide.util.TipDialog/0.23.1440.803/-526.-1417.2560.1417@0.23.1440.803" timestamp="1593548514112" />
+    <state x="424" y="351" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1600648189995">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="424" y="351" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1600648189995" />
     <state x="419" y="-1109" key="search.everywhere.popup" timestamp="1593548758445">
       <screen x="-526" y="-1440" width="2560" height="1440" />
     </state>
